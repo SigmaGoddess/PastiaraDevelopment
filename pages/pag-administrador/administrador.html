@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--Bootstrap Icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Hoja de estilos de pagina-->
+    <link rel="stylesheet" href="../../css/administrados.css">
+</head>
+
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm">
+            <div class="container-fluid p-custom" >
+
+                <!-- Logo -->
+                <div class="navbar-brand me-auto">
+                    <img src="../../images/logo-pastiara-svg.svg" alt="Logo de pastiara en formato SVG" height="75"
+                        id="nav-logo">
+                </div>
+
+                <!-- Perfil de usuario (fuera del collapse, SIEMPRE visible) -->
+                <div class=" d-flex align-items-center order-sm-2">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex text-white" href="#"
+                            id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú colapsable -->
+                <div class="collapse navbar-collapse order-sm-1 align-items-start" id="navbarNav">
+                    
+                    <h2 class="d-block d-sm-none text-start" id="admin-title">
+                    Administrador
+                    </h2>
+                    <ul class="navbar-nav" id="menu">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="nav-items" href="#">Agregar producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-items" href="#">Eliminar producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-items" href="#">Editar producto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container-fluid p-custom" >
+
+            <div class="row" >
+                <div class="col-sm-4 d-none d-sm-block" id="div-adm" >
+                    <div class="d-flex">
+                    <h2 class="text-start" id="admin-title">
+                    Administrador
+                    </h2>
+                    </div>
+                    
+                    
+                    <ul  id="menu">
+                        <li id="list-items-adm" >
+                            <h2><a href="">Agregar producto</a></h2>
+                        </li>
+                        <li id="list-items-adm">
+                            <h2><a href="">Eliminar producto</a></h2>
+                        </li>
+                        <li id="list-items-adm">
+                            <h2><a href="">Editar producto</a></h2>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-8 container-fluid  "  >
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p id="form-title">*Tipo de producto:</p>
+                            <input type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <p id="form-title">*Titulo de producto:</p>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p id="form-title">*Descripción:</p>
+                            <input type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <p id="form-title">*Precio:</p>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p id="form-title">*Agregar imagen:</p>
+                            <input type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <button>Guardar</button>
+                        </div>
+                    </div>
+                    
+                    
+
+                </div>
+            </div>
+
+            
+
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+    
+    <!--JavaScrp Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!--JavaScript-->
+    <script src="../../js/administrador.js"></script>
+</body>
+
+</html>
