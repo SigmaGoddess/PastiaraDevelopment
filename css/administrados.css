@@ -1,6 +1,9 @@
 *{
     padding: 0;
     margin: 0;
+
+    font-family: "Questrial", sans-serif;
+  font-style: normal;
 }
 
 #contenedor{
@@ -50,7 +53,9 @@
   }
 
   input{
-    border-radius: 15px;
+    border-radius: 5px;
+    width: 250px;
+    height: 35px;
     border: 1px solid #8C8C8C;
   }
 
@@ -70,7 +75,6 @@ a{
 
 #list-items-adm{
   margin-bottom: 10px;
-  font-weight: 1000;
   
 }
 
@@ -78,3 +82,25 @@ a{
   border-right: 2px solid black;
   max-width: 290px;
 }
+h2{
+  font-weight: 10px;
+}
+#btn-adm{
+  border-radius: 5px;
+  border: 0px;
+  background-color: #B58A6A;
+  width: 125px;
+  height: 35px;
+  margin-top: 25px;
+
+}
+
+#div-form-adm{
+
+  margin-bottom: 20px;
+}
+
+#list-link{
+  font-size: 27px;
+}
+
