@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+
+    font-family: "Questrial", sans-serif;
+  font-style: normal;
+}
+
+#contenedor{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
+}
+
+#nav-logo{
+    margin-right: 30px;
+}
+
+#nav-items{
+    padding: 10px;
+    border-left: 1px solid #B58A6A;
+    /*color: #8C8C8C;*/
+}
+
+#admin-title{
+    color: #8C8C8C;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: black;
+  }
+
+.p-custom {
+    padding-left: 20px; /* base */
+    padding-right: 20px;
+  }
+
+  @media (min-width: 576px) {   /* sm */
+    .p-custom {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+
+  #borde{
+    border: 2px solid black;
+
+  }
+
+  #form-title{
+    margin-bottom: 1px;
+  }
+
+  input{
+    border-radius: 5px;
+    width: 250px;
+    height: 35px;
+    border: 1px solid #8C8C8C;
+  }
+
+  #form-title{
+    color: #8C8C8C;
+  }
+
+  ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+#list-items-adm{
+  margin-bottom: 10px;
+  
+}
+
+#div-adm{
+  border-right: 2px solid black;
+  max-width: 290px;
+}
+h2{
+  font-weight: 10px;
+}
+#btn-adm{
+  border-radius: 5px;
+  border: 0px;
+  background-color: #B58A6A;
+  width: 125px;
+  height: 35px;
+  margin-top: 25px;
+
+}
+
+#div-form-adm{
+
+  margin-bottom: 20px;
+}
+
+#list-link{
+  font-size: 27px;
+}
+
