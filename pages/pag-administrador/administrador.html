@@ -22,21 +22,21 @@
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-sm">
-            <div class="container-fluid p-custom" >
+            <div class="container-fluid p-custom">
 
                 <!-- Logo -->
                 <div class="navbar-brand me-auto">
-                    <img src="../../images/logo-pastiara-svg.svg" alt="Logo de pastiara en formato SVG" height="75"
-                        id="nav-logo">
+                    <img src="../../images/GENERAL/logo-pastiara-svg.svg" alt="Logo de pastiara en formato SVG"
+                        height="75" id="nav-logo">
                 </div>
 
                 <!-- Perfil de usuario (fuera del collapse, SIEMPRE visible) -->
                 <div class=" d-flex align-items-center order-sm-2">
                     <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle d-flex text-white" href="#"
-                            id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <a class="nav-link dropdown-toggle d-flex text-white" href="#" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                 <path fill-rule="evenodd"
                                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
@@ -56,19 +56,22 @@
 
                 <!-- Menú colapsable -->
                 <div class="collapse navbar-collapse order-sm-1 align-items-start" id="navbarNav">
-                    
+
                     <h2 class="d-block d-sm-none text-start" id="admin-title">
-                    Administrador
+                        Administrador
                     </h2>
                     <ul class="navbar-nav" id="menu">
                         <li class="nav-item">
-                            <a class="nav-link active" id="nav-items" href="#" data-name="Agregar productos">Agregar productos</a>
+                            <a class="nav-link active" data-bs-toggle="collapse" href="#collapse-agregar-productos"
+                                id="nav-items" data-name="Agregar productos">Agregar productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-items" href="#" data-name="Eliminar productos">Eliminar productos</a>
+                            <a class="nav-link" id="nav-items" href="#" data-name="Eliminar productos">Eliminar
+                                productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-items" href="#" data-name="Editar productos">Editar productos</a>
+                            <a class="nav-link" id="nav-items" href="#" data-name="Editar productos">Editar
+                                productos</a>
                         </li>
                     </ul>
                 </div>
@@ -77,67 +80,144 @@
     </header>
 
     <main>
-        <div class="container-fluid p-custom" >
+        <div class="container-fluid p-custom">
 
-            <div class="row" >
-                <div class="col-sm-4 d-none d-sm-block" id="div-adm" >
+            <div class="row">
+                <div class="col-sm-4 d-none d-sm-block" id="div-adm">
                     <div class="d-flex">
-                    <h2 class="text-start" id="admin-title">
-                    Administrador
-                    </h2>
+                        <h2 class="text-start" id="admin-title">
+                            Administrador
+                        </h2>
                     </div>
-                    
-                    
-                    <ul  id="menu">
-                        <li id="list-items-adm" >
-                            <span><a class="nav-link active" data-bs-toggle="collapse" href="#collapse-agregar-productos" id="list-link" data-name="Agregar productos" aria-controls="collapse-agregar-productos">Agregar productos</a></span>
+
+
+                    <ul id="menu">
+                        <li id="list-items-adm">
+                            <span><a class="nav-link active" data-bs-toggle="collapse"
+                                    href="#collapse-agregar-productos" id="list-link" data-name="Agregar productos"
+                                    aria-expanded="false" aria-controls="collapse-agregar-productos">Agregar
+                                    productos</a></span>
                         </li>
                         <li id="list-items-adm">
-                            <span><a class="nav-link" href="#" id="list-link" data-name="Eliminar productos">Eliminar productos</a></span>
+                            <span><a class="nav-link" data-bs-toggle="collapse" href="#collapse-eliminar-productos"
+                                    id="list-link" data-name="Eliminar productos" aria-expanded="false"
+                                    aria-controls="collapse-eliminar-productos">Eliminar
+                                    productos</a></span>
                         </li>
                         <li id="list-items-adm">
-                            <span><a class="nav-link" href="#" id="list-link" data-name="Editar productos">Editar productos</a></span>
+                            <span><a class="nav-link" data-bs-toggle="collapse" href="#collapse-editar-productos"
+                                    id="list-link" data-name="Editar productos" aria-expanded="false"
+                                    aria-controls="collapse-editar-productos">Editar
+                                    productos</a></span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-sm-8 container-fluid  collapse show" id="collapse-agregar-productos" >
-                    <div class="row mb-sm-3" >
-                        <div class="col-sm-6">
-                            <p id="form-title">*Tipo de producto:</p>
-                            <input type="text">
+                <div class="col-sm-8 container-fluid" id="contenedor-form">
+                    <!--Form agregar producto-->
+                    <div class="collapse show" id="collapse-agregar-productos" data-bs-parent="#contenedor-form">
+                        <div class="row mb-sm-3">
+                            <div class="col-sm-6">
+                                <p id="form-title">*Tipo de producto:</p>
+                                <input type="text">
+                            </div>
+                            <div class="col-sm-6">
+                                <p id="form-title">*Titulo de producto:</p>
+                                <input type="text">
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <p id="form-title">*Titulo de producto:</p>
-                            <input type="text">
+                        <div class="row mb-sm-3">
+                            <div class="col-sm-6">
+                                <p id="form-title">*Descripción:</p>
+                                <input type="text">
+                            </div>
+                            <div class="col-sm-6">
+                                <p id="form-title">*Precio:</p>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="row mb-sm-3">
+                            <div class="col-sm-6">
+                                <p id="form-title">*Agregar imagen:</p>
+                                <input type="text">
+                            </div>
+                            <div class="col-sm-6">
+                                <button id="btn-adm">Guardar</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-sm-3" >
-                        <div class="col-sm-6">
-                            <p id="form-title">*Descripción:</p>
-                            <input type="text">
+                    <!--Form eliminar producto-->
+                    <div class="collapse " id="collapse-eliminar-productos" data-bs-parent="#contenedor-form">
+                        <div class="row mb-sm-3">
+                            <div class="col-sm-6">
+                                <p id="form-title">*Tipo de producto:</p>
+                                <input type="text">
+                            </div>
+                            <div class="col-sm-6">
+                                <p id="form-title">*Titulo de producto:</p>
+                                <input type="text">
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <p id="form-title">*Precio:</p>
-                            <input type="text">
+
+                        <div class="row mb-sm-3">
+                            <div class="col-sm-12">
+                                <button id="btn-adm">Eliminar</button>
+                            </div>
                         </div>
+                        
                     </div>
-                    <div class="row mb-sm-3" >
-                        <div class="col-sm-6">
-                            <p id="form-title">*Agregar imagen:</p>
-                            <input type="text">
+
+                    <!--Form editar productos-->
+                        <div class="collapse" id="collapse-editar-productos" data-bs-parent="#contenedor-form">
+                            <div class="row mb-sm-3">
+                                <div class="col-sm-6">
+                                    <p id="form-title">*Tipo de producto:</p>
+                                    <input type="text">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="form-title">*Producto:</p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="row mb-sm-3">
+                                <div class="col-sm-6">
+                                    <p id="form-title">Titulo de producto:</p>
+                                    <input type="text">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="form-title">Descripción:</p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="row mb-sm-3">
+                                <div class="col-sm-6">
+                                    <p id="form-title">Precio:</p>
+                                    <input type="text">
+                                </div>
+                                <div class="col-sm-6">
+                                    <p id="form-title">Imagen:</p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="row mb-sm-3 justify-content-center">
+                                <div class="col-sm-12 ">
+                                    <button id="btn-adm">Guardar cambios</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-sm-6" >
-                            <button id="btn-adm">Guardar</button>
-                        </div>
-                    </div>
-                    
-                    
+
+
+
+
+
+
+
+
 
                 </div>
             </div>
 
-            
+
 
         </div>
     </main>
@@ -145,7 +225,7 @@
     <footer>
 
     </footer>
-    
+
     <!--JavaScrp Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
