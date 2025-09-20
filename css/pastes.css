@@ -68,6 +68,7 @@ body {
 }
 .product-card {
     text-align: center;
+    
    
 }
 .product-image {
@@ -75,7 +76,8 @@ body {
   display: block;         /* Mejora la alineación de la imagen */
   width: 100%;            /* Hace que la imagen llene el contenedor */
   height: 535px;          /* Tu altura fija para que todas sean iguales */
-  object-fit: cover;      /* Evita que la imagen se deforme */
+  object-fit: cover; 
+  transition: transform 0.3s ease;     
 }
 .product-image:hover {
     transform: scale(1.02);
