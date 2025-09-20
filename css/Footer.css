@@ -1,0 +1,242 @@
+/* ===== Reset Global ===== */
+/* Normaliza márgenes, padding y box-sizing en todos los elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Fuente Global ===== */
+/* Tipografía base, fondo y color de texto general */
+body {
+  font-family: 'Questrial', sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+/* ===== Footer ===== */
+/* Estilos generales del pie de página */
+.footer {
+  padding: 2rem 1rem;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+/* ===== Footer Container ===== */
+/* Distribución en columnas usando grid */
+.footer-container {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ===== Columnas del Footer ===== */
+/* Ajuste de estructura y estilo de títulos y listas */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-col h4 {
+  color: #B58A6A;
+  font-size: 28px;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #B58A6A;
+}
+
+/* ===== Logo Pastiara ===== */
+/* Ajuste de tamaño y espaciado del logo */
+.logo-pastiara {
+  max-width: 200px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* ===== Frase del Footer ===== */
+/* Texto destacado debajo del logo */
+.footer-frase {
+  font-size: 24px;
+  color: #000;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+/* ===== Botones ===== */
+/* Estilo para botones de registro y login */
+.acciones-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.btn-registro {
+  background-color: #B58A6A;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-registro:hover {
+  background-color: #8c6a50;
+  transform: scale(1.05);
+}
+
+.btn-login {
+  background-color: transparent;
+  color: #B58A6A;
+  border: 2px solid #B58A6A;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #B58A6A;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===== Redes Sociales ===== */
+/* Íconos con espaciado, color principal y hover */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-icons i {
+  font-size: 28px;
+  color: #B58A6A;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons i:hover {
+  color: #8c6a50;
+  transform: scale(1.1);
+}
+
+/* ===== Footer Bottom ===== */
+/* Línea divisoria y texto de copyright */
+.footer-bottom {
+  border-top: 1px solid #ccc;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+/* ===== Responsive para pantallas pequeñas ===== */
+/* Reestructura el footer en dos columnas principales para móvil */
+@media (max-width: 600px) {
+  /* Contenedor principal con flex y wrap */
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  /* Columna izquierda: Logo, Inicio, Legales, Botones */
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-left .logo-col {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left .inicio-col,
+  .footer-left .legales-col {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-left .acciones-col {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-left .acciones-col button {
+    width: 120px;
+  }
+
+  /* Columna derecha: Frase, Productos, Redes Sociales */
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-right .frase-col {
+    order: 1;
+    text-align: center;
+  }
+
+  .footer-right .productos-col {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-right .social-icons {
+    order: 3;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  /* Footer bottom centrado */
+  .footer-bottom {
+    order: 4;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
