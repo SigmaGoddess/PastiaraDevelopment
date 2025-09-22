@@ -1,11 +1,12 @@
 /* Declaramos variables globales personalizadas (custom properties) para hacer mantenible y consistente nuestro código*/
-:root{
+:root {
     /* Paleta de colores:  */
     background-color: #ffffff;
     --color-title: #B58A6A;
-    --color-text1:#000000 ;
-    --color-text2:#ffffff ;
-    --color-text3:#8c8c8c ;
+    --color-title2: #ffffff;
+    --color-text1: #000000;
+    --color-text2: #ffffff;
+    --color-text3: #8c8c8c;
     --color-boton1: #B58A6A;
     --color-boton2: #f3f3f3;
 
