@@ -7,6 +7,7 @@ class SpecialHeader extends HTMLElement {
             if (!response.ok) throw new Error('Network response was not ok');
 
             const content = await response.text();
+            console.log('Fetched content:', content);
             this.innerHTML = content;
         } catch (error) {
             console.error('Failed to load the HTML file:', error);
