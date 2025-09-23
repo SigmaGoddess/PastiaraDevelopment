@@ -1,0 +1,16 @@
+/* Declaramos variables globales personalizadas (custom properties) para hacer mantenible y consistente nuestro código*/
+:root {
+    /* Paleta de colores:  */
+    background-color: #ffffff;
+    --color-title: #B58A6A;
+    --color-title2: #f3f3f3;
+    --color-text1: #000000;
+    --color-text2: #ffffff;
+    --color-text3: #8c8c8c;
+    --color-boton1: #B58A6A;
+    --color-boton2: #f3f3f3;
+
+    /* Fuentes */
+    --title-font: "Abril Fatface", serif;
+    --title-body: "Questrial", sans-serif;
+}
