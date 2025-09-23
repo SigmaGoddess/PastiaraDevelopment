@@ -1,0 +1,319 @@
+:root{
+    /*Tipografías*/
+    --tipografia-titulos: "Abril Fatface", serif;
+    --tipografia-texto: "Questrial", sans-serif;
+
+    /*Paleta de colores*/
+    --color-de-fondo: #FFFF; 
+    --color-titulos: #B58A6A;
+    --color-titulo-barra:#F3F3F3;
+    --color-texto: #000000; 
+    --color-boton-registro-al-presionar: #916e55;
+    --color-banner: #B58A6A;
+    --color-icono: #B58A6A;
+    --color-icono-al-pasar: #916e55;
+    --color-tarjeta-valores: #f3f3f3;
+}
+
+body{
+    background-color: var(--color-de-fondo);
+    font-family: var(--tipografia-texto);
+    color: var(--color-texto);
+    font-size: 20px; /*no le puse 32 porque quedaba  muy grande*/
+    margin: 0;
+    padding: 0; 
+
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--tipografia-titulos);
+    color: var(--color-titulos);
+    size: 64px;
+    margin: 0;
+    padding: 0;
+}
+h3{
+    color: var(--color-titulo-barra)
+}
+p{
+    line-height: 1.5; 
+    font-family: "Questrial", sans-serif;
+    margin-bottom: 0;
+}
+
+
+
+/*-----HISTORIA--------------------------------------------*/
+/*-------BANNER SABOR------*/
+.banner-sabor {
+    background-color: var(--color-banner); 
+    padding: 3rem 0;
+    position: relative;
+    
+    background-image: url(../images/GENERAL/Banner-largo.png);
+    
+    /* Con "cover" la imagen se ajusta y llena el contenedor */
+    background-size: cover;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* El título del banner debe estar sobre el fondo */
+.banner-sabor .titulo-banner {
+    position: relative;
+    z-index: 1;
+    color: var(--color-titulo-barra); 
+}
+
+/*Contenido de historia de pastiara*/
+.history-text{
+    text-align: justify;
+    margin-top: 0px;
+}
+.history-text-fighting{
+  margin: 20px;
+}
+
+/*Modificación de la imagen de historia de pastiara*/
+.img-fluid {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  width: 450px;  
+  height: 250px;  
+  }
+
+
+/* ----------------MISIÓN Y VISIÓN--------------------*/
+/*-----imagen----*/
+/* Estilos para el contenedor principal con la imagen de fondo */
+.mision-vision-banner {
+    background: url('../images/CONÓCENOS/Panadero.jpg') no-repeat center center; 
+    background-size: cover; 
+    position: relative;
+    padding: 2rem 0;
+    margin-top: 60px;
+     
+}
+/* La capa de opacidad sobre la imagen */
+.mision-vision-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    z-index: 0; 
+}
+.mision-vision-banner .container {
+    position: relative;
+    z-index: 1; /*Para que las tarjetas queden arriba de la opacidad */
+}
+
+.card {
+    background-color: var(--color-tarjeta-valores); 
+    position: relative;
+    z-index: 1; 
+    border: none;
+    color: var(--color-titulos)
+}
+
+
+/*---------------------VALORES----------------------------*/
+.valores{
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+.card-valor {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--color-tarjeta-valores);
+    margin-top: 20px;
+}
+
+.titulo-card-valor {
+    color: var(--color-texto);
+    font-family: var(--tipografia-texto);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.texto-card-valor {
+    color: var(--color-texto);
+    font-family: var(--tipografia-texto);
+}
+
+/*----------------------CARRUSEL-------------------------*/
+/* Estilos para la sección principal */
+.equipo {
+  padding: 30px 0; 
+}
+
+/* Estilos para el encabezado "Nuestro equipo" */
+.equipo h2 {
+  font-family: var(--tipografia-titulos);
+  color: var(--color-titulos); 
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+/* Estilos para el contenedor del carrusel */
+.carousel {
+  position: relative;
+  background-image: url('../images/GENERAL/masa-boleando.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* Oculta cualquier cosa que se salga del contenedor */
+}
+
+/* La capa de opacidad sobre la imagen */
+.carousel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); 
+  z-index: 0;
+}
+
+/* Añade un espacio interior a cada diapositiva para que el contenido no toque los bordes */
+.carousel-item {
+    padding: 0 15px; 
+}
+
+/* Altura constante y tamaño de fuente en pantallas pequeñas (móviles) */
+@media (max-width: 700px) {
+    .descripcion-container {
+        min-height: 700px; /* Mantén una altura fija para evitar el desplazamiento */
+    }
+    .paste-member{
+        text-align: center;
+    }
+}
+
+
+/* Estilos para el contenido de cada slide */
+.carousel-item .row {
+  position: relative;
+  z-index: 1; 
+  padding: 40px;
+}
+
+/* Estilos para la foto de perfil */
+.profile-pic {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el contenedor de la descripción */
+.descripcion-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  
+}
+
+
+/* Estilos para el nombre de la persona debajo de la foto */
+.carousel-item h4 {
+  font-family: var(--tipografia-titulos);
+  color: var(--color-texto); 
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los botones de navegación del carrusel */
+.carousel-control-prev, .carousel-control-next {
+  width: 5%;
+  opacity: 1;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-image: none;
+  font-size: 3rem;
+  color: var(--color-tarjeta-valores);
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+  
+}
+
+.carousel-control-prev-icon::before {
+  content: '<';
+}
+
+.carousel-control-next-icon::before {
+  content: '>';
+}
+.paste-member{
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+/*Modificaciones para los controles de navegación horizontales*/
+.carousel-indicators [data-bs-target] {
+    background-color: var(--color-icono);
+}
+
+.carousel-indicators button {
+    background-color: var(--color-boton-registro-al-presionar); 
+    opacity: 0.5;
+    width: 20px; 
+    height: 6px; 
+}
+
+
+/*Modificaciones ESPECÍFICAS para cuando la pantalla sea de 500 píxeles o menos con una media query*/
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .carousel-control-prev {
+        /* left para un control más preciso del espaciado */
+        left: 10px;
+    }
+    
+    .carousel-control-next {
+        /*right para un control más preciso del espaciado */
+        right: 10px;
+    }
+}
+
+
+
+/*---Imagen del carrusel---*/
+/* ajustar imagenes del carrusel*/
+.profile-pic {
+
+  /* Asegura un tamaño fijo para todas las imágenes */
+  width: 250px;  
+  height: 500px; 
+
+  /* Esto ayuda a que las imágenes no se deformen */
+  object-fit: cover;
+}
+
+.description-member{
+  text-align: justify;
+}
+
+#miCarrusel{
+  color: va(--color-icono);
+}
+
+
+/*---------------------ANIMACIONES para utilizar JavaScript-------------------------*/
+/* Estilos para el efecto de scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px); /* para un efecto de movimiento */
+    transition: opacity 1s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
