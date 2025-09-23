@@ -4,6 +4,7 @@
 
 body {
     font-family: var(--title-body);
+    background-color: blue;
 }
 
 img {
@@ -102,6 +103,11 @@ img {
     .dropdown-item:hover {
         color: #ffffff;
         background-color: #B58A6A;
+    }
+
+    .dropdown>#personDropdownMobile {
+        display: none;
+
     }
 
 }

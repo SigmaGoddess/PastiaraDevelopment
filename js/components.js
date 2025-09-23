@@ -1,7 +1,7 @@
 // Function to load and inject HTML components into specified containers
 class SpecialHeader extends HTMLElement {
     async connectedCallback() {
-        const htmlFile = '../pages/pag-navbar/navbar.html'; // Replace with the actual path to your HTML file
+        const htmlFile = '../pag-navbar/navbar.html'; // Replace with the actual path to your HTML file
         try {
             const response = await fetch(htmlFile);
             if (!response.ok) throw new Error('Network response was not ok');
