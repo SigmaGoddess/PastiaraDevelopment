@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-:root {
-    --font-family: "Questrial", sans-serif;
-}
+@import url('../css/global_variables.css');
+@import url('../css/normalize.css');
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--title-body);
 }
 
 img {
