@@ -1,0 +1,78 @@
+/* Importamos fuentes y estilos globales */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
+
+/* Estilos específicos para la página de inicio (homePage) */
+
+body {
+  font-family: var(--title-font);
+  background-color: var(--background-color);
+  color: var(--color-text1);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: var(--color-title);
+  font-family: var(--title-font);
+  font-size: 62px;
+  text-align: center;
+  margin: 0% 60px;
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  font-family: var(--title-body);
+  color: var(--color-text2);
+  font-size: 21px;
+  margin: 0% 60px;
+  padding: 30px;
+  line-height: 1.5;
+}
+
+.contenedor-fondo {
+  background-image: url('../images/GENERAL/Banner\ Home.png');
+  /* Cambia la ruta según la ubicación de tu imagen */
+  background-size: cover;
+  /* Ajusta el tamaño de la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+  background-clip: padding-box;
+  /* Asegura que la imagen no se desborde */
+}
+
+.btn {
+  font-family: var(--title-body);
+  background-color: var(--color-boton1);
+  color: var(--color-text2);
+  border: none;
+  padding: 10px 40px;
+  font-size: 18px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background-image: url('../images/GENERAL/CanastaConPastes.png');
+  /* Ruta de tu imagen */
+  background-repeat: no-repeat;
+  /* Para que la imagen no se repita */
+  background-position: right 10px center;
+  /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+  padding-right: 60px;
+  /* Aumenta el padding para que el texto no se superponga con la imagen */
+  background-size: 40px;
+  /* Establece el tamaño de la imagen */
+}
+
+.img1 {
+  width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.img2 {
+  width: 25%;
+  height: 100%;
+  margin-top: 40px;
+}
