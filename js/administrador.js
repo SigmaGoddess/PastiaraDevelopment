@@ -1,7 +1,14 @@
 
  // Seleccionamos todos los links del navbar y del menú lateral
     const allLinks = document.querySelectorAll('#menu .nav-link, #menu #list-link');
+    const innerbody = document.getElementById('footerinner');
 
+    console.log(innerbody.innerHTML);
+
+    const textoinner = '<div id="lalala"> </div>';
+    innerbody.innerHTML= textoinner;
+
+    console.log(innerbody.innerHTML);
     
 
     allLinks.forEach(link => {

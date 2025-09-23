@@ -21,7 +21,7 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm">
+        <nav class="navbar navbar-expand-md">
             <div class="container-fluid p-custom">
 
                 <!-- Logo -->
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Perfil de usuario (fuera del collapse, SIEMPRE visible) -->
-                <div class=" d-flex align-items-center order-sm-2">
+                <div class=" d-flex align-items-center order-md-2">
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex text-white" href="#" id="userDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,7 +55,7 @@
                 </button>
 
                 <!-- Menú colapsable -->
-                <div class="collapse navbar-collapse order-sm-1 align-items-start" id="navbarNav">
+                <div class="collapse navbar-collapse order-md-1 align-items-start" id="navbarNav">
 
                     <h2 class="d-block d-sm-none text-start" id="admin-title">
                         Administrador
@@ -66,11 +66,11 @@
                                 id="nav-items" data-name="Agregar productos">Agregar productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-items" href="#" data-name="Eliminar productos">Eliminar
+                            <a class="nav-link" data-bs-toggle="collapse" id="nav-items" href="#collapse-eliminar-productos" data-name="Eliminar productos">Eliminar
                                 productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-items" href="#" data-name="Editar productos">Editar
+                            <a class="nav-link" data-bs-toggle="collapse" id="nav-items" href="#collapse-editar-productos" data-name="Editar productos">Editar
                                 productos</a>
                         </li>
                     </ul>
@@ -116,12 +116,12 @@
                 <div class="col-sm-8 container-fluid" id="contenedor-form">
                     <!--Form agregar producto-->
                     <div class="collapse show" id="collapse-agregar-productos" data-bs-parent="#contenedor-form">
-                        <div class="row mb-sm-3">
-                            <div class="col-sm-6">
+                        <div class="row mb-md-3 ">
+                            <div class="col-md-6 ">
                                 <p id="form-title">*Tipo de producto:</p>
                                 <input type="text">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-md-6 d-flex flex-column justify-content-center justify-content-md-start  ">
                                 <p id="form-title">*Titulo de producto:</p>
                                 <input type="text">
                             </div>
@@ -222,7 +222,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer id="footerinner">
 
     </footer>
 
