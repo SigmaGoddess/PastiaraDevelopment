@@ -1,4 +1,5 @@
-@import url('.//global_variables.css');
+@import url('../css/global_variables.css');
+@import url('../css/normalize.css');
 
 #contenedor {
   padding-left: 20px;
