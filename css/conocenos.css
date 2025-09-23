@@ -292,7 +292,7 @@ p{
   width: 250px;  
   height: 500px; 
 
-  /* Esto ayuda a que las imágenes no se deformen */
+  /*ayuda a que las imágenes no se deformen */
   object-fit: cover;
 }
 

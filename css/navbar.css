@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('../css/global_variables.css');
+@import url('../css/normalize.css');
+
+body {
+    font-family: var(--title-body);
+}
+
+img {
+    max-width: 200px;
+    width: 100%;
+}
+
+.navbar {
+    position: absolute;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    flex-wrap: inherit;
+}
+
+.navbar .nav-link {
+    font-weight: 600;
+    position: relative;
+    color: #8c8c8c;
+
+}
+
+.navbar .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 0%;
+    height: 2px;
+    background-color: #B58A6A;
+    transition: all 0.6s ease;
+    transform-origin: center;
+}
+
+.navbar .nav-item:hover .nav-link::before {
+    width: 100%;
+}
+
+.navbar .nav-link.active {
+    color: #B58A6A;
+    position: relative;
+}
+
+.navbar-toggler:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.dropdown>.dropdown-menu {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 0px;
+}
+
+.navbar-icon {
+    color: #B58A6A;
+    font-size: 1.5rem;
+    /* Ajusta el tamaño según lo que necesites */
+    vertical-align: middle;
+}
+
+.bi-grid {
+    font-size: 1.5rem;
+    color: #B58A6A;
+}
+
+.bi-x-circle {
+    font-size: 1.5rem;
+    color: #B58A6A;
+}
+
+@media (min-width: 992px) {
+
+    .dropdown>.dropdown-menu {
+        visibility: hidden;
+        opacity: 0;
+        top: 100%;
+        display: block;
+        transition: all 0.1s ease;
+    }
+
+    .dropdown:hover>.dropdown-menu {
+        padding: 20px 0;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+        color: #ffffff;
+        background-color: #B58A6A;
+    }
+
+}

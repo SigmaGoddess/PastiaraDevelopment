@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        // La animación se activará cuando el 10% del elemento sea visible
+        // La animación se activa cuando el 10% del elemento sea visible
         threshold: 0.1
     });
 
