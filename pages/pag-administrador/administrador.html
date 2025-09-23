@@ -21,7 +21,7 @@
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-md">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid p-custom">
 
                 <!-- Logo -->
@@ -31,7 +31,7 @@
                 </div>
 
                 <!-- Perfil de usuario (fuera del collapse, SIEMPRE visible) -->
-                <div class=" d-flex align-items-center order-md-2">
+                <div class=" d-flex align-items-center order-lg-2">
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex text-white" href="#" id="userDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -55,9 +55,9 @@
                 </button>
 
                 <!-- Menú colapsable -->
-                <div class="collapse navbar-collapse order-md-1 align-items-start" id="navbarNav">
+                <div class="collapse navbar-collapse order-lg-1 align-items-start" id="navbarNav">
 
-                    <h2 class="d-block d-sm-none text-start" id="admin-title">
+                    <h2 class="d-block d-lg-none text-start" id="admin-title">
                         Administrador
                     </h2>
                     <ul class="navbar-nav" id="menu">
@@ -82,8 +82,8 @@
     <main>
         <div class="container-fluid p-custom">
 
-            <div class="row">
-                <div class="col-sm-4 d-none d-sm-block" id="div-adm">
+            <div class="row ">
+                <div class="col-lg-4 d-none d-lg-block" id="div-adm">
                     <div class="d-flex">
                         <h2 class="text-start" id="admin-title">
                             Administrador
@@ -113,35 +113,35 @@
                     </ul>
                 </div>
 
-                <div class="col-sm-8 container-fluid" id="contenedor-form">
+                <div class="col-lg-8 container-fluid" id="contenedor-form">
                     <!--Form agregar producto-->
                     <div class="collapse show" id="collapse-agregar-productos" data-bs-parent="#contenedor-form">
                         <div class="row mb-md-3 ">
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start" >
                                 <p id="form-title">*Tipo de producto:</p>
-                                <input type="text">
+                                <input  type="text">
                             </div>
-                            <div class="col-md-6 d-flex flex-column justify-content-center justify-content-md-start  ">
+                            <div class="col-md-6 col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Titulo de producto:</p>
                                 <input type="text">
                             </div>
                         </div>
                         <div class="row mb-sm-3">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Descripción:</p>
                                 <input type="text">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Precio:</p>
                                 <input type="text">
                             </div>
                         </div>
                         <div class="row mb-sm-3">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Agregar imagen:</p>
                                 <input type="text">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start" >
                                 <button id="btn-adm">Guardar</button>
                             </div>
                         </div>
@@ -149,18 +149,18 @@
                     <!--Form eliminar producto-->
                     <div class="collapse " id="collapse-eliminar-productos" data-bs-parent="#contenedor-form">
                         <div class="row mb-sm-3">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Tipo de producto:</p>
                                 <input type="text">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Titulo de producto:</p>
                                 <input type="text">
                             </div>
                         </div>
 
                         <div class="row mb-sm-3">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <button id="btn-adm">Eliminar</button>
                             </div>
                         </div>
@@ -170,38 +170,38 @@
                     <!--Form editar productos-->
                         <div class="collapse" id="collapse-editar-productos" data-bs-parent="#contenedor-form">
                             <div class="row mb-sm-3">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                     <p id="form-title">*Tipo de producto:</p>
                                     <input type="text">
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                     <p id="form-title">*Producto:</p>
                                     <input type="text">
                                 </div>
                             </div>
                             <div class="row mb-sm-3">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                     <p id="form-title">Titulo de producto:</p>
                                     <input type="text">
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                     <p id="form-title">Descripción:</p>
                                     <input type="text">
                                 </div>
                             </div>
                             <div class="row mb-sm-3">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                     <p id="form-title">Precio:</p>
                                     <input type="text">
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                     <p id="form-title">Imagen:</p>
                                     <input type="text">
                                 </div>
                             </div>
                             <div class="row mb-sm-3 justify-content-center">
-                                <div class="col-sm-12 ">
-                                    <button id="btn-adm">Guardar cambios</button>
+                                <div class="col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start ">
+                                    <button id="btn-adm-save">Guardar cambios</button>
                                 </div>
                             </div>
                         </div>
