@@ -73,7 +73,7 @@ p{
 
 
 /* ----------------MISIÓN Y VISIÓN--------------------*/
-/*-----imagen----*/
+/*-----IMAGEN----*/
 /* Estilos para el contenedor principal con la imagen de fondo */
 .mision-vision-banner { 
     background: url('/images/CONÓCENOS/Panadero.jpg') no-repeat center center;
@@ -151,7 +151,7 @@ p{
 /* Estilos para el contenedor del carrusel */
 .carousel {
   position: relative;
-  background-image: url('../images/GENERAL/masa-boleando.webp');
+  background-image: url('/images/GENERAL/masa-boleando.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
