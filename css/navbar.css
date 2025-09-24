@@ -112,4 +112,8 @@ img {
 
     }
 
+    .navbar-nav {
+        align-items: end;
+    }
+
 }
