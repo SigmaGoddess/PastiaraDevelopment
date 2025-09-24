@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Se coloco la clase "fade-in"
     const elementosAnimados = document.querySelectorAll('.fade-in');
 
-    // Crea un nuevo observador
+    // crea un nuevo observador
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             // Si el elemento es visible
