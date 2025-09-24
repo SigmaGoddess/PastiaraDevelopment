@@ -57,6 +57,13 @@ input {
   border: 1px solid #8C8C8C;
 }
 
+select{
+  border-radius: 5px;
+  width: 250px;
+  height: 35px;
+  border: 1px solid #8C8C8C;
+}
+
 #form-title {
   color: #8C8C8C;
 }

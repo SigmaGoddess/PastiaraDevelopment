@@ -1,55 +1,54 @@
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
+
+@import url('/css/global_variables.css');
+@import url('/css/normalize.css');
 
 /* Estilos generales y fuentes */
 body {
-    font-family: "Questrial", sans-serif;
-    color: #5a4f4a;
-    font-size: clamp(.9rem, 1rem + 2vw, 2rem);
+    font-family: var( --title-body);
+    color: var(--color-text3);
+    font-size: clamp(.5rem, 1rem + 1vw, 1.5rem);
 
     /* Imagen de fondo */
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url(../images/REGISTRO/Fondo\ de\ registro\ con\ edición.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        url(/images/REGISTRO/Fondo\ de\ registro\ con\ edición.png);
     background-attachment: fixed;
 }
 
+ 
 h1 {
-    font-family: "Abril Fatface", serif;
-    font-size: clamp(1.5rem, 2rem + 2vw, 4rem);
-    color: #B58A6A;
-    /*var( --color-title)*/
-    font-weight: 400;
-    text-align: center;
-    margin-top: 1.5Srem;
+    font-family: var(--title-font);
+    font-size: clamp(1.5rem, 2rem + 1vw, 3rem);
+    color: var( --color-title);
+    font-weight: 200;
+    margin-top: -1rem;
+    margin-bottom: 2.5rem;
 }
 
 .login-card {
     background-color: rgb(255, 255, 255);
-    padding: 2.5rem;
+    padding: 4rem;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
-    height: 40rem;
-    margin-left: 2.5rem;
+    height: 39rem;
+    margin-left: 6rem;
+    margin-top: -19rem;
 
 }
 
 .login-card img {
     max-width: 100%;
     height: auto;
-    margin-top: -.8rem;
+    margin-top: -2rem;
 }
 
 .form-control {
     border: 1px solid #ddd;
     border-radius: 15px;
-    padding: 0.75rem;
-    font-size: clamp(.8rem, .9rem + 1vw, 2rem);
+    padding: 0.5rem;
+    font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
     font-weight: lighter
-}
+    }
 
 .form-control:focus {
     border-color: #B58A6A;
@@ -65,7 +64,7 @@ h1 {
 #togglePassword {
     cursor: pointer;
     color: #B58A6A;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
 }
 
 a {
@@ -79,11 +78,11 @@ a:hover {
 }
 
 .forgot-password-link {
-    font-size: clamp(.8rem, .9rem + 1vw, 2rem);
+    font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
 }
 
 .register-link {
-    font-size: clamp(.8rem, .9rem + 1vw, 2rem);
+    font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
 }
 
 .register-link a {
@@ -91,12 +90,12 @@ a:hover {
 }
 
 .btn-login {
-    background-color: #B58A6A;
+    background-color: var(--color-boton1);
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: .5rem;
-    font-size: clamp(0.8rem, 1rem + 2vw, 2rem);
+    font-size: clamp(.5rem, 1rem + 1vw, 1.5rem);
     font-weight: 500;
     transition: background-color 0.3s ease;
 
@@ -136,6 +135,7 @@ a:hover {
         box-shadow: none;
         border: 2px solid #8C8C8C;
         margin: 0 2.2rem;
+        padding: 2rem;
     }
 
     .forgot-password-link {
@@ -172,7 +172,7 @@ a:hover {
         height: 60px;
         background-color: #B58A6A;
         left: 0;
-        top: 69%;
+        top: 72%;
     }
 
     .row.min-vh-100::after {
@@ -183,7 +183,7 @@ a:hover {
         width: 3.5rem;
         height: 3.3rem;
 
-        background-image: url('../images/REGISTRO/IconosCintaRegistro.png');
+        background-image: url('/images/REGISTRO/IconosCintaRegistro.png');
         opacity: 0.6;
         background-size: contain;
         background-repeat: no-repeat;
@@ -191,7 +191,7 @@ a:hover {
 
         /* Posición a la derecha */
         right: .02rem;
-        top: 35.6rem;
+        top: 37.5rem;
     }
 
     .row.min-vh-100::before {
@@ -202,7 +202,7 @@ a:hover {
         width: 3.5rem;
         height: 3.3rem;
 
-        background-image: url('../images/REGISTRO/IconosCintaRegistroIzq.png');
+        background-image: url('/images/REGISTRO/IconosCintaRegistroIzq.png');
         opacity: .6;
         background-size: contain;
         background-repeat: no-repeat;
@@ -210,7 +210,7 @@ a:hover {
 
         /*Posición a la izquierda*/
         left: .2rem;
-        top: 35.6rem;
+        top: 37.5rem;
     }
 
 

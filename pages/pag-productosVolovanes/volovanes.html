@@ -1,147 +1,160 @@
-<!DOCTYPE html> 
-<html lang="es"> 
-<head> <!-- Cabecera: contiene metadatos, enlaces y configuración -->
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Permite que la página sea responsive (adaptada a móviles) -->
-    <title>Pastiara - Volovanes</title> <!-- Título de la pestaña del navegador -->
-    
-    <!-- Enlace al CSS de Bootstrap para estilos predefinidos -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastiara - Volovanes</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Fuentes externas desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Iconos de Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Hoja de estilos de Toastify (notificaciones) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <!-- Hoja de estilos personalizada -->
-    <link rel="stylesheet" href="volovanes.css">
+    <link rel="stylesheet" href="../../css/volovanes.css">
 </head>
 
-<body> <!-- Cuerpo del documento -->
-    <!-- Sección principal / Hero -->
-    <body>
-    <section id="inicio" class="hero-section">
-        <img src="./img/fondo_volovanes.png" alt="Volovanes Pastiara" class="hero-bg">
-        <div class="container">
-            <h1 class="hero-title">Conoce nuestros sabores de volovanes</h1>
-        </div>
-    </section> <div class="intro-section-mobile">
-      <p>Conoce nuestros sabores de volovanes elaborados diariamente con la más alta calidad. Haz tu pedido y recibe a domicilio.</p>
-    </div>
+<body>
 
+    <header>
+        <special-header></special-header>
+    </header>
 
-    <section id="productos" class="products-section">
-        <div class="container-fluid">
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="container">
+                <h1 class="hero-title" id="hero-title-desktop">Conoce nuestros sabores de volovanes</h1>
+                <h1 class="hero-title" id="hero-title-mobile">Conoce nuestros sabores de volovanes elaborados diariamente con la más alta calidad. Haz tu pedido y recibe a domicilio</h1>
             </div>
-    </section>
+        </section>
 
-    </body>
+        <section id="productos" class="products-section">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/volovan_ensalada_rusa.png" alt="Volován relleno de ensalada rusa" class="product-image">
+                                <button class="heart-favorite" data-product="ensalada-rusa" onclick="toggleFavorite('ensalada-rusa')" aria-label="Marcar Ensalada Rusa como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Ensalada Rusa</h3>
+                                <p class="price">$25</p>
+                                <p class="description">(Zanahoria, papa, crema y pollo)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/volovan_mole_rojo.png" alt="Volován relleno de mole rojo con pollo" class="product-image">
+                                <button class="heart-favorite" data-product="mole-rojo" onclick="toggleFavorite('mole-rojo')" aria-label="Marcar Mole Rojo como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Mole Rojo</h3>
+                                <p class="price">$25</p>
+                                <p class="description">(Mole rojo con pollo)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/volovan_mole_verde.png" alt="Volován relleno de mole verde con pollo" class="product-image">
+                                <button class="heart-favorite" data-product="mole-verde" onclick="toggleFavorite('mole-verde')" aria-label="Marcar Mole Verde como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Mole Verde</h3>
+                                <p class="price">$25</p>
+                                <p class="description">(Mole verde con pollo)</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/volovan_cochinita_pibil.png" alt="Volován relleno de cochinita pibil" class="product-image">
+                                <button class="heart-favorite" data-product="cochinita-pibil" onclick="toggleFavorite('cochinita-pibil')" aria-label="Marcar Cochinita Pibil como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Cochinita Pibil</h3>
+                                <p class="price">$29</p>
+                                <p class="description">(Carne de cerdo adobada)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/volovan_rajas_con_pollo.png" alt="Volován relleno de rajas con pollo" class="product-image">
+                                <button class="heart-favorite" data-product="rajas-pollo" onclick="toggleFavorite('rajas-pollo')" aria-label="Marcar Rajas con Pollo como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Rajas con Pollo</h3>
+                                <p class="price">$25</p>
+                                <p class="description">(Rajas poblanas, elote, pollo y crema)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/brigadeiro_con_frutos_rojos.png" alt="Postre de brigadeiro con frutos rojos" class="product-image">
+                                <button class="heart-favorite" data-product="tinga-pollo" onclick="toggleFavorite('tinga-pollo')" aria-label="Marcar Brigadeiro Frutos Rojos como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Brigadeiro Frutos Rojos</h3>
+                                <p class="price">$29</p>
+                                <p class="description">(Frutos rojos con crema pastelera)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-5 offset-lg-4">
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="../../images/VOLOVANES/budín_pastiara.png" alt="Budín de cítricos estilo Pastiara" class="product-image">
+                                <button class="heart-favorite" data-product="budin-pastiara" onclick="toggleFavorite('budin-pastiara')" aria-label="Marcar Budín Pastiara como favorito">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>Budín Pastiara (Cítricos)</h3>
+                                <p class="price">$29</p>
+                                <p class="description">(Budín de naranja)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     
-    <!-- Sección de productos -->
-    <section id="productos" class="products-section">
-        <div class="container-fluid">
-            <div class="row"> <!-- Fila que agrupa los productos -->
-<div class="col-lg-4 col-md-6 mb-5">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/volovan_ensalada_rusa.png" alt="Ensalada Rusa" class="product-image">
-            <div class="heart-favorite" data-product="ensalada-rusa" onclick="toggleFavorite('ensalada-rusa')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Ensalada Rusa</h3>
-            <p class="price">$25</p>
-            <p class="description">Zanahoria, papa, crema y pollo.</p>
-        </div>
-    </div>
-</div>
 
-<div class="col-lg-4 col-md-6 mb-5">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/volovan_mole_rojo.png" alt="Mole Rojo" class="product-image">
-            <div class="heart-favorite" data-product="mole-rojo" onclick="toggleFavorite('mole-rojo')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Mole Rojo</h3>
-            <p class="price">$25</p>
-            <p class="description">Mole rojo con pollo.</p>
-        </div>
-    </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../../js/volovanes.js"></script>
+    <script src="../../js/components.js"></script>
+    <script src="../../js/main.js"></script>
 
-<div class="col-lg-4 col-md-6 mb-5">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/volovan_mole_verde.png" alt="Mole Verde" class="product-image">
-            <div class="heart-favorite" data-product="mole-verde" onclick="toggleFavorite('mole-verde')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Mole Verde</h3>
-            <p class="price">$25</p>
-            <p class="description">Mole verde con pollo.</p>
-        </div>
-    </div>
-</div>
+</body>
 
-<div class="col-lg-4 col-md-6 mb-5">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/volovan_cochinita_pibil.png" alt="Cochinita Pibil" class="product-image">
-            <div class="heart-favorite" data-product="cochinita-pibil" onclick="toggleFavorite('cochinita-pibil')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Cochinita Pibil</h3>
-            <p class="price">$29</p>
-            <p class="description">Carne de cerdo adobada.</p>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-5">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/volovan_rajas_con_pollo.png" alt="Rajas con Pollo" class="product-image">
-            <div class="heart-favorite" data-product="rajas-pollo" onclick="toggleFavorite('rajas-pollo')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Rajas con Pollo</h3>
-            <p class="price">$25</p>
-            <p class="description">Rajas poblanas, elote, pollo y crema.</p>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-5">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/brigadeiro_con_frutos_rojos.png" alt="Brigadeiro Frutos Rojos" class="product-image">
-            <div class="heart-favorite" data-product="tinga-pollo" onclick="toggleFavorite('tinga-pollo')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Brigadeiro Frutos Rojos</h3>
-            <p class="price">$29</p>
-            <p class="description">Frutos rojos con crema pastelera.</p>
-        </div>
-    </div>
-</div>
-
-<div class="col-lg-4 col-md-6 mb-5 offset-lg-4">
-    <div class="product-card">
-        <div class="product-image-container">
-            <img src="./img/budín_pastiara.png" alt="Budín Pastiara" class="product-image">
-            <div class="heart-favorite" data-product="budin-pastiara" onclick="toggleFavorite('budin-pastiara')"><i class="fas fa-heart"></i></div>
-        </div>
-        <div class="product-info">
-            <h3>Budín Pastiara (Cítricos)</h3>
-            <p class="price">$29</p>
-            <p class="description">Budín de naranja.</p>
-        </div>
-    </div>
-</div>
-
-            </div>
-        </div>
-    </section>
-
-    
+</html>

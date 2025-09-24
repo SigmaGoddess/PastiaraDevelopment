@@ -122,7 +122,14 @@
                             <div
                                 class="col-md-6 col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Tipo de producto:</p>
-                                <input type="text">
+                                <select name="">
+                                    <option value="" disabled selected>Selecione el tipo de producto</option>
+                                    <option value="pastes">Pastes</option>
+                                    <option value="panaderia">Panaderia</option>
+                                    <option value="volobanes">Volobanes</option>
+                                    <option value="para regalar">Para regalar</option>
+                                    <option value="agregar nuevo tipo">Agregar nuevo tipo</option>
+                                </select>
                             </div>
                             <div
                                 class="col-md-6 col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
@@ -146,11 +153,11 @@
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Agregar imagen:</p>
-                                <input type="text">
+                                <input  type="file" accept="image/*">
                             </div>
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
-                                <button id="btn-adm">Guardar</button>
+                                <button id="btn-adm" class="btn-agregar">Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -160,19 +167,31 @@
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Tipo de producto:</p>
-                                <input type="text">
+                                <select name="">
+                                    <option value="" disabled selected>Selecione el tipo de producto</option>
+                                    <option value="pastes">Pastes</option>
+                                    <option value="panaderia">Panaderia</option>
+                                    <option value="volobanes">Volobanes</option>
+                                    <option value="para regalar">Para regalar</option>
+                                </select>
                             </div>
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
-                                <p id="form-title">*Titulo de producto:</p>
-                                <input type="text">
+                                <p id="form-title">*Producto:</p>
+                                <select name="">
+                                    <option value="" disabled selected>Selecione un producto</option>
+                                    <option value="pastes">Pastes</option>
+                                    <option value="panaderia">Panaderia</option>
+                                    <option value="volobanes">Volobanes</option>
+                                    <option value="para regalar">Para regalar</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="row mb-sm-3">
                             <div
                                 class="col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
-                                <button id="btn-adm">Eliminar</button>
+                                <button id="btn-adm btn-eliminar">Eliminar</button>
                             </div>
                         </div>
 
@@ -213,13 +232,13 @@
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">Imagen:</p>
-                                <input type="text">
+                                <input  type="file" accept="image/*">
                             </div>
                         </div>
                         <div class="row mb-sm-3 justify-content-center">
                             <div
                                 class="col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start ">
-                                <button id="btn-adm-save">Guardar cambios</button>
+                                <button id="btn-adm-save btn-editar">Guardar cambios</button>
                             </div>
                         </div>
                     </div>
@@ -247,7 +266,7 @@
     </main>
 
 
-    <footer id="footerinner">
+    <footer >
 
     </footer>
 
@@ -257,7 +276,7 @@
         crossorigin="anonymous"></script>
     <!--JavaScript-->
     <script src="../../js/administrador.js"></script>
-    <script src="../../js/addproduct.js"></script>
+    <script src="/js/class.js"></script>
 </body>
 
 </html>
