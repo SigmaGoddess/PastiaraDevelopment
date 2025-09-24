@@ -96,6 +96,7 @@ localStorage.setItem("product08", JSON.stringify(product08));
 localStorage.setItem("product09", JSON.stringify(product09));
 localStorage.setItem("product10", JSON.stringify(product10));
 */
+//Seagregan los productos a el archivo pastes.html en su sección correspondiente
 addProduct(product01);
 addProduct(product02);
 addProduct(product03);
