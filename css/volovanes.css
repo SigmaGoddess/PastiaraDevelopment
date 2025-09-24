@@ -1,0 +1,272 @@
+/* --- Estilos de la Sección Principal (Hero) --- */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 30vh;
+    overflow: hidden;
+}
+.hero-section .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.hero-section .hero-title {
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Estilos de la Sección de Productos --- */
+.products-section {
+    padding: 100px 0;
+    background: white;
+}
+.product-card {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.product-image-container {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+}
+
+.product-image {
+    width: 100%; 
+    max-width: 351px;
+    height: 535px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.02);
+}
+
+.heart-favorite {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 41px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.heart-favorite:hover {
+    transform: scale(1.1);
+}
+.heart-favorite i {
+    font-size: 24px;
+    color: white;
+    -webkit-text-stroke: 2px white;
+    transition: all 0.3s ease;
+}
+.heart-favorite.active i {
+    color: var(--primary-brown);
+    -webkit-text-stroke: 2px var(--primary-brown);
+}
+
+/* --- Información del Producto --- */
+.product-info {
+    margin-top: 20px;
+    font-family: 'Questrial', sans-serif;
+}
+.product-info h3 {
+    font-size: 32px;
+    line-height: 70px;
+    margin-bottom: 0;
+    color: black;
+    letter-spacing: -0.43px;
+}
+.product-info .price {
+    font-size: 32px;
+    line-height: 70px;
+    margin-bottom: 0;
+    color: black;
+    letter-spacing: -0.43px;
+}
+.product-info .description {
+    line-height: 70px;
+    color: black;
+    letter-spacing: -0.43px;
+}
+
+/* --- Utilidades y Animaciones --- */
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+.heart-favorite.animate {
+    animation: heartBeat 0.6s ease-in-out;
+}
+
+.toastify {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Por defecto, ocultamos la introducción de móvil en pantallas grandes */
+.intro-section-mobile {
+    display: none;
+}
+
+
+/* --- DISEÑO RESPONSIVO UNIFICADO --- */
+@media (max-width: 768px) {
+    /* --- Estilos que ya tenías --- */
+    .hero-title {
+        font-size: 36px;
+        line-height: 42px;
+        padding: 0 20px;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 20px;
+        position: static;
+        transform: none;
+        margin-top: 20px;
+    }
+    .nav-links .nav-link {
+        font-size: 18px;
+    }
+    .logo-container {
+        position: static;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .logo-img {
+        width: 150px;
+        height: 150px;
+    }
+    .user-icons {
+        position: static;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .product-info h3,
+    .product-info .price {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+    .social-links p {
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    .auth-buttons {
+        align-items: center;
+    }
+    .navbar {
+        height: auto !important;
+        padding: 20px 0;
+    }
+
+    /* --- Nuevos estilos que agregaste (movidos aquí) --- */
+    
+    /* 1. Ocultamos la imagen grande (hero section) de la versión de escritorio */
+    .hero-section {
+        display: none;
+    }
+
+    /* 2. Mostramos y damos estilo a la nueva sección de introducción */
+    .intro-section-mobile {
+        display: block;
+        background-color: #A5846B;
+        color: white;
+        text-align: center;
+        padding: 40px 25px;
+        font-family: 'Questrial', sans-serif;
+        font-size: 1.1em;
+        line-height: 1.6;
+        background-image: url('./img/banner_ancho.jpg'); /* <- ¡Asegúrate que esta ruta sea correcta! */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Overlay para mejorar legibilidad del texto */
+    .intro-section-mobile::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .intro-section-mobile p {
+        position: relative;
+        z-index: 2;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* 3. Ajustamos la sección de productos */
+    .products-section {
+        padding: 25px 15px;
+    }
+
+    /* 4. Damos estilo al título "Volovanes" */
+    .products-section .section-title {
+        font-family: 'Abril Fatface', serif;
+        color: #A5846B;
+        font-size: 2.8em;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    /* 5. Damos bordes redondeados a las tarjetas */
+    .product-card {
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    
+    /* 6. Hacemos que las tarjetas estén un poco más juntas */
+    .products-section .row > [class*="col-"] {
+        padding: 0 8px;
+    }
+
+    /* 7. Ajustamos el tamaño del texto dentro de las tarjetas */
+    .product-info h3 {
+        font-size: 1.1em;
+        line-height: 1.3;
+    }
+    .product-info .price, .product-info .description {
+        font-size: 0.9em;
+        line-height: 1.3;
+        margin-bottom: 5px;
+    }
+}

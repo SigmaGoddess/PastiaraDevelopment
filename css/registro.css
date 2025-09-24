@@ -13,7 +13,7 @@ body {
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url(/images/REGISTRO/Fondo\ de\ registro\ con\ edición.png);
     background-attachment: fixed;
-     }
+}
 
  
 h1 {
@@ -188,7 +188,7 @@ a:hover {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        
+
         /* Posición a la derecha */
         right: .02rem;
         top: 37.5rem;
@@ -207,11 +207,13 @@ a:hover {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        
+
         /*Posición a la izquierda*/
         left: .2rem;
         top: 37.5rem;
     }
 
 
-} /*Fin de media query*/
+}
+
+/*Fin de media query*/

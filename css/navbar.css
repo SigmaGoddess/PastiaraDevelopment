@@ -4,6 +4,7 @@
 
 body {
     font-family: var(--title-body);
+
 }
 
 img {
@@ -12,6 +13,7 @@ img {
 }
 
 .navbar {
+    background-color: #ffffff;
     position: absolute;
     width: 100%;
     top: 0%;
@@ -20,6 +22,7 @@ img {
 }
 
 .navbar .nav-link {
+    font-size: 18px;
     font-weight: 600;
     position: relative;
     color: #8c8c8c;
@@ -102,6 +105,11 @@ img {
     .dropdown-item:hover {
         color: #ffffff;
         background-color: #B58A6A;
+    }
+
+    .dropdown>#personDropdownMobile {
+        display: none;
+
     }
 
 }
