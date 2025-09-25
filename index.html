@@ -17,42 +17,94 @@
 </head>
 
 <body>
-    <header>
-        <special-header></special-header>
-    </header>
+    <special-header></special-header>
+
     <main>
-        <div class="container-fluid container-home">
-            <div class="row align-items-center"> <!-- row es fila, horizontal-->
-                <!-- Colmunas con el mismo ancho: distribución equitativa -->
-                <div class="col text-center">
-                    <h1>
-                        ¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
-                    <div class="contenedor-fondo align-items-center">
-                        <p class="subtitle">Los elaboramos diariamente a mano, con
-                            ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y fresco,
-                            directo de nuestro horno a tu mesa.</p>
+        <section id="Bienvenida" class="Bienvenida-section">
+            <div class="container-lg">
+                <div class="row justify-content-lg-center align-items-center"> <!-- row es fila, horizontal-->
+                    <!-- Colmunas con el mismo ancho: distribución equitativa -->
+                    <div class="col text-center">
+                        <h1 class="Bienvenida-title">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
+                        <h1 class="Bienvenida-title-mobile">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
+                        <div class="contenedor-fondo align-items-center">
+                            <p class="subtitle" id="subtitle-desktop">Los elaboramos diariamente a mano, con
+                                ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y fresco,
+                                directo de nuestro horno a tu mesa.</p>
+                            <p class="subtitle" id="subtitle-mobile">Directo de nuestro horno a tu mesa.</p>
+                        </div>
+                        <button class="btn cotizador" type="button"
+                            onclick="location.href='/pages/pag-cotizador/cotizador.html'">¡Cotiza aquí!</button>
                     </div>
-                    <button class="btn" type="button">¡Cotiza aquí!</button>
-                </div>
-                <div class="col">
-                    <img src="/images/INICIO/PASTES HOME PAGE.jpg" alt="Pastes de home page" class="img1">
+                    <div class="col" id="img-bienvenida">
+                        <img src="/images/INICIO/PASTES HOME PAGE.jpg" class="img-fluid rounded"
+                            alt=" Pastes de home page">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid justify-content-center">
-            <div class="row align-items-center">
-                <div class="col">
-                    <img src="/images/GENERAL/Iconos-paste-derecha.png" alt="Pastes de Iconos-paste-derecha"
-                        class="img2">
+        </section>
+
+        <section class="Iconos">
+            <div class="container-fluid justify-content-center">
+                <div class="row justify-content-lg-center align-items-center">
+                    <div class="col">
+                        <img src="/images/GENERAL/Iconos-paste-derecha.png" alt="Pastes de Iconos-paste-derecha"
+                            class="img2">
+                    </div>
+                    <div class="col">
+                        <img src="/images/GENERAL/Iconos-pastes-sola.png" alt="Pastes de Iconos-pastes-sola"
+                            class="img2">
+                    </div>
+                    <div class="col">
+                        <img src="/images/GENERAL/Iconos-paste-izquiera.png" alt="Pastes de Iconos-paste-izquiera"
+                            class="img2">
+                    </div>
                 </div>
-                <div class="col">
-                    <img src="/images/GENERAL/Iconos-pastes-sola.png" alt="Pastes de Iconos-pastes-sola" class="img2">
+            </div>
+        </section>
+
+        <section id="productos-home" class="products-section-home">
+            <div class="container-lg text-center">
+                <div class="row">
+                    <div class="col">
+                        <h2>¡Hola, descubre nuestras delicias!</h2>
+                    </div>
                 </div>
-                <div class="col">
-                    <img src="/images/GENERAL/Iconos-paste-izquiera.png" alt="Pastes de Iconos-paste-izquiera"
-                        class="img2">
+                <div class="row">
+                    <div class="col">
+                        <p id="subtitle-products-home">Elige una categoría</p>
+                    </div>
                 </div>
+                <div class="row" id="container-products-homepage">
+                    <div class="col">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group"
+                            id="group-btn-home">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+                            <label class="btn" for="btnradio1">PASTES</label>
+
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn" for="btnradio2">VOLOVANES</label>
+
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                            <label class="btn" for="btnradio3">PANADERÍA</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" id="container-pastes-homepage">
+                        1 of 2
+                    </div>
+                    <div class="col" id="container-volovanes-homepage">
+                        2 of 2
+                    </div>
+                    <div class="col" id="container-panaderia-homepage">
+                        2 of 2
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
 
 
     <!-- Bootstrap JS y Popper.js -->

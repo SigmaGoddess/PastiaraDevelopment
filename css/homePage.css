@@ -5,28 +5,41 @@
 
 /* Estilos específicos para la página de inicio (homePage) */
 
-body {
-  font-family: var(--title-font);
-  background-color: var(--background-color);
-  color: var(--color-text1);
-  margin: 0;
+
+.Bienvenida-section {
+  margin-top: 15em;
+  margin-bottom: 2em;
   padding: 0;
 }
 
 h1 {
   color: var(--color-title);
   font-family: var(--title-font);
-  font-size: 62px;
+  font-size: 60px;
   text-align: center;
-  margin: 0% 60px;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
-.subtitle {
+.Bienvenida-title-mobile {
+  display: none;
+}
+
+#subtitle-desktop {
   font-family: var(--title-body);
   color: var(--color-text2);
   font-size: 21px;
   margin: 0% 60px;
+  padding: 30px;
+  line-height: 1.5;
+}
+
+#subtitle-mobile {
+  display: none;
+  font-family: var(--title-body);
+  color: var(--color-text2);
+  font-size: 21px;
+  margin: 0% 20px;
   padding: 30px;
   line-height: 1.5;
 }
@@ -44,7 +57,7 @@ h1 {
   /* Asegura que la imagen no se desborde */
 }
 
-.btn {
+.btn.cotizador {
   font-family: var(--title-body);
   background-color: var(--color-boton1);
   color: var(--color-text2);
@@ -65,14 +78,60 @@ h1 {
   /* Establece el tamaño de la imagen */
 }
 
-.img1 {
-  width: 80%;
-  height: auto;
-  border-radius: 10px;
+.Iconos {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 0;
+  align-items: center;
 }
 
 .img2 {
   width: 25%;
   height: 100%;
   margin-top: 40px;
+}
+
+.products-section-home {
+  margin-top: 5em;
+  margin-bottom: 2em;
+  padding: 0;
+  align-items: center;
+}
+
+h2 {
+  color: var(--color-title);
+  font-family: var(--title-font);
+  font-size: 45px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+#subtitle-products-home {
+  font-family: var(--title-body);
+  color: var(--color-text1);
+  font-size: 21px;
+  padding: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+#group-btn-home {
+  font-family: var(--title-body);
+  font-size: 18px;
+  font-weight: 200;
+  border: none;
+
+}
+
+#container-pastes-homepage {
+  display: flex;
+}
+
+#container-pastes-homepage {
+  display: none;
+}
+
+#container-pastes-homepage {
+  display: none;
 }

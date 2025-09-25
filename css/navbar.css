@@ -2,10 +2,6 @@
 @import url('../css/global_variables.css');
 @import url('../css/normalize.css');
 
-body {
-    font-family: var(--title-body);
-
-}
 
 img {
     max-width: 200px;
@@ -13,6 +9,7 @@ img {
 }
 
 .navbar {
+    font-family: var(--title-body);
     background-color: #ffffff;
     position: absolute;
     width: 100%;
