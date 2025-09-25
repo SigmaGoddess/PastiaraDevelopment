@@ -135,3 +135,7 @@ h2 {
 #container-pastes-homepage {
   display: none;
 }
+
+.badge {
+  color: var(--color-text1);
+}
