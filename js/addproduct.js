@@ -61,4 +61,22 @@ pastes.addItem('Piña','(Mermelada de piña natural)', 27, '/images/PASTES/IMG_3
 pastes.addItem('Budín pastiara', '(Budín de naranja)', 29, '/images/PASTES/IMG_3202_piña_abierto.jpeg');
 pastes.addItem('Budín pastiara2', '(Budín de naranja2)', 29, '/images/PASTES/IMG_3202_piña_abierto.jpeg');
 //llamamos la método para insertar los items que se encuentren en el array
-pastes.insertItem();
+// pastes.insertItem();
+
+
+function mostrarMensaje(){
+    
+    const tipoProducto= document.querySelector('#select-tipo-producto').value;
+    const tituloProducto = document.querySelector('#input-titulo-producto').value;
+    const descripcionProducto = document.querySelector('#input-descripcion-producto').value;
+    const precioProducto = document.querySelector('#input-precio-producto').value;
+    const imagen = document.querySelector('#input-imagen-producto').value;
+    console.log(tipoProducto + " " + tituloProducto+ " " + descripcionProducto + " " + precioProducto + " " + imagen);
+
+    pastes.addItem(tipoProducto,descripcionProducto,precioProducto,imagen);
+    console.log(pastes);
+}
+//DOM
+const clickBtnAgregar = document.querySelector('.btn-agregar')
+
+clickBtnAgregar.addEventListener('click', mostrarMensaje);

@@ -1,6 +1,9 @@
 @import url('../css/global_variables.css');
 @import url('../css/normalize.css');
 
+body{
+  font-family: var(--title-body);
+}
 #contenedor {
   padding-left: 20px;
   padding-right: 20px;
@@ -126,4 +129,9 @@ h2 {
   display: flex;
   align-items: center;
   align-content: center;
+}
+
+.aviso-titulo-de-producto{
+  color: red;
+
 }

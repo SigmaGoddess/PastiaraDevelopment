@@ -121,8 +121,9 @@
                         <div class="row mb-md-3 ">
                             <div
                                 class="col-md-6 col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
+                                <p></p>
                                 <p id="form-title">*Tipo de producto:</p>
-                                <select name="">
+                                <select name="" id="select-tipo-producto" required>
                                     <option value="" disabled selected>Selecione el tipo de producto</option>
                                     <option value="pastes">Pastes</option>
                                     <option value="panaderia">Panaderia</option>
@@ -133,27 +134,28 @@
                             </div>
                             <div
                                 class="col-md-6 col-sm-12 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
+                                <p id="aviso" class="aviso-titulo-de-producto"></p>
                                 <p id="form-title">*Titulo de producto:</p>
-                                <input type="text">
+                                <input type="text" id="input-titulo-producto" required>
                             </div>
                         </div>
                         <div class="row mb-sm-3">
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Descripción:</p>
-                                <input type="text">
+                                <input type="text" id="input-descripcion-producto" required>
                             </div>
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Precio:</p>
-                                <input type="text">
+                                <input type="number" min="1" id="input-precio-producto" required>
                             </div>
                         </div>
                         <div class="row mb-sm-3">
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
                                 <p id="form-title">*Agregar imagen:</p>
-                                <input  type="file" accept="image/*">
+                                <input id="input-imagen-producto" type="file" accept="image/*" required>
                             </div>
                             <div
                                 class="col-sm-12 col-md-6 d-flex flex-column justify-content-center justify-content-dm-start align-items-center align-items-md-start">
@@ -276,7 +278,8 @@
         crossorigin="anonymous"></script>
     <!--JavaScript-->
     <script src="../../js/administrador.js"></script>
-    <script src="/js/class.js"></script>
+    <script src="/js/addproduct.js"></script>
+    <script src="/js/controlDeFormulario.js"></script>
 </body>
 
 </html>

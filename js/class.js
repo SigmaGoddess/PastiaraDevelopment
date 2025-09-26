@@ -9,11 +9,6 @@ class Products{
 
 }
 
-function mostrarMensaje(){
-    console.log("Click");
-}
 
-//DOM
-const clickBtnAgregar = document.querySelector('.btn-agregar')
 
-clickBtnAgregar.addEventListener('click', mostrarMensaje);
+
