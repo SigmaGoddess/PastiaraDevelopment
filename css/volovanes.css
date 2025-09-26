@@ -49,45 +49,43 @@ body {
 
 /* --- Estilos de la Sección de Productos --- */
 
-.image-container {
-  /* Contenedor que envuelve la imagen y el corazón */
-  position: relative;     /* Es la referencia para posicionar el corazón */
-  max-width: 351px;       /* Fija el tamaño máximo en pantallas grandes */
-  margin: 0 auto;         /* Centra el contenedor de la imagen */
-  border-radius: 8px;     /* Bordes redondeados */
-  overflow: hidden;       /* Asegura que la imagen no se salga de los bordes */
+/* CORRECCIÓN 1: Se cambió el nombre de la clase para que coincida con el HTML de volovanes. */
+.product-image-container {
+    /* Contenedor que envuelve la imagen y el corazón */
+    position: relative;     /* Es la referencia para posicionar el corazón */
+    max-width: 351px;       /* Fija el tamaño máximo en pantallas grandes */
+    margin: 0 auto;         /* Centra el contenedor de la imagen */
+    border-radius: 8px;     /* Bordes redondeados */
+    overflow: hidden;       /* Asegura que la imagen no se salga de los bordes */
 }
 
 .products-section {
     padding: 100px 0;
     background: white;
 }
-.product-card {
-    text-align: center;
-    
-   
-}
 .product-image {
-   /* La imagen del producto */
-  display: block;         /* Mejora la alineación de la imagen */
-  width: 100%;            /* Hace que la imagen llene el contenedor */
-  height: 535px;          /* Tu altura fija para que todas sean iguales */
-  object-fit: cover; 
-  transition: transform 0.3s ease;     
+    /* La imagen del producto */
+    display: block;         /* Mejora la alineación de la imagen */
+    width: 100%;            /* Hace que la imagen llene el contenedor */
+    height: 535px;          /* Tu altura fija para que todas sean iguales */
+    object-fit: cover; 
+    transition: transform 0.3s ease;    
 }
 .product-image:hover {
     transform: scale(1.02);
 }
 
 .heart-favorite {
-   /* El ícono del corazón */
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 38px;
-  height: 41px;
-  z-index: 10;
-  cursor: pointer;
+    /* El ícono del corazón */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 41px;
+    z-index: 10;
+    cursor: pointer;
+    background: none; /* Quitamos cualquier fondo por defecto del botón */
+    border: none; /* Quitamos cualquier borde por defecto del botón */
 }
 
 .heart-favorite:hover {
@@ -98,6 +96,7 @@ body {
     color: white;
     -webkit-text-stroke: 2px white;
     transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor visibilidad */
 }
 .heart-favorite.active i {
     color: var(--color-title);
@@ -105,8 +104,9 @@ body {
 }
 
 .product-info {
-    margin-top: 20px;
+    padding: 20px; /* Añadimos padding para que el texto no esté pegado a los bordes */
     font-family: 'Questrial', sans-serif;
+    text-align: center;
 }
 .product-info h3 {
     font-size: 24px;
