@@ -6,6 +6,14 @@
 /* Estilos específicos para la página de inicio (homePage) */
 
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /*Checar esto */
+}
+
 .Bienvenida-section {
   margin-top: 15em;
   margin-bottom: 2em;
@@ -128,14 +136,22 @@ h2 {
   display: flex;
 }
 
-#container-pastes-homepage {
+#container-volovanes-homepage {
   display: none;
 }
 
-#container-pastes-homepage {
+#container-panadería-homepage {
   display: none;
 }
 
 .badge {
   color: var(--color-text1);
 }
+
+.card-list .card-item .card-link {
+  width: 400px;
+  display: block;
+
+}
+
+.card-list .card-link .card-image {}
