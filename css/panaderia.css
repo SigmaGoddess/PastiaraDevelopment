@@ -77,6 +77,17 @@ body {
 
 
 /* --- Estilos de la Sección de Productos --- */
+
+.image-container {
+  /* Contenedor que envuelve la imagen y el corazón */
+  position: relative;     /* Es la referencia para posicionar el corazón */
+  max-width: 351px;       /* Fija el tamaño máximo en pantallas grandes */
+  margin: 0 auto;         /* Centra el contenedor de la imagen */
+  border-radius: 8px;     /* Bordes redondeados */
+  overflow: hidden;       /* Asegura que la imagen no se salga de los bordes */
+}
+
+
 .products-section {
     padding: 100px 0;
     background: white;
@@ -92,7 +103,10 @@ body {
 .product-image {
     width: 100%;
     height: 100%;
+    
     max-width: 100%;
+    
+   
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -118,12 +132,13 @@ body {
 
 .heart-favorite:hover {
     transform: scale(1.1);
+    color: var(--color-title);
 }
 
 .heart-favorite i {
     font-size: 24px;
     color: white;
-    -webkit-text-stroke: 2px white;
+   -webkit-text-stroke: 2px white;
     /* Borde blanco para el corazón */
     transition: all 0.3s ease;
 }
