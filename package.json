@@ -1,0 +1,28 @@
+{
+  "name": "pastiaradevelopment",
+  "version": "1.0.0",
+  "description": "Pastira E-commerce",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SigmaGoddess/PastiaraDevelopment.git"
+  },
+  "keywords": [
+    "generation"
+  ],
+  "author": "Equipo CoderTitans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SigmaGoddess/PastiaraDevelopment/issues"
+  },
+  "homepage": "https://github.com/SigmaGoddess/PastiaraDevelopment#readme",
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
+}
