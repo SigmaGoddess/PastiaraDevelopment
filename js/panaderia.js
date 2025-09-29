@@ -2,9 +2,6 @@
 // Es una buena práctica envolver todo nuestro código en este listener para asegurarnos de que todos los elementos HTML existen antes de intentar manipularlos.
 document.addEventListener('DOMContentLoaded', function() {
 
-    
-
-
 
      //-- LÓGICA DEL SISTEMA DE FAVORITOS --
     

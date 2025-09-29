@@ -1,15 +1,4 @@
 /* styles.css */
-/* --- Variables Globales (Raíz) y Fuentes --- */
-
-/* Variables de color para mantener la consistencia en todo el sitio */
-/*:root {
-    --primary-brown: #b58a6a;
-    --secondary-brown: #916e55;
-    --darker-brown: #a07854;
-    --light-gray: #f3f3f3;
-    --text-gray: #8c8c8c;
-    --cream: #faf6f3;
-}*/
 
 @import url('../css/global_variables.css');
 @import url('../css/normalize.css');
@@ -28,8 +17,6 @@ body {
 #hero-title-mobile {
     display: none;
 }
-
-
 
 
 
@@ -72,20 +59,7 @@ body {
 
 
 
-
-
-
-
 /* --- Estilos de la Sección de Productos --- */
-
-.image-container {
-  /* Contenedor que envuelve la imagen y el corazón */
-  position: relative;     /* Es la referencia para posicionar el corazón */
-  max-width: 351px;       /* Fija el tamaño máximo en pantallas grandes */
-  margin: 0 auto;         /* Centra el contenedor de la imagen */
-  border-radius: 8px;     /* Bordes redondeados */
-  overflow: hidden;       /* Asegura que la imagen no se salga de los bordes */
-}
 
 
 .products-section {
@@ -97,6 +71,9 @@ body {
     text-align: center;
     margin-bottom: 50px;
     height: 450px;
+    max-width: 351px;
+    margin-left: auto;
+    margin-right: auto;
     /*margin-right: 40px;*/
 }
 
@@ -185,9 +162,6 @@ body {
 
 
 
-
-
-
 /* --- Utilidades y Animaciones --- */
 
 /* Habilita el desplazamiento suave al hacer clic en enlaces de anclaje */
@@ -234,6 +208,8 @@ html {
         text-align: center;
     }
 
+
+
     #hero-title-desktop {
         display: none;
     }
@@ -267,8 +243,19 @@ html {
 
     .products-section {
         padding-top: 0px;
+        padding-left: 20px; /* Agrega espacio a la izquierda */
+        padding-right: 20px; /* Agrega espacio a la derecha */
+       
     }
 
+
+    .product-card {
+        margin-bottom: 80px; 
+        max-width: none; 
+        width: 100%;
+        margin-left: 0; 
+        margin-right: 0;
+    }
     
 
 
