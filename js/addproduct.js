@@ -64,7 +64,7 @@ pastes.addItem('Budín pastiara2', '(Budín de naranja2)', 29, '/images/PASTES/I
 // pastes.insertItem();
 
 
-function mostrarMensaje(){
+function addpaste(){
     
     const tipoProducto= document.querySelector('#select-tipo-producto').value;
     const tituloProducto = document.querySelector('#input-titulo-producto').value;
@@ -74,9 +74,10 @@ function mostrarMensaje(){
     console.log(tipoProducto + " " + tituloProducto+ " " + descripcionProducto + " " + precioProducto + " " + imagen);
 
     pastes.addItem(tipoProducto,descripcionProducto,precioProducto,imagen);
+    pastes.insertItem();
     console.log(pastes);
 }
 //DOM
 const clickBtnAgregar = document.querySelector('.btn-agregar')
 
-clickBtnAgregar.addEventListener('click', mostrarMensaje);
+clickBtnAgregar.addEventListener('click', addpaste);
