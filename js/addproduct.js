@@ -82,6 +82,13 @@ function addpaste(){
         //pastes.insertItem();
         console.log(pastes);
 
+        document.querySelector('#select-tipo-producto').value = "";
+        document.querySelector('.input-titulo-producto').value = "";
+        document.querySelector('.input-descripcion-producto').value = "";
+        document.querySelector('.input-precio-producto').value = "";
+        document.querySelector('#input-imagen-producto').value = "";
+
+
     }
 
     
