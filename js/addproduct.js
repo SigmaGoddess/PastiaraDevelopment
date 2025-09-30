@@ -56,7 +56,7 @@ pastes.addItem("Frijol", "(Frijol y chipotle)", 25, "/images/PASTES/IMG_3151_fri
 pastes.addItem("Carne con papa", "(Papa, carne de res, cebolla, perejil y chile)", 25, "/images/PASTES/IMG_3166_papa_abierto.jpeg");
 pastes.addItem("Mole verde", "(Mole verde con pollo)", 25, "/images/PASTES/IMG_3230_moleverde_abierto.jpeg");
 pastes.addItem("Cochinita pibil", "(Carne de cerdo adobada)", 29, "/images/PASTES/IMG_3251.jpeg");
-pastes.addItem("Salchicha", "(Salchicha, queso amarillo, queso oaxaca, catsup y chipotle)", 25, "/images/PASTES/IMG_3217_rajas_abierto.jpeg");
+pastes.addItem("Salchicha", "(Salchicha, queso amarillo, queso oaxaca, catsup y chipotle)", 25, "/images/PASTES/IMG_3260_salchicha_abierto.jpeg");
 pastes.addItem("Mole rojo", "(Mole rojo con pollo)", 25, "/images/PASTES/IMG_3186_mole_abierto.jpeg");
 pastes.addItem("Rajas con pollo", "(Rajas poblanas, elote, pollo y crema)", 27, "/images/PASTES/IMG_3217_rajas_abierto.jpeg");
 pastes.addItem("Piña", "(Mermelada de piña natural)", 27, "/images/PASTES/IMG_3202_piña_abierto.jpeg");
