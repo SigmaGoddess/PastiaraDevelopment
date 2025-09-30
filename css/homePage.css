@@ -5,6 +5,10 @@
 
 /* Estilos específicos para la página de inicio (homePage) */
 
+body {
+  font-family: var(--title-body);
+}
+
 #Bienvenida {
   margin-top: 250px;
   /* ajusta al alto real de tu header */
@@ -34,7 +38,8 @@ h1 {
 
 h2 {
   font-family: var(--title-font);
-  font-size: 30px;
+  font-size: 40px;
+  color: var(--color-title);
 
 }
 
@@ -88,6 +93,23 @@ h2 {
   margin-top: 40px;
 }
 
+.Iconos {
+  margin-bottom: 20px;
+}
+
+#subtitle-products-home {
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+#container-products-homepage {
+  margin-bottom: 40px;
+}
+
+#group-btn-home {
+  font-size: 20px;
+}
+
 .card-list .card-item {
   list-style: none;
 }
@@ -101,7 +123,17 @@ h2 {
 
 .card-list .card-link .card-image {
   width: 100%;
-  border-radius: 10px;
   object-fit: cover;
+  border-radius: 10px;
+
+}
+
+.card-list .card-link .badge {
+  color: var(--color-text1);
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 16px 0 18px;
+
 
 }
