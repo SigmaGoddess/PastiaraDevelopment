@@ -1,8 +1,8 @@
 /** styles.css */
 /** --- Variables Globales (Raíz) y Fuentes --- */
 
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
+@import url('./global_variables.css');
+@import url('./normalize.css');
 
 
 /** Fuentes */
