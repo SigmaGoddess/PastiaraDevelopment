@@ -1,7 +1,7 @@
 /* styles.css */
 
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
+@import url('./global_variables.css');
+@import url('./normalize.css');
 
 
 
@@ -23,7 +23,7 @@ body {
 /* --- Estilos de la Sección Principal (Hero) --- */
 
 .hero-section {
-    background-image: url(../images/PANADERÍA-ARTESANAL/panes_panaderia.jpg);
+    background-image: url(/images/PANADERÍA-ARTESANAL/panes_panaderia.jpg);
     /* Banner para PC */
     background-size: cover;
     background-position: center;
@@ -217,7 +217,7 @@ html {
     /* ESTA ES LA REGLA QUE HEMOS CONSERVADO */
     .hero-section {
         margin-top: 0;
-        background-image: url(../images/GENERAL/banner_ancho.jpg);
+        background-image: url(/images/GENERAL/banner_ancho.jpg);
         /* <--- BANNER MÓVIL */
         background-size: contain;
         background-position: center;
