@@ -32,7 +32,7 @@
   padding-right: 20px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 767px) {
 
   /* sm */
   .p-custom {
@@ -51,6 +51,13 @@
 }
 
 input {
+  border-radius: 5px;
+  width: 250px;
+  height: 35px;
+  border: 1px solid #8C8C8C;
+}
+
+select{
   border-radius: 5px;
   width: 250px;
   height: 35px;
@@ -89,7 +96,18 @@ h2 {
   border-radius: 5px;
   border: 0px;
   background-color: #B58A6A;
+  color: white;
   width: 125px;
+  height: 35px;
+  margin-top: 25px;
+
+}
+
+#btn-adm-save {
+  border-radius: 5px;
+  border: 0px;
+  background-color: #B58A6A;
+  color: white;
   height: 35px;
   margin-top: 25px;
 
@@ -102,4 +120,10 @@ h2 {
 
 #list-link {
   font-size: 27px;
+}
+
+#columnas-contenedores{
+  display: flex;
+  align-items: center;
+  align-content: center;
 }
