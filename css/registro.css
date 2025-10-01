@@ -7,12 +7,19 @@ body {
     font-family: var( --title-body);
     color: var(--color-text3);
     font-size: clamp(.5rem, 1rem + 1vw, 1.4rem);
+    margin: 0;
 
+}
+
+.container-background {
     /* Imagen de fondo */
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
         url(/images/REGISTRO/Fondo\ de\ registro\ con\ edición.png);
-    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
  
@@ -30,8 +37,8 @@ h1 {
     padding: 4rem;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
-    margin-left: 6rem;
-    margin-top: -19rem;
+    margin-left: 2rem;
+    margin-top: -2rem;
     
 }
 
@@ -47,8 +54,8 @@ h1 {
     padding-bottom: 1rem;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
-    margin-left: 6rem;
-    margin-top: -19rem;
+    margin-left: 2rem;
+    margin-top: -2rem;
     font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
 }
 
@@ -118,7 +125,7 @@ p {
 
 @media (max-width: 768px) {
 
-    body {
+    .container-background {
         background-image: none;
     }
 
@@ -205,7 +212,7 @@ p {
 
         /* Posición a la derecha */
         right: .02rem;
-        top: 37.5rem;
+        top: 35.55rem;
     }
 
     .row.min-vh-100::before {
@@ -224,7 +231,7 @@ p {
 
         /*Posición a la izquierda*/
         left: .2rem;
-        top: 37.5rem;
+        top: 35.55rem;
     }
 
 
