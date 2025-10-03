@@ -48,7 +48,7 @@ h2 {
 }
 
 .contenedor-fondo {
-  background-image: url('../images/GENERAL/Banner\ Home.png');
+  background-image: url('../dist/images/GENERAL/Banner\ Home.png');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
@@ -102,38 +102,108 @@ h2 {
   font-size: 20px;
 }
 
-#container-products-homepage {
-  margin-bottom: 40px;
-}
+
 
 #group-btn-home {
   font-size: 20px;
 }
 
+.contenedor-fondo-productos {
+  background-image: url('../dist/images/GENERAL/Banner-largo.png');
+  /* Cambia la ruta según la ubicación de tu imagen */
+  background-size: contain;
+  /* Ajusta el tamaño de la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+  background-clip: padding-box;
+  /* Asegura que la imagen no se desborde */
+
+}
+
+.card-wrapper {
+  max-width: 1140px;
+  margin: 0 60px 35px;
+  padding: 20px 5px;
+  overflow: hidden;
+
+}
+
 .card-list .card-item {
   list-style: none;
+  margin-top: 60px;
 }
 
 .card-list .card-item .card-link {
-  width: 400px;
+  user-select: none;
   display: block;
   text-decoration: none;
+}
 
+.card-list .card-item .card-link:hover {
+  cursor: grabbing;
 }
 
 .card-list .card-link .card-image {
-  width: 100%;
+  aspect-ratio: 8/11;
   object-fit: cover;
   border-radius: 10px;
-
+  transition: 0.2s ease;
 }
 
 .card-list .card-link .badge {
   color: var(--color-text1);
-  padding: 8px 16px;
+  padding: 8px 10px;
   font-size: 0.95rem;
-  font-weight: 500;
-  margin: 16px 0 18px;
+  font-weight: 600;
+  margin: 15px 0 10px;
+  align-items: center;
+  /*background: #e2cfc2;
+  width: fit-content;
+  border-radius: 40px;*/
+}
 
+.card-list .card-link .card-button {
+  height: 28px;
+  width: 28px;
+  color: var(--color-title);
+  border-radius: 50%;
+  margin: 0px 0 5px;
+  background: none;
+  cursor: pointer;
+  border: 1px solid var(--color-title);
+  transition: 0.4s ease;
+}
 
+.card-list .card-link:hover .card-button {
+  color: white;
+  background: var(--color-title);
+}
+
+.card-wrapper .swiper-pagination-bullet {
+  height: 13px;
+  width: 13px;
+  opacity: 0.5;
+  background: var(--color-title);
+
+}
+
+.card-wrapper .swiper-pagination-bullet {
+  opacity: 1;
+}
+
+.card-wrapper .swiper-slide-button {
+  color: var(--color-title2);
+  margin-top: -35px;
+}
+
+@media screen and (max-width: 992px) {
+  .card-wrapper {
+    margin: 0 10px 25px;
+  }
+
+  .card-wrapper .swiper-slide-button {
+    display: none;
+  }
 }
