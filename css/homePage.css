@@ -6,11 +6,12 @@
 /* Estilos específicos para la página de inicio (homePage) */
 
 body {
-  font-family: var(--title-font);
-  background-color: var(--background-color);
-  color: var(--color-text1);
-  margin: 0;
-  padding: 0;
+  font-family: var(--title-body);
+}
+
+#Bienvenida {
+  margin-top: 250px;
+  /* ajusta al alto real de tu header */
 }
 
 h1 {
@@ -22,6 +23,10 @@ h1 {
   margin-bottom: 30px;
 }
 
+.Bienvenida-title-mobile {
+  display: none;
+}
+
 .subtitle {
   font-family: var(--title-body);
   color: var(--color-text2);
@@ -29,6 +34,17 @@ h1 {
   margin: 0% 60px;
   padding: 30px;
   line-height: 1.5;
+}
+
+h2 {
+  font-family: var(--title-font);
+  font-size: 40px;
+  color: var(--color-title);
+
+}
+
+#subtitle-mobile {
+  display: none;
 }
 
 .contenedor-fondo {
@@ -44,7 +60,7 @@ h1 {
   /* Asegura que la imagen no se desborde */
 }
 
-.btn {
+.cotizador {
   font-family: var(--title-body);
   background-color: var(--color-boton1);
   color: var(--color-text2);
@@ -75,4 +91,49 @@ h1 {
   width: 25%;
   height: 100%;
   margin-top: 40px;
+}
+
+.Iconos {
+  margin-bottom: 20px;
+}
+
+#subtitle-products-home {
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+#container-products-homepage {
+  margin-bottom: 40px;
+}
+
+#group-btn-home {
+  font-size: 20px;
+}
+
+.card-list .card-item {
+  list-style: none;
+}
+
+.card-list .card-item .card-link {
+  width: 400px;
+  display: block;
+  text-decoration: none;
+
+}
+
+.card-list .card-link .card-image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+
+}
+
+.card-list .card-link .badge {
+  color: var(--color-text1);
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 16px 0 18px;
+
+
 }

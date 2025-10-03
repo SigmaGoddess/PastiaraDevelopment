@@ -1,18 +1,7 @@
 /* styles.css */
-/* --- Variables Globales (Raíz) y Fuentes --- */
 
-/* Variables de color para mantener la consistencia en todo el sitio */
-/*:root {
-    --primary-brown: #b58a6a;
-    --secondary-brown: #916e55;
-    --darker-brown: #a07854;
-    --light-gray: #f3f3f3;
-    --text-gray: #8c8c8c;
-    --cream: #faf6f3;
-}*/
-
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
+@import url('./global_variables.css');
+@import url('./normalize.css');
 
 
 
@@ -31,12 +20,10 @@ body {
 
 
 
-
-
 /* --- Estilos de la Sección Principal (Hero) --- */
 
 .hero-section {
-    background-image: url(../images/PANADERÍA-ARTESANAL/panes_panaderia.jpg);
+    background-image: url(/images/PANADERÍA-ARTESANAL/panes_panaderia.jpg);
     /* Banner para PC */
     background-size: cover;
     background-position: center;
@@ -72,11 +59,9 @@ body {
 
 
 
-
-
-
-
 /* --- Estilos de la Sección de Productos --- */
+
+
 .products-section {
     padding: 100px 0;
     background: white;
@@ -86,13 +71,19 @@ body {
     text-align: center;
     margin-bottom: 50px;
     height: 450px;
+    max-width: 351px;
+    margin-left: auto;
+    margin-right: auto;
     /*margin-right: 40px;*/
 }
 
 .product-image {
     width: 100%;
     height: 100%;
+    
     max-width: 100%;
+    
+   
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -118,12 +109,13 @@ body {
 
 .heart-favorite:hover {
     transform: scale(1.1);
+    color: var(--color-title);
 }
 
 .heart-favorite i {
     font-size: 24px;
     color: white;
-    -webkit-text-stroke: 2px white;
+   -webkit-text-stroke: 2px white;
     /* Borde blanco para el corazón */
     transition: all 0.3s ease;
 }
@@ -166,9 +158,6 @@ body {
     color: var(--color-text3);
     letter-spacing: -0.43px;
 }
-
-
-
 
 
 
@@ -219,6 +208,8 @@ html {
         text-align: center;
     }
 
+
+
     #hero-title-desktop {
         display: none;
     }
@@ -226,7 +217,7 @@ html {
     /* ESTA ES LA REGLA QUE HEMOS CONSERVADO */
     .hero-section {
         margin-top: 0;
-        background-image: url(../images/GENERAL/banner_ancho.jpg);
+        background-image: url(/images/GENERAL/banner_ancho.jpg);
         /* <--- BANNER MÓVIL */
         background-size: contain;
         background-position: center;
@@ -252,8 +243,19 @@ html {
 
     .products-section {
         padding-top: 0px;
+        padding-left: 20px; /* Agrega espacio a la izquierda */
+        padding-right: 20px; /* Agrega espacio a la derecha */
+       
     }
 
+
+    .product-card {
+        margin-bottom: 80px; 
+        max-width: none; 
+        width: 100%;
+        margin-left: 0; 
+        margin-right: 0;
+    }
     
 
 

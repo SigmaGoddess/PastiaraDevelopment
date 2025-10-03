@@ -141,49 +141,50 @@ class AdministrarAlmacen{
 
 
 class ItemsController {
-    //Por medio del constructor inicializamos el objeto con con array vacio 
     constructor() {
         this.items = [];
     }
 
-    // Método para crear item con formato JSON y agregarlo al array 
+    // Agrega un producto al array
     addItem(title, description, price, image) {
-        const item = {
-            title: title,
-            description: description,
-            price: price,
-            image: image
-        };
-
-        // Agregamos el item creado al array
+        const item = { title, description, price, image };
         this.items.push(item);
     }
-    //Metodo para insertar los items que se encuentran dentro del array
+
+    // Inserta los productos en el DOM
     insertItem() {
+        const containerListProducts = document.getElementById("container-products");
+        containerListProducts.innerHTML = ''; // Limpiamos el contenedor
 
         for (const itemOfList of this.items) {
-            const cardHtml = `
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="product-card">
-                        <div class="image-container">
-                            <img src="${itemOfList.image}" alt="Paste frijol con chipotle" class="product-image">
-                            <div class="heart-favorite" data-product="ensalada-rusa"
-                                onclick="toggleFavorite('ensalada-rusa')"><i class="fas fa-heart"></i></div>
-                        </div>
+            // Creamos un ID dinámico a partir del título
+            const productId = itemOfList.title.toLowerCase().replace(/\s+/g, '-');
 
-                        <div class="product-info">
-                            <h3>${itemOfList.title}</h3>
-                            <p class="price">$${itemOfList.price}</p>
-                            <p class="description">${itemOfList.description}</p>
+            // Creamos el contenedor de la card
+            const card = document.createElement('div');
+            card.classList.add('col-lg-4', 'col-md-6', 'mb-5');
+
+            card.innerHTML = `
+                <div class="product-card">
+                    <div class="image-container">
+                        <img src="${itemOfList.image}" alt="${itemOfList.title}" class="product-image">
+                        <div class="heart-favorite" data-product="${productId}">
+                            <i class="fas fa-heart"></i>
                         </div>
                     </div>
+                    <div class="product-info">
+                        <h3>${itemOfList.title}</h3>
+                        <p class="price">$${itemOfList.price}</p>
+                        <p class="description">${itemOfList.description}</p>
+                    </div>
                 </div>
-    `;
-            //Buscamos el contenedor de lista de productos
-            const containerListProducts = document.getElementById("container-products");
-            containerListProducts.innerHTML += cardHtml;
+            `;
 
+            containerListProducts.appendChild(card);
 
+            // Asignamos evento al corazón
+            const heart = card.querySelector('.heart-favorite');
+            heart.addEventListener('click', () => toggleFavorite(productId));
         }
     }
 }

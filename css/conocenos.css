@@ -1,6 +1,6 @@
 /*Importación de las variables globales */
-@import url('/css/global_variables.css');
-@import url('/css/normalize.css');
+@import url('./css/global_variables.css');
+@import url('./css/normalize.css');
 
 body{
     background-color: var(--background-color);
