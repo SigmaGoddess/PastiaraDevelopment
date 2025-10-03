@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('../css/global_variables.css');
+@import url('../css/normalize.css');
 
-:root {
-    --font-family: "Questrial", sans-serif;
-}
-
-body {
-    font-family: var(--font-family);
-}
 
 img {
     max-width: 200px;
@@ -14,6 +9,8 @@ img {
 }
 
 .navbar {
+    font-family: var(--title-body);
+    background-color: #ffffff;
     position: absolute;
     width: 100%;
     top: 0%;
@@ -22,6 +19,7 @@ img {
 }
 
 .navbar .nav-link {
+    font-size: 18px;
     font-weight: 600;
     position: relative;
     color: #8c8c8c;
@@ -104,6 +102,15 @@ img {
     .dropdown-item:hover {
         color: #ffffff;
         background-color: #B58A6A;
+    }
+
+    .dropdown>#personDropdownMobile {
+        display: none;
+
+    }
+
+    .navbar-nav {
+        align-items: end;
     }
 
 }

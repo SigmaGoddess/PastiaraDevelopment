@@ -1,0 +1,240 @@
+
+@import url('/css/global_variables.css');
+@import url('/css/normalize.css');
+
+/* Estilos generales y fuentes */
+body {
+    font-family: var( --title-body);
+    color: var(--color-text3);
+    font-size: clamp(.5rem, 1rem + 1vw, 1.4rem);
+    margin: 0;
+
+}
+
+.container-background {
+    /* Imagen de fondo */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url(/images/REGISTRO/Fondo\ de\ registro\ con\ edición.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+ 
+h1 {
+    font-family: var(--title-font);
+    font-size: clamp(1.5rem, 2rem + 1vw, 2.8rem);
+    color: var( --color-title);
+    font-weight: 100;
+    margin-top: -1rem;
+    margin-bottom: 2.5rem;
+}
+
+.login-card {
+    background-color: rgb(255, 255, 255);
+    padding: 4rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin-left: 2rem;
+    margin-top: -2rem;
+    
+}
+
+.login-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: -2rem;
+}
+
+.sign-up-card {
+    background-color: rgb(255, 255, 255);
+    padding: 3rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin-left: 2rem;
+    margin-top: -2rem;
+    font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 0.5rem;
+    font-size: clamp(.5rem, 1rem + 1vw, 1.1rem);
+}
+
+input.form-control::placeholder {
+    color: var(--color-text3);
+    opacity: .5;
+
+}
+
+.form-control:focus {
+    border-color: #B58A6A;
+    box-shadow: 0 0 0 0.25rem rgba(161, 130, 118, 0.25);
+}
+
+.input-group-text {
+    background-color: transparent;
+    border-left: 0;
+    border-radius: 15px;
+}
+
+.password-toggle-icon {
+    cursor: pointer;
+    color: #B58A6A;
+    font-size: 1.3rem;
+}
+
+a {
+    color: #B58A6A;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #5a4f4a;
+    text-decoration: underline;
+}
+
+p {
+    font-size: clamp(.5rem, 1rem + 1vw, 1.1rem);
+}
+
+
+.btn {
+    background-color: var(--color-boton1);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+
+}
+
+.btn:hover {
+    background-color: #8c6e62;
+    color: #fff;
+}
+
+/*-----------------------Pantalla para dispositivos móviles--------------------------*/
+
+@media (max-width: 768px) {
+
+    .container-background {
+        background-image: none;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-control {
+        font-size: .7rem;
+    }
+
+    .login-card img {
+        width: 9rem;
+        height: auto;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .login-card {
+        font-size: 1rem;
+        height: auto;
+        box-shadow: none;
+        border: 2px solid #8C8C8C;
+        margin: 0 2.2rem;
+        padding: 2rem;
+    }
+
+    .sign-up-card {
+        font-size: 1rem;
+        height: auto;
+        box-shadow: none;
+        border: 2px solid #8C8C8C;
+        margin: 0 2.2rem;
+        padding: 1.2rem;
+    }
+
+    p {
+        font-size: .8rem;
+    }
+
+
+    .btn {
+        font-size: 1rem;
+        width: 8rem;
+        margin-top: 2rem;
+    }
+
+    .password-toggle-icon {
+        font-size: 1rem;
+    }
+
+    /*---Franja decorativa---*/
+
+    .row.min-vh-100 {
+        position: relative;
+        overflow-x: hidden;
+        isolation: isolate;
+
+    }
+
+    .cinta-decorativa {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 60px;
+        background-color: #B58A6A;
+        left: 0;
+        top: 72%;
+    }
+
+    .row.min-vh-100::after {
+        /* Estilo imagen derecha*/
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 3.5rem;
+        height: 3.3rem;
+
+        background-image: url('/images/REGISTRO/IconosCintaRegistro.png');
+        opacity: 0.6;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        /* Posición a la derecha */
+        right: .02rem;
+        top: 35.55rem;
+    }
+
+    .row.min-vh-100::before {
+        /*Estilo imagen izquierda*/
+        content: '';
+        position: absolute;
+        z-index: 0;
+        width: 3.5rem;
+        height: 3.3rem;
+
+        background-image: url('/images/REGISTRO/IconosCintaRegistroIzq.png');
+        opacity: .6;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        /*Posición a la izquierda*/
+        left: .2rem;
+        top: 35.55rem;
+    }
+
+
+}
+
+/*Fin de media query*/
