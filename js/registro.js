@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 password: signUpPassword.value
             };
 
-            // Muestra el objeto JSON en consola
+            // Mostrar el objeto JSON en consola
             console.log('Formulario validado con éxito. Objeto JSON creado:');
             console.log(JSON.stringify(user, null, 2));
 
