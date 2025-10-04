@@ -14,6 +14,11 @@ body {
   /* ajusta al alto real de tu header */
 }
 
+#Bienvenida .row>[class*="col"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 h1 {
   color: var(--color-title);
   font-family: var(--title-font);
@@ -81,28 +86,53 @@ h2 {
   /* Establece el tamaño de la imagen */
 }
 
-.img1 {
-  width: 80%;
-  height: auto;
-  border-radius: 10px;
-}
 
 .img2 {
-  width: 25%;
-  height: 100%;
-  margin-top: 40px;
+  width: 88px;
+  /* tamaño por defecto */
+  height: auto;
+  margin-top: 60px;
+  max-width: 100%;
+  display: block;
 }
 
 .Iconos {
   margin-bottom: 20px;
 }
 
+/* Centrar y ajustar tamaño de los iconos debajo de Bienvenida */
+.Iconos .row {
+  justify-content: center;
+}
+
+.Iconos .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 6px;
+}
+
+/* Ajustes para pantallas grandes */
+@media screen and (min-width: 992px) {
+  .img2 {
+    width: 88px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}
+
+/* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 576px) {
+  .img2 {
+    width: 68px;
+    margin-top: 12px;
+  }
+}
+
 #subtitle-products-home {
   margin-top: 40px;
   font-size: 20px;
 }
-
-
 
 #group-btn-home {
   font-size: 20px;
@@ -124,15 +154,28 @@ h2 {
 
 .card-wrapper {
   max-width: 1140px;
-  margin: 0 60px 35px;
+  margin: 0 auto 35px;
+  /* centrado horizontal */
   padding: 20px 5px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 
+}
+
+.card-list .card-link {
+  user-select: none;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  /* centra badge + icono */
 }
 
 .card-list .card-item {
   list-style: none;
   margin-top: 60px;
+  padding: 0;
 }
 
 .card-list .card-item .card-link {
@@ -153,6 +196,9 @@ h2 {
 }
 
 .card-list .card-link .badge {
+  display: block;
+  /* fuerza salto de línea */
+  margin: 8px auto;
   color: var(--color-text1);
   padding: 8px 10px;
   font-size: 0.95rem;
@@ -165,6 +211,9 @@ h2 {
 }
 
 .card-list .card-link .card-button {
+  display: inline-block;
+  /* mantiene tamaño, se centra por text-align */
+  margin: 0 auto;
   height: 28px;
   width: 28px;
   color: var(--color-title);
@@ -198,6 +247,18 @@ h2 {
   margin-top: -35px;
 }
 
+.paste-principal {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.img-3 {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 992px) {
   .card-wrapper {
     margin: 0 10px 25px;
@@ -206,4 +267,37 @@ h2 {
   .card-wrapper .swiper-slide-button {
     display: none;
   }
+}
+
+.preguntas-frecuentes {
+  background-image: url('../dist/images/PASTES/IMG_3196piña_.jpeg');
+  /* Cambia la ruta según la ubicación de tu imagen */
+  background-size: cover;
+  /* Ajusta el tamaño de la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+  background-clip: padding-box;
+  /* Asegura que la imagen no se desborde */
+}
+
+h3 {
+  color: var(--color-text2);
+  font-family: var(--title-font);
+  font-size: 40px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+
+.accordion-button {
+  align-items: center;
+}
+
+.accordion-header {
+  color: var(--color-title);
+  font-family: var(--title-font);
+  font-size: 24px;
+  align-items: center;
 }
