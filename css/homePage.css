@@ -269,8 +269,8 @@ h2 {
   }
 }
 
-.preguntas-frecuentes {
-  background-image: url('../dist/images/PASTES/IMG_3196piña_.jpeg');
+#faq {
+  background-image: url('/public/images/PASTES/IMG_3196piña_.jpeg');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
@@ -280,6 +280,7 @@ h2 {
   /* Centra la imagen */
   background-clip: padding-box;
   /* Asegura que la imagen no se desborde */
+  opacity: .5;
 }
 
 h3 {
@@ -290,14 +291,54 @@ h3 {
   margin-bottom: 20px;
 }
 
-
-.accordion-button {
-  align-items: center;
+.accordion-button,
+.accordion-body,
+.accordion-item {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 15px;
 }
 
-.accordion-header {
-  color: var(--color-title);
-  font-family: var(--title-font);
-  font-size: 24px;
-  align-items: center;
+.accordion-button {
+  color: white !important;
+  font-weight: 600 !important;
+  border: none !important;
+  font-size: 18px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.accordion-item:last-of-type {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.accordion-body {
+  color: white !important;
+  font-weight: 400 !important;
+  border: none !important;
+  padding-top: 10px !important;
+  padding-bottom: 20px !important;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+  /* Cambia el color del ícono a blanco */
+  content: '+';
+  font-size: 1.5rem;
+  background-image: none !important;
+  color: #fff !important;
+  filter: none !important;
+  transform: none !important;
+  margin-left: auto !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: '−';
+  /* Cambia el ícono cuando está expandido */
+  font-size: 1.5rem;
+  color: white !important;
 }
