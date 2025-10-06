@@ -2,6 +2,7 @@
 
 @import url('./global_variables.css');
 @import url('./normalize.css');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 
 
@@ -190,7 +191,7 @@ html {
 
 /* Estilos para las notificaciones Toastify */
 .toastify {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Questrial", sans-serif;
 }
 
 /* --- Diseño Responsivo (Responsive Design) --- */
