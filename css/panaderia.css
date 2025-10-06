@@ -7,7 +7,7 @@
 
 
 /* Asignación de fuentes */
-body {
+.container-panaderia {
     font-family: var(--title-body);
 }
 
