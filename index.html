@@ -24,40 +24,56 @@
 
     <main>
         <section id="Bienvenida" class="Bienvenida-section">
-            <div class="container-lg">
-                <div class="row  align-items-center"> <!-- row es fila, horizontal-->
-                    <!-- Colmunas con el mismo ancho: distribución equitativa -->
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Texto (desktop muestra banner dentro, mobile oculta este banner) -->
                     <div class="col text-center">
                         <h1 class="Bienvenida-title">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
-                        <h1 class="Bienvenida-title-mobile">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
-                        <div class="contenedor-fondo align-items-center">
+
+                        <!-- banner para DESKTOP (oculto en móviles) -->
+                        <div class="contenedor-fondo d-none d-lg-block align-items-center">
                             <p class="subtitle" id="subtitle-desktop">Los elaboramos diariamente a mano, con
                                 ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y fresco,
                                 directo de nuestro horno a tu mesa.</p>
-                            <p class="subtitle" id="subtitle-mobile">Directo de nuestro horno a tu mesa.</p>
                         </div>
+
+                        <!-- subtítulo móvil (visible solo en pantallas pequeñas) -->
+                        <p class="subtitle d-block d-lg-none" id="subtitle-mobile">Directo de nuestro horno a tu mesa.
+                        </p>
+
                         <button class="btn cotizador" type="button"
                             onclick="location.href='/pages/pag-cotizador/cotizador.html'">¡Cotiza aquí!</button>
                     </div>
+
+                    <!-- Imagen (col se apila en móviles automáticamente) -->
                     <div class="col" id="img-bienvenida">
                         <img src="/images/INICIO/PASTES HOME PAGE.jpg" class="img-fluid rounded"
-                            alt=" Pastes de home page">
+                            alt="Pastes de home page">
+                    </div>
+
+                    <!-- banner MÓVIL: duplicado y colocado después de la imagen, solo visible en pantallas pequeñas -->
+                    <div class="col-12 d-block d-lg-none">
+                        <div class="contenedor-fondo contenedor-fondo-mobile text-center">
+                            <!-- puedes dejar el texto o no, el banner puede ser sólo decorativo -->
+                            <p class="subtitle subtitle-mobile-small">Los elaboramos diariamente a mano, con
+                                ingredientes de la más alta calidad.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="Iconos">
-            <div class="container-fluid justify-content-center">
+            <div class="container-fluid">
                 <div class="row justify-content-lg-center align-items-center">
                     <div class="col-auto">
-                        <img src="/images/GENERAL/Iconos-paste-derecha.png" alt="..." class="img2">
+                        <img src="/public/images/GENERAL/Iconos-paste-derecha.png" alt="..." class="img2">
                     </div>
                     <div class="col-auto">
-                        <img src="/images/GENERAL/Iconos-pastes-sola.png" alt="..." class="img2">
+                        <img src="/public/images/GENERAL/Iconos-pastes-sola.png" alt="..." class="img2">
                     </div>
                     <div class="col-auto">
-                        <img src="/images/GENERAL/Iconos-paste-izquiera.png" alt="..." class="img2">
+                        <img src="/public/images/GENERAL/Iconos-paste-izquiera.png" alt="..." class="img2">
                     </div>
                 </div>
             </div>
@@ -288,10 +304,23 @@
         </section>
 
         <section>
-            <div class="container-lg text-center paste-principal">
-                <img src="/dist/images/INICIO/PASTES HOME PAGE.jpg" alt="Pastes de home page"
-                    class="img-3 img-fluid rounded">
+            <div class="container-fluid paste-principal">
+                <img src="/public/images/PASTES/IMG_3176_mole - centrada.jpeg" alt="Pastes de home page"
+                    class="img-fluid">
 
+                <div class="linea-iconos">
+                    <div class="row justify-content-lg-center align-items-center">
+                        <div class="col-auto">
+                            <img src="/public/images/GENERAL/Iconos-paste-derecha.png" alt="..." class="img2">
+                        </div>
+                        <div class="col-auto">
+                            <img src="/public/images/GENERAL/Iconos-pastes-sola.png" alt="..." class="img2">
+                        </div>
+                        <div class="col-auto">
+                            <img src="/public/images/GENERAL/Iconos-paste-izquiera.png" alt="..." class="img2">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -327,8 +356,11 @@
                             data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">Nuestra <strong>especialidad son los auténticos pastes</strong>
                                 , elaborados con recetas tradicionales y los mejores ingredientes. Además de pastes,
-                                ofrecemos una selecta panadería artesanal y deliciosos volovanes con rellenos únicos,
-                                perfectos para complementar cualquier pedido.</div>
+                                ofrecemos una selecta <strong>panadería artesanal</strong> y deliciosos
+                                <strong>volovanes</strong>
+                                con rellenos únicos,
+                                perfectos para complementar cualquier pedido.
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -343,7 +375,8 @@
                             data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body"> Por el momento, Pastiara funciona exclusivamente como
                                 <strong>un servicio de entrega a domicilio.</strong> Nos enfocamos en llevar la frescura
-                                de nuestros pastes directamente a tu puerta. Puedes realizar tu pedido a través de
+                                de nuestros pastes directamente a tu puerta. <strong>Puedes realizar tu pedido</strong>
+                                a través de
                                 nuestra sección de Cotizaciones.
                             </div>
                         </div>
@@ -353,7 +386,7 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseThree" aria-expanded="false"
                                 aria-controls="flush-collapseThree">
-                                ¿Cuánto tiempo tarda en llegar mi pedido de pastes?
+                                ¿Cuánto tiempo tarda en llegar mi pedido?
                             </button>
                         </h4>
                         <div id="flush-collapseThree" class="accordion-collapse collapse"
