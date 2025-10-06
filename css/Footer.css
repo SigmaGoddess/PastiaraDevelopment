@@ -1,4 +1,7 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('../css/global_variables.css');
+@import url('../css/normalize.css');
 
 /* ===== Variables Globales ===== */
 :root {
@@ -17,7 +20,7 @@
 }
 
 /* ===== Fuente Global ===== */
-body {
+.body-global-fuentes {
   font-family: 'Questrial', sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
