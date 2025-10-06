@@ -9,6 +9,7 @@
 /* Asignación de fuentes */
 .container-panaderia {
     font-family: var(--title-body);
+    margin-top: 250px; 
 }
 
 .hero-title {
@@ -209,7 +210,9 @@ html {
         text-align: center;
     }
 
-
+    .container-panaderia {
+        margin-top: 50px;
+    }
 
     #hero-title-desktop {
         display: none;
