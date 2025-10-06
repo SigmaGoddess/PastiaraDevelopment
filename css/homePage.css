@@ -5,13 +5,35 @@
 
 /* Estilos específicos para la página de inicio (homePage) */
 
-body {
-  font-family: var(--title-body);
+#Bienvenida {
+  margin-top: 200px;
+  /* ajusta al alto real de tu header */
 }
 
-#Bienvenida {
-  margin-top: 250px;
-  /* ajusta al alto real de tu header */
+.Bienvenida-title {
+  font-size: 62px;
+  /* desktop */
+  margin-bottom: 18px;
+}
+
+/* Imagen: centro y tamaño máximo para evitar que ocupe todo en desktop */
+#img-bienvenida {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#img-bienvenida img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px auto;
+}
+
+#Bienvenida .row>[class*="col"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 h1 {
@@ -21,10 +43,6 @@ h1 {
   text-align: center;
   margin: 0% 60px;
   margin-bottom: 30px;
-}
-
-.Bienvenida-title-mobile {
-  display: none;
 }
 
 .subtitle {
@@ -47,8 +65,15 @@ h2 {
   display: none;
 }
 
+.subtitle-mobile-small {
+  font-size: 13px;
+  color: var(--color-text2);
+  margin: 0;
+  line-height: 1.2;
+}
+
 .contenedor-fondo {
-  background-image: url('../images/GENERAL/Banner\ Home.png');
+  background-image: url('../dist/images/GENERAL/Banner\ Home.png');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
@@ -60,6 +85,25 @@ h2 {
   /* Asegura que la imagen no se desborde */
 }
 
+.contenedor-fondo-mobile {
+  background-image: url('../dist/images/GENERAL/Banner Home.png');
+  /* misma imagen o ruta que usas */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 8vh;
+  /* pequeño en móviles */
+  min-height: 56px;
+  max-height: 96px;
+  overflow: hidden;
+  margin-top: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+}
+
 .cotizador {
   font-family: var(--title-body);
   background-color: var(--color-boton1);
@@ -67,9 +111,9 @@ h2 {
   border: none;
   padding: 10px 40px;
   font-size: 18px;
-  margin-top: 40px;
+  margin-top: 80px;
   margin-bottom: 40px;
-  background-image: url('../images/GENERAL/CanastaConPastes.png');
+  background-image: url('/public/images/GENERAL/CanastaConPastes.png');
   /* Ruta de tu imagen */
   background-repeat: no-repeat;
   /* Para que la imagen no se repita */
@@ -81,59 +125,445 @@ h2 {
   /* Establece el tamaño de la imagen */
 }
 
-.img1 {
-  width: 80%;
-  height: auto;
-  border-radius: 10px;
-}
 
 .img2 {
-  width: 25%;
-  height: 100%;
-  margin-top: 40px;
+  width: 88px;
+  /* tamaño por defecto */
+  height: auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  max-width: 100%;
+  display: block;
 }
 
 .Iconos {
-  margin-bottom: 20px;
+  margin: 28px 0;
+  /* margen superior e inferior que se respeta */
+  padding: 0;
+  /* sin padding para evitar espacios adicionales */
+}
+
+.Iconos .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Centrar y ajustar tamaño de los iconos debajo de Bienvenida */
+.Iconos .row {
+  justify-content: center;
+  gap: 8px;
+}
+
+.Iconos .col-auto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 #subtitle-products-home {
   margin-top: 40px;
   font-size: 20px;
-}
-
-#container-products-homepage {
-  margin-bottom: 40px;
+  font-family: var(--title-body);
 }
 
 #group-btn-home {
   font-size: 20px;
 }
 
+.contenedor-fondo-productos {
+  background-image: url('../dist/images/GENERAL/Banner-largo.png');
+  /* Cambia la ruta según la ubicación de tu imagen */
+  background-size: contain;
+  /* Ajusta el tamaño de la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+  background-clip: padding-box;
+  /* Asegura que la imagen no se desborde */
+
+}
+
+.card-wrapper {
+  max-width: 1140px;
+  margin: 0 auto 35px;
+  /* centrado horizontal */
+  padding: 20px 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.card-list .card-link {
+  user-select: none;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  /* centra badge + icono */
+}
+
 .card-list .card-item {
   list-style: none;
+  margin-top: 60px;
+  padding: 0;
 }
 
 .card-list .card-item .card-link {
-  width: 400px;
+  user-select: none;
   display: block;
   text-decoration: none;
+}
 
+.card-list .card-item .card-link:hover {
+  cursor: grabbing;
 }
 
 .card-list .card-link .card-image {
-  width: 100%;
+  aspect-ratio: 8/11;
   object-fit: cover;
   border-radius: 10px;
-
+  transition: 0.2s ease;
 }
 
 .card-list .card-link .badge {
+  display: block;
+  /* fuerza salto de línea */
+  margin: 8px auto;
   color: var(--color-text1);
-  padding: 8px 16px;
+  padding: 8px 10px;
   font-size: 0.95rem;
-  font-weight: 500;
-  margin: 16px 0 18px;
+  font-weight: 600;
+  margin: 15px 0 10px;
+  align-items: center;
+  /*background: #e2cfc2;
+  width: fit-content;
+  border-radius: 40px;*/
+}
+
+.card-list .card-link .card-button {
+  display: inline-block;
+  /* mantiene tamaño, se centra por text-align */
+  margin: 0 auto;
+  height: 28px;
+  width: 28px;
+  color: var(--color-title);
+  border-radius: 50%;
+  margin: 0px 0 5px;
+  background: none;
+  cursor: pointer;
+  border: 1px solid var(--color-title);
+  transition: 0.4s ease;
+}
+
+.card-list .card-link:hover .card-button {
+  color: white;
+  background: var(--color-title);
+}
+
+.card-wrapper .swiper-pagination-bullet {
+  height: 13px;
+  width: 13px;
+  opacity: 0.5;
+  background: var(--color-title);
+
+}
+
+.card-wrapper .swiper-pagination-bullet {
+  opacity: 1;
+}
+
+.card-wrapper .swiper-slide-button {
+  color: var(--color-title2);
+  margin-top: -35px;
+}
+
+/* Asegurar que la imagen no tenga espacios dentro del container */
+.paste-principal {
+  width: 100%;
+  overflow: hidden;
+  /* corta lo que sobrepase */
+  height: 100vh;
+  /* altura visible: ajusta (ej. 60vh, 80vh) */
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  position: relative;
+
+}
+
+.linea-iconos {
+  position: absolute;
+  /* Superpone el elemento */
+  top: 50%;
+  /* Mueve el borde superior al 50% del padre */
+  left: 0;
+  /* Lo pega al borde izquierdo */
+  width: 100%;
+  /* Ocupa todo el ancho del padre */
+  padding: 15px 0;
+  /* Espacio interno para dar altura a la línea */
+
+  /* TRUCO CLAVE PARA CENTRAR VERTICALMENTE */
+  /* Mueve el elemento hacia arriba la mitad de su propia altura */
+  transform: translateY(-50%);
+
+  /* ¡EL EFECTO CLAVE! Color blanco con opacidad de 0.4 */
+  background-color: rgba(255, 255, 255, 0.4);
+
+  /* Centrado horizontal de los iconos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* PASO 3: (Opcional) Ajustar el tamaño o margen de los iconos si es necesario */
+.linea-iconos .img2 {
+  width: 100px;
+  /* Ajusta este valor al tamaño que desees para los iconos */
+  height: auto;
+  margin: 0 8px;
+  /* Espacio entre los iconos */
+}
+
+.paste-principal,
+.container-fluid.paste-principal {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  --bs-gutter-x: 0 !important;
+  /* eliminar gutter de Bootstrap si aplica */
+}
 
 
+.paste-principal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* mantiene proporción y recorta arriba/abajo */
+  object-position: center;
+  /* centra el recorte; usa "center top" para recortar más abajo */
+  margin: 0;
+  padding: 0;
+}
+
+
+@media screen and (max-width: 992px) {
+  .card-wrapper {
+    margin: 0 10px 25px;
+  }
+
+  .card-wrapper .swiper-slide-button {
+    display: none;
+  }
+}
+
+/* Responsividad y estilo de FAQ */
+#faq {
+  background-image: url('/public/images/PASTES/IMG_3196piña_.jpeg');
+  /* Cambia la ruta según la ubicación de tu imagen */
+  background-size: cover;
+  /* Ajusta el tamaño de la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  background-position: center;
+  /* Centra la imagen */
+  background-clip: padding-box;
+  /* Asegura que la imagen no se desborde */
+  opacity: .5;
+  padding: 48px 0;
+  /* espacio superior e inferior consistente */
+}
+
+/* Título */
+#faq h3 {
+  color: var(--color-text2);
+  font-family: var(--title-font);
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+/* Mantén la clase .w-75 usable en desktop, pero hazla completa en móviles */
+#faq .accordion.w-75 {
+  width: 75%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.accordion-button,
+.accordion-body,
+.accordion-item {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 15px;
+}
+
+/* Botones del acordeón (área clicable) */
+#faq .accordion-button {
+  color: white !important;
+  font-weight: 600 !important;
+  border: none !important;
+  font-size: 1rem;
+  padding: 0.85rem 1rem;
+  gap: 12px;
+  text-align: left;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+  font-family: var(--title-body);
+}
+
+/* Mejor separación entre items en pantallas pequeñas */
+#faq .accordion-item+.accordion-item {
+  margin-top: 10px;
+}
+
+.accordion-item:last-of-type {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Cuerpo del acordeón */
+#faq .accordion-body {
+  color: white !important;
+  font-weight: 400 !important;
+  border: none !important;
+  padding-top: 10px !important;
+  padding-bottom: 20px !important;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+  /* Cambia el color del ícono a blanco */
+  content: '+';
+  font-size: 1.5rem;
+  background-image: none !important;
+  color: #fff !important;
+  filter: none !important;
+  transform: none !important;
+  margin-left: auto !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: '−';
+  /* Cambia el ícono cuando está expandido */
+  font-size: 1.5rem;
+  color: white !important;
+}
+
+/* Ajustes para pantallas grandes */
+@media (max-width: 992px) {
+  .Iconos {
+    margin: 60px 0;
+  }
+
+  .Iconos .img2 {
+    width: 72px;
+    margin-top: 60px;
+  }
+
+  #Bienvenida {
+    margin-top: 250px;
+    /* reduce espacio que tenías para header grande */
+  }
+
+}
+
+/* Ajustes responsive: tablet / móviles */
+@media (max-width: 768px) {
+  .Iconos {
+    margin: 20px 0;
+  }
+
+  .Iconos .img2 {
+    width: 64px;
+    margin-top: 14px;
+  }
+
+  #faq {
+    padding: 36px 0;
+  }
+
+  #faq h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  #faq .accordion.w-75 {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #faq .accordion-button {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  #faq .accordion-body {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.85rem;
+  }
+
+  #Bienvenida {
+    margin-top: 250px;
+  }
+
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+  .Iconos {
+    margin: 14px 0;
+  }
+
+  .Iconos .img2 {
+    width: 52px;
+    margin-top: 10px;
+  }
+
+  #faq {
+    padding: 24px 0;
+  }
+
+  #faq h3 {
+    font-size: 20px;
+  }
+
+  #faq .accordion-button {
+    font-size: 0.92rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  #faq .accordion-body {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  #Bienvenida {
+    margin-top: 250px;
+  }
+
+  .linea-iconos {
+    /* NO CAMBIES top y transform, solo asegúrate que los tamaños son pequeños */
+    padding: 20px 0;
+    /* Reduce un poco el padding */
+  }
+
+  .linea-iconos .img2 {
+    width: 50px;
+    /* Iconos pequeños para no estorbar */
+    margin: 0 5px;
+  }
 }
