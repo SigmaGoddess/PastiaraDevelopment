@@ -75,3 +75,4 @@ class SpecialLoader extends HTMLElement {
 }
 customElements.define('special-loader', SpecialLoader);
 
+customElements.define('special-footer', SpecialFooter);**/
