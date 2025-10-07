@@ -53,7 +53,7 @@ h2 {
 }
 
 .contenedor-fondo {
-  background-image: url('../dist/images/GENERAL/Banner\ Home.png');
+  background-image: url('/public/images/GENERAL/Banner\ Home.png');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
@@ -74,7 +74,7 @@ h2 {
   font-size: 18px;
   margin-top: 40px;
   margin-bottom: 40px;
-  background-image: url('../images/GENERAL/CanastaConPastes.png');
+  background-image: url('/public/images/GENERAL/CanastaConPastes.png');
   /* Ruta de tu imagen */
   background-repeat: no-repeat;
   /* Para que la imagen no se repita */
@@ -139,17 +139,20 @@ h2 {
 }
 
 .contenedor-fondo-productos {
-  background-image: url('../dist/images/GENERAL/Banner-largo.png');
-  /* Cambia la ruta según la ubicación de tu imagen */
+  background-image: url('/public/images/GENERAL/Banner-largo.png');
   background-size: contain;
-  /* Ajusta el tamaño de la imagen */
   background-repeat: no-repeat;
-  /* Evita que la imagen se repita */
   background-position: center;
-  /* Centra la imagen */
   background-clip: padding-box;
-  /* Asegura que la imagen no se desborde */
+  position: relative; /* Importante para el posicionamiento */
+}
 
+.contenedor-fondo-productos {
+  background-image: url('/public/images/GENERAL/Banner-largo.png');
+  background-size: 100% 30%;
+  background-repeat: no-repeat;
+  background-position: center 38%; /* Ajusta el % para subir o bajar */
+  background-clip: padding-box;
 }
 
 .card-wrapper {
@@ -162,6 +165,10 @@ h2 {
   justify-content: center;
   align-items: flex-start;
 
+}
+
+.panaderia .swiper-wrapper {
+  justify-content: center !important;
 }
 
 .card-list .card-link {
@@ -270,7 +277,7 @@ h2 {
 }
 
 .preguntas-frecuentes {
-  background-image: url('../dist/images/PASTES/IMG_3196piña_.jpeg');
+  background-image: url('/public/images/PASTES/IMG_3196piña_.jpeg');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
@@ -301,3 +308,38 @@ h3 {
   font-size: 24px;
   align-items: center;
 }
+
+
+ /**Sirve para mostrar el carrusel seleccionado */
+.volovanes,
+.panaderia {
+    display: none;
+}
+
+.active-section {
+    display: block;
+}
+
+/**Estilos para que la letra sea negrita en la opción seleccionada */
+
+#group-btn-home .btn {
+  font-weight: normal;
+  color: #333;
+  transition: all 0.2s ease;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#group-btn-home .btn:hover {
+  color: #000;
+}
+
+#group-btn-home .btn-check:checked + .btn {
+  font-weight: bold;
+  color: #000;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
