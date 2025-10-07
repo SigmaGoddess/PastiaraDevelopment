@@ -1,18 +1,15 @@
 /*Importación de las variables globales */
-@import url('/css/global_variables.css');
-@import url('/css/normalize.css');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
-body{
-    background-color: var(--background-color);
-    font-family: var(--title-body);
-    color: var(--color-text1);
-    font-size: 20px; 
-    margin: 0;
-    padding: 0; 
-
+.main-conocenos{
+    margin-top: 210px; 
+    background-color: var( --background-color);
 }
 
-h2, h4, h5, h6{
+
+.main-conocenos h2, .main-conocenos h4, .main-conocenos h5, .main-conocenos h6{
     font-family: var(--title-font);
     color: var(--color-title);
     size: 64px;
@@ -20,17 +17,29 @@ h2, h4, h5, h6{
     padding: 0;
 }
 
-p{
+.main-conocenos p{
     line-height: 1.5; 
     font-family: var(--title-body);
-    margin-bottom: 0;
+    font-size: 20px;
+    color: var(--color-text1);
 }
 
+/*Ajuste de pantallas*/
+@media (max-width: 992px) {
+  .main-conocenos{
+    margin-top: 180px;
+  }
+}
 
+@media (max-width: 576px) {
+    .main-conocenos {
+        margin-top: 150px;
+    }
+}
 
 /*-----HISTORIA--------------------------------------------*/
 /*---------BANNER SABOR--------*/
-.banner-sabor {
+.historia-pastiara .banner-sabor {
     background-color: var(--color-banner); 
     padding: 3rem 0;
     position: relative;
@@ -44,7 +53,7 @@ p{
 }
 
 /* El título del banner debe estar sobre el fondo */
-.banner-sabor .titulo-banner {
+.historia-pastiara .banner-sabor .titulo-banner {
     position: relative;
     z-index: 1;
     color: var(--color-title2); 
@@ -64,17 +73,29 @@ p{
 }
 
 /*Modificación de la imagen de historia de pastiara*/
-.img-fluid {
+.img-historia{
   margin-top: 0px;
   margin-bottom: 0px;
   width: 450px;  
   height: 250px;  
   }
-
+/* Ajustes para la imagen de historia en pantallas pequeñas (móviles) */
+@media (max-width: 576px) {
+    .img-historia {
+        width: 300px; 
+        height: auto; 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
 /* ----------------MISIÓN Y VISIÓN--------------------*/
 /*-----IMAGEN----*/
 /* Estilos para el contenedor principal con la imagen de fondo */
+.titulo-card{
+  padding-bottom: 10px;
+}
 .mision-vision-banner { 
     background: url('/images/CONÓCENOS/Panadero.jpg') no-repeat center center;
     background-size: cover; 
@@ -94,53 +115,140 @@ p{
     background-color: rgba(255, 255, 255, 0.5); 
     z-index: 0; 
 }
-.mision-vision-banner .container {
+.mision-vision-banner .container-mision-vision {
     position: relative;
     z-index: 1; /*Para que las tarjetas queden arriba de la opacidad */
+    padding-top: 130px;
+    padding-bottom: 70px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+/* Para tabletas */
+@media (max-width: 992px) {
+  .mision-vision-banner .container-mision-vision {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
 
-.card {
+/* Para móviles */
+@media (max-width: 576px) {
+  .mision-vision-banner .container-mision-vision {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.card-mision-vision {
     background-color: var(--color-boton2); 
-    position: relative;
-    z-index: 1; 
+    position: relative; 
     border: none;
-    color: var(--color-title2)
+    border-radius: 10px;
+    padding: 15px 20px;
+    
 }
 
 
 /*---------------------VALORES----------------------------*/
 .valores{
-  margin-top: 50px;
+  margin-top: 70px;
+  margin-left: 40px;
+  margin-right: 40px;
   margin-bottom: 0px;
 }
-.card-valor {
+.valores .card-valor {
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 15px;
+    padding: 20px;
+    padding-bottom: 0;
     background-color: var( --color-boton2);
     margin-top: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.titulo-card-valor {
+.valores .titulo-card-valor {
     color: var(---color-text1);
     font-family: var(--title-body);
     font-weight: 600;
     font-size: 20px;
+    
+    
+}
+.valores .texto-card-valor {
+  font-size: 20px;
+  margin-bottom: 0;  
+  margin-top: 0;     
+  word-wrap: break-word;  /* fuerza que el texto no se desborde */
+  line-height: 1.4;        
 }
 
-.texto-card-valor {
-    color: var(--color-text1);
-    font-family: var(--tipografia-texto);
+/* Ajustes en pantallas medianas */
+@media (max-width: 992px) {
+  .valores {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .valores .card-valor {
+    padding: 15px;
+    padding-bottom: 0; 
+    
+  }
+  .valores .texto-card-valor {
+  margin-bottom: 0;  
+    
+}
 }
 
+/* Ajustes en móviles */
+@media (max-width: 576px) {
+  .valores {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .valores .card-valor {
+    padding: 15px;
+    padding-bottom: 0;
+   
+  }
+   .valores .texto-card-valor {
+  margin-bottom: 0;  
+  font-size: 16px;
+}
+.valores .titulo-card-valor {
+    font-size: 16px;
+}
+}
+
+/* Ajustes en móviles de pantallas iguales o menores a 360px*/
+@media (max-width: 360px) {
+  .valores .card-valor {
+    padding: 7px;
+    padding-bottom: 0;
+   
+  }
+   .valores .texto-card-valor {
+  margin-bottom: 0;  
+  font-size: 16px;
+}
+.valores .titulo-card-valor {
+    font-size: 16px;
+}
+}
 /*----------------------CARRUSEL-------------------------*/
 /* Estilos para la sección principal */
-.equipo {
+.equipo-conocenos {
   padding: 30px 0; 
+  margin-top: 20px;
 }
 
 /* Estilos para el encabezado "Nuestro equipo" */
-.equipo h2 {
+.equipo-conocenos h2 {
   font-family: var(--title-font);
   color: var(--color-title); 
   text-align: center;
@@ -149,7 +257,7 @@ p{
 }
 
 /* Estilos para el contenedor del carrusel */
-.carousel {
+.equipo-conocenos .carousel {
   position: relative;
   background-image: url('/images/GENERAL/masa-boleando.webp');
   background-size: cover;
@@ -159,7 +267,7 @@ p{
 }
 
 /* La capa de opacidad sobre la imagen */
-.carousel::before {
+.equipo-conocenos .carousel::before {
   content: '';
   position: absolute;
   top: 0;
@@ -171,7 +279,7 @@ p{
 }
 
 /* Añade un espacio interior a cada diapositiva para que el contenido no toque los bordes */
-.carousel-item {
+ .equipo-conocenos .carousel-item {
     padding: 0 15px; 
 }
 
@@ -185,22 +293,28 @@ p{
     }
 }
 
-
 /* Estilos para el contenido de cada slide */
-.carousel-item .row {
+ .equipo-conocenos .carousel-item .row {
   position: relative;
   z-index: 1; 
   padding: 40px;
 }
 
 /* Estilos para la foto de perfil */
-.profile-pic {
+ .profile-pic-conocenos{
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Asegura un tamaño fijo para todas las imágenes */
+  width: 250px;  
+  height: 500px; 
+  max-width: none;  /* Anula el max-width del navbar */
+  /*ayuda a que las imágenes no se deformen */
+  object-fit: cover;
+
 }
 
 /* Estilos para el contenedor de la descripción */
-.descripcion-container {
+ .descripcion-container {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 20px;
   border-radius: 10px;
@@ -209,7 +323,7 @@ p{
 
 
 /* Estilos para el nombre de la persona debajo de la foto */
-.carousel-item h4 {
+ .carousel-item h4 {
   font-family: var(--title-font);
   color: var(--color-text1); 
   text-align: center;
@@ -218,7 +332,7 @@ p{
 }
 
 /* Estilos para los botones de navegación del carrusel */
-.carousel-control-prev, .carousel-control-next {
+ .carousel-control-prev, .carousel-control-next {
   width: 5%;
   opacity: 1;
 }
@@ -235,21 +349,21 @@ p{
   content: '<';
 }
 
-.carousel-control-next-icon::before {
+ .carousel-control-next-icon::before {
   content: '>';
 }
-.paste-member{
+ .paste-member{
     color: var(--color-text1);
     font-weight: 600;
 }
 
 /*Modificaciones para los controles de navegación horizontales*/
-.carousel-indicators [data-bs-target] {
+ .carousel-indicators [data-bs-target] {
     background-color: var(--color-boton1);
 }
 
-.carousel-indicators button {
-    background-color: var(--color-boton1); 
+ .carousel-indicators button {
+    background-color: #5f391c; 
     opacity: 0.5;
     width: 20px; 
     height: 6px; 
@@ -271,20 +385,9 @@ p{
 }
 
 
-
 /*---Imagen del carrusel---*/
 /* ajustar imagenes del carrusel*/
-.profile-pic {
-
-  /* Asegura un tamaño fijo para todas las imágenes */
-  width: 250px;  
-  height: 500px; 
-
-  /*ayuda a que las imágenes no se deformen */
-  object-fit: cover;
-}
-
-.description-member{
+ .description-member{
   text-align: justify;
 }
 
@@ -304,4 +407,17 @@ p{
 .fade-in.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* AJUSTES DE PADDING - Al final para mayor prioridad */
+
+/* Reduce espacio inferior de la descripción */
+.equipo-conocenos .descripcion-container p:last-child {
+    margin-bottom: 0; /* Elimina margen del último párrafo */
+}
+/* Reduce espacio del titulo paste-member */
+.equipo-conocenos .paste-member {
+    color: var(--color-text1);
+    font-weight: 600;
+    margin-bottom: 10px;
 }

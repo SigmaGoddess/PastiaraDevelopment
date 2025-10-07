@@ -81,6 +81,36 @@ img {
     color: #B58A6A;
 }
 
+.vr {
+    border-width: 0.5rem;
+    align-self: center;
+    background-color: #8c8c8c;
+    min-height: 4em;
+    gap: 3px;
+}
+
+.navbar-brand__logo {
+    width: 160px;
+    /* ancho base, ajusta */
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Ajustes responsive */
+@media (max-width: 992px) {
+    .navbar-brand__logo {
+        width: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand__logo {
+        width: 100px;
+    }
+}
+
+
 @media (min-width: 992px) {
 
     .dropdown>.dropdown-menu {
