@@ -1,6 +1,7 @@
 /*Importación de las variables globales */
-@import url('./css/global_variables.css');
-@import url('./css/normalize.css');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
 main{
     margin-top: 250px; 
