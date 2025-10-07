@@ -1,4 +1,4 @@
-// Function to load and inject HTML components into specified containers
+// Function to load and inject navbar HTML components into specified containers
 class SpecialHeader extends HTMLElement {
     async connectedCallback() {
         const htmlFile = '/pages/pag-navbar/navbar.html'; // Replace with the actual path to your HTML file
@@ -18,9 +18,10 @@ class SpecialHeader extends HTMLElement {
 
 customElements.define('special-header', SpecialHeader);
 
-/**class SpecialFooter extends HTMLElement {
+// Function to load and inject footer HTML components into specified containers
+class SpecialFooter extends HTMLElement {
     async connectedCallback() {
-        const htmlFile = '/pages/pag-navbar/footer.html'; // Replace with the actual path to your HTML file
+        const htmlFile = '/pages/pag-footer/footer.html'; // Replace with the actual path to your HTML file
         try {
             const response = await fetch(htmlFile);
             if (!response.ok) throw new Error('Network response was not ok');
@@ -35,7 +36,7 @@ customElements.define('special-header', SpecialHeader);
     }
 }
 
-customElements.define('special-footer', SpecialFooter);**/
+customElements.define('special-footer', SpecialFooter);
 
 /**
  * Sección para el LOADER
