@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- SELECTORES DE ELEMENTOS ---
+    // ------------------- SELECTORES DE ELEMENTOS ------------------------------
 
     // Campos de formularios y enlaces 
     const loginForm = document.getElementById('login-form');
@@ -8,24 +8,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const showSignUpLink = document.getElementById('show-sign-up-link');
     const showLoginLink = document.getElementById('show-login-link');
 
-    // Campos de contraseña (login)
-    const loginPassword = document.querySelector('#login-password');
-    const toggleLoginPassword = document.querySelector('#toggleLoginPassword');
+    // Campos de loginForm
+    const loginEmailInput = document.getElementById('login-email');
+    const loginPassword = document.getElementById('login-password');
+    const toggleLoginPassword = document.getElementById('toggleLoginPassword');
 
-    // Campos de contraseña (Sign up)
-    const signUpPassword = document.querySelector('#sign-up-password');
-    const toggleSignUpPassword = document.querySelector('#toggleSignUpPassword');
-    const confirmPassword = document.querySelector('#confirm-password');
-    const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+    // Campos de registerForm
+    const signUpPassword = document.getElementById('sign-up-password');
+    const toggleSignUpPassword = document.getElementById('toggleSignUpPassword');
+    const confirmPassword = document.getElementById('confirm-password');
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
 
-    // Campos del formulario de registro
     const nameInput = document.getElementById('name');
     const lastNameInput = document.getElementById('last-name');
-    const emailInput = document.getElementById('sign-up-email');
+    const singUpEmailInput = document.getElementById('sign-up-email');
     const phoneInput = document.getElementById('phone-number');
 
 
-    // --- FUNCION PARA CAMBIO ENTRE FORMULARIOS ---
+    // ------------------ FUNCIÓN PARA CAMBIO ENTRE FORMULARIOS ---------------------
 
     if (showSignUpLink) {
         showSignUpLink.addEventListener('click', function (event) {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // --- FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ---
+    // --------------- FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ----------------------
 
     const setupPasswordToggle = (passwordInput, toggleIcon) => {
         if (passwordInput && toggleIcon) {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupPasswordToggle(confirmPassword, toggleConfirmPassword); //Confirmación de registro
 
 
-    // --- VALIDACIÓN DEL FORMULARIO DE REGISTRO ---
+    // ---------------------- VALIDACIÓN DE FORMULARIOS_----------------------------
 
     // Expresiones regulares para validaciones
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -90,14 +90,17 @@ document.addEventListener('DOMContentLoaded', function () {
         input.classList.remove('is-invalid');
     };
 
-    // Event listener para el envío del formulario de registro
+    //--------------------VALIDACIÓN DE FORMULARIOS: REGISTRO----------------------------
+
     registerForm.addEventListener('submit', function (event) {
-        event.preventDefault(); 
+        event.preventDefault();
 
         let isValid = true;
 
         // Limpiar errores previos
-        [nameInput, lastNameInput, emailInput, phoneInput, signUpPassword, confirmPassword].forEach(clearError);
+        [nameInput, lastNameInput, singUpEmailInput, phoneInput, signUpPassword, confirmPassword].forEach(clearError);
+
+        // Validaciones básicas de los campos
 
         // 1. Validar Nombre
         if (nameInput.value.trim() === '') {
@@ -107,13 +110,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 2. Validar Apellido
         if (lastNameInput.value.trim() === '') {
-            showError(lastNameInput, 'Por favor, ingresa tu apellido.');
+            showError(lastNameInput, 'Por favor, ingresa tu primer apellido.');
             isValid = false;
         }
 
-        // 3. Validar Correo Electrónico
-        if (!emailRegex.test(emailInput.value.trim())) {
-            showError(emailInput, 'Por favor, ingresa un correo válido.');
+        // 3. Validar formato del Correo Electrónico
+        if (!emailRegex.test(singUpEmailInput.value.trim())) {
+            showError(singUpEmailInput, 'Por favor, ingresa un correo válido.');
             isValid = false;
         }
 
@@ -123,43 +126,105 @@ document.addEventListener('DOMContentLoaded', function () {
             isValid = false;
         }
 
-        // 5. Validar Contraseña
+        // 5. Validar requisitos de Contraseña
         if (!passwordRegex.test(signUpPassword.value)) {
             showError(signUpPassword, 'La contraseña no cumple los requisitos.');
             isValid = false;
         }
-        
+
         // 6. Validar que las contraseñas coincidan
         if (signUpPassword.value !== confirmPassword.value || confirmPassword.value === '') {
             showError(confirmPassword, 'Las contraseñas no coinciden.');
             isValid = false;
         }
 
-        // Si todo es válido, se crea el objeto JSON
+        // Si todos los caompos son validos: 
         if (isValid) {
-            const user = {
-                nombreCompleto: `${nameInput.value.trim()} ${lastNameInput.value.trim()}`,
-                telefono: phoneInput.value.trim(),
-                email: emailInput.value.trim(),
-                password: signUpPassword.value
-            };
 
-            // Mostrar el objeto JSON en consola
-            console.log('Formulario validado con éxito. Objeto JSON creado:');
-            console.log(JSON.stringify(user, null, 2));
+            // obtener lista de usuarios y el email a verificar.
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const newUserEmail = singUpEmailInput.value.trim().toLowerCase();
 
-            // Envío de los datos a un servidor
-            Swal.fire({
-                title: "¡Tasty!",
-                text: "Regisrto exitoso",
+            // Validar que el correo no esté duplicado
+            const emailExists = users.some(user => user.email === newUserEmail);
+
+            if (emailExists) {
+                showError(singUpEmailInput, 'Este correo ya está registrado.');
+
+            } else {
+                // Registrar al usuario.
+                const user = {
+                    nombreCompleto: `${nameInput.value.trim()} ${lastNameInput.value.trim()}`,
+                    telefono: phoneInput.value.trim(),
+                    email: newUserEmail,
+                    password: signUpPassword.value
+                };
+
+                // Añadir el usuario a la lista y guardarlo
+                users.push(user);
+                localStorage.setItem('users', JSON.stringify(users));
+
+                console.log('Registro exitoso. Lista de usuarios actualizada:', users);
+
+                Swal.fire({
+                     title: "¡Tasty!",
+                text: "Registro exitoso",
                 imageUrl: "/images/REGISTRO/IconoDeInicioSesion.png",
                 imageWidth: 150,
                 imageHeight: 90,
-                imageAlt: "Icono de paste"
-            })
-            
-            // Limpiar el formulario
-            registerForm.reset();
+                imageAlt: "Icono de paste"            
+                });
+
+                registerForm.reset();
+
+                // Monstrar formulario de login
+                registerForm.classList.add('d-none');
+                loginForm.classList.remove('d-none');
+            }
         }
     });
-});
+
+    // ----------------- VALIDACIÓN DE FORMULARIOS:INICIO DE SESIÓN---------------------
+
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const enteredEmail = loginEmailInput.value.trim().toLowerCase();
+        const enteredPassword = loginPassword.value.trim();
+
+        clearError(loginEmailInput);
+        clearError(loginPassword);
+
+        // Validar campos vacíos
+        if (enteredEmail === '' || enteredPassword === '') {
+            showError(loginEmailInput, 'Por favor, completa todos los campos.');
+            showError(loginPassword, ' '); 
+            return; // Detener ejecución si hay campos vacíos
+        }
+
+        // Obtener la lista de usuarios para buscar email y contraseña 
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        //Validar que existan y conincidan email y contraseña
+
+        const foundUser = users.find(user =>
+            user.email === enteredEmail &&
+            user.password === enteredPassword
+        );
+
+        if (foundUser) {
+            // Inicio de sesión exitoso
+            Swal.fire({
+                title: `¡Bienvenido, ${foundUser.nombreCompleto}!`,
+                text: "Inicio de sesión exitoso.",
+                icon: "success"
+            }).then(() => {
+                window.location.href = 'index.html'; // Redirección a la página principal
+            });
+        } else {
+            // No se encontró a nadie que coincida
+            showError(loginEmailInput, 'Correo o contraseña inválidos.');
+            showError(loginPassword, 'Correo o contraseña inválidos.');
+        }
+    });
+})

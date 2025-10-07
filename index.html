@@ -14,50 +14,71 @@
     <!-- Swiper-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/loader.css">
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/homePage.css">
+    <!-- CSS del Footer -->
+    <link rel="stylesheet" href="/css/Footer.css">
+
 
 </head>
 
 <body>
+    <special-loader></special-loader>
     <special-header></special-header>
 
     <main>
         <section id="Bienvenida" class="Bienvenida-section">
-            <div class="container-lg">
-                <div class="row  align-items-center"> <!-- row es fila, horizontal-->
-                    <!-- Colmunas con el mismo ancho: distribución equitativa -->
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Texto (desktop muestra banner dentro, mobile oculta este banner) -->
                     <div class="col text-center">
                         <h1 class="Bienvenida-title">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
-                        <h1 class="Bienvenida-title-mobile">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
-                        <div class="contenedor-fondo align-items-center">
+
+                        <!-- banner para DESKTOP (oculto en móviles) -->
+                        <div class="contenedor-fondo d-none d-lg-block align-items-center">
                             <p class="subtitle" id="subtitle-desktop">Los elaboramos diariamente a mano, con
                                 ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y fresco,
                                 directo de nuestro horno a tu mesa.</p>
-                            <p class="subtitle" id="subtitle-mobile">Directo de nuestro horno a tu mesa.</p>
                         </div>
+
+                        <!-- subtítulo móvil (visible solo en pantallas pequeñas) -->
+                        <p class="subtitle d-block d-lg-none" id="subtitle-mobile">Directo de nuestro horno a tu mesa.
+                        </p>
+
                         <button class="btn cotizador" type="button"
                             onclick="location.href='/pages/pag-cotizador/cotizador.html'">¡Cotiza aquí!</button>
                     </div>
+
+                    <!-- Imagen (col se apila en móviles automáticamente) -->
                     <div class="col" id="img-bienvenida">
                         <img src="/images/INICIO/PASTES HOME PAGE.jpg" class="img-fluid rounded"
-                            alt=" Pastes de home page">
+                            alt="Pastes de home page">
+                    </div>
+
+                    <!-- banner MÓVIL: duplicado y colocado después de la imagen, solo visible en pantallas pequeñas -->
+                    <div class="col-12 d-block d-lg-none">
+                        <div class="contenedor-fondo contenedor-fondo-mobile text-center">
+                            <!-- puedes dejar el texto o no, el banner puede ser sólo decorativo -->
+                            <p class="subtitle subtitle-mobile-small">Los elaboramos diariamente a mano, con
+                                ingredientes de la más alta calidad.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="Iconos">
-            <div class="container-fluid justify-content-center">
+            <div class="container-fluid">
                 <div class="row justify-content-lg-center align-items-center">
                     <div class="col-auto">
-                        <img src="/images/GENERAL/Iconos-paste-derecha.png" alt="..." class="img2">
+                        <img src="/public/images/GENERAL/Iconos-paste-derecha.png" alt="..." class="img2">
                     </div>
                     <div class="col-auto">
-                        <img src="/images/GENERAL/Iconos-pastes-sola.png" alt="..." class="img2">
+                        <img src="/public/images/GENERAL/Iconos-pastes-sola.png" alt="..." class="img2">
                     </div>
                     <div class="col-auto">
-                        <img src="/images/GENERAL/Iconos-paste-izquiera.png" alt="..." class="img2">
+                        <img src="/public/images/GENERAL/Iconos-paste-izquiera.png" alt="..." class="img2">
                     </div>
                 </div>
             </div>
@@ -292,6 +313,19 @@
                 <img src="/images/INICIO/PASTES HOME PAGE.jpg" alt="Pastes de home page"
                     class="img-3 img-fluid rounded">
 
+                <div class="linea-iconos">
+                    <div class="row justify-content-lg-center align-items-center">
+                        <div class="col-auto">
+                            <img src="/public/images/GENERAL/Iconos-paste-derecha.png" alt="..." class="img2">
+                        </div>
+                        <div class="col-auto">
+                            <img src="/public/images/GENERAL/Iconos-pastes-sola.png" alt="..." class="img2">
+                        </div>
+                        <div class="col-auto">
+                            <img src="/public/images/GENERAL/Iconos-paste-izquiera.png" alt="..." class="img2">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -311,71 +345,184 @@
             </div>
         </section>
 
-        <section>
-            <div class="container text-center preguntas-frecuentes">
-                <h3>Preguntas Frecuentes</h3>
-                <div class="accordion" id="preguntas-frecuentes">
+        <section id="faq" class="py-5">
+            <h3 class="my-5 text-center">Preguntas Frecuentes</h3>
+            <div class="container">
+                <div class="accordion w-75 mx-auto" id="accordionFlushExample">
                     <div class="accordion-item">
-                        <h4 class="accordion-header" id="panelsStayOpen-headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#q1" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                Accordion Item #1
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                aria-controls="flush-collapseOne">
+                                ¿Cuál es la especialidad de Pastiara y qué otros productos ofrecen?
                             </button>
                         </h4>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                            aria-labelledby="panelsStayOpen-headingOne">
-                            <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It is shown by default, until
-                                the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Nuestra <strong>especialidad son los auténticos pastes</strong>
+                                , elaborados con recetas tradicionales y los mejores ingredientes. Además de pastes,
+                                ofrecemos una selecta <strong>panadería artesanal</strong> y deliciosos
+                                <strong>volovanes</strong>
+                                con rellenos únicos,
+                                perfectos para complementar cualquier pedido.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h4 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <h4 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#q2" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                Accordion Item #2
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                ¿Tienen una tienda física para recoger mi pedido?
                             </button>
                         </h4>
-                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingTwo">
-                            <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                until
-                                the collapse plugin adds the appropriate classes that we use to style each element.
-                                These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"> Por el momento, Pastiara funciona exclusivamente como
+                                <strong>un servicio de entrega a domicilio.</strong> Nos enfocamos en llevar la frescura
+                                de nuestros pastes directamente a tu puerta. <strong>Puedes realizar tu pedido</strong>
+                                a través de
+                                nuestra sección de Cotizaciones.
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h4 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <h4 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#q3" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                Accordion Item #3
+                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                aria-controls="flush-collapseThree">
+                                ¿Cuánto tiempo tarda en llegar mi pedido?
                             </button>
                         </h4>
-                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="panelsStayOpen-headingThree">
-                            <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default
-                                variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">El tiempo de entrega se coordina <strong>directamente con
+                                    nuestro equipo</strong> y depende de la cantidad solicitada y la zona de envío. Como
+                                referencia, para pedidos estándar, la entrega suele tardar entre <strong>24 y 48
+                                    horas</strong> después de la confirmación del pago.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                aria-controls="flush-collapseFour">
+                                Necesito Pastes Mini o un pedido grande para un evento, ¿cómo cotizo el servicio de
+                                catering?
+                            </button>
+                        </h4>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">¡Claro! Tenemos opciones especiales para eventos, incluyendo
+                                nuestros populares Pastes Mini y volovanes. Para recibir una cotización formal, por
+                                favor envíanos un correo a pastiara28@gmail.com con la siguiente información:
+                                <ul>
+                                    <li>Fecha y hora del evento.</li>
+                                    <li>Cantidad aproximada de piezas.</li>
+                                    <li>Sabores deseados.</li>
+                                    <li>Lugar de la entrega.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                aria-controls="flush-collapseFive">
+                                ¿Cuál es el monto mínimo de compra en Pastiara?
+                            </button>
+                        </h4>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Para garantizar la frescura de nuestros productos y cubrir los
+                                costos de envío y logística, el <strong>monto mínimo de compra</strong> para cualquier
+                                pedido es de
+                                <strong>$199.00 MXN</strong>. Este monto no incluye el costo de envío para lugares que
+                                no son en Pachuca
+                                o Mineral de la Reforma, Hgo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseSix" aria-expanded="false"
+                                aria-controls="flush-collapseSix">
+                                ¿Qué métodos de pago acepta Pastiara?
+                            </button>
+                        </h4>
+                        <div id="flush-collapseSix" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Aceptamos tres métodos de pago principales para confirmar tu
+                                pedido:
+                                <ul>
+                                    <li><strong>Transferencia Electrónica</strong> (SPEI).</li>
+                                    <li><strong>Depósito Bancario</strong> (en ventanilla o cajero).</li>
+                                    <li><strong>Pago en Efectivo</strong> (aplicable solo para entregas en zonas
+                                        específicas; por favor, consulta con nuestro equipo al momento de cotizar).
+                                    </li>
+                                </ul>
+                                <strong>Importante:</strong> Tu pedido comienza a prepararse una vez que se ha validado
+                                la recepción total del pago.
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseSeven" aria-expanded="false"
+                                aria-controls="flush-collapseSeven">
+                                ¿Puedo modificar o cancelar mi pedido después de realizar el pago?
+                            </button>
+                        </h4>
+                        <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Hemos establecido políticas estrictas para asegurar la frescura,
+                                ya que la compra y preparación de ingredientes comienza inmediatamente:
+                                <ul></ul>
+                                <li><strong>Cancelaciones:</strong> Solo se aceptan cancelaciones si nos
+                                    notificas en un plazo máximo de 4
+                                    horas después de haber realizado y pagado tu pedido. Transcurrido este tiempo, no es
+                                    posible cancelar, ya que los insumos han sido comprados y tu pedido está en proceso
+                                    de
+                                    elaboración.</li>
+                                <li><strong>Modificaciones (Sabores):</strong> Las modificaciones de sabores (cambios de
+                                    rellenos o
+                                    variedades) deben notificarse con al menos 24 horas de anticipación a la fecha y
+                                    hora de
+                                    entrega programadas. Esto nos da margen para ajustar la producción sin afectar tu
+                                    pedido.</li>
+                                </ul>
+                                Te recomendamos revisar tu orden cuidadosamente antes de confirmar la cotización.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#flush-collapseEight" aria-expanded="false"
+                                aria-controls="flush-collapseEight">
+                                ¿Cómo debo conservar los pastes para que mantengan su frescura?
+                            </button>
+                        </h4>
+                        <div id="flush-collapseEight" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Nuestros pastes se entregan listos para consumir. Si deseas
+                                guardarlos, te recomendamos:
+                                <ul>
+                                    <li><strong>Almacenamiento corto (1-2 días):</strong> Mantener en un recipiente
+                                        hermético a
+                                        temperatura
+                                        ambiente, en un lugar fresco y seco.</li>
+                                    <li><strong>Almacenamiento largo (hasta 1 semana):</strong> Refrigerar en un
+                                        recipiente sellado.</li>
+                                    <li><strong>Para recalentar:</strong> Puedes darles un toque de horno o freidora de
+                                        aire a 180°C
+                                        (350°F) por
+                                        unos minutos para devolverles su textura crujiente.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -386,8 +533,7 @@
 
     </main>
 
-
-
+    <special-footer></special-footer>
 
     <!-- Bootstrap JS y Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
