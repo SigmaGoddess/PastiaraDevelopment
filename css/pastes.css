@@ -1,14 +1,17 @@
 /** styles.css */
 /** --- Variables Globales (Raíz) y Fuentes --- */
 
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('./global_variables.css');
 @import url('./normalize.css');
 
 
+
 /** Fuentes */
-body {
+body-pastes {
     font-family: 'Questrial', sans-serif;
 }
+
 .hero-title {
     font-family: 'Abril Fatface', serif;
 }
@@ -19,7 +22,7 @@ body {
 
 /** --- Estilos de la Sección Principal (Hero) --- */
 .hero-section {
-    background-image: url('../images/INICIO/harina.jpg'); /* Banner para PC */
+    background-image: url('../images/INICIO/harina.jpg'); /** Banner para PC */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,15 +50,15 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Estilos de la Sección de Productos --- */
+/** --- Estilos de la Sección de Productos --- */
 
 .image-container {
-  /* Contenedor que envuelve la imagen y el corazón */
-  position: relative;     /* Es la referencia para posicionar el corazón */
-  max-width: 351px;       /* Fija el tamaño máximo en pantallas grandes */
-  margin: 0 auto;         /* Centra el contenedor de la imagen */
-  border-radius: 8px;     /* Bordes redondeados */
-  overflow: hidden;       /* Asegura que la imagen no se salga de los bordes */
+  /** Contenedor que envuelve la imagen y el corazón */
+  position: relative;     /** Es la referencia para posicionar el corazón */
+  max-width: 351px;       /** Fija el tamaño máximo en pantallas grandes */
+  margin: 0 auto;         /** Centra el contenedor de la imagen */
+  border-radius: 8px;     /** Bordes redondeados */
+  overflow: hidden;       /** Asegura que la imagen no se salga de los bordes */
 }
 
 .products-section {
@@ -68,10 +71,10 @@ body {
    
 }
 .product-image {
-   /* La imagen del producto */
-  display: block;         /* Mejora la alineación de la imagen */
-  width: 100%;            /* Hace que la imagen llene el contenedor */
-  height: 535px;          /* Tu altura fija para que todas sean iguales */
+   /** La imagen del producto */
+  display: block;         /** Mejora la alineación de la imagen */
+  width: 100%;            /** Hace que la imagen llene el contenedor */
+  height: 535px;          /** Tu altura fija para que todas sean iguales */
   object-fit: cover; 
   transition: transform 0.3s ease;     
 }
@@ -80,7 +83,7 @@ body {
 }
 
 .heart-favorite {
-   /* El ícono del corazón */
+   /** El ícono del corazón */
   position: absolute;
   top: 20px;
   right: 20px;
@@ -131,7 +134,7 @@ body {
 }
 
 
-/* --- Utilidades y Animaciones --- */
+/** --- Utilidades y Animaciones --- */
 html {
     scroll-behavior: smooth;
 }
@@ -149,7 +152,7 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* --- Diseño Responsivo (Responsive Design) --- */
+/** --- Diseño Responsivo (Responsive Design) --- */
 @media (max-width: 768px) {
     #hero-title-mobile {
         display: block;
@@ -166,10 +169,10 @@ html {
         display: none;
     }
     
-    /* ESTA ES LA REGLA QUE HEMOS CONSERVADO */
+    /** ESTA ES LA REGLA QUE HEMOS CONSERVADO */
     .hero-section {
         margin-top: 0;
-        background-image: url('../images/GENERAL/banner_ancho.jpg'); /* <--- TU BANNER MÓVIL */
+        background-image: url('../images/GENERAL/banner_ancho.jpg'); /** Banner móvil*/
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
