@@ -8,10 +8,7 @@
     background-color: var( --background-color);
 }
 
-main h2, 
-main h4, 
-main h5, 
-main h6
+
 .main-conocenos h2, .main-conocenos h4, .main-conocenos h5, .main-conocenos h6{
     font-family: var(--title-font);
     color: var(--color-title);
