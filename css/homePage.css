@@ -56,7 +56,7 @@ h1 {
 
 h2 {
   font-family: var(--title-font);
-  font-size: 40px;
+  font-size: 45px;
   color: var(--color-title);
 
 }
@@ -162,14 +162,15 @@ h2 {
   padding-right: 6px;
 }
 
+/*Aquí comienza el estilo del carrusel de productos*/
 #subtitle-products-home {
   margin-top: 40px;
-  font-size: 20px;
+  font-size: 24px;
   font-family: var(--title-body);
 }
 
 #group-btn-home {
-  font-size: 20px;
+  font-family: var(--title-body);
 }
 
 .contenedor-fondo-productos {
@@ -178,15 +179,8 @@ h2 {
   background-repeat: no-repeat;
   background-position: center;
   background-clip: padding-box;
-  position: relative; /* Importante para el posicionamiento */
-}
-
-.contenedor-fondo-productos {
-  background-image: url('/public/images/GENERAL/Banner-largo.png');
-  background-size: 100% 30%;
-  background-repeat: no-repeat;
-  background-position: center 38%; /* Ajusta el % para subir o bajar */
-  background-clip: padding-box;
+  position: relative;
+  /* Importante para el posicionamiento */
 }
 
 .card-wrapper {
@@ -241,6 +235,7 @@ h2 {
   /* fuerza salto de línea */
   margin: 8px auto;
   color: var(--color-text1);
+  font-family: var(--title-body);
   padding: 8px 10px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -288,6 +283,41 @@ h2 {
   margin-top: -35px;
 }
 
+/**Sirve para mostrar el carrusel seleccionado */
+.volovanes,
+.panaderia {
+  display: none;
+}
+
+.active-section {
+  display: block;
+}
+
+/**Estilos para que la letra sea negrita en la opción seleccionada */
+
+#group-btn-home .btn {
+  font-size: 17px;
+  font-weight: normal;
+  color: #333;
+  transition: all 0.2s ease;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#group-btn-home .btn:hover {
+  color: #000;
+}
+
+#group-btn-home .btn-check:checked+.btn {
+  font-weight: bold;
+  color: #000;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/*Aquí comienza el estilo de la imagen grande central de paste-principal*/
 /* Asegurar que la imagen no tenga espacios dentro del container */
 .paste-principal {
   width: 100%;
@@ -357,18 +387,9 @@ h2 {
   padding: 0;
 }
 
-
-@media screen and (max-width: 992px) {
-  .card-wrapper {
-    margin: 0 10px 25px;
-  }
-
-  .card-wrapper .swiper-slide-button {
-    display: none;
-  }
-}
-
-.preguntas-frecuentes {
+/*Aquí comienza el estilo de la imagen grande central de FAQ*/
+/* Responsividad y estilo de FAQ */
+#faq {
   background-image: url('/public/images/PASTES/IMG_3196piña_.jpeg');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
@@ -403,44 +424,182 @@ h2 {
   margin-right: auto;
 }
 
-.accordion-header {
-  color: var(--color-title);
-  font-family: var(--title-font);
-  font-size: 24px;
-  align-items: center;
+.accordion-button,
+.accordion-body,
+.accordion-item {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 15px;
+}
+
+/* Botones del acordeón (área clicable) */
+#faq .accordion-button {
+  color: white !important;
+  font-weight: 600 !important;
+  border: none !important;
+  font-size: 1rem;
+  padding: 0.85rem 1rem;
+  gap: 12px;
+  text-align: left;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+  font-family: var(--title-body);
+}
+
+/* Mejor separación entre items en pantallas pequeñas */
+#faq .accordion-item+.accordion-item {
+  margin-top: 10px;
+}
+
+.accordion-item:last-of-type {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Cuerpo del acordeón */
+#faq .accordion-body {
+  color: white !important;
+  font-weight: 400 !important;
+  border: none !important;
+  padding-top: 10px !important;
+  padding-bottom: 20px !important;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.accordion-button::after {
+  filter: invert(1);
+  /* Cambia el color del ícono a blanco */
+  content: '+';
+  font-size: 1.5rem;
+  background-image: none !important;
+  color: #fff !important;
+  filter: none !important;
+  transform: none !important;
+  margin-left: auto !important;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: '−';
+  /* Cambia el ícono cuando está expandido */
+  font-size: 1.5rem;
+  color: white !important;
 }
 
 
- /**Sirve para mostrar el carrusel seleccionado */
-.volovanes,
-.panaderia {
+/* Ajustes para pantallas grandes */
+@media (max-width: 992px) {
+  .card-wrapper {
+    margin: 0 10px 25px;
+  }
+
+  .card-wrapper .swiper-slide-button {
     display: none;
+  }
+
+  .Iconos {
+    margin: 60px 0;
+  }
+
+  .Iconos .img2 {
+    width: 72px;
+    margin-top: 60px;
+  }
+
+  #Bienvenida {
+    margin-top: 250px;
+    /* reduce espacio que tenías para header grande */
+  }
+
 }
 
-.active-section {
-    display: block;
+/* Ajustes responsive: tablet / móviles */
+@media (max-width: 768px) {
+  .Iconos {
+    margin: 20px 0;
+  }
+
+  .Iconos .img2 {
+    width: 64px;
+    margin-top: 14px;
+  }
+
+  #faq {
+    padding: 36px 0;
+  }
+
+  #faq h3 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  #faq .accordion.w-75 {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #faq .accordion-button {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  #faq .accordion-body {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.85rem;
+  }
+
+  #Bienvenida {
+    margin-top: 250px;
+  }
+
 }
 
-/**Estilos para que la letra sea negrita en la opción seleccionada */
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+  .Iconos {
+    margin: 14px 0;
+  }
 
-#group-btn-home .btn {
-  font-weight: normal;
-  color: #333;
-  transition: all 0.2s ease;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  .Iconos .img2 {
+    width: 52px;
+    margin-top: 10px;
+  }
+
+  #faq {
+    padding: 24px 0;
+  }
+
+  #faq h3 {
+    font-size: 20px;
+  }
+
+  #faq .accordion-button {
+    font-size: 0.92rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  #faq .accordion-body {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  #Bienvenida {
+    margin-top: 250px;
+  }
+
+  .linea-iconos {
+    /* NO CAMBIES top y transform, solo asegúrate que los tamaños son pequeños */
+    padding: 20px 0;
+    /* Reduce un poco el padding */
+  }
+
+  .linea-iconos .img2 {
+    width: 50px;
+    /* Iconos pequeños para no estorbar */
+    margin: 0 5px;
+  }
 }
-
-#group-btn-home .btn:hover {
-  color: #000;
-}
-
-#group-btn-home .btn-check:checked + .btn {
-  font-weight: bold;
-  color: #000;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
