@@ -6,7 +6,7 @@
 /* Estilos específicos para la página de inicio (homePage) */
 
 #Bienvenida {
-  margin-top: 200px;
+  margin-top: 163px;
   /* ajusta al alto real de tu header */
 }
 
@@ -17,23 +17,33 @@
   text-align: center;
   letter-spacing: 0.03em;
   margin-bottom: 50px;
-  line-height: 105px;
+  line-height: 100px;
   padding: 0 40px;
 }
 
-/* Imagen: centro y tamaño máximo para evitar que ocupe todo en desktop */
-#img-bienvenida {
+/* Contenedor de la imagen: full-width y recorte controlado */
+#Bienvenida #img-bienvenida {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  /* evitar centrar verticalmente */
   justify-content: center;
+  /* por defecto centrado horizontal */
+  overflow: hidden;
   padding: 0;
 }
 
-#img-bienvenida img {
+#Bienvenida #img-bienvenida img {
   width: 100%;
-  height: auto;
+  height: 90vh;
+  /* altura visible en desktop — ajustar (50vh..80vh) */
+  max-height: auto;
+  object-fit: cover;
+  /* mantiene proporción y recorta arriba/abajo */
+  object-position: cente;
+  /* focaliza la parte superior (no centrar verticalmente) */
   display: block;
-  margin: 12px auto;
+  margin: 0;
+  padding: 0;
 }
 
 #Bienvenida .row>[class*="col"] {

@@ -14,7 +14,12 @@ const searchBtnDesktop = document.getElementById("search-btn");
 const searchFormDesktop = document.getElementById("search-form");
 
 if (searchBtnDesktop && searchFormDesktop) {
-    searchBtnDesktop.addEventListener("click", () => {
-        searchFormDesktop.classList.toggle("d-none");
+    searchBtnDesktop.addEventListener('click', (e) => {
+        const btn = e.target.closest('#search-btn'); // o '.search-btn' según tu HTML
+        if (!btn) return;
+        e.preventDefault();
+        // lógica de búsqueda / toggle input
+        const input = document.querySelector('#searchInput');
+        input?.classList.toggle('visible');
     });
 }
