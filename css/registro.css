@@ -1,6 +1,7 @@
 
 @import url('/css/global_variables.css');
 @import url('/css/normalize.css');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 /* Estilos generales y fuentes */
 body {
@@ -20,6 +21,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
+    margin-top: 12rem;
 }
 
  
@@ -27,7 +29,7 @@ h1 {
     font-family: var(--title-font);
     font-size: clamp(1.5rem, 2rem + 1vw, 2.8rem);
     color: var( --color-title);
-    font-weight: 100;
+    font-weight: 900;
     margin-top: -1rem;
     margin-bottom: 2.5rem;
 }
@@ -38,7 +40,7 @@ h1 {
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
     margin-left: 2rem;
-    margin-top: -2rem;
+    margin-top: -1.3rem;
     
 }
 
@@ -55,7 +57,6 @@ h1 {
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
     margin-left: 2rem;
-    margin-top: -2rem;
     font-size: clamp(.5rem, 1rem + 1vw, 1.3rem);
 }
 
@@ -104,7 +105,7 @@ p {
 }
 
 
-.btn {
+.btn-style {
     background-color: var(--color-boton1);
     color: #fff;
     border: none;
@@ -116,7 +117,7 @@ p {
 
 }
 
-.btn:hover {
+.btn-style:hover {
     background-color: #8c6e62;
     color: #fff;
 }
@@ -173,6 +174,10 @@ p {
         margin-top: 2rem;
     }
 
+    .btn-sign-up {
+        margin-top: .8rem;
+    }
+
     .password-toggle-icon {
         font-size: 1rem;
     }
@@ -212,7 +217,7 @@ p {
 
         /* Posición a la derecha */
         right: .02rem;
-        top: 35.55rem;
+        top: 34rem;
     }
 
     .row.min-vh-100::before {
@@ -231,7 +236,7 @@ p {
 
         /*Posición a la izquierda*/
         left: .2rem;
-        top: 35.55rem;
+        top: 34rem;
     }
 
 

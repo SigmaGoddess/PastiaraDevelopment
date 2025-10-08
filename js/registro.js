@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- SELECTORES DE ELEMENTOS ---
+    // ------------------- SELECTORES DE ELEMENTOS ------------------------------
 
     // Campos de formularios y enlaces 
     const loginForm = document.getElementById('login-form');
@@ -8,24 +8,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const showSignUpLink = document.getElementById('show-sign-up-link');
     const showLoginLink = document.getElementById('show-login-link');
 
-    // Campos de contraseña (login)
-    const loginPassword = document.querySelector('#login-password');
-    const toggleLoginPassword = document.querySelector('#toggleLoginPassword');
+    // Campos de loginForm
+    const loginEmailInput = document.getElementById('login-email');
+    const loginPassword = document.getElementById('login-password');
+    const toggleLoginPassword = document.getElementById('toggleLoginPassword');
 
-    // Campos de contraseña (Sign up)
-    const signUpPassword = document.querySelector('#sign-up-password');
-    const toggleSignUpPassword = document.querySelector('#toggleSignUpPassword');
-    const confirmPassword = document.querySelector('#confirm-password');
-    const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+    // Campos de registerForm
+    const signUpPassword = document.getElementById('sign-up-password');
+    const toggleSignUpPassword = document.getElementById('toggleSignUpPassword');
+    const confirmPassword = document.getElementById('confirm-password');
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
 
-    // Campos del formulario de registro
     const nameInput = document.getElementById('name');
     const lastNameInput = document.getElementById('last-name');
-    const emailInput = document.getElementById('sign-up-email');
+    const signUpEmailInput = document.getElementById('sign-up-email');
     const phoneInput = document.getElementById('phone-number');
 
+    // ---------------------- CONFIGURACIÓN API --------------------------------------
+    const API_BASE_URL = 'https://reqres.in/api';
 
-    // --- FUNCION PARA CAMBIO ENTRE FORMULARIOS ---
+    // ------------------ FUNCIÓN PARA CAMBIO ENTRE FORMULARIOS ---------------------
 
     if (showSignUpLink) {
         showSignUpLink.addEventListener('click', function (event) {
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // --- FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ---
+    // --------------- FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ----------------------
 
     const setupPasswordToggle = (passwordInput, toggleIcon) => {
         if (passwordInput && toggleIcon) {
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupPasswordToggle(confirmPassword, toggleConfirmPassword); //Confirmación de registro
 
 
-    // --- VALIDACIÓN DEL FORMULARIO DE REGISTRO ---
+    // ---------------------- VALIDACIÓN DE FORMULARIOS_----------------------------
 
     // Expresiones regulares para validaciones
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,15 +76,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para mostrar errores
     const showError = (input, message) => {
-        const feedback = input.nextElementSibling;
         input.classList.add('is-invalid');
-        if (feedback && feedback.classList.contains('invalid-feedback')) {
-            feedback.textContent = message;
-        } else { 
-             const parentGroup = input.closest('.input-group');
-             const feedbackInGroup = parentGroup.querySelector('.invalid-feedback');
-             feedbackInGroup.textContent = message;
-        }
+        const feedback = input.closest('.input-group')?.querySelector('.invalid-feedback') ||
+            input.parentElement.querySelector('.invalid-feedback');
+
+        if (feedback) feedback.textContent = message;
     };
     
     // Función para limpiar errores
@@ -90,76 +88,180 @@ document.addEventListener('DOMContentLoaded', function () {
         input.classList.remove('is-invalid');
     };
 
-    // Event listener para el envío del formulario de registro
-    registerForm.addEventListener('submit', function (event) {
-        event.preventDefault(); 
+    //--------------------VALIDACIÓN DE FORMULARIOS: REGISTRO----------------------------
+
+    registerForm.addEventListener('submit', async function (event) { // función asíncrona
+        event.preventDefault();
+
+        const button = registerForm.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = "Cargando..";
 
         let isValid = true;
 
         // Limpiar errores previos
-        [nameInput, lastNameInput, emailInput, phoneInput, signUpPassword, confirmPassword].forEach(clearError);
+        [nameInput, lastNameInput, signUpEmailInput, phoneInput, signUpPassword, confirmPassword].forEach(clearError);
 
-        // 1. Validar Nombre
+        // Validaciones básicas de los campos
         if (nameInput.value.trim() === '') {
             showError(nameInput, 'Por favor, ingresa tu nombre(s).');
             isValid = false;
         }
-
-        // 2. Validar Apellido
         if (lastNameInput.value.trim() === '') {
-            showError(lastNameInput, 'Por favor, ingresa tu apellido.');
+            showError(lastNameInput, 'Por favor, ingresa tu primer apellido.');
             isValid = false;
         }
-
-        // 3. Validar Correo Electrónico
-        if (!emailRegex.test(emailInput.value.trim())) {
-            showError(emailInput, 'Por favor, ingresa un correo válido.');
+        if (!emailRegex.test(signUpEmailInput.value.trim())) {
+            showError(signUpEmailInput, 'Por favor, ingresa un correo válido.');
             isValid = false;
         }
-
-        // 4. Validar Teléfono
         if (!phoneRegex.test(phoneInput.value.trim())) {
             showError(phoneInput, 'El teléfono debe tener 10 dígitos.');
             isValid = false;
         }
-
-        // 5. Validar Contraseña
         if (!passwordRegex.test(signUpPassword.value)) {
             showError(signUpPassword, 'La contraseña no cumple los requisitos.');
             isValid = false;
         }
-        
-        // 6. Validar que las contraseñas coincidan
-        if (signUpPassword.value !== confirmPassword.value || confirmPassword.value === '') {
+        if (signUpPassword.value.trim() !== confirmPassword.value.trim()) {
             showError(confirmPassword, 'Las contraseñas no coinciden.');
             isValid = false;
         }
+        // Si los campos no pasan validación:
+        if (!isValid) {
+            button.disabled = false;
+            button.textContent = "Crear cuenta";
+            return;
+        }
+        //Si todos los campos son aceptados:
 
-        // Si todo es válido, se crea el objeto JSON
-        if (isValid) {
-            const user = {
-                nombreCompleto: `${nameInput.value.trim()} ${lastNameInput.value.trim()}`,
-                telefono: phoneInput.value.trim(),
-                email: emailInput.value.trim(),
-                password: signUpPassword.value
-            };
+        const newUserEmail = signUpEmailInput.value.trim().toLowerCase();
+        const newUserPassword = signUpPassword.value;
 
-            // Muestra el objeto JSON en consola
-            console.log('Formulario validado con éxito. Objeto JSON creado:');
-            console.log(JSON.stringify(user, null, 2));
 
-            // Envío de los datos a un servidor
+        // Try - catch para manejar errores de red
+        try {
+            // Se crea la petición POST con fetch
+            const response = await fetch(`${API_BASE_URL}/register`, {
+                method: 'POST',
+                headers: {
+                    'x-api-key': 'reqres-free-v1',
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({
+                    email: newUserEmail,
+                    password: newUserPassword
+                    // Nota: en reqres.in solo se esta utiizando email y password para el registro. Pendiente aregar los demás datos.
+
+                })
+            });
+
+            const data = await response.json();
+
+            // Verificación respuesta del servidor (exitosa = código 2xx)
+            if (response.ok) {
+                console.log('Registro exitoso en el servidor:', data);
+
+                Swal.fire({
+                    title: "¡Tasty!",
+                    text: "Registro exitoso",
+                    imageUrl: "/images/REGISTRO/IconoDeInicioSesion.png",
+                    imageWidth: 150,
+                    imageHeight: 90,
+                    imageAlt: "Icono de paste"
+                });
+
+                registerForm.reset();
+                registerForm.classList.add('d-none');
+                loginForm.classList.remove('d-none');
+
+            } else {
+                // Si el servidor responde con un error (email duplicado)
+                showError(signUpEmailInput, data.error || 'Este correo ya está en uso.');
+            }
+            //Respuesta con error de conexión al servidor
+        } catch (error) {
+            console.error('Error de conexión:', error);
             Swal.fire({
-                title: "¡Tasty!",
-                text: "Regisrto exitoso",
-                imageUrl: "/images/REGISTRO/IconoDeInicioSesion.png",
-                imageWidth: 150,
-                imageHeight: 90,
-                imageAlt: "Icono de paste"
-            })
-            
-            // Limpiar el formulario
-            registerForm.reset();
+                title: "Error de conexión",
+                text: "No se pudo conectar con el servidor. Intenta más tarde.",
+                icon: "error"
+            });
+        } finally {
+            button.disabled = false;
+            button.textContent = "Crear cuenta";
+        }
+
+    });
+
+    // ----------------- VALIDACIÓN DE FORMULARIOS:INICIO DE SESIÓN---------------------
+
+    loginForm.addEventListener('submit', async function (event) { // función asíncrona
+        event.preventDefault();
+
+        const button = event.target.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = "Ingresando..";
+
+        const enteredEmail = loginEmailInput.value.trim().toLowerCase();
+        const enteredPassword = loginPassword.value;
+
+        clearError(loginEmailInput);
+        clearError(loginPassword);
+
+        if (enteredEmail === '' || enteredPassword === '') {
+            showError(loginEmailInput, 'Por favor, completa todos los campos.');
+            showError(loginPassword, ' ');
+            button.disabled = false; 
+            button.textContent = "Iniciar sesión";
+            return;
+        }
+
+        try {
+            // Se crea la petición POST con fetch
+            const response = await fetch(`${API_BASE_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'x-api-key': 'reqres-free-v1',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: enteredEmail,
+                    password: enteredPassword
+                })
+            });
+
+            const data = await response.json();
+
+            // Verificación respuesta
+            if (response.ok) {
+                console.log('Inicio de sesión exitoso. Token:', data.token);
+                                
+                Swal.fire({
+                    title: `¡Bienvenido de nuevo!`, 
+                    text: "Inicio de sesión exitoso.",
+                    icon: "success"
+                }).then(() => {
+                    loginForm.reset();
+                    window.location.href = 'index.html'; // Redirección a la página principal
+                });
+
+            } else {
+                // Si el servidor responde con un error (credenciales inválidas)
+                showError(loginEmailInput, data.error || 'Correo o contraseña inválidos.');
+                showError(loginPassword, ' ');
+            }
+        //Respuesta con error de conexión al servidor
+        } catch (error) {
+            Swal.fire({
+                title: "Error de conexión",
+                text: "Intenta más tarde",
+                icon: "error"
+            });
+        } finally {
+            button.disabled = false;
+            button.textContent = "Iniciar sesión";
         }
     });
 });

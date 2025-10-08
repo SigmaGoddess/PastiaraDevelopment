@@ -1,240 +1,187 @@
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
-/* ===== Reset Global ===== */
-/* Normaliza márgenes, padding y box-sizing en todos los elementos */
+
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
 
-/* ===== Fuente Global ===== */
-/* Tipografía base, fondo y color de texto general */
-body {
-  font-family: 'Questrial', sans-serif;
-  background-color: #fff;
-  color: #000;
-}
 
-/* ===== Footer ===== */
-/* Estilos generales del pie de página */
+/* ===== Footer Principal ===== */
 .footer {
-  padding: 2rem 1rem;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
+  font-family: var(--title-body);
+  background-color: var(--background-color);
+  color: var(--color-text1);
+  padding: 3rem 0 1rem;
+  border-top: 1px solid var(--color-text3);
+  width: 100%;
 }
 
-/* ===== Footer Container ===== */
-/* Distribución en columnas usando grid */
-.footer-container {
-  display: grid;
-  grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
-  gap: 2rem;
-  align-items: start;
-}
-
-/* ===== Columnas del Footer ===== */
-/* Ajuste de estructura y estilo de títulos y listas */
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.footer-col h4 {
-  color: #B58A6A;
-  font-size: 28px;
-  margin-bottom: 1rem;
-}
-
-.footer-col ul {
-  list-style: none;
-}
-
-.footer-col ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-col ul li a {
-  text-decoration: none;
-  color: #000;
-  font-size: 18px;
-  transition: color 0.3s;
-}
-
-.footer-col ul li a:hover {
-  color: #B58A6A;
+/* ===== Container Ancho Completo ===== */
+.footer .container {
+  max-width: 100%;
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 /* ===== Logo Pastiara ===== */
-/* Ajuste de tamaño y espaciado del logo */
 .logo-pastiara {
   max-width: 200px;
+  height: auto;
   display: block;
-  margin-bottom: 1rem;
 }
 
-/* ===== Frase del Footer ===== */
-/* Texto destacado debajo del logo */
+/* ===== Frase Destacada ===== */
 .footer-frase {
-  font-size: 24px;
-  color: #000;
-  margin-top: 0.5rem;
-  text-align: left;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: bold;
+  color: var(--color-text1);
+  margin: 0;
+  line-height: 1.3;
 }
 
-/* ===== Botones ===== */
-/* Estilo para botones de registro y login */
-.acciones-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+/* ===== Títulos de Sección ===== */
+.footer h4 {
+  color: var(--color-title);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
+/* ===== Enlaces ===== */
+.footer a {
+  color: var(--color-text1);
+  text-decoration: none;
+  font-size: 1.125rem;
+  transition: color 0.3s ease;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.footer a:hover {
+  color: var(--color-title);
+}
+
+/* ===== Información de Contacto ===== */
+.info-contacto {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text1);
+}
+
+/* ===== Botones Personalizados ===== */
 .btn-registro {
-  background-color: #B58A6A;
-  color: #fff;
+  background-color: var(--color-boton1);
+  color: var(--color-text2);
   border: none;
-  padding: 10px 20px;
+  padding: 0.625rem 2rem;
   border-radius: 6px;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  width: 100%;
   cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-registro:hover {
-  background-color: #8c6a50;
+  background-color: var(--color-text3);
   transform: scale(1.05);
+  color: var(--color-text2);
 }
 
 .btn-login {
   background-color: transparent;
-  color: #B58A6A;
-  border: 2px solid #B58A6A;
-  padding: 10px 20px;
-  font-size: 18px;
+  color: var(--color-boton1);
+  border: 2px solid var(--color-boton1);
+  padding: 0.625rem 2rem;
   border-radius: 6px;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  width: 100%;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
 .btn-login:hover {
-  background-color: #B58A6A;
-  color: #fff;
+  background-color: var(--color-boton1);
+  color: var(--color-text2);
   transform: scale(1.05);
 }
 
-/* ===== Redes Sociales ===== */
-/* Íconos con espaciado, color principal y hover */
+/* ===== Iconos Sociales ===== */
 .social-icons {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.social-icons i {
-  font-size: 28px;
-  color: #B58A6A;
-  cursor: pointer;
-  transition: color 0.3s, transform 0.3s;
+.social-icons a {
+  color: var(--color-title);
+  font-size: 1.75rem;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-.social-icons i:hover {
-  color: #8c6a50;
+.social-icons a:hover {
+  color: var(--color-text3);
   transform: scale(1.1);
 }
 
-/* ===== Footer Bottom ===== */
-/* Línea divisoria y texto de copyright */
+/* ===== Footer Inferior ===== */
 .footer-bottom {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--color-text3);
   margin-top: 2rem;
   padding-top: 1rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #000;
+  color: var(--color-text1);
 }
 
-/* ===== Responsive para pantallas pequeñas ===== */
-/* Reestructura el footer en dos columnas principales para móvil */
-@media (max-width: 600px) {
-  /* Contenedor principal con flex y wrap */
-  .footer-container {
-    display: flex;
-    flex-direction: row;
+/* ===== Media Queries Responsive ===== */
+@media (max-width: 991px) {
+  .footer h4 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+
+  .footer .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .logo-pastiara {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+
+  .footer-frase {
+    text-align: center;
+  }
+
+  .social-icons {
     justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 
-  /* Columna izquierda: Logo, Inicio, Legales, Botones */
-  .footer-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  .footer h4 {
+    font-size: 1.25rem;
   }
 
-  .footer-left .logo-col {
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .footer a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .acciones-col {
+    align-items: stretch !important;
   }
 
-  .footer-left .inicio-col,
-  .footer-left .legales-col {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .footer-left .acciones-col {
-    order: 3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .footer-left .acciones-col button {
-    width: 120px;
-  }
-
-  /* Columna derecha: Frase, Productos, Redes Sociales */
-  .footer-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .footer-right .frase-col {
-    order: 1;
-    text-align: center;
-  }
-
-  .footer-right .productos-col {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-  }
-
-  .footer-right .social-icons {
-    order: 3;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px;
-  }
-
-  /* Footer bottom centrado */
-  .footer-bottom {
-    order: 4;
-    text-align: center;
-    margin-top: 20px;
+  .btn-registro,
+  .btn-login {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
   }
 }
