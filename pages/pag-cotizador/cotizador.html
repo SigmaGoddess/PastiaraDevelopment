@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,543 @@
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!--Swiper-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!--Hoja de estilos-->
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/cotizador.css">
 </head>
+
 <body>
 
+    <special-header></special-header>
+
+    <main>
+        <div class="container-fluid mt-5 text-center" id="container-set">
+            <h2 id="title-set">Sobre pedido</h2>
+            <p id="text-set">Agredecemos tu visita a nuestro servicio de cotización</p>
+        </div>
+
+        <!--Contendor de sección de cotizador-->
+        <div class="container-fluid px-0 ">
+            <div class="row mx-3 mx-md-0">
+                <!--Banner izquierda-->
+                <div class="col-md-1 d-none d-md-flex flex-column justify-content-center px-0 ">
+
+                    <div class="w-100 d-flex align-items-center" id="background-banner" style="height: 150px;">
+                        <img src="/images/GENERAL/banner-cotizador.svg" class="img-fluid" alt="....">
+                    </div>
+
+                </div>
+                <!--Contenido formulario-->
+                <div class="col-12 col-md-10 px-5 py-3" id="colum">
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Tipo de evento</p>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Fecha de evento</p>
+                                <div class="input-group input-group-sm">
+                                    <input type="date" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Calle</p>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 d-flex">
+                                <div>
+                                    <p id="text-form">N.Ext</p>
+                                    <div class="input-group input-group-sm">
+                                        <input type="number" class="form-control input-shadow-color"
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+
+                                <div class="mx-3">
+                                    <p id="text-form">N.Ext</p>
+                                    <div class="input-group input-group-sm">
+                                        <input type="number" class="form-control input-shadow-color"
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Colonia</p>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Estado</p>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <h2 id="text-set">Agrega tus productos</h2>
+                        </div>
+                        <!--Acordion pastes-->
+                        <div class="row mb-2">
+
+                            <div class="accordion background-accordion" id="accordionPastes">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading_nombre_categoria">
+                                        <button class="accordion-button accordion-button-color collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse_accordion_pastes"
+                                            aria-expanded="true" aria-controls="collapse_accordion_pastes"
+                                            id="text-form">
+                                            Pastes
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_accordion_pastes" class="accordion-collapse collapse"
+                                        aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionPastes">
+                                        <div class="accordion-body">
+
+                                            <div class="row" id="contenedor-pastes">
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="contenedor-carrusel">
+                                                        
+                                                    <div class="swiper-container mySwiper">
+                                                        
+                                                        <div class="swiper-wrapper">
+                                                        
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
 
 
-    
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+
+
+                                                                    <div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            <h5 class="card-title mb-0">Frijol</h5>
+                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6">Total: $****</span>
+
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">-</button>
+                                                                                <span class="quantity-display">0</span>
+                                                                                <button class="btn btn-sm"
+                                                                                    type="button">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Accordion volovanes-->
+                        <div class="row mb-2">
+
+                            <div class="accordion background-accordion" id="accordionVolovanes">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading_nombre_categoria">
+                                        <button class="accordion-button accordion-button-color collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse_accordion_volovanes"
+                                            aria-expanded="false" aria-controls="collapse_accordion_volovanes"
+                                            id="text-form">
+                                            Volovanes
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_accordion_volovanes" class="accordion-collapse collapse"
+                                        aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionVolovanes">
+                                        <div class="accordion-body">
+
+                                            <div class="row">
+
+                                                contenido de volovanes
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Acorddion panaderia artesanal-->
+                        <div class="row mb-2">
+
+                            <div class="accordion background-accordion" id="accordionPanaderia">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading_nombre_categoria">
+                                        <button class="accordion-button accordion-button-color collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse_accordion_panaderia"
+                                            aria-expanded="true" aria-controls="collapse_accordion_panaderia"
+                                            id="text-form">
+                                            Panaderia artesanal
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_accordion_panaderia" class="accordion-collapse collapse"
+                                        aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionPanaderia">
+                                        <div class="accordion-body">
+
+                                            <div class="row">
+
+                                                contenido de Panaderia Artesanal
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!--Acorddion para regalar-->
+                        <div class="row mb-2">
+
+                            <div class="accordion background-accordion" id="accordionParaRegalar">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading_nombre_categoria">
+                                        <button class="accordion-button accordion-button-color collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse_accordion_para_regalar"
+                                            aria-expanded="true" aria-controls="collapse_accordion_para_regalar"
+                                            id="text-form">
+                                            Para regalar
+                                        </button>
+                                    </h2>
+                                    <div id="collapse_accordion_para_regalar" class="accordion-collapse collapse"
+                                        aria-labelledby="heading_nombre_categoria"
+                                        data-bs-parent="#accordionParaRegalar">
+                                        <div class="accordion-body">
+
+                                            <div class="row">
+
+                                                contenido de Para regalar
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--Banner derecha-->
+                <div class="col-md-1 d-none d-md-flex flex-column justify-content-center px-0 ">
+
+                    <div class="w-100 d-flex align-items-center" id="background-banner" style="height: 150px;">
+                        <img src="/images/GENERAL/banner-cotizador.svg" class="img-fluid" alt="....">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+
+
     <!--JavaScrp Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
     <script src="/js/navbar.js" type="module"></script>
+    <!--Swiper-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/js/cotizador.js"></script>
+    
+
 </body>
+
 </html>
