@@ -11,9 +11,14 @@
 }
 
 .Bienvenida-title {
-  font-size: 62px;
-  /* desktop */
-  margin-bottom: 18px;
+  font-size: 80px;
+  color: var(--color-title);
+  font-family: var(--title-font);
+  text-align: center;
+  letter-spacing: 0.03em;
+  margin-bottom: 50px;
+  line-height: 105px;
+  padding: 0 40px;
 }
 
 /* Imagen: centro y tamaño máximo para evitar que ocupe todo en desktop */
@@ -36,19 +41,11 @@
   padding-right: 0 !important;
 }
 
-h1 {
-  color: var(--color-title);
-  font-family: var(--title-font);
-  font-size: 62px;
-  text-align: center;
-  margin: 0% 60px;
-  margin-bottom: 30px;
-}
 
 .subtitle {
   font-family: var(--title-body);
   color: var(--color-text2);
-  font-size: 21px;
+  font-size: 28px;
   margin: 0% 60px;
   padding: 30px;
   line-height: 1.5;
@@ -56,8 +53,9 @@ h1 {
 
 h2 {
   font-family: var(--title-font);
-  font-size: 45px;
+  font-size: 50px;
   color: var(--color-title);
+  letter-spacing: 0.04em;
 
 }
 
@@ -104,13 +102,14 @@ h2 {
   padding: 6px 12px;
 }
 
+
 .cotizador {
   font-family: var(--title-body);
   background-color: var(--color-boton1);
   color: var(--color-text2);
   border: none;
-  padding: 10px 40px;
-  font-size: 18px;
+  padding: 10px 60px;
+  font-size: 22px;
   margin-top: 80px;
   margin-bottom: 40px;
   background-image: url('/public/images/GENERAL/CanastaConPastes.png');
@@ -175,9 +174,10 @@ h2 {
 
 .contenedor-fondo-productos {
   background-image: url('/public/images/GENERAL/Banner-largo.png');
-  background-size: contain;
+  background-size: 100% 30%;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center 38%;
+  /* Ajusta el % para subir o bajar */
   background-clip: padding-box;
   position: relative;
   /* Importante para el posicionamiento */
@@ -514,6 +514,13 @@ h2 {
     /* reduce espacio que tenías para header grande */
   }
 
+  .Bienvenida-title {
+    font-size: 60px;
+    letter-spacing: 0.03em;
+    margin-bottom: 40px;
+    line-height: 80px;
+  }
+
 }
 
 /* Ajustes responsive: tablet / móviles */
@@ -556,6 +563,13 @@ h2 {
     margin-top: 250px;
   }
 
+  .Bienvenida-title {
+    font-size: 40px;
+    letter-spacing: 0.02em;
+    margin-bottom: 30px;
+    line-height: 40px;
+  }
+
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -589,6 +603,13 @@ h2 {
 
   #Bienvenida {
     margin-top: 250px;
+  }
+
+  .Bienvenida-title {
+    font-size: 30px;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    line-height: 30px;
   }
 
   .linea-iconos {
