@@ -1,6 +1,13 @@
 @import url('/css/global_variables.css');
 @import url('/css/normalize.css');
 
+.main-cotizador{
+    margin-top: 210px;
+    margin-bottom: 150px;
+    background-color: var( --background-color);
+}
+
+
 
 #container-set {
   padding-left: 20px;
@@ -41,6 +48,14 @@
 #text-form {
   margin-bottom: 2px;
   font-family: var(--title-body);
+  color: var(--color-text3);
+
+}
+
+#text-notas {
+  font-family: var(--title-body);
+  margin-bottom: 2px;
+  color: var(--color-text3);
 
 }
 
@@ -151,14 +166,12 @@
 
 }
 
-.contenedor-carrusel .swiper-container{
+.contenedor-carrusel .swiper-container-pastes{
   width: 100%;
   height: 100%;
 }
 
-.contenedor-carrusel .swiper-slide{
-  margin: 0px;
-}
+
 
 .swiper-slide img{
    display: block;
@@ -168,7 +181,28 @@
 
 }
 
-#contenedor-pastes{
+.imagen-cards{
+   display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    
+
+}
+
+#mg-product-card{
+  margin-right: 33px;
+}
+
+#contenedor-collapse-productos-pastes {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 38px;
+  padding-right: 38px;
+}
+#contenedor-collapse-productos-volovanes{
   position: relative;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -176,7 +210,37 @@
   padding-right: 38px;
 }
 
+#contenedor-collapse-productos{
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 38px;
+}
+
 .swiper-button-next, .swiper-button-prev {
 
   color: var(--color-title) ;
+}
+
+.cotizador {
+  font-family: var(--title-body);
+  background-color: var(--color-boton1);
+  color: var(--color-text2);
+  border: none;
+  padding: 10px 40px;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  background-image: url('/public/images/GENERAL/CanastaConPastes.png');
+  /* Ruta de tu imagen */
+  background-repeat: no-repeat;
+  /* Para que la imagen no se repita */
+  background-position: right 10px center;
+  /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+  padding-right: 60px;
+  /* Aumenta el padding para que el texto no se superponga con la imagen */
+  background-size: 40px;
+  /* Establece el tamaño de la imagen */
+  width: 240px;
 }
