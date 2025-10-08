@@ -29,7 +29,7 @@
 
     <main>
         <section id="Bienvenida" class="Bienvenida-section">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row align-items-center">
                     <!-- Texto (desktop muestra banner dentro, mobile oculta este banner) -->
                     <div class="col text-center">
@@ -47,7 +47,10 @@
                         </p>
 
                         <button class="btn cotizador" type="button"
-                            onclick="location.href='/pages/pag-cotizador/cotizador.html'">¡Cotiza aquí!</button>
+                            onclick="location.href='/pages/pag-cotizador/cotizador.html'">
+                            <span class="btn-text">¡Cotiza aquí!</span>
+                            <span class="btn-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
 
                     <!-- Imagen (col se apila en móviles automáticamente) -->
