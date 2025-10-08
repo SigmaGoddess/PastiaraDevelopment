@@ -1,13 +1,15 @@
 /* styles.css */
-
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('./global_variables.css');
 @import url('./normalize.css');
 
 
 
+
 /* Asignación de fuentes */
-body {
+.container-panaderia {
     font-family: var(--title-body);
+    margin-top: 250px; 
 }
 
 .hero-title {
@@ -190,7 +192,7 @@ html {
 
 /* Estilos para las notificaciones Toastify */
 .toastify {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Questrial", sans-serif;
 }
 
 /* --- Diseño Responsivo (Responsive Design) --- */
@@ -208,7 +210,9 @@ html {
         text-align: center;
     }
 
-
+    .container-panaderia {
+        margin-top: 50px;
+    }
 
     #hero-title-desktop {
         display: none;
