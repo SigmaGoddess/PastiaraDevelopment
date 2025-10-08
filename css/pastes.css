@@ -76,8 +76,6 @@
 .product-image {
    /** La imagen del producto */
   display: block;         /** Mejora la alineación de la imagen */
-  width: 100%;            /** Hace que la imagen llene el contenedor */
-  height: 535px;          /** Tu altura fija para que todas sean iguales */
   object-fit: cover; 
   transition: transform 0.3s ease;     
 }
