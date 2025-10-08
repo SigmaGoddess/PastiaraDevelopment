@@ -1,16 +1,15 @@
 /*Importación de las variables globales */
-@import url('./css/global_variables.css');
-@import url('./css/normalize.css');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
-main{
-    margin-top: 250px; 
+.main-conocenos{
+    margin-top: 210px; 
     background-color: var( --background-color);
 }
 
-main h2, 
-main h4, 
-main h5, 
-main h6{
+
+.main-conocenos h2, .main-conocenos h4, .main-conocenos h5, .main-conocenos h6{
     font-family: var(--title-font);
     color: var(--color-title);
     size: 64px;
@@ -18,14 +17,25 @@ main h6{
     padding: 0;
 }
 
-main p{
+.main-conocenos p{
     line-height: 1.5; 
     font-family: var(--title-body);
     font-size: 20px;
     color: var(--color-text1);
 }
 
+/*Ajuste de pantallas*/
+@media (max-width: 992px) {
+  .main-conocenos{
+    margin-top: 180px;
+  }
+}
 
+@media (max-width: 576px) {
+    .main-conocenos {
+        margin-top: 150px;
+    }
+}
 
 /*-----HISTORIA--------------------------------------------*/
 /*---------BANNER SABOR--------*/
@@ -373,7 +383,6 @@ main p{
         right: 10px;
     }
 }
-
 
 
 /*---Imagen del carrusel---*/

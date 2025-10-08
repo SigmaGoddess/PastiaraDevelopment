@@ -56,7 +56,7 @@ h1 {
 
 h2 {
   font-family: var(--title-font);
-  font-size: 40px;
+  font-size: 45px;
   color: var(--color-title);
 
 }
@@ -73,7 +73,7 @@ h2 {
 }
 
 .contenedor-fondo {
-  background-image: url('../dist/images/GENERAL/Banner\ Home.png');
+  background-image: url('/public/images/GENERAL/Banner\ Home.png');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
@@ -162,28 +162,25 @@ h2 {
   padding-right: 6px;
 }
 
+/*Aquí comienza el estilo del carrusel de productos*/
 #subtitle-products-home {
   margin-top: 40px;
-  font-size: 20px;
+  font-size: 24px;
   font-family: var(--title-body);
 }
 
 #group-btn-home {
-  font-size: 20px;
+  font-family: var(--title-body);
 }
 
 .contenedor-fondo-productos {
-  background-image: url('../dist/images/GENERAL/Banner-largo.png');
-  /* Cambia la ruta según la ubicación de tu imagen */
+  background-image: url('/public/images/GENERAL/Banner-largo.png');
   background-size: contain;
-  /* Ajusta el tamaño de la imagen */
   background-repeat: no-repeat;
-  /* Evita que la imagen se repita */
   background-position: center;
-  /* Centra la imagen */
   background-clip: padding-box;
-  /* Asegura que la imagen no se desborde */
-
+  position: relative;
+  /* Importante para el posicionamiento */
 }
 
 .card-wrapper {
@@ -196,6 +193,10 @@ h2 {
   justify-content: center;
   align-items: flex-start;
 
+}
+
+.panaderia .swiper-wrapper {
+  justify-content: center !important;
 }
 
 .card-list .card-link {
@@ -234,6 +235,7 @@ h2 {
   /* fuerza salto de línea */
   margin: 8px auto;
   color: var(--color-text1);
+  font-family: var(--title-body);
   padding: 8px 10px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -281,6 +283,41 @@ h2 {
   margin-top: -35px;
 }
 
+/**Sirve para mostrar el carrusel seleccionado */
+.volovanes,
+.panaderia {
+  display: none;
+}
+
+.active-section {
+  display: block;
+}
+
+/**Estilos para que la letra sea negrita en la opción seleccionada */
+
+#group-btn-home .btn {
+  font-size: 17px;
+  font-weight: normal;
+  color: #333;
+  transition: all 0.2s ease;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#group-btn-home .btn:hover {
+  color: #000;
+}
+
+#group-btn-home .btn-check:checked+.btn {
+  font-weight: bold;
+  color: #000;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/*Aquí comienza el estilo de la imagen grande central de paste-principal*/
 /* Asegurar que la imagen no tenga espacios dentro del container */
 .paste-principal {
   width: 100%;
@@ -350,17 +387,7 @@ h2 {
   padding: 0;
 }
 
-
-@media screen and (max-width: 992px) {
-  .card-wrapper {
-    margin: 0 10px 25px;
-  }
-
-  .card-wrapper .swiper-slide-button {
-    display: none;
-  }
-}
-
+/*Aquí comienza el estilo de la imagen grande central de FAQ*/
 /* Responsividad y estilo de FAQ */
 #faq {
   background-image: url('/public/images/PASTES/IMG_3196piña_.jpeg');
@@ -462,8 +489,17 @@ h2 {
   color: white !important;
 }
 
+
 /* Ajustes para pantallas grandes */
 @media (max-width: 992px) {
+  .card-wrapper {
+    margin: 0 10px 25px;
+  }
+
+  .card-wrapper .swiper-slide-button {
+    display: none;
+  }
+
   .Iconos {
     margin: 60px 0;
   }
