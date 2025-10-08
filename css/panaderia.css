@@ -9,7 +9,7 @@
 /* Asignación de fuentes */
 .container-panaderia {
     font-family: var(--title-body);
-    margin-top: 250px; 
+    margin-top: 250px;
 }
 
 .hero-title {
@@ -82,10 +82,10 @@
 .product-image {
     width: 100%;
     height: 100%;
-    
+
     max-width: 100%;
-    
-   
+
+
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -117,7 +117,7 @@
 .heart-favorite i {
     font-size: 24px;
     color: white;
-   -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 2px white;
     /* Borde blanco para el corazón */
     transition: all 0.3s ease;
 }
@@ -195,6 +195,57 @@ html {
     font-family: "Questrial", sans-serif;
 }
 
+
+.boton-flotante-ordenar {
+    /* Posicionamiento fijo, la clave para que flote */
+    position: fixed;
+    right: 20px; /* Distancia desde el borde derecho */
+    bottom: 650px; /* Distancia desde el borde inferior */
+    
+    /* Estilos de diseño (ajusta a tu marca) */
+    background-color: var(--color-title); 
+    font-family: var(--title-body);
+    color: white; /* Texto blanco */
+    padding: 15px 25px;
+    border-radius: 30px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    font-size: 1.1em;
+    font-weight: bold;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    transition: background-color 0.3s ease; /* Transición para el hover */
+
+    display: flex; /* Permite que el contenido del botón (imagen y texto) se alinee fácilmente */
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+    justify-content: center; /* Centra horizontalmente todo el contenido */
+    gap: 8px; /* Espacio entre la imagen y el texto */
+
+
+}
+
+.icono-boton {
+    width: 34px;
+    /* Ajusta el tamaño del icono */
+    height: 34px;
+    /* Puedes añadir más estilos si es necesario, como margin-right si no usas gap */
+}
+
+
+
+/* Efecto de 'hover' para feedback visual */
+.boton-flotante-ordenar:hover {
+    background-color: var(--color-title);
+    transform: scale(1.05);
+    /* Ligeramente más grande */
+}
+
+
+
+
+
+
+
+
 /* --- Diseño Responsivo (Responsive Design) --- */
 /* Estilos para pantallas con un ancho máximo de 768px (tablets y móviles) */
 @media (max-width: 768px) {
@@ -247,23 +298,52 @@ html {
 
     .products-section {
         padding-top: 0px;
-        padding-left: 20px; /* Agrega espacio a la izquierda */
-        padding-right: 20px; /* Agrega espacio a la derecha */
-       
+        padding-left: 20px;
+        /* Agrega espacio a la izquierda */
+        padding-right: 20px;
+        /* Agrega espacio a la derecha */
+
     }
 
 
     .product-card {
-        margin-bottom: 80px; 
-        max-width: none; 
+        margin-bottom: 80px;
+        max-width: none;
         width: 100%;
-        margin-left: 0; 
+        margin-left: 0;
         margin-right: 0;
     }
-    
+
 
 
     .hero-section {
         margin-top: 0;
     }
+
+
+    .boton-flotante-ordenar {
+        /*Se ancla al fondo, abarcando todo el ancho */
+        bottom: 0;
+        border-radius: 0;
+        /* Quita los bordes redondeados */
+        padding: 20px 0;
+        /* Ajusta el padding vertical */
+        right: -20px;
+        /* Distancia desde la derecha, negativo para que se vea cortado */
+        bottom: 30px;
+        /* La posición vertical que ajustamos antes */
+        width: auto;
+        /* Permite que el ancho se ajuste al contenido (texto + padding) */
+        padding: 15px 25px;
+        /* Restaura el padding del botón */
+        border-radius: 30px;
+        /* Restaura los bordes redondeados */
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: var(--title-body);
+
+    }
+
+
+
 }
