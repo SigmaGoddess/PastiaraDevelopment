@@ -1,16 +1,16 @@
 
 @import url('/css/global_variables.css');
 @import url('/css/normalize.css');
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
 
 /* Estilos generales y fuentes */
-body {
+.body-registro {
     font-family: var( --title-body);
     color: var(--color-text3);
     font-size: clamp(.5rem, 1rem + 1vw, 1.4rem);
     margin: 0;
-
 }
+
 
 .container-background {
     /* Imagen de fondo */
@@ -21,7 +21,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    margin-top: 12rem;
+    margin-top: -5rem;    
 }
 
  
@@ -29,7 +29,6 @@ h1 {
     font-family: var(--title-font);
     font-size: clamp(1.5rem, 2rem + 1vw, 2.8rem);
     color: var( --color-title);
-    font-weight: 900;
     margin-top: -1rem;
     margin-bottom: 2.5rem;
 }
@@ -40,8 +39,7 @@ h1 {
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
     width: 100%;
     margin-left: 2rem;
-    margin-top: -1.3rem;
-    
+    margin-top: -5rem;
 }
 
 .login-card img {
@@ -128,6 +126,7 @@ p {
 
     .container-background {
         background-image: none;
+        margin-top: 1.5rem;
     }
 
     h1 {
@@ -150,7 +149,8 @@ p {
         height: auto;
         box-shadow: none;
         border: 2px solid #8C8C8C;
-        margin: 0 2.2rem;
+        margin: 0rem 2.2rem;
+       
         padding: 2rem;
     }
 
@@ -159,7 +159,8 @@ p {
         height: auto;
         box-shadow: none;
         border: 2px solid #8C8C8C;
-        margin: 0 2.2rem;
+        margin: 0rem 2.2rem;
+       
         padding: 1.2rem;
     }
 
@@ -168,7 +169,7 @@ p {
     }
 
 
-    .btn {
+    .btn-style {
         font-size: 1rem;
         width: 8rem;
         margin-top: 2rem;
@@ -216,8 +217,8 @@ p {
         background-position: center;
 
         /* Posición a la derecha */
-        right: .02rem;
-        top: 34rem;
+        right: .4rem;
+        top: 45rem;
     }
 
     .row.min-vh-100::before {
@@ -236,7 +237,7 @@ p {
 
         /*Posición a la izquierda*/
         left: .2rem;
-        top: 34rem;
+        top: 45rem;
     }
 
 
