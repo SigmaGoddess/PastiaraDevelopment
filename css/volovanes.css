@@ -1,16 +1,17 @@
 /** styles.css */
 /** --- Variables Globales (Raíz) y Fuentes --- */
 
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
 
 /** Fuentes */
 body {
-    font-family: 'Questrial', sans-serif;
+    font-family: var(--title-body);
 }
 .hero-title {
-    font-family: 'Abril Fatface', serif;
+    font-family: var(--title-font);
 }
 
 #hero-title-mobile{
@@ -19,7 +20,7 @@ body {
 
 /** --- Estilos de la Sección Principal (Hero) --- */
 .hero-section {
-    background-image: url('../images/VOLOVANES/fondo_volovanes.png'); /* Banner para PC */
+    background-image: url('/images/VOLOVANES/fondo_volovanes.png'); /* Banner para PC */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -39,11 +40,11 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: var(background-color);
 }
 .hero-section .hero-title {
     font-size: 3em;
-    color: #FFF;
+    color: var(--color-text2);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -118,8 +119,7 @@ body {
 .product-info .price {
     font-size: 18px;
     line-height: 1.2;
-    margin-bottom: 0;
-    margin-top: 0.6em;
+    margin-bottom: 5px;
     color: var(--color-text3);
     letter-spacing: -0.43px;
 }
@@ -153,13 +153,14 @@ html {
 @media (max-width: 768px) {
     #hero-title-mobile {
         display: block;
-        font-size: 16px;
+        font-size: 17px;
         font-family: 'Questrial', sans-serif;
-        line-height: 27px;
+        line-height: 1.3;
         padding: 0 20px;
         max-width: 90%;
         margin-left: auto;
         margin-right: auto;
+        text-align: center;
     }
 
     #hero-title-desktop{
@@ -177,16 +178,22 @@ html {
     }
 
     .products-section{
-        padding-top: 20px;
+        padding-top: 0px;
+        padding-left: 20px; /* Agrega espacio a la izquierda */
+        padding-right: 20px; /* Agrega espacio a la derecha */
     }
 
     .product-info .description{
         font-size: 13px;
     }
     
-    .product-info h3,
-    .product-info .price {
+    .product-info h3{
         font-size: 17px;
-        line-height: 1.3;
+    }
+
+    .product-info .price{
+        font-size: 15px;
     }
 }
+
+
