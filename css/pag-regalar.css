@@ -1,191 +1,402 @@
+/*Importación de las variables globales */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
 
-/* Estilos generales de la página regalar */
-.regalar-header-section {
-    text-align: center;
-    padding: 60px 20px 40px;
-}
 
-.regalar-main-title {
-    font-family: var(--title-font);
-    color: var(--color-title);
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.regalar-subtitle {
+.regalar-page {
     font-family: var(--title-body);
-    color: var(--color-text3);
-    font-size: 1rem;
+    background-color: var(--regalar-bg-primary);
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+/* ========================================
+   HEADER DE LA PÁGINA
+   ======================================== */
+
+.regalar-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 1rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.regalar-header h1 {
+    font-family: var(--title-font);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--color-title);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.regalar-header p {
+    font-family: var(--title-body);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--regalar-color-text-medium);
     max-width: 600px;
     margin: 0 auto;
+    font-style: italic;
 }
 
-.regalar-section-title {
-    font-family: var(--title-font);
-    color: var(--color-title);
-    font-size: 1.8rem;
+/* ========================================
+   DIVISORES DECORATIVOS
+   ======================================== */
+
+.regalar-divider {
     text-align: center;
-    margin-bottom: 40px;
-    margin-top: 60px;
-}
-
-/* Tarjetas de producto */
-.regalar-product-card {
-    background: #000;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 30px;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-}
-
-.regalar-product-card.regalar-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.regalar-product-image {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
-}
-
-/* Botón de favoritos */
-.regalar-favorite-btn {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.regalar-favorite-btn:hover {
-    background: rgba(255,255,255,1);
-    transform: scale(1.1);
-}
-
-.regalar-favorite-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: #000;
-    stroke-width: 2;
-}
-
-.regalar-favorite-btn.regalar-active svg {
-    fill: #ff0000;
-    stroke: #ff0000;
-}
-
-/* Información del producto */
-.regalar-product-info {
-    background: var(--color-boton2);
-    padding: 20px;
+    margin: 2rem 0;
     position: relative;
 }
 
-.regalar-product-info::before {
+.regalar-divider::before,
+.regalar-divider::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 15px,
-        var(--color-title) 15px,
-        var(--color-title) 17px
-    );
-    opacity: 0.3;
+    top: 50%;
+    width: 30%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--regalar-color-secondary), transparent);
 }
 
-.regalar-product-name {
+.regalar-divider::before {
+    left: 0;
+}
+
+.regalar-divider::after {
+    right: 0;
+}
+
+.regalar-divider i {
+    font-size: 1.5rem;
+    color: var(--regalar-color-secondary);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ========================================
+   TARJETAS DE PRODUCTOS
+   ======================================== */
+
+.regalar-product-card {
+    background: var(--regalar-card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--regalar-shadow-md);
+    transition: transform var(--regalar-transition-normal), 
+                box-shadow var(--regalar-transition-normal);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.regalar-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--regalar-shadow-lg);
+}
+
+/* ========================================
+   CONTENEDOR DE IMAGEN
+   ======================================== */
+
+.regalar-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    background: var(--regalar-image-bg);
+    box-shadow: var(--regalar-shadow-sm);
+}
+
+.regalar-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--regalar-transition-slow);
+}
+
+.regalar-product-card:hover .regalar-image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   TÍTULOS Y TEXTOS DE PRODUCTOS
+   ======================================== */
+
+.regalar-product-title {
     font-family: var(--title-body);
-    color: var(--color-text1);
-    font-size: 0.95rem;
-    margin-bottom: 5px;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--color-title);
+    font-weight: 600;
+    margin-bottom: 1rem;
     line-height: 1.4;
 }
 
-.regalar-product-price {
+.regalar-product-description {
     font-family: var(--title-body);
-    color: var(--color-text1);
-    font-size: 1rem;
+    font-size: 0.95rem;
+    color: var(--regalar-color-text-dark);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* ========================================
+   ETIQUETA DE PRECIO
+   ======================================== */
+
+.regalar-price-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--regalar-color-primary) 0%, var(--regalar-color-accent) 100%);
+    color: var(--color-text2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    box-shadow: var(--regalar-shadow-price);
+    transition: transform var(--regalar-transition-fast);
 }
 
-/* Líneas decorativas */
-.regalar-decorative-line {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    background-image: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 30px,
-        var(--color-title2) 30px,
-        var(--color-title2) 32px
-    );
-    z-index: 0;
-    opacity: 0.5;
-    pointer-events: none;
+.regalar-price-tag:hover {
+    transform: scale(1.05);
 }
 
-.regalar-line-top {
-    top: 200px;
+/* ========================================
+   ELEMENTOS DECORATIVOS
+   ======================================== */
+
+.regalar-decorative-element {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: var(--color-title);
+    font-style: italic;
+    font-family: var(--title-body);
 }
 
-.regalar-line-middle {
-    top: 700px;
+.regalar-decorative-element::before,
+.regalar-decorative-element::after {
+    content: '◆';
+    color: var(--regalar-color-secondary);
+    margin: 0 1rem;
+    font-size: 0.8rem;
 }
 
-/* Patrones de tacos decorativos */
-.regalar-taco-pattern {
-    position: absolute;
+/* ========================================
+   BADGE DECORATIVO
+   ======================================== */
+
+.regalar-badge {
+    display: inline-block;
+    background: var(--regalar-badge-bg);
+    color: var(--color-title);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    transition: background var(--regalar-transition-normal);
+    font-family: var(--title-body);
+}
+
+.regalar-badge:hover {
+    background: var(--regalar-color-secondary);
+    color: var(--color-text2);
+}
+
+/* ========================================
+   ICONOS DECORATIVOS DEL FOOTER
+   ======================================== */
+
+.regalar-iconos-footer {
+    margin: 3rem 0 2rem;
+    padding: 2rem 0;
+}
+
+.regalar-icono-decorativo {
     width: 60px;
-    height: 60px;
-    opacity: 0.3;
-    z-index: 0;
-    transition: transform 0.3s ease;
-    pointer-events: none;
+    height: auto;
+    opacity: 0.8;
+    transition: transform var(--regalar-transition-normal), 
+                opacity var(--regalar-transition-normal);
 }
 
-.regalar-taco-pattern svg {
-    width: 100%;
-    height: 100%;
-    stroke: var(--color-title);
-    fill: none;
-    stroke-width: 1.5;
+.regalar-icono-decorativo:hover {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 1;
 }
 
-/* Responsive */
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Retrasos de animación para cada tarjeta */
+.regalar-product-card:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+
+.regalar-product-card:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+
+.regalar-product-card:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+
+.boton-flotante-ordenar {
+    /* Posicionamiento fijo, la clave para que flote */
+    position: fixed;
+    right: 20px; /* Distancia desde el borde derecho */
+    bottom: 650px; /* Distancia desde el borde inferior */
+    
+    /* Estilos de diseño (ajusta a tu marca) */
+    background-color: var(--color-title); 
+    font-family: var(--title-body);
+    color: white; /* Texto blanco */
+    padding: 15px 25px;
+    border-radius: 30px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    font-size: 1.1em;
+    font-weight: bold;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+    transition: background-color 0.3s ease; /* Transición para el hover */
+
+    display: flex; /* Permite que el contenido del botón (imagen y texto) se alinee fácilmente */
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+    justify-content: center; /* Centra horizontalmente todo el contenido */
+    gap: 8px; /* Espacio entre la imagen y el texto */
+
+
+}
+
+.icono-boton {
+    width: 34px;
+    /* Ajusta el tamaño del icono */
+    height: 34px;
+    /* Puedes añadir más estilos si es necesario, como margin-right si no usas gap */
+}
+
+
+
+/* Efecto de 'hover' para feedback visual */
+.boton-flotante-ordenar:hover {
+    background-color: var(--color-title);
+    transform: scale(1.05);
+    /* Ligeramente más grande */
+}
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
 @media (max-width: 768px) {
-    .regalar-main-title {
-        font-size: 2rem;
+    .regalar-product-card {
+        padding: 1.5rem;
+    }
+
+    .regalar-header {
+        padding: 1rem;
+    }
+
+    .regalar-image-wrapper {
+        margin-bottom: 1rem;
+    }
+
+    .regalar-divider::before,
+    .regalar-divider::after {
+        width: 25%;
     }
     
-    .regalar-section-title {
+    .regalar-icono-decorativo {
+        width: 50px;
+    }
+
+    .boton-flotante-ordenar {
+        /*Se ancla al fondo, abarcando todo el ancho */
+        bottom: 0;
+        border-radius: 0;
+        /* Quita los bordes redondeados */
+        padding: 20px 0;
+        /* Ajusta el padding vertical */
+        right: -20px;
+        /* Distancia desde la derecha, negativo para que se vea cortado */
+        bottom: 30px;
+        /* La posición vertical que ajustamos antes */
+        width: auto;
+        /* Permite que el ancho se ajuste al contenido (texto + padding) */
+        padding: 15px 25px;
+        /* Restaura el padding del botón */
+        border-radius: 30px;
+        /* Restaura los bordes redondeados */
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: var(--title-body);
+    }
+}
+
+@media (max-width: 576px) {
+    .regalar-product-card {
+        padding: 1rem;
+    }
+
+    .regalar-price-tag {
+        font-size: 1rem;
+        padding: 0.4rem 1.2rem;
+    }
+
+    .regalar-decorative-element::before,
+    .regalar-decorative-element::after {
+        margin: 0 0.5rem;
+    }
+    
+    .regalar-icono-decorativo {
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .regalar-page {
+        padding: 1rem 0;
+    }
+    
+    .regalar-header h1 {
         font-size: 1.5rem;
     }
     
-    .regalar-product-image {
-        height: 280px;
+    .regalar-header p {
+        font-size: 0.85rem;
     }
 }
