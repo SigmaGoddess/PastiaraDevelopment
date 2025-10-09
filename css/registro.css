@@ -1,11 +1,10 @@
-
 @import url('/css/global_variables.css');
 @import url('/css/normalize.css');
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
 
 /* Estilos generales y fuentes */
 .body-registro {
-    font-family: var( --title-body);
+    font-family: var(--title-body);
     color: var(--color-text3);
     font-size: clamp(.5rem, 1rem + 1vw, 1.4rem);
     margin: 0;
@@ -21,14 +20,14 @@
     background-position: center;
     background-repeat: no-repeat;
     min-height: 100vh;
-    margin-top: -5rem;    
+    margin-top: -5rem;
 }
 
- 
+
 h1 {
     font-family: var(--title-font);
     font-size: clamp(1.5rem, 2rem + 1vw, 2.8rem);
-    color: var( --color-title);
+    color: var(--color-title);
     margin-top: -1rem;
     margin-bottom: 2.5rem;
 }
@@ -150,7 +149,7 @@ p {
         box-shadow: none;
         border: 2px solid #8C8C8C;
         margin: 0rem 2.2rem;
-       
+
         padding: 2rem;
     }
 
@@ -160,7 +159,7 @@ p {
         box-shadow: none;
         border: 2px solid #8C8C8C;
         margin: 0rem 2.2rem;
-       
+
         padding: 1.2rem;
     }
 

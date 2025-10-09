@@ -84,11 +84,16 @@ img {
 }
 
 .vr {
-    border-width: 0.5rem;
+    border-width: 0.2rem;
     align-self: center;
-    background-color: #8c8c8c;
-    min-height: 4em;
+    background-color: var(--color-title);
+    min-height: 3em;
     gap: 3px;
+    opacity: 0.7;
+}
+
+#vr-inicio {
+    min-height: 5em;
 }
 
 .navbar-brand__logo {
