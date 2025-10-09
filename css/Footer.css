@@ -3,8 +3,6 @@
 @import url("./global_variables.css");
 @import url("./normalize.css");
 
-
-
 /*  Footer Principal */
 .footer {
   font-family: var(--title-body);
@@ -49,7 +47,7 @@
 }
 
 /* Títulos de Sección inicio, productos, legales*/
-.footer h4 {
+.titulo-seccion-footer {
   color: var(--color-title);
   font-size: 16px;
   margin-bottom: 1rem;
@@ -57,7 +55,7 @@
 }
 
 /*  Enlaces de cada sección inicio, productos, legales*/
-.footer a {
+.enlace-footer {
   color: var(--color-text1);
   text-decoration: none;
   font-size: 16px;
@@ -66,7 +64,7 @@
   margin-bottom: 0.75rem;
 }
 
-.footer a:hover {
+.enlace-footer:hover {
   color: var(--color-title);
 }
 
@@ -120,18 +118,18 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 0 !important;
+  margin-top: 0.5rem !important;
   justify-content: center;
 }
 
-.social-icons-footer a {
+.social-icons-footer .link-social-icons-footer {
   color: var(--color-title);
   font-size: 1.75rem;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
-.social-icons-footer a:hover {
+.social-icons-footer .link-social-icons-footer:hover {
   color: var(--color-text3);
   transform: scale(1.1);
 }
@@ -144,9 +142,11 @@
   font-size: 0.9rem;
   color: var(--color-text1);
 }
-.footer-bottom p {
+
+.footer-bottom .texto-footer {
   margin-top: 0.5rem;
 }
+
 /* Responsividad */
 @media (width: 1024px) {
   .footer-frase {
@@ -157,11 +157,11 @@
   }
   .social-icons-footer{
     gap: 4px;
-    margin-bottom: -0.5rem;
+    margin-bottom: 0;
   }
   .horario-footer {
   font-size: 12px;
-  padding-top: -1rem;
+  padding-top: -1.5rem;
 }
  .horario-footer p{
   padding-top: -5rem;
@@ -192,7 +192,7 @@
 }
 
 @media (max-width: 991px) {
-  .footer h4 {
+  .titulo-seccion-footer {
     font-size: 1rem;
     margin-top: 36px;
   }
@@ -214,19 +214,19 @@
   .seccion-inicio { 
     margin-top: 1rem; 
   }
-  .seccion-inicio h4 { 
+  .seccion-inicio .titulo-seccion-footer { 
     margin-top: -0.1rem; 
   }
   .seccion-productos { 
     margin-top: 1rem; 
   }
-  .seccion-productos h4 { 
+  .seccion-productos .titulo-seccion-footer { 
     margin-top: -0.1rem; 
   }
   .seccion-legal { 
     margin-top: 1rem;
   }
-  .seccion-legal h4 { 
+  .seccion-legal .titulo-seccion-footer { 
     margin-top: -0.1rem; 
   }
 }
@@ -266,11 +266,11 @@
     gap: 1.5rem;
   }
 
-  .footer h4 {
+  .titulo-seccion-footer {
     font-size: 1rem;
   }
 
-  .footer a {
+  .enlace-footer {
     font-size: 1rem;
   }
     .seccion-inicio { 
@@ -290,7 +290,7 @@
 }
 
 @media (max-width: 576px) {
-  .footer h4 {
+  .titulo-seccion-footer {
   font-size: 1rem;
 } 
   .acciones-col-footer {
@@ -317,21 +317,21 @@
     margin-top: 1rem; 
     padding-left: 1.5rem;
   }
-  .seccion-inicio h4 { 
+  .seccion-inicio .titulo-seccion-footer { 
     margin-top: 1rem; 
   }
   .seccion-productos { 
     margin-top: 1rem; 
     padding-left: 3rem;
   }
-  .seccion-productos h4 { 
+  .seccion-productos .titulo-seccion-footer { 
     margin-top: 1rem; 
   }
   .seccion-legal { 
     margin-top: 1rem;
     padding-left: 1.5rem; 
   }
-  .seccion-legal h4 { 
+  .seccion-legal .titulo-seccion-footer { 
     margin-top: 0; 
   }
   
