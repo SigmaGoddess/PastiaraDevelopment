@@ -178,7 +178,6 @@
   cursor: pointer;
 }
 
-
 .btn-login-footer {
   background-color: transparent;
   color: var(--color-boton1);
@@ -211,6 +210,24 @@
   }
   .social-icons-footer{
     justify-content: center;
+  }
+  .seccion-inicio { 
+    margin-top: 1rem; 
+  }
+  .seccion-inicio h4 { 
+    margin-top: -0.1rem; 
+  }
+  .seccion-productos { 
+    margin-top: 1rem; 
+  }
+  .seccion-productos h4 { 
+    margin-top: -0.1rem; 
+  }
+  .seccion-legal { 
+    margin-top: 1rem;
+  }
+  .seccion-legal h4 { 
+    margin-top: -0.1rem; 
   }
 }
 
@@ -256,6 +273,20 @@
 
   .footer a {
     font-size: 1rem;
+  }
+    .seccion-inicio { 
+    margin-top: 1rem; 
+    padding-left: 1.5rem;
+  }
+  
+  .seccion-productos { 
+    margin-top: 1rem; 
+    padding-left: 2.5rem;
+  }
+  
+  .seccion-legal { 
+    margin-top: 1rem;
+    padding-left: 1.5rem;
   }
 }
 
