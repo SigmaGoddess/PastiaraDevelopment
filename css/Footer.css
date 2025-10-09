@@ -5,7 +5,7 @@
 
 
 
-/* ===== Footer Principal ===== */
+/*  Footer Principal */
 .footer {
   font-family: var(--title-body);
   background-color: var(--background-color);
@@ -15,21 +15,21 @@
   width: 100%;
 }
 
-/* ===== Container Ancho Completo ===== */
+/*  Container Ancho Completo */
 .footer .container-footer {
   max-width: 100%;
   padding-left: 3rem;
   padding-right: 3rem;
 }
 
-/* ===== Logo Pastiara ===== */
+/*  Logo Pastiara */
 .logo-pastiara-footer {
   max-width: 160px;
   height: auto;
   display: block;
 }
 
-/* ===== Frase Destacada ===== */
+/* Frase Destacada*/
 .footer-frase {
   font-size: 20px;
   font-weight: bold;
@@ -48,7 +48,7 @@
   padding-top: 36px;
 }
 
-/* ===== Títulos de Sección inicio, productos, legales===== */
+/* Títulos de Sección inicio, productos, legales*/
 .footer h4 {
   color: var(--color-title);
   font-size: 16px;
@@ -56,7 +56,7 @@
   font-weight: 600;
 }
 
-/* ===== Enlaces de cada sección inicio, productos, legales===== */
+/*  Enlaces de cada sección inicio, productos, legales*/
 .footer a {
   color: var(--color-text1);
   text-decoration: none;
@@ -70,7 +70,7 @@
   color: var(--color-title);
 }
 
-/* ===== Información de Contacto ===== */
+/* Información de Contacto */
 .horario-footer {
   font-size: 16px;
   line-height: 1.6;
@@ -78,7 +78,7 @@
   text-align: center;
 }
 
-/* ===== Botones Personalizados ===== */
+/*Botones Personalizados */
 .btn-registro-footer {
   background-color: var(--color-boton1);
   color: var(--color-text2);
@@ -115,7 +115,7 @@
   transform: scale(1.05);
 }
 
-/* ===== Iconos Sociales ===== */
+/* Iconos Sociales */
 .social-icons-footer {
   display: flex;
   gap: 12px;
@@ -136,7 +136,7 @@
   transform: scale(1.1);
 }
 
-/* ===== Footer Inferior ===== */
+/* Footer Inferior */
 .footer-bottom {
   border-top: 1px solid var(--color-text3);
   margin-top: 0.5rem;
@@ -147,7 +147,7 @@
 .footer-bottom p {
   margin-top: 0.5rem;
 }
-/* =====Responsividad ===== */
+/* Responsividad */
 @media (width: 1024px) {
   .footer-frase {
   margin-left: -1rem;
