@@ -3,9 +3,7 @@
 @import url("./global_variables.css");
 @import url("./normalize.css");
 
-
-
-/* ===== Footer Principal ===== */
+/*  Footer Principal */
 .footer {
   font-family: var(--title-body);
   background-color: var(--background-color);
@@ -15,60 +13,71 @@
   width: 100%;
 }
 
-/* ===== Container Ancho Completo ===== */
-.footer .container {
+/*  Container Ancho Completo */
+.footer .container-footer {
   max-width: 100%;
   padding-left: 3rem;
   padding-right: 3rem;
 }
 
-/* ===== Logo Pastiara ===== */
-.logo-pastiara {
-  max-width: 200px;
+/*  Logo Pastiara */
+.logo-pastiara-footer {
+  max-width: 160px;
   height: auto;
   display: block;
 }
 
-/* ===== Frase Destacada ===== */
+/* Frase Destacada*/
 .footer-frase {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-size: 20px;
   font-weight: bold;
   color: var(--color-text1);
   margin: 0;
   line-height: 1.3;
+  text-align: center;
+  margin-left: -2rem;
+  padding-left: 0;
 }
 
-/* ===== Títulos de Sección ===== */
-.footer h4 {
+/* Columna de frase - alineación vertical */
+.col-frase-footer {
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 36px;
+}
+
+/* Títulos de Sección inicio, productos, legales*/
+.titulo-seccion-footer {
   color: var(--color-title);
-  font-size: 1.75rem;
+  font-size: 16px;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
-/* ===== Enlaces ===== */
-.footer a {
+/*  Enlaces de cada sección inicio, productos, legales*/
+.enlace-footer {
   color: var(--color-text1);
   text-decoration: none;
-  font-size: 1.125rem;
+  font-size: 16px;
   transition: color 0.3s ease;
   display: block;
   margin-bottom: 0.75rem;
 }
 
-.footer a:hover {
+.enlace-footer:hover {
   color: var(--color-title);
 }
 
-/* ===== Información de Contacto ===== */
-.info-contacto {
-  font-size: 1rem;
+/* Información de Contacto */
+.horario-footer {
+  font-size: 16px;
   line-height: 1.6;
   color: var(--color-text1);
+  text-align: center;
 }
 
-/* ===== Botones Personalizados ===== */
-.btn-registro {
+/*Botones Personalizados */
+.btn-registro-footer {
   background-color: var(--color-boton1);
   color: var(--color-text2);
   border: none;
@@ -80,13 +89,13 @@
   cursor: pointer;
 }
 
-.btn-registro:hover {
+.btn-registro-footer:hover {
   background-color: var(--color-text3);
   transform: scale(1.05);
   color: var(--color-text2);
 }
 
-.btn-login {
+.btn-login-footer {
   background-color: transparent;
   color: var(--color-boton1);
   border: 2px solid var(--color-boton1);
@@ -98,90 +107,232 @@
   cursor: pointer;
 }
 
-.btn-login:hover {
+.btn-login-footer:hover {
   background-color: var(--color-boton1);
   color: var(--color-text2);
   transform: scale(1.05);
 }
 
-/* ===== Iconos Sociales ===== */
-.social-icons {
+/* Iconos Sociales */
+.social-icons-footer {
   display: flex;
-  gap: 2rem;
+  gap: 12px;
   flex-wrap: wrap;
+  margin-top: 0.5rem !important;
+  justify-content: center;
 }
 
-.social-icons a {
+.social-icons-footer .link-social-icons-footer {
   color: var(--color-title);
   font-size: 1.75rem;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
-.social-icons a:hover {
+.social-icons-footer .link-social-icons-footer:hover {
   color: var(--color-text3);
   transform: scale(1.1);
 }
 
-/* ===== Footer Inferior ===== */
+/* Footer Inferior */
 .footer-bottom {
   border-top: 1px solid var(--color-text3);
-  margin-top: 2rem;
-  padding-top: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
   font-size: 0.9rem;
   color: var(--color-text1);
 }
 
-/* ===== Media Queries Responsive ===== */
-@media (max-width: 991px) {
-  .footer h4 {
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-  }
+.footer-bottom .texto-footer {
+  margin-top: 0.5rem;
 }
 
+/* Responsividad */
+@media (width: 1024px) {
+  .footer-frase {
+  margin-left: -1rem;
+  }
+  .logo-pastiara-footer{
+    margin-top: 2rem;
+  }
+  .social-icons-footer{
+    gap: 4px;
+    margin-bottom: 0;
+  }
+  .horario-footer {
+  font-size: 12px;
+  padding-top: -1.5rem;
+}
+ .horario-footer p{
+  padding-top: -5rem;
+}
+.btn-registro-footer {
+  background-color: var(--color-boton1);
+  color: var(--color-text2);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-login-footer {
+  background-color: transparent;
+  color: var(--color-boton1);
+  border: 2px solid var(--color-boton1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+}
+}
+
+@media (max-width: 991px) {
+  .titulo-seccion-footer {
+    font-size: 1rem;
+    margin-top: 36px;
+  }
+
+  .logo-pastiara-footer {
+  margin-left: 0px;
+}
+  .col-frase-footer {
+    margin-left: -1rem;
+    padding-top: 50px;
+  }
+  
+  .footer-frase {
+    text-align: left;
+  }
+  .social-icons-footer{
+    justify-content: center;
+  }
+  .seccion-inicio { 
+    margin-top: 1rem; 
+  }
+  .seccion-inicio .titulo-seccion-footer { 
+    margin-top: -0.1rem; 
+  }
+  .seccion-productos { 
+    margin-top: 1rem; 
+  }
+  .seccion-productos .titulo-seccion-footer { 
+    margin-top: -0.1rem; 
+  }
+  .seccion-legal { 
+    margin-top: 1rem;
+  }
+  .seccion-legal .titulo-seccion-footer { 
+    margin-top: -0.1rem; 
+  }
+}
 @media (max-width: 768px) {
   .footer {
     padding: 2rem 0 1rem;
   }
 
-  .footer .container {
+  .col-frase-footer {
+    align-items: flex-start;
+    padding-top: 50px;
+    margin-left: -1rem;
+  }
+  
+  .footer-frase {
+    text-align: left;
+    width: auto;
+  }
+
+  .footer .container-footer {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 
-  .logo-pastiara {
+  .logo-pastiara-footer {
     max-width: 150px;
     margin: 0 auto;
   }
 
   .footer-frase {
     text-align: center;
+    font-size: 16px;
   }
 
-  .social-icons {
+  .social-icons-footer {
     justify-content: center;
     gap: 1.5rem;
   }
 
-  .footer h4 {
-    font-size: 1.25rem;
+  .titulo-seccion-footer {
+    font-size: 1rem;
   }
 
-  .footer a {
+  .enlace-footer {
     font-size: 1rem;
+  }
+    .seccion-inicio { 
+    margin-top: 1rem; 
+    padding-left: 1.5rem;
+  }
+  
+  .seccion-productos { 
+    margin-top: 1rem; 
+    padding-left: 2.5rem;
+  }
+  
+  .seccion-legal { 
+    margin-top: 1rem;
+    padding-left: 1.5rem;
   }
 }
 
 @media (max-width: 576px) {
-  .acciones-col {
+  .titulo-seccion-footer {
+  font-size: 1rem;
+} 
+  .acciones-col-footer {
     align-items: stretch !important;
   }
 
-  .btn-registro,
-  .btn-login {
-    padding: 0.5rem 1.5rem;
+  .btn-registro-footer,
+  .btn-login-footer {
+    padding: 0.5rem 2rem;
     font-size: 1rem;
   }
+  .col-frase-footer {
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 0;
+  }
+  
+  .footer-frase {
+    width: auto;
+  }
+  .seccion-inicio { 
+    margin-top: 1rem; 
+    padding-left: 1.5rem;
+  }
+  .seccion-inicio .titulo-seccion-footer { 
+    margin-top: 1rem; 
+  }
+  .seccion-productos { 
+    margin-top: 1rem; 
+    padding-left: 3rem;
+  }
+  .seccion-productos .titulo-seccion-footer { 
+    margin-top: 1rem; 
+  }
+  .seccion-legal { 
+    margin-top: 1rem;
+    padding-left: 1.5rem; 
+  }
+  .seccion-legal .titulo-seccion-footer { 
+    margin-top: 0; 
+  }
+  
 }

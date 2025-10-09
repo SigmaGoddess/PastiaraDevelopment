@@ -6,7 +6,7 @@
 /* Estilos específicos para la página de inicio (homePage) */
 
 #Bienvenida {
-  margin-top: 200px;
+  margin-top: 163px;
   /* ajusta al alto real de tu header */
 }
 
@@ -17,23 +17,33 @@
   text-align: center;
   letter-spacing: 0.03em;
   margin-bottom: 50px;
-  line-height: 105px;
+  line-height: 95px;
   padding: 0 40px;
 }
 
-/* Imagen: centro y tamaño máximo para evitar que ocupe todo en desktop */
-#img-bienvenida {
+/* Contenedor de la imagen: full-width y recorte controlado */
+#Bienvenida #img-bienvenida {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  /* evitar centrar verticalmente */
   justify-content: center;
+  /* por defecto centrado horizontal */
+  overflow: hidden;
   padding: 0;
 }
 
-#img-bienvenida img {
+#Bienvenida #img-bienvenida img {
   width: 100%;
-  height: auto;
+  height: 90vh;
+  /* altura visible en desktop — ajustar (50vh..80vh) */
+  max-height: auto;
+  object-fit: cover;
+  /* mantiene proporción y recorta arriba/abajo */
+  object-position: cente;
+  /* focaliza la parte superior (no centrar verticalmente) */
   display: block;
-  margin: 12px auto;
+  margin: 0;
+  padding: 0;
 }
 
 #Bienvenida .row>[class*="col"] {
@@ -83,14 +93,16 @@ h2 {
   /* Asegura que la imagen no se desborde */
 }
 
-.contenedor-fondo-mobile {
+/*.contenedor-fondo-mobile {
   background-image: url('../dist/images/GENERAL/Banner Home.png');
   /* misma imagen o ruta que usas */
+/*
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 8vh;
   /* pequeño en móviles */
+/*
   min-height: 56px;
   max-height: 96px;
   overflow: hidden;
@@ -100,7 +112,8 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 6px 12px;
-}
+}*/
+
 
 
 .cotizador {
@@ -521,6 +534,18 @@ h2 {
     line-height: 80px;
   }
 
+  .cotizador {
+    font-size: 20px;
+    padding: 8px 40px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    background-size: 30px;
+    background-position: right 8px center;
+    /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+    padding-right: 48px;
+    /* Aumenta el padding para que el texto no se superponga con la imagen */
+  }
+
 }
 
 /* Ajustes responsive: tablet / móviles */
@@ -568,6 +593,18 @@ h2 {
     letter-spacing: 0.02em;
     margin-bottom: 30px;
     line-height: 40px;
+  }
+
+  .cotizador.cotizador {
+    font-size: 18px;
+    padding: 8px 30px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background-size: 25px;
+    background-position: right 6px center;
+    /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+    padding-right: 38px;
+    /* Aumenta el padding para que el texto no se superponga con la imagen */
   }
 
 }
