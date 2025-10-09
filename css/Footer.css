@@ -147,7 +147,7 @@
 .footer-bottom p {
   margin-top: 0.5rem;
 }
-/* ===== Media Queries Responsive ===== */
+/* =====Responsividad ===== */
 @media (width: 1024px) {
   .footer-frase {
   margin-left: -1rem;
@@ -230,7 +230,6 @@
     margin-top: -0.1rem; 
   }
 }
-
 @media (max-width: 768px) {
   .footer {
     padding: 2rem 0 1rem;
