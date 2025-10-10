@@ -2,190 +2,136 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regalar - Pastiara</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    
-    <!-- Estilos generales de la página -->
-    <link rel="stylesheet" href="/css/loader.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/Footer.css">
-    
-    <!-- CSS Personalizado de esta página -->
-    <link rel="stylesheet" href="pag-regalar.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pastiara - Para regalar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="/css/global_variables.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/loader.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css">
+
+  <link rel="stylesheet" href="/css/pag-regalar.css">
 </head>
 
-<body>
-    <!-- Loader -->
-    <special-loader></special-loader>
-    
-    <!-- Header/Navbar -->
-    <special-header></special-header>
+<body class="body-regalar">
+  <special-loader></special-loader>
+  <special-header></special-header>
 
-    <!-- Contenido Principal -->
-    <main class="regalar-page">
-        <div class="container">
-            
-            <!-- Header Section -->
-            <div class="regalar-header">
-                <h1>Con amor y sabor...</h1>
-                <p>Lo bueno siempre se comparte con sabor y cuando es un detalle inolvidable</p>
+  <main>
+    <!-- Header principal -->
+    <header class="pastiara-header">
+      <h1 class="pastiara-main-title">Con amor y sabor.....</h1>
+      <p class="pastiara-subtitle">La forma más elegante de compartir sabor y calidez en un solo bocado.</p>
+    </header>
+
+    <!-- Sección: Para regalar -->
+    <section class="container">
+      <h2 class="pastiara-section-title">Para regalar</h2>
+    </section>
+
+    <!-- Producto 1: Izquierda con banner y efecto 3D -->
+    <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-left">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Barquillos de budín</h3>
+
+            <article>
+              <img src="/public/images/PARA-REGALAR/cajapararegalar.png" alt="Barquillos de budín Pastiara"
+                class="pastiara-product-img">
+              <img src="/public/images/PARA-REGALAR/barqui3d.png">
+            </article>
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 6 Barquillos rellenos de Budín Pastiara (cítricos)
+              </p>
+              <p class="pastiara-price">$230</p>
             </div>
-
-            <!-- Divisor decorativo -->
-            <div class="regalar-divider">
-                <i class="bi bi-heart-fill"></i>
-            </div>
-
-            <!-- Productos -->
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-10">
-                    
-                    <!-- Producto 1: Caja Especial de 6 Pastes -->
-                    <div class="regalar-product-card" data-product="1">
-                        <div class="row align-items-center">
-                            <div class="col-md-5">
-                                <div class="regalar-image-wrapper">
-                                    <img src="/images/REGALOS/caja-especial.jpg" 
-                                         alt="Caja especial de 6 pastes en caja Kraft estilo rústico"
-                                         loading="lazy">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <span class="regalar-badge">
-                                    <i class="bi bi-gift-fill me-1"></i> Regalo Especial
-                                </span>
-                                <h2 class="regalar-product-title">
-                                    Caja de 6 pastes en caja Kraft, (sabores a elección) estilo rústico
-                                </h2>
-                                <p class="regalar-product-description">
-                                    Una presentación elegante y rústica con 6 deliciosos pastes artesanales. 
-                                    Perfectos para regalar en cualquier ocasión especial. Elige los sabores 
-                                    que más te gusten y sorprende a tus seres queridos.
-                                </p>
-                                <div class="regalar-decorative-element">Regalo perfecto</div>
-                                <span class="regalar-price-tag">$250.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Divisor -->
-                    <div class="regalar-divider">
-                        <i class="bi bi-stars"></i>
-                    </div>
-
-                    <!-- Producto 2: Caja Refinada de Budín -->
-                    <div class="regalar-product-card" data-product="2">
-                        <div class="row align-items-center">
-                            <div class="col-md-7 order-md-1 order-2">
-                                <span class="regalar-badge">
-                                    <i class="bi bi-star-fill me-1"></i> Premium
-                                </span>
-                                <h2 class="regalar-product-title">
-                                    Caja de 6 pza refinada de Budín Pastiara adherida con 6 Rosas de azúcar
-                                </h2>
-                                <p class="regalar-product-description">
-                                    Una presentación refinada y elegante con 6 piezas de nuestro exquisito 
-                                    Budín Pastiara. Decorada con hermosas rosas de azúcar que hacen de este 
-                                    regalo una obra de arte comestible. Ideal para celebraciones especiales.
-                                </p>
-                                <div class="regalar-decorative-element">Elegancia y sabor</div>
-                                <span class="regalar-price-tag">$300.00</span>
-                            </div>
-                            <div class="col-md-5 order-md-2 order-1">
-                                <div class="regalar-image-wrapper">
-                                    <img src="/images/REGALOS/budin-refinado.jpg" 
-                                         alt="Caja refinada de Budín Pastiara con rosas de azúcar"
-                                         loading="lazy">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Divisor -->
-                    <div class="regalar-divider">
-                        <i class="bi bi-heart-fill"></i>
-                    </div>
-
-                    <!-- Producto 3: Combo de 12 Pastes -->
-                    <div class="regalar-product-card" data-product="3">
-                        <div class="row align-items-center">
-                            <div class="col-md-5">
-                                <div class="regalar-image-wrapper">
-                                    <img src="/images/REGALOS/combo-pastes.jpg" 
-                                         alt="Combo de 12 pastes estilo rústico con rosas de azúcar"
-                                         loading="lazy">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <span class="regalar-badge">
-                                    <i class="bi bi-box-seam me-1"></i> Combo Especial
-                                </span>
-                                <h2 class="regalar-product-title">
-                                    Caja de 12 pastes (sabores a elección) Estilo rústico adherida con 12 Rosas de azúcar
-                                </h2>
-                                <p class="regalar-product-description">
-                                    El regalo perfecto para compartir. Una docena de pastes artesanales en 
-                                    presentación rústica, decorados con 12 hermosas rosas de azúcar. Elige 
-                                    tus sabores favoritos y deleita a familia y amigos con esta combinación 
-                                    perfecta de sabor y presentación.
-                                </p>
-                                <div class="regalar-decorative-element">Para compartir</div>
-                                <span class="regalar-price-tag">$470.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Sección final con iconos decorativos -->
-            <section class="regalar-iconos-footer">
-                <div class="container-flui
-                d">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-auto">
-                            <img src="/images/GENERAL/Iconos-paste-derecha.png" alt="Icono decorativo" class="regalar-icono-decorativo">
-                        </div>
-                        <div class="col-auto">
-                            <img src="/images/GENERAL/Iconos-pastes-sola.png" alt="Icono decorativo" class="regalar-icono-decorativo">
-                        </div>
-                        <div class="col-auto">
-                            <img src="/images/GENERAL/Iconos-paste-izquiera.png" alt="Icono decorativo" class="regalar-icono-decorativo">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
 
+    <!-- Producto 2: Derecha con banner y efecto 3D -->
+    <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
 
-    <!-- Footer -->
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-right">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Volovanes de brigadeiro</h3>
+
+            <article>
+              <img src="/public/images/PARA-REGALAR/cajaspararegalar2.png" alt="Volovanes de brigadeiro Pastiara"
+                class="pastiara-product-img">
+              <img src="/public/images/PARA-REGALAR/budin23d.png">
+            </article>
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 2 Volovanes de brigadeiro con frutos rojos, 2 Barquillos rellenos de Budín Pastiara (cítricos) y
+                2 Roles de guayaba
+              </p>
+              <p class="pastiara-price">$230</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 3: Centro con banner y efecto 3D -->
+    <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-center">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Roles de guayaba</h3>
+
+            <article>
+              <img src="/public/images/PARA-REGALAR/pararegalar3.png" alt="Roles de guayaba Pastiara"
+                class="pastiara-product-img">
+              <img src="/public/images/PARA-REGALAR/budin3d.png">
+            </article>
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 6 Barquillos rellenos de Budín Pastiara (cítricos) y 3 Roles de guayaba
+              </p>
+              <p class="pastiara-price">$300</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn cotizador" type="button" onclick="location.href='/pages/pag-cotizador/cotizador.html'">
+      <span class="btn-text">¡ORDENA AQUÍ!</span>
+      <img src="/public/images/GENERAL/CanastaConPastes.png" alt="Ícono de Carrito" class="icono-boton">
+      <span class="btn-icon" aria-hidden="true"></span>
+    </button>
+
     <special-footer></special-footer>
-    <a href="/enlace-a-pedidos" class="boton-flotante-ordenar">
-        ORDENA AQUÍ
-        <img src="/public/images/GENERAL/CanastaConPastes.png" alt="Ícono de Carrito" class="icono-boton">
-    </a>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    
-    <!-- Scripts generales -->
-    <script src="/js/navbar.js" type="module"></script>
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script propio -->
+    <script src="/js/pag-regalar.js" type="module"></script>
     <script src="/js/components.js" type="module"></script>
-    
-    <!-- Script personalizado de esta página -->
-    <script src="pag-regalar.js"></script>
+    <script src="/js/main.js" type="module"></script>
+
 
 </body>
+
 </html>

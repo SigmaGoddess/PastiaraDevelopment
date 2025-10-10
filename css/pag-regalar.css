@@ -1,402 +1,459 @@
-/*Importación de las variables globales */
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
-@import url("./global_variables.css");
-@import url("./normalize.css");
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('../css/global_variables.css');
+@import url('../css/normalize.css');
 
 
 
-.regalar-page {
-    font-family: var(--title-body);
-    background-color: var(--regalar-bg-primary);
-    min-height: 100vh;
-    padding: 2rem 0;
+
+.body-regalar {
+  font-family: "Questrial", sans-serif;
+  background: #ffffff;
+  color: var(--pastiara-dark);
+  overflow-x: hidden;
 }
 
-/* ========================================
-   HEADER DE LA PÁGINA
-   ======================================== */
-
-.regalar-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 2rem 1rem;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
+/* Header principal con animación */
+.pastiara-header {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(245, 240, 235, 0.4) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.regalar-header h1 {
-    font-family: var(--title-font);
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    color: var(--color-title);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-}
-
-.regalar-header p {
-    font-family: var(--title-body);
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    color: var(--regalar-color-text-medium);
-    max-width: 600px;
-    margin: 0 auto;
-    font-style: italic;
-}
-
-/* ========================================
-   DIVISORES DECORATIVOS
-   ======================================== */
-
-.regalar-divider {
-    text-align: center;
-    margin: 2rem 0;
-    position: relative;
-}
-
-.regalar-divider::before,
-.regalar-divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 30%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--regalar-color-secondary), transparent);
-}
-
-.regalar-divider::before {
-    left: 0;
-}
-
-.regalar-divider::after {
-    right: 0;
-}
-
-.regalar-divider i {
-    font-size: 1.5rem;
-    color: var(--regalar-color-secondary);
-    animation: pulse 2s ease-in-out infinite;
-}
-
-/* ========================================
-   TARJETAS DE PRODUCTOS
-   ======================================== */
-
-.regalar-product-card {
-    background: var(--regalar-card-bg);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 3rem;
-    box-shadow: var(--regalar-shadow-md);
-    transition: transform var(--regalar-transition-normal), 
-                box-shadow var(--regalar-transition-normal);
-    opacity: 0;
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.regalar-product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--regalar-shadow-lg);
-}
-
-/* ========================================
-   CONTENEDOR DE IMAGEN
-   ======================================== */
-
-.regalar-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    background: var(--regalar-image-bg);
-    box-shadow: var(--regalar-shadow-sm);
-}
-
-.regalar-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform var(--regalar-transition-slow);
-}
-
-.regalar-product-card:hover .regalar-image-wrapper img {
-    transform: scale(1.05);
-}
-
-/* ========================================
-   TÍTULOS Y TEXTOS DE PRODUCTOS
-   ======================================== */
-
-.regalar-product-title {
-    font-family: var(--title-body);
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    color: var(--color-title);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-}
-
-.regalar-product-description {
-    font-family: var(--title-body);
-    font-size: 0.95rem;
-    color: var(--regalar-color-text-dark);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-/* ========================================
-   ETIQUETA DE PRECIO
-   ======================================== */
-
-.regalar-price-tag {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--regalar-color-primary) 0%, var(--regalar-color-accent) 100%);
-    color: var(--color-text2);
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    box-shadow: var(--regalar-shadow-price);
-    transition: transform var(--regalar-transition-fast);
-}
-
-.regalar-price-tag:hover {
-    transform: scale(1.05);
-}
-
-/* ========================================
-   ELEMENTOS DECORATIVOS
-   ======================================== */
-
-.regalar-decorative-element {
-    text-align: center;
-    margin: 1rem 0;
-    font-size: 0.9rem;
-    color: var(--color-title);
-    font-style: italic;
-    font-family: var(--title-body);
-}
-
-.regalar-decorative-element::before,
-.regalar-decorative-element::after {
-    content: '◆';
-    color: var(--regalar-color-secondary);
-    margin: 0 1rem;
-    font-size: 0.8rem;
-}
-
-/* ========================================
-   BADGE DECORATIVO
-   ======================================== */
-
-.regalar-badge {
-    display: inline-block;
-    background: var(--regalar-badge-bg);
-    color: var(--color-title);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    transition: background var(--regalar-transition-normal);
-    font-family: var(--title-body);
-}
-
-.regalar-badge:hover {
-    background: var(--regalar-color-secondary);
-    color: var(--color-text2);
-}
-
-/* ========================================
-   ICONOS DECORATIVOS DEL FOOTER
-   ======================================== */
-
-.regalar-iconos-footer {
-    margin: 3rem 0 2rem;
-    padding: 2rem 0;
-}
-
-.regalar-icono-decorativo {
-    width: 60px;
-    height: auto;
-    opacity: 0.8;
-    transition: transform var(--regalar-transition-normal), 
-                opacity var(--regalar-transition-normal);
-}
-
-.regalar-icono-decorativo:hover {
-    transform: scale(1.1) rotate(5deg);
-    opacity: 1;
-}
-
-/* ========================================
-   ANIMACIONES
-   ======================================== */
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.pastiara-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(181, 138, 106, 0.1) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.3;
+  }
 }
 
-/* Retrasos de animación para cada tarjeta */
-.regalar-product-card:nth-of-type(1) {
-    animation-delay: 0.2s;
+.pastiara-main-title {
+  font-family: "Abril Fatface", serif;
+  color: var(--pastiara-gold);
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  animation: fadeInDown 1s ease-out;
 }
 
-.regalar-product-card:nth-of-type(2) {
-    animation-delay: 0.4s;
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.regalar-product-card:nth-of-type(3) {
-    animation-delay: 0.6s;
+.pastiara-subtitle {
+  font-family: "Questrial", sans-serif;
+  color: #8c8c8c;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 1s ease-out 0.3s backwards;
 }
 
-.boton-flotante-ordenar {
-    /* Posicionamiento fijo, la clave para que flote */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sección de título secundario */
+.pastiara-section-title {
+  font-family: "Abril Fatface", serif;
+  color: var(--pastiara-gold);
+  font-size: 3.5rem;
+  text-align: center;
+  margin: 3rem 0 3rem;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pastiara-section-title::after {
+  display: none;
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 80px;
+  }
+}
+
+/* Banner de fondo que cruza toda la pantalla */
+.pastiara-full-banner-section {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.pastiara-banner-background {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-70%);
+  width: 100%;
+  height: 200px;
+  background-image: url("/public/images/PARA-REGALAR/Frame15banner.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150% 150%;
+  z-index: 1;
+  opacity: 0.9;
+  animation: slideIn 1.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 0.85;
+  }
+}
+
+/* Contenedor de productos con diseño alternado */
+.pastiara-product-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Producto izquierda */
+.pastiara-product-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Producto derecha */
+.pastiara-product-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Producto centro */
+.pastiara-product-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  animation: zoomIn 0.8s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pastiara-product-wrapper {
+  max-width: 650px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.pastiara-product-name {
+  font-family: "Abril Fatface", serif;
+  color: var(--pastiara-gold);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== EFECTO 3D EXACTO COMO TU EJEMPLO ========== */
+article {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  transition: all 0.3s ease;
+}
+
+article img:first-child {
+  box-shadow: 0 60px 60px -60px rgba(90, 53, 2, 0.979);
+  border-radius: 15px;
+  object-fit: cover;
+  width: 100%;
+  height: 600px;
+}
+
+article img:last-child {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  object-fit: contain;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(25%);
+  transition: 0.3s ease;
+  opacity: 0;
+  border-radius: 24px;
+}
+
+article:hover img:last-child {
+  opacity: 0.8;
+  transform: translateY(10%);
+  filter: opacity(0.7) brightness(1.1);
+  mix-blend-mode: screen;
+  /* Prueba: screen, multiply, overlay */
+}
+
+article:hover {
+  transform: perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+}
+
+article::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to bottom,
+      transparent 10%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0) 95%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+article:hover::before {
+  opacity: 1;
+}
+
+article:hover img:last-child {
+  opacity: 1;
+  transform: translateY(10%);
+}
+
+/* Información del producto */
+.pastiara-product-info {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.pastiara-product-info:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.pastiara-description-text {
+  font-family: "Questrial", sans-serif;
+  color: var(--pastiara-dark);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.pastiara-price {
+  font-weight: 700;
+  color: var(--pastiara-gold);
+  font-size: 1.8rem;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.cotizador {
+    /* Posicionamiento: centrado en el borde derecho */
     position: fixed;
-    right: 20px; /* Distancia desde el borde derecho */
-    bottom: 650px; /* Distancia desde el borde inferior */
-    
-    /* Estilos de diseño (ajusta a tu marca) */
-    background-color: var(--color-title); 
-    font-family: var(--title-body);
-    color: white; /* Texto blanco */
-    padding: 15px 25px;
-    border-radius: 30px; /* Bordes redondeados */
-    text-decoration: none; /* Quita el subrayado del enlace */
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    right: 30px; /* Espacio desde el borde derecho */
+    top: 50%; /* Lo posiciona a la mitad de la altura de la pantalla */
+    transform: translateY(-50%); /* Lo ajusta verticalmente para un centrado perfecto */
+
+    /* Layout interno: para alinear texto e ícono */
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre el texto y el ícono */
+
+    /* Tamaño y Apariencia: un "buen tamaño" para un llamado a la acción */
+    padding: 16px 32px;
+    background-color: #B58A6A; /* Color de tu marca */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Forma de píldora */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    /* Tipografía */
+    font-family: 'Questrial', sans-serif;
     font-size: 1.1em;
     font-weight: bold;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-    transition: background-color 0.3s ease; /* Transición para el hover */
-
-    display: flex; /* Permite que el contenido del botón (imagen y texto) se alinee fácilmente */
-    align-items: center; /* Centra verticalmente la imagen y el texto */
-    justify-content: center; /* Centra horizontalmente todo el contenido */
-    gap: 8px; /* Espacio entre la imagen y el texto */
-
-
-}
-
-.icono-boton {
-    width: 34px;
-    /* Ajusta el tamaño del icono */
-    height: 34px;
-    /* Puedes añadir más estilos si es necesario, como margin-right si no usas gap */
-}
-
-
-
-/* Efecto de 'hover' para feedback visual */
-.boton-flotante-ordenar:hover {
-    background-color: var(--color-title);
-    transform: scale(1.05);
-    /* Ligeramente más grande */
-}
-/* ========================================
-   RESPONSIVE
-   ======================================== */
-
-@media (max-width: 768px) {
-    .regalar-product-card {
-        padding: 1.5rem;
-    }
-
-    .regalar-header {
-        padding: 1rem;
-    }
-
-    .regalar-image-wrapper {
-        margin-bottom: 1rem;
-    }
-
-    .regalar-divider::before,
-    .regalar-divider::after {
-        width: 25%;
-    }
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     
-    .regalar-icono-decorativo {
-        width: 50px;
-    }
+    /* Interacción */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .boton-flotante-ordenar {
-        /*Se ancla al fondo, abarcando todo el ancho */
-        bottom: 0;
-        border-radius: 0;
-        /* Quita los bordes redondeados */
-        padding: 20px 0;
-        /* Ajusta el padding vertical */
-        right: -20px;
-        /* Distancia desde la derecha, negativo para que se vea cortado */
-        bottom: 30px;
-        /* La posición vertical que ajustamos antes */
-        width: auto;
-        /* Permite que el ancho se ajuste al contenido (texto + padding) */
-        padding: 15px 25px;
-        /* Restaura el padding del botón */
-        border-radius: 30px;
-        /* Restaura los bordes redondeados */
-        z-index: 1000;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        font-family: var(--title-body);
-    }
+/* Estilo para el ícono de imagen */
+.cotizador .icono-boton {
+    width: 28px;
+    height: 28px;
+}
+
+/* Efecto al pasar el cursor */
+.cotizador:hover {
+    /* Mantenemos la traslación para que el efecto de escala no lo descentre */
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pastiara-main-title {
+    font-size: 2.2rem;
+  }
+
+  .pastiara-section-title {
+    font-size: 1.8rem;
+  }
+
+  .pastiara-product-name {
+    font-size: 1.5rem;
+  }
+
+  .pastiara-banner-background {
+    height: 120px;
+    background-size: 100% 100%;
+  }
+
+  article img:first-child {
+    height: 450px;
+  }
+
+  .pastiara-description-text {
+    font-size: 0.95rem;
+  }
+
+  .pastiara-product-left,
+  .pastiara-product-right {
+    justify-content: center;
+  }
+
+  .pastiara-full-banner-section {
+    padding: 2.5rem 0;
+  }
 }
 
 @media (max-width: 576px) {
-    .regalar-product-card {
-        padding: 1rem;
-    }
+  .pastiara-main-title {
+    font-size: 1.8rem;
+  }
 
-    .regalar-price-tag {
-        font-size: 1rem;
-        padding: 0.4rem 1.2rem;
-    }
+  .pastiara-banner-background {
+    height: 100px;
+    background-size: 100% 100%;
+  }
 
-    .regalar-decorative-element::before,
-    .regalar-decorative-element::after {
-        margin: 0 0.5rem;
-    }
-    
-    .regalar-icono-decorativo {
-        width: 40px;
-    }
-}
+  article img:first-child {
+    height: 350px;
+  }
 
-@media (max-width: 480px) {
-    .regalar-page {
-        padding: 1rem 0;
-    }
-    
-    .regalar-header h1 {
-        font-size: 1.5rem;
-    }
-    
-    .regalar-header p {
-        font-size: 0.85rem;
-    }
+  .pastiara-product-info {
+    padding: 1.25rem;
+  }
+
+  .pastiara-price {
+    font-size: 1.2rem;
+  }
+
+  .pastiara-full-banner-section {
+    padding: 2rem 0;
+    margin-bottom: 1.5rem;
+  }
 }
