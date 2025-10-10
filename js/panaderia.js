@@ -53,4 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// panaderia.js
+document.addEventListener('DOMContentLoaded', () => {
+    const botonOrdenar = document.querySelector('.boton-flotante-ordenar');
+    const modalPedido = document.getElementById('modal-de-pedido'); // Asumiendo que tienes un modal con este ID
+
+    botonOrdenar.addEventListener('click', (e) => {
+        e.preventDefault(); // Detiene la navegación si es un <a>
+        
+        // Lógica para mostrar el modal:
+        modalPedido.style.display = 'block'; // O usa clases para manejar la visibilidad y animación
+        
+        // O lógica para hacer scroll a la sección de productos
+        // document.getElementById('seccion-productos').scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+
 
