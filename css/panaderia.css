@@ -1,21 +1,8 @@
-<<<<<<< HEAD
-/* styles.css */
-=======
 /** --- Variables Globales (Raíz) y Fuentes --- */
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('./global_variables.css');
 @import url('./normalize.css');
 
-<<<<<<< HEAD
-
-
-
-/* Asignación de fuentes */
-.container-panaderia {
-    font-family: var(--title-body);
-    margin-top: 250px; 
-=======
 /** Fuentes y Contenedor Principal */
 body {
     font-family: var(--title-body);
@@ -154,7 +141,6 @@ body {
 
 body.container-panaderia {
     padding-top: 150px !important;
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 }
 
 .hero-title {
@@ -230,53 +216,7 @@ body.container-panaderia {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
-<<<<<<< HEAD
-.product-info .description {
-    font-size: 16px;
-    line-height: 1.2;
-    color: var(--color-text3);
-    letter-spacing: -0.43px;
-}
-
-
-
-
-/* --- Utilidades y Animaciones --- */
-
-/* Habilita el desplazamiento suave al hacer clic en enlaces de anclaje */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Animación de latido para el corazón de favoritos */
-@keyframes heartBeat {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.3);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.heart-favorite.animate {
-    animation: heartBeat 0.6s ease-in-out;
-}
-
-/* Estilos para las notificaciones Toastify */
-.toastify {
-    font-family: "Questrial", sans-serif;
-}
-
-/* --- Diseño Responsivo (Responsive Design) --- */
-/* Estilos para pantallas con un ancho máximo de 768px (tablets y móviles) */
-=======
 /* --- Adaptación a Móviles --- */
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 @media (max-width: 768px) {
     .cotizador {
         /* En pantallas pequeñas, lo movemos a la parte inferior para no estorbar */
@@ -290,14 +230,6 @@ html {
         font-size: 1em;
     }
 
-<<<<<<< HEAD
-    .container-panaderia {
-        margin-top: 50px;
-    }
-
-    #hero-title-desktop {
-        display: none;
-=======
     .cotizador .icono-boton {
         width: 24px;
         height: 24px;
@@ -308,7 +240,6 @@ html {
 @media (max-width: 768px) {
     body.container-panaderia {
         padding-top: 100px !important;
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
     }
 
     /* En móvil, es mejor que el botón regrese a la parte inferior para no estorbar */

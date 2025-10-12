@@ -1,23 +1,4 @@
 /** --- Variables Globales (Raíz) y Fuentes --- */
-<<<<<<< HEAD
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-@import url('./global_variables.css');
-@import url('./normalize.css');
-
-
-
-/** Fuentes */
-.body-pastes .product-image {
-    font-family: 'Questrial', sans-serif;
-    max-width: none;  
-    width: 100%;      
-    height: 535px; 
-}
-
-.hero-title {
-    font-family: 'Abril Fatface', serif;
-=======
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display-swap');
 @import url('./global_variables.css');
 @import url('./normalize.css');
@@ -27,27 +8,18 @@ body {
     font-family: var(--title-body);
     /* AÑADIDO: Espacio superior para compensar la navbar absoluta */
     margin-top: 150px; /* Puedes ajustar este valor si es necesario */
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 }
 
 /* --- Estilos para el Hero Section --- */
 .hero-section {
-<<<<<<< HEAD
-    background-image: url('/images/INICIO/harina.jpg'); /** Banner para PC */
-=======
     background-image: url('../images/INICIO/harina.jpg');
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
     height: 45vh; /* <-- CAMBIADO: Altura responsiva */
     overflow: hidden;
-<<<<<<< HEAD
-    margin-top: 170px;
-=======
     /* NOTA: No se agrega 'position: relative' para evitar el conflicto con la navbar */
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 }
 
 /* Contenedor del título para centrarlo */
@@ -68,19 +40,6 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-<<<<<<< HEAD
-/** --- Estilos de la Sección de Productos --- */
-
-.image-container {
-  /** Contenedor que envuelve la imagen y el corazón */
-  position: relative;     /** Es la referencia para posicionar el corazón */
-  max-width: 351px;       /** Fija el tamaño máximo en pantallas grandes */
-  margin: 0 auto;         /** Centra el contenedor de la imagen */
-  border-radius: 8px;     /** Bordes redondeados */
-  overflow: hidden;       /** Asegura que la imagen no se salga de los bordes */
-}
-=======
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 
 /** --- Estilos de la Sección de Productos --- */
 .products-section {
@@ -97,13 +56,6 @@ body {
     aspect-ratio: 351 / 450;
     background-color: #000;
 }
-<<<<<<< HEAD
-.product-image {
-   /** La imagen del producto */
-  display: block;         /** Mejora la alineación de la imagen */
-  object-fit: cover; 
-  transition: transform 0.3s ease;     
-=======
 
 .products-section .product-image-container .product-image {
     display: block;
@@ -112,7 +64,6 @@ body {
     object-fit: cover;
     transition: transform 0.3s ease;
     max-width: 100% !important; 
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 }
 
 .product-image:hover {
@@ -120,16 +71,6 @@ body {
 }
 
 .heart-favorite {
-<<<<<<< HEAD
-   /** El ícono del corazón */
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 38px;
-  height: 41px;
-  z-index: 10;
-  cursor: pointer;
-=======
     position: absolute;
     top: 20px;
     right: 20px;
@@ -139,7 +80,6 @@ body {
     cursor: pointer;
     background: none;
     border: none;
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 }
 
 .heart-favorite:hover {
@@ -188,10 +128,6 @@ body {
     letter-spacing: -0.43px;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 /** --- Utilidades y Animaciones --- */
 html {
     scroll-behavior: smooth;
@@ -208,71 +144,60 @@ html {
     font-family: 'Questrial', sans-serif;
 }
 
-<<<<<<< HEAD
-/**Botón flotante para ordenar*/
-.boton-flotante-ordenar {
-    /* Posicionamiento fijo, la clave para que flote */
+/** --- Estilos para el Botón Flotante Cotizador --- */
+
+.cotizador {
+    /** Posicionamiento: centrado en el borde derecho */
     position: fixed;
-    right: 20px; /* Distancia desde el borde derecho */
-    bottom: 650px; /* Distancia desde el borde inferior */
-    
-    /* Estilos de diseño (ajusta a tu marca) */
-    background-color: var(--color-title); 
-    font-family: var(--title-body);
-    color: white; /* Texto blanco */
-    padding: 15px 25px;
-    border-radius: 30px; /* Bordes redondeados */
-    text-decoration: none; /* Quita el subrayado del enlace */
+    z-index: 1000; /** Asegura que esté por encima de todo */
+    right: 30px; /** Espacio desde el borde derecho */
+    top: 50%; /** Lo posiciona a la mitad de la altura de la pantalla */
+    transform: translateY(-50%); /** Lo ajusta verticalmente para un centrado perfecto */
+
+    /** Layout interno: para alinear texto e ícono */
+    display: flex;
+    align-items: center;
+    gap: 12px; /** Espacio entre el texto y el ícono */
+
+    /** Tamaño y Apariencia: un "buen tamaño" para un llamado a la acción */
+    padding: 16px 32px;
+    background-color: #B58A6A; /** Color de tu marca */
+    color: white;
+    border: none;
+    border-radius: 50px; /** Forma de píldora */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    /** Tipografía */
+    font-family: 'Questrial', sans-serif;
     font-size: 1.1em;
     font-weight: bold;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-    transition: background-color 0.3s ease; /* Transición para el hover */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 
-    display: flex; /* Permite que el contenido del botón (imagen y texto) se alinee fácilmente */
-    align-items: center; /* Centra verticalmente la imagen y el texto */
-    justify-content: center; /* Centra horizontalmente todo el contenido */
-    gap: 8px; /* Espacio entre la imagen y el texto */
-
-
+    /** Interacción */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.icono-boton {
-    width: 34px;
-    /* Ajusta el tamaño del icono */
-    height: 34px;
-    /* Puedes añadir más estilos si es necesario, como margin-right si no usas gap */
+/** Estilo para el ícono de imagen */
+.cotizador .icono-boton {
+    width: 28px;
+    height: 28px;
 }
 
-
-
-/* Efecto de 'hover' para feedback visual */
-.boton-flotante-ordenar:hover {
-    background-color: var(--color-title);
-    transform: scale(1.05);
-    /* Ligeramente más grande */
+/** Efecto al pasar el cursor */
+.cotizador:hover {
+    /** Mantenemos la traslación para que el efecto de escala no lo descentre */
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
-
-
-=======
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
 /** --- Diseño Responsivo (Responsive Design) --- */
 @media (max-width: 768px) {
     body {
         margin-top: 100px; /* Reducimos el margen en móviles */
     }
     
-<<<<<<< HEAD
-    /** ESTA ES LA REGLA QUE HEMOS CONSERVADO */
-    .hero-section {
-        margin-top: 88px;
-        background-image: url('../images/GENERAL/banner_ancho.jpg'); /** Banner móvil*/
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 40vh;
-=======
     .hero-section {
         height: 40vh; /* Altura del banner en móvil  */
     }
@@ -280,7 +205,6 @@ html {
     .hero-title {
         font-size: 2.5em; 
         padding: 0 15px;
->>>>>>> 2cd8145d890087114113376e48de1ac12686e645
     }
 
     .products-section {
@@ -320,3 +244,4 @@ html {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         font-family: var(--title-body);
     }
+
