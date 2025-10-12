@@ -5,126 +5,98 @@
 
 /* Estilos específicos para la página de inicio (homePage) */
 
-#Bienvenida {
-  margin-top: 163px;
-  /* ajusta al alto real de tu header */
-}
 
-.Bienvenida-title {
-  font-size: 80px;
-  color: var(--color-title);
-  font-family: var(--title-font);
-  text-align: center;
-  letter-spacing: 0.03em;
-  margin-bottom: 50px;
-  line-height: 95px;
-  padding: 0 40px;
-}
-
-/* Contenedor de la imagen: full-width y recorte controlado */
-#Bienvenida #img-bienvenida {
-  display: flex;
-  align-items: flex-start;
-  /* evitar centrar verticalmente */
-  justify-content: center;
-  /* por defecto centrado horizontal */
-  overflow: hidden;
-  padding: 0;
-}
-
-#Bienvenida #img-bienvenida img {
-  width: 100%;
-  height: 90vh;
-  /* altura visible en desktop — ajustar (50vh..80vh) */
-  max-height: auto;
-  object-fit: cover;
-  /* mantiene proporción y recorta arriba/abajo */
-  object-position: cente;
-  /* focaliza la parte superior (no centrar verticalmente) */
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-#Bienvenida .row>[class*="col"] {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-
-.subtitle {
-  font-family: var(--title-body);
-  color: var(--color-text2);
-  font-size: 28px;
-  margin: 0% 60px;
-  padding: 30px;
-  line-height: 1.5;
-}
-
-h2 {
-  font-family: var(--title-font);
-  font-size: 50px;
-  color: var(--color-title);
-  letter-spacing: 0.04em;
-
-}
-
-#subtitle-mobile {
-  display: none;
-}
-
-.subtitle-mobile-small {
-  font-size: 13px;
-  color: var(--color-text2);
-  margin: 0;
-  line-height: 1.2;
-}
-
-.contenedor-fondo {
-  background-image: url('/public/images/GENERAL/Banner\ Home.png');
-  /* Cambia la ruta según la ubicación de tu imagen */
+body {
+  height: 400px;
+  background-image: url("/public/images/GENERAL/PASTE-FONDO.png");
   background-size: cover;
-  /* Ajusta el tamaño de la imagen */
+  background-size: 26rem;
   background-repeat: no-repeat;
-  /* Evita que la imagen se repita */
-  background-position: center;
-  /* Centra la imagen */
-  background-clip: padding-box;
-  /* Asegura que la imagen no se desborde */
+  background-position: center center;
+  /* Hace que se aestatico*/
+  background-attachment: fixed;
+  margin-top: 172px;
 }
 
-/*.contenedor-fondo-mobile {
-  background-image: url('../dist/images/GENERAL/Banner Home.png');
-  /* misma imagen o ruta que usas */
-/*
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 8vh;
-  /* pequeño en móviles */
-/*
-  min-height: 56px;
-  max-height: 96px;
-  overflow: hidden;
-  margin-top: 12px;
-  border-radius: 8px;
+.Bienvenida .container {
+  position: relative;
+  /* para que el carousel pueda posicionarse sobre el video */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-}*/
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  overflow: visible;
+}
 
+video {
+  width: 100%;
+  height: 80vh;
+  /* altura visible en desktop (ajustar 50-70vh) */
+  max-height: 990px;
+  object-fit: cover;
+  /* mantiene proporción y recorta */
+  object-position: center top;
+  /* evita centrar verticalmente al recortarse */
+  display: block;
+  border-radius: 5px;
+  /* opcional */
+  overflow: hidden;
+  margin: 0 auto;
+}
 
+<<<<<<< HEAD
 
 .cotizador {
+=======
+#carouselExampleCaptions {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.carousel-item {
+  height: 78vh;
+  min-height: 300px;
+}
+
+.carousel-caption {
+  text-align: center;
+  bottom: 150px;
+  display: block !important;
+}
+
+.carousel-caption h5 {
+  font-size: 75px;
+  font-family: var(--title-font);
+  letter-spacing: 3px;
+  margin-top: 25px;
+  margin-bottom: 55px;
+}
+
+.carousel-caption p {
+  width: 100%;
+  font-size: 30px;
+>>>>>>> d88cc2c82f26fb7ac0abf17b450380aac2078ccc
   font-family: var(--title-body);
+  line-height: 1.8;
+}
+
+.carousel-caption a {
+  font-family: var(--title-body);
+  text-decoration: none;
   background-color: var(--color-boton1);
   color: var(--color-text2);
-  border: none;
-  padding: 10px 60px;
+  padding: 8px 40px;
+  margin-top: 30px;
+  display: inline-block;
   font-size: 22px;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  border-radius: 10px;
   background-image: url('/public/images/GENERAL/CanastaConPastes.png');
   /* Ruta de tu imagen */
   background-repeat: no-repeat;
@@ -135,9 +107,40 @@ h2 {
   /* Aumenta el padding para que el texto no se superponga con la imagen */
   background-size: 40px;
   /* Establece el tamaño de la imagen */
+
 }
 
+.carousel-inner:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
 
+.carousel-control-prev {
+  position: absolute;
+  z-index: 20;
+  top: 20%;
+}
+
+.carousel-control-next {
+  position: absolute;
+  z-index: 20;
+  top: 20%;
+}
+
+h2 {
+  font-family: var(--title-font);
+  font-size: 50px;
+  color: var(--color-title);
+  letter-spacing: 0.04em;
+
+}
+
+/* Estilos para los iconos de pastes */
 .img2 {
   width: 88px;
   /* tamaño por defecto */
@@ -183,6 +186,13 @@ h2 {
 
 #group-btn-home {
   font-family: var(--title-body);
+}
+
+hr {
+  opacity: 0.5;
+  border-top: 3px solid;
+  margin: 1rem 15rem;
+  color: var(--color-title);
 }
 
 .contenedor-fondo-productos {
@@ -413,9 +423,10 @@ h2 {
   /* Centra la imagen */
   background-clip: padding-box;
   /* Asegura que la imagen no se desborde */
-  opacity: .5;
+  opacity: .7;
   padding: 48px 0;
   /* espacio superior e inferior consistente */
+  position: relative;
 }
 
 /* Título */
@@ -504,6 +515,32 @@ h2 {
 
 
 /* Ajustes para pantallas grandes */
+
+@media (max-width: 1150px) {
+  .carousel-caption {
+    bottom: 100px;
+  }
+
+  .carousel-caption h5 {
+    font-size: 70px;
+    margin-bottom: 60px;
+  }
+
+  .carousel-caption p {
+    font-size: 25px;
+  }
+
+  .carousel-caption a {
+    font-size: 20px;
+    padding: 5px 28px;
+    background-size: 30px;
+    background-position: right 8px center;
+    /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+    padding-right: 48px;
+  }
+
+}
+
 @media (max-width: 992px) {
   .card-wrapper {
     margin: 0 10px 25px;
@@ -520,30 +557,6 @@ h2 {
   .Iconos .img2 {
     width: 72px;
     margin-top: 60px;
-  }
-
-  #Bienvenida {
-    margin-top: 250px;
-    /* reduce espacio que tenías para header grande */
-  }
-
-  .Bienvenida-title {
-    font-size: 60px;
-    letter-spacing: 0.03em;
-    margin-bottom: 40px;
-    line-height: 80px;
-  }
-
-  .cotizador {
-    font-size: 20px;
-    padding: 8px 40px;
-    margin-top: 60px;
-    margin-bottom: 30px;
-    background-size: 30px;
-    background-position: right 8px center;
-    /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
-    padding-right: 48px;
-    /* Aumenta el padding para que el texto no se superponga con la imagen */
   }
 
 }
@@ -584,29 +597,26 @@ h2 {
     padding: 0.6rem 0.85rem;
   }
 
-  #Bienvenida {
-    margin-top: 250px;
+  .carousel-caption {
+    bottom: 100px;
   }
 
-  .Bienvenida-title {
-    font-size: 40px;
-    letter-spacing: 0.02em;
-    margin-bottom: 30px;
-    line-height: 40px;
+  .carousel-caption h5 {
+    font-size: 55px
   }
 
-  .cotizador.cotizador {
-    font-size: 18px;
-    padding: 8px 30px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    background-size: 25px;
-    background-position: right 6px center;
+  .carousel-caption p {
+    font-size: 20px;
+  }
+
+  .carousel-caption a {
+    font-size: 20px;
+    padding: 5px 28px;
+    background-size: 30px;
+    background-position: right 8px center;
     /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
-    padding-right: 38px;
-    /* Aumenta el padding para que el texto no se superponga con la imagen */
+    padding-right: 48px;
   }
-
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -618,6 +628,10 @@ h2 {
   .Iconos .img2 {
     width: 52px;
     margin-top: 10px;
+  }
+
+  h2 {
+    font-size: 36px;
   }
 
   #faq {
@@ -638,15 +652,25 @@ h2 {
     padding: 0.5rem 0.75rem;
   }
 
-  #Bienvenida {
-    margin-top: 250px;
+  .carousel-caption {
+    bottom: 100px;
   }
 
-  .Bienvenida-title {
-    font-size: 30px;
-    letter-spacing: 0.02em;
-    margin-bottom: 20px;
-    line-height: 30px;
+  .carousel-caption h5 {
+    font-size: 45px
+  }
+
+  .carousel-caption p {
+    font-size: 18px;
+  }
+
+  .carousel-caption a {
+    font-size: 16px;
+    padding: 5px 28px;
+    background-size: 30px;
+    background-position: right 8px center;
+    /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+    padding-right: 48px;
   }
 
   .linea-iconos {
@@ -659,5 +683,17 @@ h2 {
     width: 50px;
     /* Iconos pequeños para no estorbar */
     margin: 0 5px;
+  }
+
+  body {
+    background-size: 20rem;
+  }
+
+  .carousel-control-prev {
+    display: none;
+  }
+
+  .carousel-control-next {
+    display: none;
   }
 }

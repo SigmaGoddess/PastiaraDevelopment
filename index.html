@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
     </title>
+
+     <!-- Favicon-->
+    <link rel="icon" type="image/png" href="/favicon-pastiara.png">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -13,6 +17,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Swiper-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="/css/loader.css">
     <link rel="stylesheet" href="/css/navbar.css">
@@ -28,45 +34,82 @@
     <special-header></special-header>
 
     <main>
-        <section id="Bienvenida" class="Bienvenida-section">
+        <section class="Bienvenida">
             <div class="container-fluid">
-                <div class="row align-items-center">
-                    <!-- Texto (desktop muestra banner dentro, mobile oculta este banner) -->
-                    <div class="col text-center">
-                        <h1 class="Bienvenida-title">¡Bienvenidos a Pastiara, una experiencia al paladar!</h1>
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"
+                    src="/public/Videos/Oct_10__1413_20s_202510101452_kb7nu.mp4"></video>
 
-                        <!-- banner para DESKTOP (oculto en móviles) -->
-                        <div class="contenedor-fondo d-none d-lg-block align-items-center">
-                            <p class="subtitle" id="subtitle-desktop">Los elaboramos diariamente a mano, con
-                                ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y fresco,
-                                directo de nuestro horno a tu mesa.</p>
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="animate__animated animate__fadeInDown" style="animation-delay: 1s;">
+                                    Bienvenido a Pastiara</h5>
+                                <p class="animate__animated animate__fadeInDown" style="animation-delay: 2s;">Los
+                                    elaboramos diariamente a
+                                    mano, con
+                                    ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y
+                                    fresco,
+                                    directo de nuestro horno a tu mesa.</p>
+                                <p class="animate__animated animate__fadeInDown" style="animation-delay: 3s;"> <a
+                                        href="/pages/pag-cotizador/cotizador.html">¡Cotiza
+                                        aquí!</a>
+                                </p>
+                            </div>
                         </div>
-
-                        <!-- subtítulo móvil (visible solo en pantallas pequeñas) -->
-                        <p class="subtitle d-block d-lg-none" id="subtitle-mobile">Directo de nuestro horno a tu mesa.
-                        </p>
-
-                        <button class="btn cotizador" type="button"
-                            onclick="location.href='/pages/pag-cotizador/cotizador.html'">
-                            <span class="btn-text">¡Cotiza aquí!</span>
-                            <span class="btn-icon" aria-hidden="true"></span>
-                        </button>
-                    </div>
-
-                    <!-- Imagen (col se apila en móviles automáticamente) -->
-                    <div class="col" id="img-bienvenida">
-                        <img src="/images/INICIO/PASTES HOME PAGE.jpg" class="img-fluid" alt="Pastes de home page">
-                    </div>
-
-                    <!-- banner MÓVIL: duplicado y colocado después de la imagen, solo visible en pantallas pequeñas -->
-                    <div class="col-12 d-block d-lg-none">
-                        <div class="contenedor-fondo contenedor-fondo-mobile text-center">
-                            <!-- puedes dejar el texto o no, el banner puede ser sólo decorativo -->
-                            <p class="subtitle subtitle-mobile-small">Los elaboramos diariamente a mano, con
-                                ingredientes de la más alta calidad.</p>
+                        <div class="carousel-item">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="animate__animated animate__fadeInDown" style="animation-delay: 1s">Bienvenido
+                                    a Pastiara</h5>
+                                <p class="animate__animated animate__fadeInDown" style="animation-delay: 2s">Los
+                                    elaboramos diariamente a
+                                    mano, con
+                                    ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y
+                                    fresco,
+                                    directo de nuestro horno a tu mesa.</p>
+                                <p class="animate__animated animate__fadeInDown" style="animation-delay: 3s"> <a
+                                        href="/pages/pag-cotizador/cotizador.html">¡Cotiza
+                                        aquí!</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="animate__animated animate__fadeInDown" style="animation-delay: 1s">Bienvenido
+                                    a Pastiara</h5>
+                                <p class="animate__animated animate__fadeInDown" style="animation-delay: 2s">Los
+                                    elaboramos diariamente a
+                                    mano, con
+                                    ingredientes de la más alta calidad para que disfrutes de un sabor auténtico y
+                                    fresco,
+                                    directo de nuestro horno a tu mesa.</p>
+                                <p class="animate__animated animate__fadeInDown" style="animation-delay: 3s"> <a
+                                        href="/pages/pag-cotizador/cotizador.html">¡Cotiza
+                                        aquí!</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
             </div>
         </section>
 
@@ -96,6 +139,7 @@
                 <div class="row">
                     <div class="col">
                         <p id="subtitle-products-home">Elige una categoría</p>
+                        <hr>
                     </div>
                 </div>
                 <div class="row">
@@ -120,7 +164,9 @@
                                         <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg" alt="Paste de frijol"
                                             class="card-image">
                                         <p class="badge">FRIJOL</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -128,7 +174,9 @@
                                         <img src="/images/PASTES/IMG_3166_papa_abierto.jpeg" alt="Paste de papa"
                                             class="card-image">
                                         <p class="badge">PAPA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -136,7 +184,9 @@
                                         <img src="/images/PASTES/IMG_3186_mole_abierto.jpeg" alt="Paste de MOLE"
                                             class="card-image">
                                         <p class="badge">MOLE</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -144,7 +194,9 @@
                                         <img src="/images/PASTES/IMG_3202_piña_abierto.jpeg" alt="Paste de PIÑA"
                                             class="card-image">
                                         <p class="badge">PIÑA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -152,7 +204,9 @@
                                         <img src="/images/PASTES/IMG_3217_rajas_abierto.jpeg" alt="Paste de rajas"
                                             class="card-image">
                                         <p class="badge">RAJAS </p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -160,7 +214,9 @@
                                         <img src="/images/PASTES/IMG_3230_moleverde_abierto.jpeg"
                                             alt="Paste de mole verde" class="card-image">
                                         <p class="badge">MOLE VERDE</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -168,7 +224,9 @@
                                         <img src="/images/PASTES/IMG_3251.jpeg" alt="Paste de cochinita"
                                             class="card-image">
                                         <p class="badge">COCHINITA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -176,15 +234,19 @@
                                         <img src="/images/PASTES/IMG_3260_salchicha_abierto.jpeg"
                                             alt="Paste de salchicha" class="card-image">
                                         <p class="badge">SALCHICHA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img src="/images/PASTES/IMG_3142_ frjol.jpeg" alt="Paste de pastiara"
+                                        <img src="/public/images/PASTES/Paste_budin.JPG" alt="Paste de pastiara"
                                             class="card-image">
                                         <p class="badge">BUDÍN PASTIARA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPastes/pastes.html"
+                                            aria-label="Ver pastes"></button>
                                     </a>
                                 </li>
                             </ul>
@@ -204,7 +266,9 @@
                                         <img src="/images/VOLOVANES/brigadeiro_con_frutos_rojos.png"
                                             alt="brigadeiro con frutos rojos" class="card-image">
                                         <p class="badge">FRUTOS ROJOS</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -212,7 +276,9 @@
                                         <img src="/images/VOLOVANES/budín_pastiara.png" alt="budín_pastiara"
                                             class="card-image">
                                         <p class="badge">BUDÍN PASTIARA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -220,7 +286,9 @@
                                         <img src="/images/VOLOVANES/volovan_cochinita_pibil.png"
                                             alt="volovan_cochinita_pibil" class="card-image">
                                         <p class="badge">COCHINITA PIBIL</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -228,7 +296,9 @@
                                         <img src="/images/VOLOVANES/volovan_ensalada_rusa.png"
                                             alt="volovan_ensalada_rusa" class="card-image">
                                         <p class="badge">ENASALADA RUSA</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -236,7 +306,9 @@
                                         <img src="/images/VOLOVANES/volovan_mole_rojo.png" alt="volovan_mole_rojo"
                                             class="card-image">
                                         <p class="badge">MOLE ROJO</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -244,7 +316,9 @@
                                         <img src="/images/VOLOVANES/volovan_mole_verde.png" alt="volovan_mole_verde"
                                             class="card-image">
                                         <p class="badge">MOLE VERDE</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
@@ -252,7 +326,9 @@
                                         <img src="/images/VOLOVANES/volovan_rajas_con_pollo.png"
                                             alt="volovan_rajas_con_pollo" class="card-image">
                                         <p class="badge">RAJAS CON POLLO</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosVolovanes/volovanes.html"
+                                            aria-label="Ver volovanes"></button>
                                     </a>
                                 </li>
                             </ul>
@@ -273,15 +349,19 @@
                                         <img src="/images/PANADERÍA-ARTESANAL/barquillo_panaderia (1).png"
                                             alt="barquillo_panaderia" class="card-image">
                                         <p class="badge">BARQUILLO</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPanaderia/panaderia.html"
+                                            aria-label="Ver panadería"></button>
                                     </a>
                                 </li>
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
                                         <img src="/images/PANADERÍA-ARTESANAL/rollo_panaderia.png" alt="Paste de MOLE"
                                             class="card-image">
-                                        <p class="badge">MOLE</p>
-                                        <button class="card-button bi-arrow-up-right"></button>
+                                        <p class="badge">ROLLITO GUAYABA</p>
+                                        <button class="card-button bi-arrow-up-right" type="button"
+                                            data-href="/pages/pag-productosPanaderia/panaderia.html"
+                                            aria-label="Ver panadería"></button>
                                     </a>
                                 </li>
                             </ul>
@@ -310,7 +390,7 @@
             </div>
         </section>
 
-        <section>
+        <section class="Pastes-principal">
             <div class="container-fluid paste-principal">
                 <img src="/public/images/PASTES/IMG_3176_mole - centrada.jpeg" alt="Pastes de home page"
                     class="img-fluid">

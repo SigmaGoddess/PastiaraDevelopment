@@ -1,113 +1,66 @@
-/* ================================================================= */
-/* 1. IMPORTACIÓN DE FUENTES GLOBALES DEL PROYECTO                   */
-/* ================================================================= */
+/* ... (Tus importaciones y estilos base permanecen igual) ... */
 @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
 /* ================================================================= */
-/* 2. ESTILOS BASE Y TIPOGRAFÍA                                      */
+/* ESTILOS DE LA BARRA DE PESTAÑAS (NUEVO)                           */
 /* ================================================================= */
-body {
-    font-family: 'Questrial', sans-serif; /* Fuente principal para todo el texto */
-    background-color: #f8f9fa; /* Un gris muy claro, similar al de Bootstrap */
-    color: #333; /* Color de texto principal oscuro */
-    margin: 0;
-    padding: 0;
+.tabs-container {
+    background-color: #fdf8f4; /* Un color crema muy claro */
+    border-bottom: 1px solid #e5e5e5;
 }
 
-/* Estilo para los títulos principales de cada sección */
-.font-abril {
-    font-family: 'Abril Fatface', cursive; /* Fuente decorativa para títulos */
-    color: #b58a6a; /* Color acento de la marca */
+.tab-link {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-size: 1.125rem; /* 18px */
+    font-weight: 600;
+    color: #8c8c8c; /* Un gris suave */
+    border-bottom: 3px solid transparent; /* Borde inferior para el estado activo */
+    transition: all 0.3s ease;
 }
 
-/* ================================================================= */
-/* 3. ESTRUCTURA Y PANELES DE CONTENIDO                              */
-/* ================================================================= */
+.tab-link:hover {
+    color: #333;
+}
 
-/* Estilo general para cada panel de contenido (Datos, Cotizaciones, etc.) */
-main section {
+.tab-link.active {
+    color: #916e55; /* Color principal de la marca */
+    border-bottom-color: #916e55; /* Borde visible solo en la pestaña activa */
+}
+
+
+/* ================================================================= */
+/* ESTILOS DE PANELES DE CONTENIDO (AJUSTADO)                        */
+/* ================================================================= */
+main section.user-section {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 2rem;
-    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem; /* Padding general */
+    margin: 0 auto;  /* Centrado */
 }
 
 /* ================================================================= */
-/* 4. MENÚ DE NAVEGACIÓN LATERAL (ASIDE)                             */
+/* AJUSTE PARA REDUCIR ESPACIO EN FAVORITOS                          */
 /* ================================================================= */
-aside .nav-link {
-    color: #333;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    display: block; /* Asegura que ocupe todo el ancho disponible */
+#favoritos-section {
+    padding-top: 2rem; /* Menos espacio arriba */
+}
+#favoritos-section h2 {
+    margin-bottom: 1.5rem; /* Menos espacio debajo del título "Favoritos" */
 }
 
-/* Efecto al pasar el cursor sobre un enlace */
-aside .nav-link:hover {
-    background-color: #f1f1f1;
-    color: #916e55;
-}
-
-/* Estilo para el enlace de navegación activo (resalta la sección actual) */
-aside .nav-link.active {
-    background-color: #fdf8f4; /* Un fondo muy sutil color crema */
-    color: #b58a6a; /* Color acento de la marca */
-    font-weight: bold;
-    transform: translateX(5px); /* Pequeño desplazamiento a la derecha */
-}
 
 /* ================================================================= */
-/* 5. BOTONES                                                        */
+/* LÓGICA PARA MOSTRAR/OCULTAR SECCIONES (CLAVE)                     */
 /* ================================================================= */
-
-/* Estilo base para los botones principales */
-.btn-primary {
-    background-color: #916e55; /* Color primario de la marca */
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn-primary:hover {
-    background-color: #7a5c46; /* Un tono más oscuro para el hover */
-    transform: translateY(-2px); /* Efecto de "levantar" el botón */
-}
-
-/* Botón para eliminar cuenta */
-.btn-delete {
-    background-color: transparent;
-    color: #dc3545; /* Rojo estándar para acciones de peligro */
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.btn-delete:hover {
-    color: #a71d2a; /* Rojo más oscuro */
-}
-
-/* ================================================================= */
-/* 6. LÓGICA PARA MOSTRAR/OCULTAR SECCIONES (PESTAÑAS)               */
-/* (Esta es la lógica que ya tenías, está perfecta)                  */
-/* ================================================================= */
-
-/* Oculta todas las secciones por defecto */
-main > section {
+main > section.user-section {
     display: none; 
 }
 
-/* Muestra únicamente la sección que tenga la clase 'active' */
-main > section.active {
+main > section.user-section.active {
     display: block;
 }
+
+/* ... (Tus otros estilos para botones, etc., pueden permanecer igual) ... */
