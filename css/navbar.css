@@ -16,6 +16,7 @@ img {
     top: 0%;
     left: 0%;
     flex-wrap: inherit;
+    z-index: 1000;
 }
 
 .navbar .nav-link {
