@@ -29,24 +29,6 @@ body {
     overflow: hidden;
 }
 
-/* Capa oscura para que el texto siempre se lea bien */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.45); 
-    z-index: 2;
-}
-
-/* El contenedor del texto ahora necesita un z-index */
-.hero-section .container {
-    position: relative; 
-    z-index: 3;
-    padding: 0 20px;
-}
 
 /* Estilos del título para que resalte más */
 .hero-title {
@@ -287,25 +269,26 @@ html {
     
     /* --- AJUSTES PARA EL BOTÓN FLOTANTE EN MÓVIL --- */
     .btn-flotante-ordenar {
-        /* Mantenemos la apariencia de círculo */
-        width: 60px;
-        height: 60px;
-        padding: 0;
-        justify-content: center;
+    /* Posición: Esquina inferior derecha */
+    top: auto !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    transform: none !important;
+    
+    /* Forma circular */
+    width: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+}
 
-        /* CORREGIDO: Aplicamos el centrado vertical derecho */
-        top: 50%;
-        right: 20px; /* Un poco menos de espacio para pantallas pequeñas */
-        transform: translateY(-50%);
-        bottom: auto; /* Anulamos la posición inferior */
-    }
+.btn-flotante-ordenar .btn-text {
+    display: none !important;
+}
 
-    .btn-flotante-ordenar .btn-text {
-        display: none; /* Mantenemos el texto oculto en móvil */
-    }
-
-    .btn-flotante-ordenar .icono-boton {
-        width: 28px; /* Hacemos el ícono un poco más grande */
-        height: 28px;
-    }
+.btn-flotante-ordenar .icono-boton {
+    width: 28px !important;
+    height: 28px !important;
+}
 }
