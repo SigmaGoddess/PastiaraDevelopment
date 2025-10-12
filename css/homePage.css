@@ -46,10 +46,6 @@ video {
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
-
-.cotizador {
-=======
 #carouselExampleCaptions {
   position: absolute;
   top: 60%;
@@ -82,7 +78,6 @@ video {
 .carousel-caption p {
   width: 100%;
   font-size: 30px;
->>>>>>> d88cc2c82f26fb7ac0abf17b450380aac2078ccc
   font-family: var(--title-body);
   line-height: 1.8;
 }
