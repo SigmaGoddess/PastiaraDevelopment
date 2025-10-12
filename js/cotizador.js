@@ -111,7 +111,6 @@ let swiper4 = new Swiper('#contenedor-collapse-productos-regalar .swiper-contain
 
 //----------------------- interacción para sumar o restar cantidad en en productos-------------------------
 const productos = document.querySelectorAll('#producto');
-console.log(productos);
 
 productos.forEach(producto => {
   // Obtenemos los elementos específicos DE CADA producto
@@ -151,3 +150,111 @@ productos.forEach(producto => {
 });
 
 //
+
+
+const btnMostrarResumen = document.getElementById('btnMostrarResumen');
+const modal = document.getElementById('resumenModal');
+const direccionModal = document.getElementById('direccion-modal');
+const spanCerrar = document.querySelector('.cerrar');
+const entradaTipoDeEvento = document.querySelector('#entradaTipoDeEvento');
+const entradaFechaDeEvento = document.getElementById('entradaFechaDeEvento');
+const entradaCalle = document.getElementById('entradaCalle');
+const entradaNumeroExterior = document.getElementById('entradaNumeroExterior');
+const entradaNumeroInterior = document.getElementById('entradaNumeroInterior');
+const entradaColonia = document.getElementById('entradaColonia');
+const entradaMunicipio = document.getElementById('entradaMunicipio');
+const entradaCodigoPostal = document.getElementById('entradaCodigoPostal');
+const entradaEstado = document.getElementById('entradaEstado');
+
+ // 2. ABRIR EL MODAL AL HACER CLIC EN "ENVIAR COTIZACIÓN"
+    btnMostrarResumen.onclick = function() {
+      console.log("entrada resumen");
+        // --- Recolectar datos ---
+        const calle = entradaCalle.value;
+        const numeroExterior = entradaNumeroExterior.value;
+        const numeroInterior = entradaNumeroInterior.value;
+        const colonia = entradaColonia.value;
+        const municipio = entradaMunicipio.value;
+        const codigoPostal = entradaCodigoPostal.value;
+        const estado = entradaEstado.value;
+
+        // Limpiamos el resumen anterior
+       direccionModal.innerHTML = '';
+      
+       
+
+       //llenamos el bloque de dirección
+       if(numeroInterior === ''){
+
+        direccionModal.innerHTML = `
+        <h5 class="my-1">${calle} ${numeroExterior}</h5>
+                            <p class="my-1">${colonia}, ${municipio}, ${codigoPostal}</p>
+                            <p class="my-1">${estado}</p>
+        `
+       }
+       else{
+        direccionModal.innerHTML = `
+        <h5 class="my-1">${calle} ${numeroExterior}, ${numeroInterior}</h5>
+                            <p class="my-1">${colonia}, ${municipio}, ${codigoPostal}</p>
+                            <p class="my-1">${estado}</p>
+        `
+
+       }
+
+        // Llenamos el resumen de productos}
+		/*
+        let hayProductos = false;
+        inputsProductos.forEach(input => {
+            const cantidad = parseInt(input.value, 10);
+            const nombre = input.getAttribute('data-nombre');
+
+            // Solo agregamos el producto si la cantidad es mayor a 0
+            if (cantidad > 0) {
+                const li = document.createElement('li');
+                li.textContent = `${nombre} - Cantidad: ${cantidad}`;
+                resumenProductos.appendChild(li);
+                hayProductos = true;
+            }
+        });*/
+
+        // --- Validar y mostrar    || !hayProductos---
+        /*if (direccion.trim() === '') {
+            alert('Por favor, ingresa una dirección y selecciona al menos un producto.');
+            return; // Detenemos la función si faltan datos
+        }*/
+        
+        // Llenamos la dirección en el resumen
+        //resumenDireccion.textContent = direccion;
+
+        // Mostramos el modal
+        modal.style.display = 'block';
+    }
+
+    // 3. CERRAR EL MODAL
+    // Al hacer clic en la 'x'
+    spanCerrar.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    // Al hacer clic fuera del contenido del modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    /*
+    // 4. ACCIÓN AL CONFIRMAR LA COTIZACIÓN
+    btnConfirmar.onclick = function() {
+        // Aquí es donde pondrías la lógica para enviar el formulario REALMENTE
+        // Por ejemplo, usando fetch() para enviar los datos a un servidor,
+        // o simplemente llamando al envío del formulario.
+        
+        alert('¡Cotización confirmada y enviada!');
+        
+        // Opcional: para enviar el formulario de verdad
+        // document.getElementById('cotizacionForm').submit();
+
+        // Cerramos el modal
+        modal.style.display = 'none';
+    }*/
+

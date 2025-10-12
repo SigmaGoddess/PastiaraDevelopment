@@ -47,14 +47,16 @@
                                 <p id="text-form">Tipo de evento</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaTipoDeEvento">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Fecha de evento</p>
                                 <div class="input-group input-group-md">
                                     <input type="date" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaFechaDeEvento">
                                 </div>
                             </div>
                         </div>
@@ -63,7 +65,8 @@
                                 <p id="text-form">Calle</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaCalle">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 d-flex">
@@ -71,14 +74,16 @@
                                     <p id="text-form">N.Ext</p>
                                     <div class="input-group input-group-md">
                                         <input type="number" class="form-control input-shadow-color"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                            id="entradaNumeroExterior">
                                     </div>
                                 </div>
                                 <div class="mx-3">
                                     <p id="text-form">N.Int</p>
                                     <div class="input-group input-group-md">
                                         <input type="number" class="form-control input-shadow-color"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                            id="entradaNumeroInterior">
                                     </div>
                                 </div>
                             </div>
@@ -88,14 +93,35 @@
                                 <p id="text-form">Colonia</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaColonia">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Municipio</p>
+                                <div class="input-group input-group-md">
+                                    <input type="text" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaMunicipio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Codigo postal</p>
+                                <div class="input-group input-group-md">
+                                    <input type="number" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaCodigoPostal">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Estado</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaEstado">
                                 </div>
                             </div>
                         </div>
@@ -138,15 +164,17 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6"
-                                                                                id="total-producto" data-precio="25">Total:
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total:
                                                                                 $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de frijol">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -168,13 +196,16 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de carne con papa">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -195,13 +226,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -223,13 +256,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="29">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -250,13 +285,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -277,13 +314,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -305,13 +344,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6"  id="total-producto" data-precio="27">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="27">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -331,13 +372,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="27">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="27">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -359,13 +402,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="29">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -417,15 +462,16 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6"
-                                                                                id="total-producto" data-precio="25">Total: $0
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0
                                                                             </span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -445,13 +491,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -472,13 +520,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -500,13 +550,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="29">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -528,13 +580,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="25">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -556,13 +610,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="29">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -584,13 +640,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="29">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -643,14 +701,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6"
-                                                                            id="total-producto" data-precio="35">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="35">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -671,13 +730,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="55">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="55">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -731,40 +792,15 @@
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6"
-                                                                                id="total-producto" data-precio="230">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="230">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="swiper-slide">
-                                                                <div class="card product-card" id="contidad">
-                                                                    <div class="recorte-contenedor">
-                                                                        <img src="/images/PANADERÍA-ARTESANAL/rollo_panaderia.png"
-                                                                            class="card-img-top" alt="Frijol empanada">
-                                                                    </div>
-                                                                    <div>
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-start mb-3">
-                                                                            <h5 class="card-title mb-0">4 barquillos rellenos de budín pastiara y 4 roles de guayaba</h5>
-                                                                            <span class="fs-5 fw-bold">$300</span>
-                                                                        </div>
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="300">Total: $0</span>
-                                                                            <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -779,18 +815,53 @@
                                                                     <div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-start mb-3">
-                                                                            <h5 class="card-title mb-0">2 volovanes brigadeiro con frutos rojos, <br> 2 barquillos rellenos de budín pastiara y 2 roles de guayaba</h5>
+                                                                            <h5 class="card-title mb-0">4 barquillos
+                                                                                rellenos de budín pastiara y 4 roles de
+                                                                                guayaba</h5>
+                                                                            <span class="fs-5 fw-bold">$300</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="300">Total: $0</span>
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card" id="producto">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PANADERÍA-ARTESANAL/rollo_panaderia.png"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+                                                                    <div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">2 volovanes
+                                                                                brigadeiro con frutos rojos, <br> 2
+                                                                                barquillos rellenos de budín pastiara y
+                                                                                2 roles de guayaba</h5>
                                                                             <span class="fs-5 fw-bold">$230</span>
                                                                         </div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6" id="total-producto" data-precio="230">Total: $0</span>
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="230">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-restar">-</button>
-                                                                                <span class="quantity-display" id="cantidad">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button" id="btn-sumar">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -808,13 +879,13 @@
                         <div class="row">
                             <p id="text-notas">Comentarios:</p>
                             <div class="input-group input-group-md">
-                                    <textarea class="input-shadow-color" name="comentarios" id="comentarios" rows="5" cols="65" ></textarea>
-                                </div>
+                                <textarea class="input-shadow-color" name="comentarios" id="comentarios" rows="5"
+                                    cols="65"></textarea>
+                            </div>
                         </div>
                         <!--Boton de enviar cotización-->
                         <div class="row d-flex justify-content-center align-items-center ">
-                            <button class="btn cotizador" type="button"
-                                onclick="location.href='/pages/pag-cotizador/cotizador.html'">Enviar
+                            <button class="btn cotizador" type="button" id="btnMostrarResumen">Enviar
                                 cotización</button>
                         </div>
                         <div>
@@ -832,6 +903,33 @@
                         <img src="/images/GENERAL/banner-cotizador.svg" class="img-fluid" alt="....">
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="resumenModal" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar">&times;</span>
+                <h2 id="title-set-modal">Resumen de Cotización</h2>
+
+                <h4 id="text-set">Dirección de Envío:</h4>
+                <div class="row">
+                    <div class="col-1 d-flex align-items-center ">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="col-11 px-0">
+                        <div id="direccion-modal">
+                            
+
+                        </div>
+                    </div>
+                </div>
+                <p id="resumenDireccion"></p>
+
+                <h4 id="text-set">Productos a Cotizar:</h4>
+                <ul id="resumenProductos">
+                </ul>
+
+                <button class="cotizador-modal" id="btnConfirmarCotizacion">Confirmar y Enviar</button>
             </div>
         </div>
     </main>
