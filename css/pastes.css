@@ -144,6 +144,54 @@ html {
     font-family: 'Questrial', sans-serif;
 }
 
+/** --- Estilos para el Botón Flotante Cotizador --- */
+
+.cotizador {
+    /** Posicionamiento: centrado en el borde derecho */
+    position: fixed;
+    z-index: 1000; /** Asegura que esté por encima de todo */
+    right: 30px; /** Espacio desde el borde derecho */
+    top: 50%; /** Lo posiciona a la mitad de la altura de la pantalla */
+    transform: translateY(-50%); /** Lo ajusta verticalmente para un centrado perfecto */
+
+    /** Layout interno: para alinear texto e ícono */
+    display: flex;
+    align-items: center;
+    gap: 12px; /** Espacio entre el texto y el ícono */
+
+    /** Tamaño y Apariencia: un "buen tamaño" para un llamado a la acción */
+    padding: 16px 32px;
+    background-color: #B58A6A; /** Color de tu marca */
+    color: white;
+    border: none;
+    border-radius: 50px; /** Forma de píldora */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    /** Tipografía */
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    /** Interacción */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/** Estilo para el ícono de imagen */
+.cotizador .icono-boton {
+    width: 28px;
+    height: 28px;
+}
+
+/** Efecto al pasar el cursor */
+.cotizador:hover {
+    /** Mantenemos la traslación para que el efecto de escala no lo descentre */
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
 /** --- Diseño Responsivo (Responsive Design) --- */
 @media (max-width: 768px) {
     body {
@@ -174,3 +222,26 @@ html {
         font-size: 15px;
     }
 }
+
+.boton-flotante-ordenar {
+        /*Se ancla al fondo, abarcando todo el ancho */
+        bottom: 0;
+        border-radius: 0;
+        /* Quita los bordes redondeados */
+        padding: 20px 0;
+        /* Ajusta el padding vertical */
+        right: -20px;
+        /* Distancia desde la derecha, negativo para que se vea cortado */
+        bottom: 30px;
+        /* La posición vertical que ajustamos antes */
+        width: auto;
+        /* Permite que el ancho se ajuste al contenido (texto + padding) */
+        padding: 15px 25px;
+        /* Restaura el padding del botón */
+        border-radius: 30px;
+        /* Restaura los bordes redondeados */
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: var(--title-body);
+    }
+
