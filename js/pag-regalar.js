@@ -80,5 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  console.log(" Animaciones inicializadas correctamente");
+  console.log("✅ Animaciones inicializadas correctamente");
 });
