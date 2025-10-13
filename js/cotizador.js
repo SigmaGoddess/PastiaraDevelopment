@@ -12,11 +12,11 @@ let swiper1 = new Swiper('.swiper-container-pastes', {
   
 	breakpoints: {
 	  20: {
-		slidesPerView: 2,
-		spaceBetween: 30,
+		slidesPerView: 1,
+		spaceBetween: 20,
 	  
 	  },
-      815: {
+      600: {
 		slidesPerView: 3,
 		spaceBetween: 10,
 	  },
@@ -41,11 +41,11 @@ let swiper2 = new Swiper('#contenedor-collapse-productos-volovanes .swiper-conta
   
 	breakpoints: {
 	  20: {
-		slidesPerView: 2,
-		spaceBetween: 30,
+		slidesPerView: 1,
+		spaceBetween: 20,
 	  
 	  },
-      815: {
+      600: {
 		slidesPerView: 3,
 		spaceBetween: 10,
 	  },
@@ -68,10 +68,10 @@ let swiper3 = new Swiper('#contenedor-collapse-productos-panaderia .swiper-conta
 	breakpoints: {
 	  20: {
 		slidesPerView: 1,
-		spaceBetween: 10,
+		spaceBetween: 20,
 	  
 	  },
-      815: {
+      600: {
 		slidesPerView: 3,
 		spaceBetween: 10,
 	  },
@@ -93,11 +93,11 @@ let swiper4 = new Swiper('#contenedor-collapse-productos-regalar .swiper-contain
 	spaceBetween: 0,
 	breakpoints: {
 	  20: {
-		slidesPerView: 2,
-		spaceBetween: 30,
+		slidesPerView: 1,
+		spaceBetween: 20,
 	  
 	  },
-      815: {
+      600: {
 		slidesPerView: 3,
 		spaceBetween: 10,
 	  },
