@@ -1,22 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-@import url('../css/global_variables.css');
-@import url('../css/normalize.css');
-
-
-
+/*Importación de las variables globales */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
 
 .body-regalar {
-  font-family: "Questrial", sans-serif;
-  background: #ffffff;
-  color: var(--pastiara-dark);
+  margin-top: 170px;
+  font-family: var(--title-body);
+  background: var(--background-color);
+  color: var(--color-text1);
   overflow-x: hidden;
 }
 
-/* Header principal con animación */
+/* Header principal */
 .pastiara-header {
   padding: 4rem 0 3rem;
   text-align: center;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(245, 240, 235, 0.4) 100%);
+  background: linear-gradient(180deg, var(--background-color) 0%, rgba(245, 240, 235, 0.4) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -33,22 +32,20 @@
 }
 
 @keyframes pulse {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1) rotate(0deg);
     opacity: 0.5;
   }
-
   50% {
     transform: scale(1.1) rotate(180deg);
     opacity: 0.3;
   }
 }
 
+/* Título principal */
 .pastiara-main-title {
-  font-family: "Abril Fatface", serif;
-  color: var(--pastiara-gold);
+  font-family: var(--title-font);
+  color: var(--color-title);
   font-size: 4rem;
   margin-bottom: 1rem;
   letter-spacing: 2px;
@@ -58,20 +55,14 @@
 }
 
 @keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
+/* Subtítulo */
 .pastiara-subtitle {
-  font-family: "Questrial", sans-serif;
-  color: #8c8c8c;
+  font-family: var(--title-body);
+  color: var(--color-text3);
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -82,24 +73,17 @@
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Sección de título secundario */
+/* Sección de título */
 .pastiara-section-title {
-  font-family: "Abril Fatface", serif;
-  color: var(--pastiara-gold);
+  font-family: var(--title-font);
+  color: var(--color-title);
   font-size: 3.5rem;
   text-align: center;
-  margin: 3rem 0 3rem;
+  margin: 3rem 0;
   letter-spacing: 1px;
   position: relative;
   display: inline-block;
@@ -107,21 +91,7 @@
   transform: translateX(-50%);
 }
 
-.pastiara-section-title::after {
-  display: none;
-}
-
-@keyframes expandLine {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 80px;
-  }
-}
-
-/* Banner de fondo que cruza toda la pantalla */
+/* Banner */
 .pastiara-full-banner-section {
   position: relative;
   width: 100vw;
@@ -139,7 +109,7 @@
   transform: translateY(-70%);
   width: 100%;
   height: 200px;
-  background-image: url("/public/images/PARA-REGALAR/Frame15banner.png");
+  background-image: url("/images/PARA-REGALAR/Frame15banner.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 150% 150%;
@@ -149,18 +119,11 @@
 }
 
 @keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 0.85;
-  }
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 0.85; }
 }
 
-/* Contenedor de productos con diseño alternado */
+/* Productos */
 .pastiara-product-container {
   position: relative;
   z-index: 1;
@@ -169,67 +132,29 @@
   padding: 0 2rem;
 }
 
-/* Producto izquierda */
-.pastiara-product-left {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 0;
-  animation: slideInLeft 0.8s ease-out;
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-70px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Producto derecha */
-.pastiara-product-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 0;
-  animation: slideInRight 0.8s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(500px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Producto centro */
+.pastiara-product-left,
+.pastiara-product-right,
 .pastiara-product-center {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 0;
-  animation: zoomIn 0.8s ease-out;
 }
 
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
+.pastiara-product-left { justify-content: flex-start; animation: slideInLeft 0.8s ease-out; }
+.pastiara-product-right { justify-content: flex-end; animation: slideInRight 0.8s ease-out; }
+.pastiara-product-center { justify-content: center; animation: zoomIn 0.8s ease-out; }
 
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-70px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(70px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .pastiara-product-wrapper {
@@ -237,34 +162,42 @@
   text-align: center;
   position: relative;
   z-index: 2;
+  perspective: 1000px;
 }
 
 .pastiara-product-name {
-  font-family: "Abril Fatface", serif;
-  color: var(--pastiara-gold);
+  font-family: var(--title-font);
+  color: var(--color-title);
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* ========== EFECTO 3D EXACTO COMO TU EJEMPLO ========== */
-article {
+/* ========== EFECTO 3D MEJORADO ========== */
+article.product-3d {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto 2rem;
-  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-article img:first-child {
+article.product-3d img:first-child {
   box-shadow: 0 60px 60px -60px rgba(90, 53, 2, 0.979);
   border-radius: 15px;
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
-  height: 600px;
+  max-width: 500px;
+  max-height: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
-article img:last-child {
+article.product-3d img:last-child {
   position: absolute;
   width: 500px;
   height: 500px;
@@ -273,65 +206,62 @@ article img:last-child {
   left: 0;
   right: 0;
   margin: auto;
-  transform: translateY(25%);
-  transition: 0.3s ease;
+  transform: translateY(25%) translateZ(50px);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   opacity: 0;
   border-radius: 24px;
+  pointer-events: none;
+  transform-style: preserve-3d;
 }
 
-article:hover img:last-child {
-  opacity: 0.8;
-  transform: translateY(10%);
-  filter: opacity(0.7) brightness(1.1);
-  mix-blend-mode: screen;
-  /* Prueba: screen, multiply, overlay */
+/* HOVER CORREGIDO */
+article.product-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px) scale(1.02);
 }
 
-article:hover {
-  transform: perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+article.product-3d:hover img:last-child {
+  opacity: 1;
+  transform: translateY(10%) translateZ(80px) scale(1.05);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
 }
 
-article::before {
+article.product-3d::before {
   content: "";
   position: absolute;
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to bottom,
-      transparent 10%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0) 95%);
+  background-image: linear-gradient(to bottom, transparent 10%, rgba(0,0,0,0.5) 50%, rgba(0,0,0) 95%);
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: opacity 0.6s ease;
+  border-radius: 15px;
+  pointer-events: none;
+  z-index: 1;
 }
 
-article:hover::before {
-  opacity: 1;
+article.product-3d:hover::before { 
+  opacity: 1; 
 }
 
-article:hover img:last-child {
-  opacity: 1;
-  transform: translateY(10%);
-}
-
-/* Información del producto */
+/* Info del producto */
 .pastiara-product-info {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255,255,255,0.95);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   margin-top: 1rem;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .pastiara-product-info:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 .pastiara-description-text {
-  font-family: "Questrial", sans-serif;
-  color: var(--pastiara-dark);
+  font-family: var(--title-body);
+  color: var(--color-text1);
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 0.75rem;
@@ -339,121 +269,65 @@ article:hover img:last-child {
 
 .pastiara-price {
   font-weight: 700;
-  color: var(--pastiara-gold);
+  color: var(--color-title);
   font-size: 1.8rem;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-
+/* Botón cotizador */
 .cotizador {
-    /* Posicionamiento: centrado en el borde derecho */
-    position: fixed;
-    z-index: 1000; /* Asegura que esté por encima de todo */
-    right: 30px; /* Espacio desde el borde derecho */
-    top: 50%; /* Lo posiciona a la mitad de la altura de la pantalla */
-    transform: translateY(-50%); /* Lo ajusta verticalmente para un centrado perfecto */
-
-    /* Layout interno: para alinear texto e ícono */
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Espacio entre el texto y el ícono */
-
-    /* Tamaño y Apariencia: un "buen tamaño" para un llamado a la acción */
-    padding: 16px 32px;
-    background-color: #B58A6A; /* Color de tu marca */
-    color: white;
-    border: none;
-    border-radius: 50px; /* Forma de píldora */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-    /* Tipografía */
-    font-family: 'Questrial', sans-serif;
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    
-    /* Interacción */
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: var(--title-body);
+  background-color: var(--color-boton1);
+  color: var(--color-text2);
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* Estilo para el ícono de imagen */
-.cotizador .icono-boton {
-    width: 28px;
-    height: 28px;
-}
-
-/* Efecto al pasar el cursor */
 .cotizador:hover {
-    /* Mantenemos la traslación para que el efecto de escala no lo descentre */
-    transform: translateY(-50%) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-text3);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-
-/* Responsive */
+/* ============================
+   RESPONSIVE
+   ============================ */
 @media (max-width: 768px) {
-  .pastiara-main-title {
-    font-size: 2.2rem;
-  }
-
-  .pastiara-section-title {
-    font-size: 1.8rem;
-  }
-
-  .pastiara-product-name {
-    font-size: 1.5rem;
-  }
-
-  .pastiara-banner-background {
-    height: 120px;
-    background-size: 100% 100%;
-  }
-
-  article img:first-child {
-    height: 450px;
-  }
-
-  .pastiara-description-text {
-    font-size: 0.95rem;
-  }
-
-  .pastiara-product-left,
-  .pastiara-product-right {
-    justify-content: center;
-  }
-
-  .pastiara-full-banner-section {
-    padding: 2.5rem 0;
+  .body-regalar { margin-top: 120px; }
+  .pastiara-main-title { font-size: 2.2rem; }
+  .pastiara-section-title { font-size: 1.8rem; }
+  .pastiara-product-name { font-size: 1.5rem; }
+  .pastiara-banner-background { height: 120px; background-size: 100% 100%; }
+  article.product-3d img:first-child { max-height: 450px; }
+  .pastiara-description-text { font-size: 0.95rem; }
+  .pastiara-product-left, .pastiara-product-right { justify-content: center; }
+  .pastiara-full-banner-section { padding: 2.5rem 0; }
+  
+  article.product-3d:hover {
+    transform: perspective(800px) rotateX(3deg) rotateY(-3deg) translateY(-5px) scale(1.01);
   }
 }
 
 @media (max-width: 576px) {
-  .pastiara-main-title {
-    font-size: 1.8rem;
+  .pastiara-main-title { font-size: 1.8rem; }
+  .pastiara-banner-background { height: 100px; background-size: 100% 100%; }
+  article.product-3d img:first-child { max-height: 350px; }
+  article.product-3d img:last-child { width: 350px; height: 350px; }
+  .pastiara-product-info { padding: 1.25rem; }
+  .pastiara-price { font-size: 1.2rem; }
+  .pastiara-full-banner-section { padding: 2rem 0; margin-bottom: 1.5rem; }
+  
+  article.product-3d:hover {
+    transform: scale(1.02);
   }
-
-  .pastiara-banner-background {
-    height: 100px;
-    background-size: 100% 100%;
-  }
-
-  article img:first-child {
-    height: 350px;
-  }
-
-  .pastiara-product-info {
-    padding: 1.25rem;
-  }
-
-  .pastiara-price {
-    font-size: 1.2rem;
-  }
-
-  .pastiara-full-banner-section {
-    padding: 2rem 0;
-    margin-bottom: 1.5rem;
+  
+  article.product-3d:hover img:last-child {
+    transform: translateY(15%) scale(1.02);
   }
 }
