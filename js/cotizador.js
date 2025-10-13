@@ -67,8 +67,8 @@ let swiper3 = new Swiper('#contenedor-collapse-productos-panaderia .swiper-conta
 	spaceBetween: 0,
 	breakpoints: {
 	  20: {
-		slidesPerView: 2,
-		spaceBetween: 30,
+		slidesPerView: 1,
+		spaceBetween: 10,
 	  
 	  },
       815: {
