@@ -66,6 +66,81 @@ document.addEventListener('DOMContentLoaded', function () {
     setupPasswordToggle(signUpPassword, toggleSignUpPassword);   //Registro 
     setupPasswordToggle(confirmPassword, toggleConfirmPassword); //Confirmación de registro
 
+    // ----------------- FUNCIONALIDAD OLVIDÉ MI CONTRASEÑA --------------------
+
+    document.getElementById('forgot-password').addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        // Pedir el correo electrónico al usuario con SweetAlert2
+        const { value: email } = await Swal.fire({
+            title: 'Recuperar contraseña',
+            input: 'email',
+            inputLabel: 'Ingresa tu correo electrónico',
+            inputPlaceholder: 'ejemplo@correo.com',
+            showCancelButton: true,
+            confirmButtonText: 'Enviar enlace',
+            cancelButtonText: 'Cancelar',
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡Necesitas escribir tu correo electrónico!';
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    return '¡Por favor, ingresa un correo válido!';
+                }
+            }
+        });
+
+        // Si el usuario ingresó un correo, llamar a la API
+        if (email) {
+            Swal.fire({
+                title: 'Procesando...',
+                text: 'Enviando enlace de recuperación.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            try {
+                // **llamada al backend**
+                const response = await fetch(`${API_BASE_URL}/forgot-password`, { // Endpoint inventado
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                // Simulación de respuesta exitosa
+                if (response.ok) { 
+                    Swal.fire({
+                        title: '¡Revisa tu correo!',
+                        text: `Se ha enviado un enlace para restablecer tu contraseña a ${email}.`,
+                        icon: 'success'
+                    });
+                } else {
+                    // Manejo de errores del servidor
+                    const errorData = await response.json();
+                    Swal.fire({
+                        title: 'Error',
+                        text: errorData.error || 'No se pudo procesar la solicitud.',
+                        icon: 'error'
+                    });
+                }
+
+            } catch (error) {
+                console.error('Error de conexión:', error);
+                Swal.fire({
+                    title: 'Error de conexión',
+                    text: 'No se pudo conectar con el servidor. Intenta más tarde.',
+                    icon: 'error'
+                });
+            }
+        }
+    });
+
 
     // ---------------------- VALIDACIÓN DE FORMULARIOS_----------------------------
 

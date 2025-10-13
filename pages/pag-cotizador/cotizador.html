@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!--Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
     <!--Hoja de estilos-->
     <link rel="stylesheet" href="/css/global_variables.css">
     <link rel="stylesheet" href="/css/normalize.css">
@@ -30,99 +29,118 @@
 
     <special-loader></special-loader>
     <special-header></special-header>
-
     <main class="main-cotizador">
         <div class="container-fluid mt-5 text-center" id="container-set">
             <h2 id="title-set">Sobre pedido</h2>
             <p id="text-set">Agredecemos tu visita a nuestro servicio de cotización</p>
         </div>
-
         <!--Contendor de sección de cotizador-->
         <div class="container-fluid px-0 ">
             <div class="row mx-3 mx-md-0">
                 <!--Banner izquierda-->
                 <div class="col-md-1 d-none d-md-flex flex-column justify-content-center px-0 ">
-
                     <div class="w-100 d-flex align-items-center" id="background-banner" style="height: 150px;">
                         <img src="/images/GENERAL/banner-cotizador.svg" class="img-fluid" alt="....">
                     </div>
-
                 </div>
                 <!--Contenido formulario-->
                 <div class="col-12 col-md-10 px-5 py-3" id="colum">
                     <div>
+                        <div class="row">
+                            <div class="alert alert-danger d-none" role="alert" id="alerta">
+                                <strong>Error:</strong> Por favor, ingresa tu evento, una dirección y selecciona al
+                                menos un producto.
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Tipo de evento</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaTipoDeEvento">
                                 </div>
                             </div>
-
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Fecha de evento</p>
                                 <div class="input-group input-group-md">
                                     <input type="date" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaFechaDeEvento">
                                 </div>
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Calle</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaCalle">
                                 </div>
                             </div>
-
                             <div class="col-12 col-md-6 d-flex">
                                 <div>
                                     <p id="text-form">N.Ext</p>
                                     <div class="input-group input-group-md">
                                         <input type="number" class="form-control input-shadow-color"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                            id="entradaNumeroExterior">
                                     </div>
                                 </div>
-
                                 <div class="mx-3">
-                                    <p id="text-form">N.Ext</p>
+                                    <p id="text-form">N.Int</p>
                                     <div class="input-group input-group-md">
                                         <input type="number" class="form-control input-shadow-color"
-                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                            id="entradaNumeroInterior">
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Colonia</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaColonia">
                                 </div>
                             </div>
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Municipio</p>
+                                <div class="input-group input-group-md">
+                                    <input type="text" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaMunicipio">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
 
+                            <div class="col-12 col-md-6">
+                                <p id="text-form">Codigo postal</p>
+                                <div class="input-group input-group-md">
+                                    <input type="number" class="form-control input-shadow-color"
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaCodigoPostal">
+                                </div>
+                            </div>
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Estado</p>
                                 <div class="input-group input-group-md">
                                     <input type="text" class="form-control input-shadow-color"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                        id="entradaEstado">
                                 </div>
                             </div>
                         </div>
-
                         <div class="row mt-3">
                             <h2 id="text-set">Agrega tus productos</h2>
                         </div>
                         <!--Acordion pastes-->
                         <div class="row mb-2">
-
                             <div class="accordion background-accordion" id="accordionPastes">
-
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading_nombre_categoria">
                                         <button class="accordion-button accordion-button-color collapsed" type="button"
@@ -135,313 +153,307 @@
                                     <div id="collapse_accordion_pastes" class="accordion-collapse collapse"
                                         aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionPastes">
                                         <div class="accordion-body">
-
                                             <div class="row" id="contenedor-collapse-productos-pastes">
                                                 <div class="swiper-button-next"></div>
                                                 <div class="swiper-button-prev"></div>
                                                 <div class="contenedor-carrusel">
-
                                                     <div class="swiper-container-pastes">
-
                                                         <div class="swiper-wrapper">
-
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
                                                                         <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                            class="card-img-top" alt="Paste de frijol">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
                                                                             <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            <span class="fs-5 fw-bold "
+                                                                                id="precio-paste-frijoles">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total:
+                                                                                $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de frijol"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/PASTES/IMG_3166_papa_abierto.jpeg"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de carne con papa">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Carne con papa
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de carne con papa"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/PASTES/IMG_3230_moleverde_abierto.jpeg"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de mole verde">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Mole verde</h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de mole verde"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/PASTES/IMG_3251.jpeg"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de cochinita pibil">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Cochinita pibil
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$29</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de Cochinita pibil"
+                                                                                    data-precio="29">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/PASTES/IMG_3260_salchicha_abierto.jpeg"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de salchicha">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Salchicha</h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de salchicha"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/PASTES/IMG_3186_mole_abierto.jpeg"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de mole rojo">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Mole rojo</h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de mole rojo"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/public/images/PASTES/IMG_3217_rajas_abierto.jpeg"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de rajas con pollo">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Rajas con pollo
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$27</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="27">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de rajas con pollo"
+                                                                                    data-precio="27">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/PASTES/IMG_3202_piña_abierto.jpeg"
+                                                                            class="card-img-top" alt="Paste de piña">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Piña</h5>
+                                                                            <span class="fs-5 fw-bold">$27</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="27">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de piña"
+                                                                                    data-precio="27">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/public/images/PASTES/Paste_budin.JPG"
+                                                                            class="card-img-top"
+                                                                            alt="Paste de budin pastiara">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Budín pastiara
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$29</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Paste de bundín pastiara"
+                                                                                    data-precio="29">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <!--Accordion volovanes-->
                         <div class="row mb-2">
-
                             <div class="accordion background-accordion" id="accordionVolovanes">
-
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading_nombre_categoria">
                                         <button class="accordion-button accordion-button-color collapsed" type="button"
@@ -454,330 +466,340 @@
                                     <div id="collapse_accordion_volovanes" class="accordion-collapse collapse"
                                         aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionVolovanes">
                                         <div class="accordion-body">
-
                                             <div class="row" id="contenedor-collapse-productos-volovanes">
-
                                                 <div class="swiper-button-next"></div>
                                                 <div class="swiper-button-prev"></div>
                                                 <div class="contenedor-carrusel">
-
                                                     <div class="swiper-container mySwiper">
-
                                                         <div class="swiper-wrapper">
-
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/VOLOVANES/volovan_ensalada_rusa.png"
+                                                                            class="card-img-top"
+                                                                            alt="Volovan de ensalada rusa">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Ensalada rusa
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0
+                                                                            </span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de ensalada rusa"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
+                                                                        <img src="/images/VOLOVANES/volovan_mole_rojo.png"
                                                                             class="card-img-top" alt="Frijol empanada">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Mole rojo</h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de mole rojo"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/VOLOVANES/volovan_mole_verde.png"
+                                                                            class="card-img-top"
+                                                                            alt="Volovan de mole verde">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Mole verde</h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de mole verde"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/VOLOVANES/volovan_cochinita_pibil.png"
+                                                                            class="card-img-top"
+                                                                            alt="Volovan de cochinita pibil">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Cochinita pibil
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$29</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de cochinita pibil"
+                                                                                    data-precio="29">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/VOLOVANES/volovan_rajas_con_pollo.png"
+                                                                            class="card-img-top"
+                                                                            alt="Volovan de rajas con pollo">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Rajas con pollo
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$25</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="25">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de rajas con pollo"
+                                                                                    data-precio="25">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/VOLOVANES/brigadeiro_con_frutos_rojos.png"
+                                                                            class="card-img-top"
+                                                                            alt="Volovan frutos rojos">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Brigadeiro
+                                                                                Frutos Rojos</h5>
+                                                                            <span class="fs-5 fw-bold">$29</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de frutos rojos"
+                                                                                    data-precio="29">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="swiper-slide">
-                                                                <div class="card product-card">
+                                                                <div class="card product-card" id="producto">
                                                                     <div class="recorte-contenedor">
-                                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                        <img src="/images/VOLOVANES/budín_pastiara.png"
+                                                                            class="card-img-top"
+                                                                            alt="Volvan de budin pastiara">
                                                                     </div>
-
-
                                                                     <div>
-
                                                                         <div
-                                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                                            <span class="fs-5 fw-bold">$****</span>
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Budin pastiara
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$29</span>
                                                                         </div>
-
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
-                                                                            <span class="fs-6">Total: $****</span>
-
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="29">Total: $0</span>
                                                                             <div class="quantity-selector">
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">-</button>
-                                                                                <span class="quantity-display">0</span>
-                                                                                <button class="btn btn-sm"
-                                                                                    type="button">+</button>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovan de budín pastiara"
+                                                                                    data-precio="29">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <!--Acorddion panaderia artesanal-->
                         <div class="row mb-2">
-
                             <div class="accordion background-accordion" id="accordionPanaderia">
-
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading_nombre_categoria">
                                         <button class="accordion-button accordion-button-color collapsed" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapse_accordion_panaderia"
                                             aria-expanded="true" aria-controls="collapse_accordion_panaderia"
                                             id="text-form">
-                                            Panaderia artesanal
+                                            Panadería artesanal
                                         </button>
                                     </h2>
                                     <div id="collapse_accordion_panaderia" class="accordion-collapse collapse"
                                         aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionPanaderia">
                                         <div class="accordion-body">
-
-                                            <div class="row" id="contenedor-collapse-productos">
-
-                                                <div class="card product-card" id="mg-product-card">
-                                                    <div class="recorte-contenedor">
-                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                            class="imagen-cards" alt="Frijol empanada">
-                                                    </div>
-                                                    <div>
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                            <span class="fs-5 fw-bold">$****</span>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <span class="fs-6">Total: $****</span>
-
-                                                            <div class="quantity-selector">
-                                                                <button class="btn btn-sm" type="button">-</button>
-                                                                <span class="quantity-display">0</span>
-                                                                <button class="btn btn-sm" type="button">+</button>
+                                            <div class="row" id="contenedor-collapse-productos-panaderia">
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="contenedor-carrusel">
+                                                    <div class="swiper-container-panaderia mySwiper">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card" id="producto">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PANADERÍA-ARTESANAL/barquillo_panaderia (1).png"
+                                                                            class="card-img-top"
+                                                                            alt="Barquillo relleno de budín pastiara">
+                                                                    </div>
+                                                                    <div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Barquillo
+                                                                                relleno de budín pastiara
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$35</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="35">Total: $0</span>
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Barquillo relleno de budín pastiara"
+                                                                                    data-precio="35">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card" id="producto">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PANADERÍA-ARTESANAL/rollo_panaderia.png"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+                                                                    <div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                                            <h5 class="card-title mb-0">Rollito de
+                                                                                guayaba</h5>
+                                                                            <span class="fs-5 fw-bold">$55</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="55">Total: $0</span>
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Rollito de guayaba"
+                                                                                    data-precio="55">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="card product-card" id="mg-product-card">
-                                                    <div class="recorte-contenedor">
-                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                            class="imagen-cards" alt="Frijol empanada">
-                                                    </div>
-                                                    <div>
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                            <span class="fs-5 fw-bold">$****</span>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <span class="fs-6">Total: $****</span>
-
-                                                            <div class="quantity-selector">
-                                                                <button class="btn btn-sm" type="button">-</button>
-                                                                <span class="quantity-display">0</span>
-                                                                <button class="btn btn-sm" type="button">+</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                         <!--Acorddion para regalar-->
                         <div class="row mb-2">
-
                             <div class="accordion background-accordion" id="accordionParaRegalar">
-
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading_nombre_categoria">
                                         <button class="accordion-button accordion-button-color collapsed" type="button"
@@ -791,138 +813,231 @@
                                         aria-labelledby="heading_nombre_categoria"
                                         data-bs-parent="#accordionParaRegalar">
                                         <div class="accordion-body">
-
-                                            <div class="row" id="contenedor-collapse-productos">
-
-                                                <div class="card product-card" id="mg-product-card">
-                                                    <div class="recorte-contenedor">
-                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                            class="imagen-cards" alt="Frijol empanada">
-                                                    </div>
-                                                    <div>
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                            <span class="fs-5 fw-bold">$****</span>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <span class="fs-6">Total: $****</span>
-
-                                                            <div class="quantity-selector">
-                                                                <button class="btn btn-sm" type="button">-</button>
-                                                                <span class="quantity-display">0</span>
-                                                                <button class="btn btn-sm" type="button">+</button>
+                                            <div class="row" id="contenedor-collapse-productos-regalar">
+                                                <div class="swiper-button-next"></div>
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="contenedor-carrusel">
+                                                    <div class="swiper-container mySwiper">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card" id="producto">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PARA-REGALAR/barqui3d.png"
+                                                                            class="card-img-top"
+                                                                            alt="Barquillo relleno de budín pastiara">
+                                                                    </div>
+                                                                    <div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-start mb-0">
+                                                                            <h5 class="card-title mb-0">Barquillos de budín
+                                                                            </h5>
+                                                                            <span class="fs-5 fw-bold">$230</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="text-form">
+                                                                                6 Barquillos rellenos de budín pastiara
+                                                                            </p>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="230">Total: $0</span>
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Barquillos de budín"
+                                                                                    data-precio="230">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide d-flex">
+                                                                <div class="card product-card" id="producto">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PARA-REGALAR/budin23d.png"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+                                                                    <div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-start mb-0">
+                                                                            <h5 class="card-title mb-0">Volovanes brigadeiro</h5>
+                                                                            <span class="fs-5 fw-bold">$300</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="text-form">4 barquillos
+                                                                                rellenos de budín pastiara y 4 roles de
+                                                                                guayaba</p>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="300">Total: $0</span>
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Volovanes brigadeiro"
+                                                                                    data-precio="300">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <div class="card product-card" id="producto">
+                                                                    <div class="recorte-contenedor">
+                                                                        <img src="/images/PARA-REGALAR/budin3d.png"
+                                                                            class="card-img-top" alt="Frijol empanada">
+                                                                    </div>
+                                                                    <div class="h-100">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-start mb-0">
+                                                                            <h5 class="card-title mb-0">Roles de guayaba</h5>
+                                                                            <span class="fs-5 fw-bold">$230</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="text-form">2 volovanes
+                                                                                brigadeiro con frutos rojos, 2
+                                                                                barquillos rellenos de budín pastiara y
+                                                                                2 roles de guayaba</p>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <span class="fs-6" id="total-producto"
+                                                                                data-precio="230">Total: $0</span>
+                                                                            <div class="quantity-selector">
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-restar">-</button>
+                                                                                <span class="quantity-display"
+                                                                                    id="cantidad"
+                                                                                    data-nombre="Roles de guayaba"
+                                                                                    data-precio="230">0</span>
+                                                                                <button class="btn btn-sm" type="button"
+                                                                                    id="btn-sumar">+</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="card product-card" id="mg-product-card">
-                                                    <div class="recorte-contenedor">
-                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                            class="imagen-cards" alt="Frijol empanada">
-                                                    </div>
-                                                    <div>
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                            <span class="fs-5 fw-bold">$****</span>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <span class="fs-6">Total: $****</span>
-
-                                                            <div class="quantity-selector">
-                                                                <button class="btn btn-sm" type="button">-</button>
-                                                                <span class="quantity-display">0</span>
-                                                                <button class="btn btn-sm" type="button">+</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="card product-card" id="mg-product-card">
-                                                    <div class="recorte-contenedor">
-                                                        <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg"
-                                                            class="imagen-cards" alt="Frijol empanada">
-                                                    </div>
-                                                    <div>
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-center mb-3">
-                                                            <h5 class="card-title mb-0">Frijol</h5>
-                                                            <span class="fs-5 fw-bold">$****</span>
-                                                        </div>
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <span class="fs-6">Total: $****</span>
-
-                                                            <div class="quantity-selector">
-                                                                <button class="btn btn-sm" type="button">-</button>
-                                                                <span class="quantity-display">0</span>
-                                                                <button class="btn btn-sm" type="button">+</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-                        <!--Boton de enviar cotización-->
-
-                        <div class="row d-flex justify-content-center align-items-center ">
-                            <button class="btn cotizador" type="button"
-                                onclick="location.href='/pages/pag-cotizador/cotizador.html'">Enviar cotización</button>
+                        <div class="row">
+                            <p id="text-notas">Comentarios:</p>
+                            <div class="input-group input-group-md">
+                                <textarea class="input-shadow-color" name="comentarios" id="comentarios" rows="5"
+                                    cols="65"></textarea>
+                            </div>
                         </div>
-
+                        <!--Boton de enviar cotización-->
+                        <div class="row d-flex justify-content-center align-items-center ">
+                            <button class="btn cotizador" type="button" id="btnMostrarResumen">Enviar
+                                cotización</button>
+                        </div>
                         <div>
                             <p id="text-notas">Notas: <br>
-                                Los precios mostrados no contempla el costo de envio, la cotización final será enviada
+                                Los precios mostrados no contempla el costo de envio, la cotización final será
+                                enviada
                                 al correo de registro para la confirmación y realización de pago.
                             </p>
                         </div>
-
-
                     </div>
-
                 </div>
-
                 <!--Banner derecha-->
                 <div class="col-md-1 d-none d-md-flex flex-column justify-content-center px-0 ">
-
                     <div class="w-100 d-flex align-items-center" id="background-banner" style="height: 150px;">
                         <img src="/images/GENERAL/banner-cotizador.svg" class="img-fluid" alt="....">
                     </div>
+                </div>
+            </div>
+        </div>
 
+        <div id="resumenModal" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar">&times;</span>
+                <h2 id="title-set-modal">Resumen de Cotización</h2>
+
+                <h4 id="text-set">Evento:</h4>
+                <div class="row">
+                    <div class="col-1 d-flex align-items-center ">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <div class="col-11 ">
+                        <div id="evento-modal">
+
+                        </div>
+                    </div>
+                </div>
+
+                <h4 id="text-set">Dirección de Envío:</h4>
+                <div class="row">
+                    <div class="col-1 d-flex align-items-center ">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="col-11 ">
+                        <div id="direccion-modal">
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <h4 id="text-set">Productos a Cotizar:</h4>
+                <div class="row ">
+                    <div class="col-1 d-flex align-items-center px-2 ">
+                        <img src="/images/GENERAL/CanastaConPastes2.png" alt="canasta con pastes"
+                            class="img-modal-productos">
+                    </div>
+                    <div class="col-11 pl-1">
+                        <div id="productos-modal">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-end align-items-center" id="total-modal">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <p id="text-notas">Notas: <br>
+                        La suma total no contempla el costo de envio, la cotización final será
+                        enviada al correo de registro para la confirmación y realización de pago.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="cotizador-modal" id="btnConfirmarCotizacion">Confirmar y Enviar</button>
+                    </div>
                 </div>
 
             </div>
-
         </div>
     </main>
-
     <special-footer></special-footer>
-
-
-
     <!--JavaScrp Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-
     <!--Swiper-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/js/components.js" type="module"></script>
     <script src="/js/main.js" type="module"></script>
     <script src="/js/cotizador.js"></script>
-
-
 </body>
 
 </html>
