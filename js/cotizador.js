@@ -111,6 +111,7 @@ let swiper4 = new Swiper('#contenedor-collapse-productos-regalar .swiper-contain
 
 //----------------------- interacción para sumar o restar cantidad en en productos-------------------------
 const productos = document.querySelectorAll('#producto');
+//console.log(productos);
 
 productos.forEach(producto => {
   // Obtenemos los elementos específicos DE CADA producto
@@ -151,10 +152,14 @@ productos.forEach(producto => {
 
 //
 
-
+// ------------------Sección de resumen de cotización --------------------------------
+var totalcotizacion = 0;
 const btnMostrarResumen = document.getElementById('btnMostrarResumen');
 const modal = document.getElementById('resumenModal');
 const direccionModal = document.getElementById('direccion-modal');
+const productosModal = document.getElementById('productos-modal');
+const eventoModal = document.getElementById('evento-modal');
+const totalModal = document.getElementById('total-modal');
 const spanCerrar = document.querySelector('.cerrar');
 const entradaTipoDeEvento = document.querySelector('#entradaTipoDeEvento');
 const entradaFechaDeEvento = document.getElementById('entradaFechaDeEvento');
@@ -165,11 +170,16 @@ const entradaColonia = document.getElementById('entradaColonia');
 const entradaMunicipio = document.getElementById('entradaMunicipio');
 const entradaCodigoPostal = document.getElementById('entradaCodigoPostal');
 const entradaEstado = document.getElementById('entradaEstado');
+const entradaProductos = document.querySelectorAll('#cantidad')
+const alerta = document.getElementById('alerta');
+//console.log(entradaProductos);
 
- // 2. ABRIR EL MODAL AL HACER CLIC EN "ENVIAR COTIZACIÓN"
+ //ABRIR EL MODAL AL HACER CLIC EN "ENVIAR COTIZACIÓN"
     btnMostrarResumen.onclick = function() {
-      console.log("entrada resumen");
+      //console.log("entrada resumen");
         // --- Recolectar datos ---
+        const evento = entradaTipoDeEvento.value;
+        const fechaEvento = entradaFechaDeEvento.value;
         const calle = entradaCalle.value;
         const numeroExterior = entradaNumeroExterior.value;
         const numeroInterior = entradaNumeroInterior.value;
@@ -179,9 +189,19 @@ const entradaEstado = document.getElementById('entradaEstado');
         const estado = entradaEstado.value;
 
         // Limpiamos el resumen anterior
-       direccionModal.innerHTML = '';
+        direccionModal.innerHTML = '';
+        productosModal.innerHTML = '';
+        eventoModal.innerHTML = '';
+        totalModal.innerHTML = '';
+
+        
+        //Llenamos la sección de evento en el resumen con los datos que proporcionó el usuario
+        eventoModal.innerHTML = `
+                            <p class="my-1"><strong>Tipo de evento:</strong> ${evento}</p>
+                            <p class="my-1"><strong>Fecha:</strong> ${fechaEvento}</p>
+        `
+
       
-       
 
        //llenamos el bloque de dirección
        if(numeroInterior === ''){
@@ -202,29 +222,47 @@ const entradaEstado = document.getElementById('entradaEstado');
        }
 
         // Llenamos el resumen de productos}
-		/*
         let hayProductos = false;
-        inputsProductos.forEach(input => {
-            const cantidad = parseInt(input.value, 10);
+        entradaProductos.forEach(input => {
+            const cantidad =parseInt(input.textContent, 10);
             const nombre = input.getAttribute('data-nombre');
+            const precio = parseFloat(input.getAttribute('data-precio'));
+            //Realizamos la operación para obtener el total del precio del producto
+            const precioFinalProducto = cantidad*precio;
+            totalcotizacion += precioFinalProducto;
+            console.log(totalcotizacion);
 
             // Solo agregamos el producto si la cantidad es mayor a 0
             if (cantidad > 0) {
-                const li = document.createElement('li');
-                li.textContent = `${nombre} - Cantidad: ${cantidad}`;
-                resumenProductos.appendChild(li);
+                productosModal.innerHTML += `
+                <div id="list-modal-productos">
+                                <h5>${nombre}</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>Cantidad:${cantidad}</span>
+                                    <span>Total:$${precioFinalProducto}</span>
+                                </div>
+                            </div>
+                `
                 hayProductos = true;
             }
-        });*/
+        });
 
-        // --- Validar y mostrar    || !hayProductos---
-        /*if (direccion.trim() === '') {
-            alert('Por favor, ingresa una dirección y selecciona al menos un producto.');
+        totalModal.innerHTML = `
+        <p><strong>Suma total:</strong> $${totalcotizacion}</p>
+        `
+
+        // --- Validar y mostrar ---
+        if (evento.trim() === ''|| fechaEvento.trim() === '' || calle.trim() === '' || numeroExterior.trim() === '' || colonia.trim() === '' || municipio.trim() === '' || codigoPostal.trim() === '' || estado.trim() === '' || !hayProductos) {
+            //alert('Por favor, ingresa una dirección y selecciona al menos un producto.');
+            alerta.classList.remove('d-none');
+            totalcotizacion = 0;
             return; // Detenemos la función si faltan datos
-        }*/
-        
-        // Llenamos la dirección en el resumen
-        //resumenDireccion.textContent = direccion;
+        }
+
+        //Iniciamos total cotizazación a cero por si el usuario quisiera agregar un producto mas
+        totalcotizacion = 0;
+        //Quitamos el bloque de alerta
+        alerta.classList.add('d-none');
 
         // Mostramos el modal
         modal.style.display = 'block';

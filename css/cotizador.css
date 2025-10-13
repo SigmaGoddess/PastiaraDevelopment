@@ -335,3 +335,11 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.img-modal-productos{
+width: 28px;
+}
+
+#list-modal-productos{
+  border-bottom: 1px solid #888;
+}
