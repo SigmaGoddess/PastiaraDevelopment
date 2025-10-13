@@ -16,6 +16,7 @@ export default defineConfig({
                 pastes: resolve(__dirname, 'pages/pag-productosPastes/pastes.html'),
                 volovanes: resolve(__dirname, 'pages/pag-productosVolovanes/volovanes.html'),
                 panaderia: resolve(__dirname, 'pages/pag-productosPanaderiaArtesanal/productosPanaderiaArtesanal.html'),
+                footer:resolve(__dirname, 'pages/pag-footer/footer.html')
             },
         },
     },
