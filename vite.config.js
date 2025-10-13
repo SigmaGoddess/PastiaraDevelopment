@@ -12,6 +12,7 @@ export default defineConfig({
                 registro: resolve(__dirname, 'pages/pag-registro/registro.html'),
                 perfilDeUsuario: resolve(__dirname, 'pages/pag-perfilDeUsuario/perfil_usuario.html'),
                 regalar: resolve(__dirname, 'pages/pag-productosParaRegalar/pag-regalar.html'),
+                cotizador: resolve(__dirname, 'pages/pag-cotizador/cotizador.html'),
             },
         },
     },
