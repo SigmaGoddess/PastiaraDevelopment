@@ -75,6 +75,10 @@ video {
   margin-bottom: 55px;
 }
 
+.tres h5 {
+  margin-bottom: 45px;
+}
+
 .carousel-caption p {
   width: 100%;
   font-size: 30px;
@@ -216,7 +220,6 @@ hr {
 .panaderia .swiper-wrapper {
   justify-content: center !important;
   /* centra los slides */
-  transform: translate3d(-195px, 0px, 0px) !important;
 }
 
 .card-list .card-link {
@@ -614,6 +617,10 @@ hr {
     /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
     padding-right: 48px;
   }
+
+  .tres h5 {
+    margin-bottom: 35px;
+  }
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -692,5 +699,9 @@ hr {
 
   .carousel-control-next {
     display: none;
+  }
+
+  .panaderia .swiper-wrapper {
+    transform: translate3d(-190px, 0px, 0px) !important;
   }
 }
