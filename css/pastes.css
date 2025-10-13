@@ -7,20 +7,24 @@
 body {
     font-family: var(--title-body);
     /* AÑADIDO: Espacio superior para compensar la navbar absoluta */
-    margin-top: 150px; /* Puedes ajustar este valor si es necesario */
+    margin-top: 150px;
+    /* Puedes ajustar este valor si es necesario */
 }
 
 /* --- Estilos para el Hero Section --- */
 .hero-section {
-    background-image: url('../images/INICIO/harina.jpg');
+    background-image: url('/public/images/INICIO/harina.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 45vh; /* <-- CAMBIADO: Altura responsiva */
+    height: 45vh;
+    /* <-- CAMBIADO: Altura responsiva */
     overflow: hidden;
     /* NOTA: No se agrega 'position: relative' para evitar el conflicto con la navbar */
 }
+
+
 
 /* Contenedor del título para centrarlo */
 .hero-section .container {
@@ -37,13 +41,25 @@ body {
     font-family: var(--title-font);
     font-size: 3em;
     color: var(--color-text2);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero-subtitle {
+    font-family: var(--title-body);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    display: none;
+    /* Oculto por defecto */
+    margin-top: 10px;
 }
 
 
 /** --- Estilos de la Sección de Productos --- */
 .products-section {
-    padding: 100px 0; /* <-- VERIFICADO: Es igual en ambos archivos */
+    padding: 100px 0;
+    /* <-- VERIFICADO: Es igual en ambos archivos */
     background: white;
 }
 
@@ -63,7 +79,7 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-    max-width: 100% !important; 
+    max-width: 100% !important;
 }
 
 .product-image:hover {
@@ -132,31 +148,148 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
 @keyframes heartBeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
+
 .heart-favorite.animate {
     animation: heartBeat 0.6s ease-in-out;
 }
+
 .toastify {
     font-family: 'Questrial', sans-serif;
+}
+
+/** --- Estilos para el Botón Flotante Cotizador --- */
+
+.cotizador {
+    /** Posicionamiento: centrado en el borde derecho */
+    position: fixed;
+    z-index: 1000;
+    /** Asegura que esté por encima de todo */
+    right: 30px;
+    /** Espacio desde el borde derecho */
+    top: 50%;
+    /** Lo posiciona a la mitad de la altura de la pantalla */
+    transform: translateY(-50%);
+    /** Lo ajusta verticalmente para un centrado perfecto */
+
+    /** Layout interno: para alinear texto e ícono */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /** Espacio entre el texto y el ícono */
+
+    /** Tamaño y Apariencia: un "buen tamaño" para un llamado a la acción */
+    padding: 16px 32px;
+    background-color: #B58A6A;
+    /** Color de tu marca */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    /** Forma de píldora */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    /** Tipografía */
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    /** Interacción */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/** Estilo para el ícono de imagen */
+.cotizador .icono-boton {
+    width: 28px;
+    height: 28px;
+}
+
+/** Efecto al pasar el cursor */
+.cotizador:hover {
+    /** Mantenemos la traslación para que el efecto de escala no lo descentre */
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.btn-flotante-ordenar {
+    /* Posicionamiento: Fijo y centrado en el borde derecho */
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+
+    /* Apariencia: Tomamos lo mejor de tus otros botones */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #EFE6DC;
+    color: #B58A6A;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+
+    /* Tipografía */
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    white-space: nowrap;
+
+    /* Interacción */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-flotante-ordenar:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Estilos para el ícono de la canasta dentro del botón */
+.btn-flotante-ordenar .icono-boton {
+    width: 20px;
+    height: 20px;
 }
 
 /** --- Diseño Responsivo (Responsive Design) --- */
 @media (max-width: 768px) {
     body {
-        margin-top: 100px; /* Reducimos el margen en móviles */
+        margin-top: 100px;
+        /* Reducimos el margen en móviles */
     }
-    
+
     .hero-section {
-        height: 40vh; /* Altura del banner en móvil  */
+        height: 40vh;
+        /* Altura del banner en móvil  */
+        background-image: url('/public/images/GENERAL/banner_ancho.jpg');
     }
-    
+
+
+
     .hero-title {
-        font-size: 2.5em; 
+        display: none;
+    }
+
+    .hero-subtitle {
+        display: block;
+        font-size: 1.5em;
         padding: 0 15px;
+        margin: 0;
     }
 
     .products-section {
@@ -164,13 +297,50 @@ html {
         padding-left: 20px;
         padding-right: 20px;
     }
+
     .product-info .description {
         font-size: 13px;
     }
+
     .product-info h3 {
         font-size: 17px;
     }
+
     .product-info .price {
         font-size: 15px;
     }
+
+
+    .btn-flotante-ordenar {
+        /* Posición: Esquina inferior derecha */
+        top: auto !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        transform: none !important;
+        
+        /* Forma circular */
+        width: 60px !important;
+        height: 60px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        
+        /* Centra el contenido perfectamente */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0 !important; /* ← Elimina el espacio entre elementos */
+    }
+
+    .btn-flotante-ordenar .btn-text {
+        display: none !important;
+    }
+
+    .btn-flotante-ordenar .icono-boton {
+        width: 28px !important;
+        height: 28px !important;
+        margin: 0 !important; /* ← Elimina cualquier margen */
+    }
+
+
+
 }

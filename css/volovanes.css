@@ -1,49 +1,59 @@
 /** --- Variables Globales (Raíz) y Fuentes --- */
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display-swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('./global_variables.css');
 @import url('./normalize.css');
 
 /** Fuentes y Contenedor Principal */
 body {
     font-family: var(--title-body);
-    /* AÑADIDO: Espacio superior para compensar la navbar absoluta */
-    margin-top: 150px; /* Puedes ajustar este valor si es necesario */
+    margin-top: 150px; 
 }
+
 
 /* --- Estilos para el Hero Section --- */
 .hero-section {
-    background-image: url('/images/VOLOVANES/fondo_volovanes.png');
+    position: relative; 
+    z-index: 1; /* Asegura que el banner esté por debajo de la navbar */
+    
+    background-image: url('/images/VOLOVANES/fondo_volovanes.png'); /* Imagen para Escritorio */
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     width: 100%;
-    height: 45vh; /* <-- CAMBIADO: Altura responsiva */
-    overflow: hidden;
-    /* NOTA: No se agrega 'position: relative' para evitar el conflicto con la navbar */
-}
-
-/* Contenedor del título para centrarlo */
-.hero-section .container {
-    height: 100%;
+    height: 45vh; 
+    
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white; 
+    overflow: hidden;
 }
 
-/* Estilos del título */
+
+/* Estilos del título para que resalte más */
 .hero-title {
     font-family: var(--title-font);
     font-size: 3em;
-    color: var(--color-text2);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* Estilos para el subtítulo (oculto en escritorio) */
+.hero-subtitle {
+    font-family: var(--title-body);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: white;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+    display: none; /* Oculto por defecto */
+    margin-top: 10px;
 }
 
 
 /** --- Estilos de la Sección de Productos --- */
 .products-section {
-    padding: 100px 0; /* <-- VERIFICADO: Es igual en ambos archivos */
+    padding: 100px 0;
     background: white;
 }
 
@@ -128,6 +138,7 @@ body {
     letter-spacing: -0.43px;
 }
 
+
 /** --- Utilidades y Animaciones --- */
 html {
     scroll-behavior: smooth;
@@ -143,20 +154,102 @@ html {
 .toastify {
     font-family: 'Questrial', sans-serif;
 }
+.cotizador {
+    position: fixed;
+    z-index: 1000;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background-color: #B58A6A;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cotizador .icono-boton {
+    width: 28px;
+    height: 28px;
+}
+
+.cotizador:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* --- ESTILOS PARA EL NUEVO BOTÓN FLOTANTE "ORDENA AQUÍ" --- */
+.btn-flotante-ordenar {
+    /* Posicionamiento: Fijo y centrado en el borde derecho */
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+
+    /* Apariencia: Tomamos lo mejor de tus otros botones */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #EFE6DC;
+    color: #B58A6A;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    
+    /* Tipografía */
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    white-space: nowrap;
+    
+    /* Interacción */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-flotante-ordenar:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* Estilos para el ícono de la canasta dentro del botón */
+.btn-flotante-ordenar .icono-boton {
+    width: 20px;
+    height: 20px;
+}
+
 
 /** --- Diseño Responsivo (Responsive Design) --- */
 @media (max-width: 768px) {
     body {
-        margin-top: 100px; /* Reducimos el margen en móviles */
+        margin-top: 100px;
     }
     
     .hero-section {
-        height: 40vh; /* Altura del banner en móvil  */
+        height: 40vh;
+        background-image: url('/public/images/GENERAL/banner_ancho.jpg');
     }
     
     .hero-title {
-        font-size: 2.5em; 
+        display: none; 
+    }
+    
+    .hero-subtitle {
+        display: block;
+        font-size: 1.5em;
         padding: 0 15px;
+        margin: 0;
     }
 
     .products-section {
@@ -173,4 +266,29 @@ html {
     .product-info .price {
         font-size: 15px;
     }
+    
+    /* --- AJUSTES PARA EL BOTÓN FLOTANTE EN MÓVIL --- */
+    .btn-flotante-ordenar {
+    /* Posición: Esquina inferior derecha */
+    top: auto !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    transform: none !important;
+    
+    /* Forma circular */
+    width: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+}
+
+.btn-flotante-ordenar .btn-text {
+    display: none !important;
+}
+
+.btn-flotante-ordenar .icono-boton {
+    width: 28px !important;
+    height: 28px !important;
+}
 }
