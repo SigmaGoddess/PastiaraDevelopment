@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    
+
     <link rel="stylesheet" href="/css/global_variables.css">
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/loader.css">
@@ -23,7 +23,7 @@
 </head>
 
 <body class="container-panaderia">
-    
+
     <header>
         <special-loader></special-loader>
         <special-header></special-header>
@@ -32,6 +32,7 @@
     <section id="inicio" class="hero-section">
         <div class="container">
             <h1 class="hero-title">Conoce nuestra panadería artesanal</h1>
+            <h1 class="hero-title" id="hero-title-mobile">Conoce nuestra panadería artesanal, elaborados diariamente con la más alta calidad. Haz tu pedido y recibe a domicilio</h1>
         </div>
     </section>
 
@@ -42,8 +43,10 @@
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="/images/PANADERÍA-ARTESANAL/barquillo_panaderia (1).png" alt="barquillo budin" class="product-image">
-                            <button class="heart-favorite" data-product="barquillo-budin" onclick="toggleFavorite('barquillo-budin')" aria-label="Marcar como favorito">
+                            <img src="/images/PANADERÍA-ARTESANAL/barquillo_panaderia (1).png" alt="barquillo budin"
+                                class="product-image">
+                            <button class="heart-favorite" data-product="barquillo-budin"
+                                onclick="toggleFavorite('barquillo-budin')" aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
                             </button>
                         </div>
@@ -58,8 +61,10 @@
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <img src="/images/PANADERÍA-ARTESANAL/rollo_panaderia.png" alt="Rollito guayaba" class="product-image">
-                            <button class="heart-favorite" data-product="rollo-guayaba" onclick="toggleFavorite('rollo-guayaba')" aria-label="Marcar como favorito">
+                            <img src="/images/PANADERÍA-ARTESANAL/rollo_panaderia.png" alt="Rollito guayaba"
+                                class="product-image">
+                            <button class="heart-favorite" data-product="rollo-guayaba"
+                                onclick="toggleFavorite('rollo-guayaba')" aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
                             </button>
                         </div>
@@ -75,8 +80,7 @@
         </div>
     </section>
 
-   <button class="btn cotizador" type="button"
-        onclick="location.href='/pages/pag-cotizador/cotizador.html'">
+    <button class="btn cotizador" type="button" onclick="location.href='/pages/pag-cotizador/cotizador.html'">
         <span class="btn-text">¡ORDENA AQUÍ!</span>
         <img src="/public/images/GENERAL/CanastaConPastes.png" alt="Ícono de Carrito" class="icono-boton">
         <span class="btn-icon" aria-hidden="true"></span>
@@ -84,7 +88,7 @@
 
 
     <special-footer></special-footer>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="/js/panaderia.js" type="module"></script>
@@ -92,4 +96,5 @@
     <script src="/js/main.js" type="module"></script>
 
 </body>
+
 </html>

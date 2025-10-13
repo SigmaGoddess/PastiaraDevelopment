@@ -285,6 +285,21 @@ body.container-panaderia {
         font-size: 15px;
     }
 
+    /* ESTA ES LA REGLA QUE HEMOS CONSERVADO */
+    .hero-section {
+        margin-top: 0;
+        background-image: url(/images/GENERAL/banner_ancho.jpg);
+        /* <--- BANNER MÓVIL */
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 40vh;
+    }
+
+    #hero-title-desktop {
+        display: none;
+    }
+
     /* Ajuste para el botón flotante en móvil */
     .boton-flotante-ordenar {
         right: 15px;
@@ -296,4 +311,8 @@ body.container-panaderia {
         width: 30px;
         height: 30px;
     }
+
+
+
+
 }
