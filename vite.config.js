@@ -11,6 +11,7 @@ export default defineConfig({
                 contact: resolve(__dirname, 'src/pages/contact/contact.html'),*/
                 registro: resolve(__dirname, 'pages/pag-registro/registro.html'),
                 perfilDeUsuario: resolve(__dirname, 'pages/pag-perfilDeUsuario/perfil_usuario.html'),
+                regalar: resolve(__dirname, 'pages/pag-productosParaRegalar/pag-regalar.html'),
             },
         },
     },
