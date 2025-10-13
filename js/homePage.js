@@ -60,3 +60,17 @@ btnPanaderia.addEventListener('change', () => showSection(sectionPanaderia));
 document.addEventListener('DOMContentLoaded', () => {
     showSection(sectionPastes); // Carrusel inicial
 });
+
+// =========================
+// NAVEGACIÓN CON BOTONES DENTRO DE LAS TARJETAS
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.card-button[data-href]');
+    if (!btn) return;
+    const url = btn.getAttribute('data-href');
+    if (url) {
+        // navegación simple
+        window.location.href = url;
+        // o usar: window.location.assign(url);
+    }
+});
+// ...existing code...
