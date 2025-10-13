@@ -423,10 +423,28 @@ hr {
   /* Centra la imagen */
   background-clip: padding-box;
   /* Asegura que la imagen no se desborde */
-
   padding: 48px 0;
   /* espacio superior e inferior consistente */
   position: relative;
+  opacity: 1;
+}
+
+#accordionFlushExample {
+  /* contexto para ::before */
+  z-index: 0;
+  /* (elimina cualquier opacity: x aquí) */
+}
+
+#accordionFlushExample:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.3);
+  /* color/alpha que quieras */
+  pointer-events: none;
+  /* no bloquea clicks */
+  z-index: 1;
 }
 
 /* Título */
@@ -438,6 +456,8 @@ hr {
   font-size: 32px;
   line-height: 1.2;
   margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Mantén la clase .w-75 usable en desktop, pero hazla completa en móviles */
@@ -455,6 +475,8 @@ hr {
   border: none !important;
   box-shadow: none !important;
   padding: 15px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Botones del acordeón (área clicable) */
