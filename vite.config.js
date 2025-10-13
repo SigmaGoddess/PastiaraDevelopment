@@ -10,6 +10,7 @@ export default defineConfig({
                 /*aboutUs: resolve(__dirname, 'src/pages/about-us/about-us.html'),
                 contact: resolve(__dirname, 'src/pages/contact/contact.html'),*/
                 registro: resolve(__dirname, 'pages/pag-registro/registro.html'),
+                perfilDeUsuario: resolve(__dirname, 'pages/pag-perfilDeUsuario/perfil_usuario.html'),
             },
         },
     },
