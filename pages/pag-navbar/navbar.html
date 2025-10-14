@@ -4,7 +4,7 @@
 
             <!-- LOGO -->
             <a class="navbar-brand" href="/index.html">
-                <img src="/images/GENERAL/LOGO NAVBAR.png" alt="Logo" class="navbar-brand__logo">
+                <img src="/public/images/GENERAL/LOGO NAVBAR.png" alt="Logo" class="navbar-brand__logo">
                 <!-- class="d-inline-block align-text-top"-->
             </a>
             <!-- Íconos SOLO en móvil, entre logo y toggler -->
@@ -23,20 +23,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn p-0" href="/pages/pag-perfilDeUsuario/perfilDeUsuario.html">
+                    <a class="btn p-0" href="/pages/pag-perfilDeUsuario/perfil_usuario.html">
                         <i class="bi bi-heart navbar-icon"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <button class="btn p-0" id="search-btn-mobile">
-                        <i class="bi bi-search navbar-icon"></i>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <form class="d-none ms-2" id="search-form-mobile">
-                        <input type="text" class="form-control form-control-sm" placeholder="Buscar...">
-                    </form>
-                </li>
+                <!-- search mobile se muestra dentro del offcanvas (ver más abajo) -->
             </ul>
 
             <!-- Botón hamburguesa (móvil) -->
@@ -44,18 +35,20 @@
                 data-bs-target="#top-navbar" aria-controls="top-navbar">
                 <i class="bi bi-grid"></i>
             </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="top-navbar" aria-labelledby="top-navbarLabel">
+            <div class="offcanvas offcanvas-end offcanvas-custom" tabindex="-1" id="top-navbar"
+                aria-labelledby="top-navbarLabel">
                 <!-- Navigation Bar Content-->
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#top-navbar" aria-controls="top-navbar">
                     <div class="d-flex justify-content-between p-3">
-                        <img src="/images/GENERAL/LOGO NAVBAR.png" alt="Logo">
+                        <img src="/public/images/GENERAL/LOGO NAVBAR.png" alt="Logo">
                         <i class="bi bi-x-circle"></i>
                     </div>
                 </button>
                 <div class="d-flex flex-lg-row flex-column align-items-lg-center w-100">
                     <!-- Nav items alineados a la izquierda -->
                     <ul class="navbar-nav mx-auto p-4 p-lg-0 gap-4">
+                        <div class="vr" id="vr-inicio"></div>
                         <li class="nav-item px-3 px-lg-0 py-1 py-lg-4">
                             <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
                         </li>
@@ -95,12 +88,12 @@
                         </li>
                         <div class="vr"></div>
                         <li class="nav-item px-3 px-lg-0 py-1 py-lg-4">
-                            <a class="nav-link" href="/pages/pag-productosParaRegalar/productosParaRegalar.html">Para
+                            <a class="nav-link" href="/pages/pag-productosParaRegalar/pag-regalar.html">Para
                                 regalar</a>
                         </li>
                         <div class="vr"></div>
                         <li class="nav-item px-3 px-lg-0 py-1 py-lg-4">
-                            <a class="nav-link" href="/pages/pag-sobrePedido/sobrePedido.html">Sobre pedido</a>
+                            <a class="nav-link" href="/pages/pag-cotizador/cotizador.html">Sobre pedido</a>
                         </li>
                     </ul>
                     <!-- Íconos alineados a la derecha -->
@@ -120,7 +113,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="btn p-0" href="/pages/pag-perfilDeUsuario/perfilDeUsuario.html">
+                            <a class="btn p-0" href="/pages/pag-perfilDeUsuario/perfil_usuario.html">
                                 <i class="bi bi-heart navbar-icon"></i>
                             </a>
                         </li>
@@ -131,13 +124,46 @@
                         </li>
                         <li class="nav-item">
                             <form class="d-none ms-2" id="search-form">
-                                <input type="text" class="form-control form-control-sm" placeholder="Buscar...">
+                                <input id="searchInput" type="text" class="form-control form-control-sm"
+                                    placeholder="Buscar...">
                             </form>
                         </li>
                     </ul>
                 </div>
-            </div>
 
-        </div>
+                <!-- Search (solo mobile): botón y form dentro del offcanvas -->
+                <div class="offcanvas-search d-block d-lg-none">
+                    <div class="d-flex align-items-center">
+                        <button class="btn p-0" id="search-btn-mobile" type="button" aria-label="Buscar mobile">
+                            <i class="bi bi-search navbar-icon"></i>
+                        </button>
+                        <form class="d-none flex-grow-1 ms-2" id="search-form-mobile">
+                            <input id="searchInputMobile" type="text" class="form-control form-control-sm"
+                                placeholder="Buscar...">
+                        </form>
+                    </div>
+                </div>
+                <div class="offcanvas-social-icons d-block d-lg-none">
+                    <div class="d-flex align-items-center icons-items">
+                        <a href="https://www.facebook.com/people/Pastiara/61580716351346/" target="_blank"
+                            rel="noopener noreferrer" aria-label="Facebook" class="link-social-icons-footer">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/pastiara97/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram" class="link-social-icons-footer">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/525512345678" target="_blank" rel="noopener noreferrer"
+                            aria-label="WhatsApp" class="link-social-icons-footer">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="mailto:pastiara28@gmail.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Correo" class="link-social-icons-footer">
+                            <i class="bi bi-envelope-at-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
     </nav>
 </header>

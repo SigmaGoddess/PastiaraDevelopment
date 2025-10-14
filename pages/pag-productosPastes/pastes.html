@@ -4,43 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pastiara - Pastes</title>
+   <!-- Favicon-->
+  <link rel="icon" type="image/png" href="/favicon-pastiara.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&family=Montserrat:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="/css/global_variables.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/loader.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/pastes.css">
+    <link rel="stylesheet" href="/css/Footer.css">
 
 </head>
 
-<body>
-    
-    <!-- <special-header></special-header> -->
+<body class="container-pastes">
+    <special-loader></special-loader>
+    <special-header></special-header>
+
 
     <section id="inicio" class="hero-section">
         <div class="container">
-            <h1 class="hero-title" id="hero-title-desktop">Conoce nuestros sabores de pastes</h1>
-            <h1 class="hero-title" id="hero-title-mobile">Conoce nuestros sabores de pastes elaborados diariamente con
-                la más alta calidad. Haz tu pedido y recibe a domicilio</h1>
+            <h1 class="hero-title">Conoce nuestros sabores de pastes</h1>
+             <p class="hero-subtitle">Elaborados diariamente con la más alta calidad. Haz tu pedido y recibe a domicilio.</p>
         </div>
     </section>
 
     <section id="productos" class="products-section">
         <div class="container-fluid">
             <div class="row" id="container-products">
-<!--
+
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3151_frijol_abierto.jpeg" alt="Paste frijol con chipotle"
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3151_frijol_abierto.jpeg" alt="Paste frijol con chipotle"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="paste-frijol"
-                                onclick="toggleFavorite('paste-frijol')"><i class="fas fa-heart"></i></div>
+                            <button class="heart-favorite" data-product="paste-frijol"
+                                onclick="toggleFavorite('paste-frijol')" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Frijol</h3>
                             <p class="price">$25</p>
@@ -51,14 +59,14 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3166_papa_abierto.jpeg" alt="Paste de carne con papa"
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3166_papa_abierto.jpeg" alt="Paste de carne con papa"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="paste-papa" onclick="toggleFavorite('paste-papa')">
+                            <button class="heart-favorite" data-product="paste-papa"
+                                onclick="toggleFavorite('paste-papa')" aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
-                            </div>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Carne con papa</h3>
                             <p class="price">$25</p>
@@ -66,16 +74,16 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3230_moleverde_abierto.jpeg" alt="Mole Verde"
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3230_moleverde_abierto.jpeg" alt="Mole Verde"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="mole-verde"
-                                onclick="toggleFavorite('mole-verde')"><i class="fas fa-heart"></i></div>
+                            <button class="heart-favorite" data-product="mole-verde"
+                                onclick="toggleFavorite('mole-verde')" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Mole Verde</h3>
                             <p class="price">$25</p>
@@ -86,12 +94,13 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3251.jpeg" alt="Cochinita Pibil" class="product-image">
-                            <div class="heart-favorite" data-product="cochinita-pibil"
-                                onclick="toggleFavorite('cochinita-pibil')"><i class="fas fa-heart"></i></div>
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3251.jpeg" alt="Cochinita Pibil" class="product-image">
+                            <button class="heart-favorite" data-product="cochinita-pibil"
+                                onclick="toggleFavorite('cochinita-pibil')" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Cochinita Pibil</h3>
                             <p class="price">$29</p>
@@ -102,15 +111,14 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3260_salchicha_abierto.jpeg" alt="Paste de salchicha abierto"
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3260_salchicha_abierto.jpeg" alt="Paste de salchicha abierto"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="paste-salchicha"
-                                onclick="toggleFavorite('paste-salchicha')">
+                            <button class="heart-favorite" data-product="paste-salchicha"
+                                onclick="toggleFavorite('paste-salchicha')" aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
-                            </div>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Salchicha</h3>
                             <p class="price">$25</p>
@@ -121,15 +129,14 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3230_moleverde_abierto.jpeg"
+                        <div class="product-image-container">
+                            <img src="/public/images/PASTES/IMG_3186_mole_abierto.jpeg"
                                 alt="Paste de mole rojo mole-abierto" class="product-image">
-                            <div class="heart-favorite" data-product="mole-verde-abierto"
-                                onclick="toggleFavorite('mole-verde-abierto')">
+                            <button class="heart-favorite" data-product="mole-rojo"
+                                onclick="toggleFavorite('mole-rojo')" aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
-                            </div>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Mole rojo</h3>
                             <p class="price">$25</p>
@@ -140,13 +147,14 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3217_rajas_abierto.jpeg" alt="Paste de rajas abierto"
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3217_rajas_abierto.jpeg" alt="Paste de rajas abierto"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="paste-rajas"
-                                onclick="toggleFavorite('paste-rajas')"><i class="fas fa-heart"></i></div>
+                            <button class="heart-favorite" data-product="paste-rajas"
+                                onclick="toggleFavorite('paste-rajas')" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Rajas con pollo</h3>
                             <p class="price">$27</p>
@@ -157,13 +165,14 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="/public/images/PASTES/IMG_3202_piña_abierto.jpeg" alt="Paste de piña abierto"
+                        <div class="product-image-container">
+                            <img src="/images/PASTES/IMG_3202_piña_abierto.jpeg" alt="Paste de piña abierto"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="paste-piña"
-                                onclick="toggleFavorite('paste-piña')"><i class="fas fa-heart"></i></div>
+                            <button class="heart-favorite" data-product="paste-piña"
+                                onclick="toggleFavorite('paste-piña')" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Piña</h3>
                             <p class="price">$27</p>
@@ -174,13 +183,14 @@
 
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="product-card">
-                        <div class="image-container">
-                            <img src="../../images/PASTES/IMG_3202_piña_abierto.jpeg" alt="Budín Pastiara"
+                        <div class="product-image-container">
+                            <img src="/public/images/PASTES/Paste_budin.JPG" alt="Budín Pastiara"
                                 class="product-image">
-                            <div class="heart-favorite" data-product="budin-pastiara"
-                                onclick="toggleFavorite('budin-pastiara')"><i class="fas fa-heart"></i></div>
+                            <button class="heart-favorite" data-product="budin-pastiara"
+                                onclick="toggleFavorite('budin-pastiara')" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
-
                         <div class="product-info">
                             <h3>Budín Pastiara</h3>
                             <p class="price">$29</p>
@@ -188,18 +198,26 @@
                         </div>
                     </div>
                 </div>
-            -->
+
             </div>
         </div>
     </section>
+    <button class="btn-flotante-ordenar" type="button" onclick="location.href='/pages/pag-cotizador/cotizador.html'">
+        <span class="btn-text">¡ORDENA AQUÍ!</span>
+        <img src="/public/images/GENERAL/CanastaConPastesCafe.png" alt="Ícono de Carrito" class="icono-boton">
+        <span class="btn-icon" aria-hidden="true"></span>
+    </button>
 
+
+    <special-footer></special-footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <script src="/js/pastes.js" type="module"></script>
     <script src="/js/components.js" type="module"></script>
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/addproduct.js" type="module"></script>
+
 
 </body>
 

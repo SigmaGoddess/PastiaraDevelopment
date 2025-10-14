@@ -1,0 +1,78 @@
+/* ... (Tus importaciones y estilos base permanecen igual) ... */
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
+@import url("./global_variables.css");
+@import url("./normalize.css");
+
+/* ================================================================= */
+/* ESTILOS DE LA BARRA DE PESTAÑAS (NUEVO)                           */
+/* ================================================================= */
+.tabs-container {
+    background-color: #fdf8f4;
+    /* Un color crema muy claro */
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.tab-link {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-size: 1.125rem;
+    /* 18px */
+    font-weight: 600;
+    color: #8c8c8c;
+    /* Un gris suave */
+    border-bottom: 3px solid transparent;
+    /* Borde inferior para el estado activo */
+    transition: all 0.3s ease;
+}
+
+.tab-link:hover {
+    color: #333;
+}
+
+.tab-link.active {
+    color: #916e55;
+    /* Color principal de la marca */
+    border-bottom-color: #916e55;
+    /* Borde visible solo en la pestaña activa */
+}
+
+
+/* ================================================================= */
+/* ESTILOS DE PANELES DE CONTENIDO (AJUSTADO)                        */
+/* ================================================================= */
+main section.user-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+    /* Padding general */
+    margin: 0 auto;
+    /* Centrado */
+}
+
+/* ================================================================= */
+/* AJUSTE PARA REDUCIR ESPACIO EN FAVORITOS                          */
+/* ================================================================= */
+#favoritos-section {
+    padding-top: 2rem;
+    /* Menos espacio arriba */
+}
+
+#favoritos-section h2 {
+    margin-bottom: 1.5rem;
+    /* Menos espacio debajo del título "Favoritos" */
+}
+
+
+/* ================================================================= */
+/* LÓGICA PARA MOSTRAR/OCULTAR SECCIONES (CLAVE)                     */
+/* ================================================================= */
+main>section.user-section {
+    display: none;
+}
+
+main>section.user-section.active {
+    display: block;
+}
+
+/* ... (Tus otros estilos para botones, etc., pueden permanecer igual) ... */

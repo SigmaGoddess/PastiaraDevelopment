@@ -21,9 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const nameInput = document.getElementById('name');
     const lastNameInput = document.getElementById('last-name');
-    const singUpEmailInput = document.getElementById('sign-up-email');
+    const signUpEmailInput = document.getElementById('sign-up-email');
     const phoneInput = document.getElementById('phone-number');
 
+    // ---------------------- CONFIGURACIÓN API --------------------------------------
+    const API_BASE_URL = 'https://reqres.in/api';
 
     // ------------------ FUNCIÓN PARA CAMBIO ENTRE FORMULARIOS ---------------------
 
@@ -64,6 +66,81 @@ document.addEventListener('DOMContentLoaded', function () {
     setupPasswordToggle(signUpPassword, toggleSignUpPassword);   //Registro 
     setupPasswordToggle(confirmPassword, toggleConfirmPassword); //Confirmación de registro
 
+    // ----------------- FUNCIONALIDAD OLVIDÉ MI CONTRASEÑA --------------------
+
+    document.getElementById('forgot-password').addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        // Pedir el correo electrónico al usuario con SweetAlert2
+        const { value: email } = await Swal.fire({
+            title: 'Recuperar contraseña',
+            input: 'email',
+            inputLabel: 'Ingresa tu correo electrónico',
+            inputPlaceholder: 'ejemplo@correo.com',
+            showCancelButton: true,
+            confirmButtonText: 'Enviar enlace',
+            cancelButtonText: 'Cancelar',
+            inputValidator: (value) => {
+                if (!value) {
+                    return '¡Necesitas escribir tu correo electrónico!';
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    return '¡Por favor, ingresa un correo válido!';
+                }
+            }
+        });
+
+        // Si el usuario ingresó un correo, llamar a la API
+        if (email) {
+            Swal.fire({
+                title: 'Procesando...',
+                text: 'Enviando enlace de recuperación.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            try {
+                // **llamada al backend**
+                const response = await fetch(`${API_BASE_URL}/forgot-password`, { // Endpoint inventado
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                // Simulación de respuesta exitosa
+                if (response.ok) { 
+                    Swal.fire({
+                        title: '¡Revisa tu correo!',
+                        text: `Se ha enviado un enlace para restablecer tu contraseña a ${email}.`,
+                        icon: 'success'
+                    });
+                } else {
+                    // Manejo de errores del servidor
+                    const errorData = await response.json();
+                    Swal.fire({
+                        title: 'Error',
+                        text: errorData.error || 'No se pudo procesar la solicitud.',
+                        icon: 'error'
+                    });
+                }
+
+            } catch (error) {
+                console.error('Error de conexión:', error);
+                Swal.fire({
+                    title: 'Error de conexión',
+                    text: 'No se pudo conectar con el servidor. Intenta más tarde.',
+                    icon: 'error'
+                });
+            }
+        }
+    });
+
 
     // ---------------------- VALIDACIÓN DE FORMULARIOS_----------------------------
 
@@ -74,15 +151,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para mostrar errores
     const showError = (input, message) => {
-        const feedback = input.nextElementSibling;
         input.classList.add('is-invalid');
-        if (feedback && feedback.classList.contains('invalid-feedback')) {
-            feedback.textContent = message;
-        } else { 
-             const parentGroup = input.closest('.input-group');
-             const feedbackInGroup = parentGroup.querySelector('.invalid-feedback');
-             feedbackInGroup.textContent = message;
-        }
+        const feedback = input.closest('.input-group')?.querySelector('.invalid-feedback') ||
+            input.parentElement.querySelector('.invalid-feedback');
+
+        if (feedback) feedback.textContent = message;
     };
     
     // Función para limpiar errores
@@ -92,139 +165,178 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //--------------------VALIDACIÓN DE FORMULARIOS: REGISTRO----------------------------
 
-    registerForm.addEventListener('submit', function (event) {
+    registerForm.addEventListener('submit', async function (event) { // función asíncrona
         event.preventDefault();
+
+        const button = registerForm.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = "Cargando..";
 
         let isValid = true;
 
         // Limpiar errores previos
-        [nameInput, lastNameInput, singUpEmailInput, phoneInput, signUpPassword, confirmPassword].forEach(clearError);
+        [nameInput, lastNameInput, signUpEmailInput, phoneInput, signUpPassword, confirmPassword].forEach(clearError);
 
         // Validaciones básicas de los campos
-
-        // 1. Validar Nombre
         if (nameInput.value.trim() === '') {
             showError(nameInput, 'Por favor, ingresa tu nombre(s).');
             isValid = false;
         }
-
-        // 2. Validar Apellido
         if (lastNameInput.value.trim() === '') {
             showError(lastNameInput, 'Por favor, ingresa tu primer apellido.');
             isValid = false;
         }
-
-        // 3. Validar formato del Correo Electrónico
-        if (!emailRegex.test(singUpEmailInput.value.trim())) {
-            showError(singUpEmailInput, 'Por favor, ingresa un correo válido.');
+        if (!emailRegex.test(signUpEmailInput.value.trim())) {
+            showError(signUpEmailInput, 'Por favor, ingresa un correo válido.');
             isValid = false;
         }
-
-        // 4. Validar Teléfono
         if (!phoneRegex.test(phoneInput.value.trim())) {
             showError(phoneInput, 'El teléfono debe tener 10 dígitos.');
             isValid = false;
         }
-
-        // 5. Validar requisitos de Contraseña
         if (!passwordRegex.test(signUpPassword.value)) {
             showError(signUpPassword, 'La contraseña no cumple los requisitos.');
             isValid = false;
         }
-
-        // 6. Validar que las contraseñas coincidan
-        if (signUpPassword.value !== confirmPassword.value || confirmPassword.value === '') {
+        if (signUpPassword.value.trim() !== confirmPassword.value.trim()) {
             showError(confirmPassword, 'Las contraseñas no coinciden.');
             isValid = false;
         }
+        // Si los campos no pasan validación:
+        if (!isValid) {
+            button.disabled = false;
+            button.textContent = "Crear cuenta";
+            return;
+        }
+        //Si todos los campos son aceptados:
 
-        // Si todos los caompos son validos: 
-        if (isValid) {
+        const newUserEmail = signUpEmailInput.value.trim().toLowerCase();
+        const newUserPassword = signUpPassword.value;
 
-            // obtener lista de usuarios y el email a verificar.
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const newUserEmail = singUpEmailInput.value.trim().toLowerCase();
 
-            // Validar que el correo no esté duplicado
-            const emailExists = users.some(user => user.email === newUserEmail);
+        // Try - catch para manejar errores de red
+        try {
+            // Se crea la petición POST con fetch
+            const response = await fetch(`${API_BASE_URL}/register`, {
+                method: 'POST',
+                headers: {
+                    'x-api-key': 'reqres-free-v1',
+                    'Content-Type': 'application/json'
+                },
 
-            if (emailExists) {
-                showError(singUpEmailInput, 'Este correo ya está registrado.');
-
-            } else {
-                // Registrar al usuario.
-                const user = {
-                    nombreCompleto: `${nameInput.value.trim()} ${lastNameInput.value.trim()}`,
-                    telefono: phoneInput.value.trim(),
+                body: JSON.stringify({
                     email: newUserEmail,
-                    password: signUpPassword.value
-                };
+                    password: newUserPassword
+                    // Nota: en reqres.in solo se esta utiizando email y password para el registro. Pendiente aregar los demás datos.
 
-                // Añadir el usuario a la lista y guardarlo
-                users.push(user);
-                localStorage.setItem('users', JSON.stringify(users));
+                })
+            });
 
-                console.log('Registro exitoso. Lista de usuarios actualizada:', users);
+            const data = await response.json();
+
+            // Verificación respuesta del servidor (exitosa = código 2xx)
+            if (response.ok) {
+                console.log('Registro exitoso en el servidor:', data);
 
                 Swal.fire({
-                     title: "¡Tasty!",
-                text: "Registro exitoso",
-                imageUrl: "/images/REGISTRO/IconoDeInicioSesion.png",
-                imageWidth: 150,
-                imageHeight: 90,
-                imageAlt: "Icono de paste"            
+                    title: "¡Tasty!",
+                    text: "Registro exitoso",
+                    imageUrl: "/images/REGISTRO/IconoDeInicioSesion.png",
+                    imageWidth: 150,
+                    imageHeight: 90,
+                    imageAlt: "Icono de paste"
                 });
 
                 registerForm.reset();
-
-                // Monstrar formulario de login
                 registerForm.classList.add('d-none');
                 loginForm.classList.remove('d-none');
+
+            } else {
+                // Si el servidor responde con un error (email duplicado)
+                showError(signUpEmailInput, data.error || 'Este correo ya está en uso.');
             }
+            //Respuesta con error de conexión al servidor
+        } catch (error) {
+            console.error('Error de conexión:', error);
+            Swal.fire({
+                title: "Error de conexión",
+                text: "No se pudo conectar con el servidor. Intenta más tarde.",
+                icon: "error"
+            });
+        } finally {
+            button.disabled = false;
+            button.textContent = "Crear cuenta";
         }
+
     });
 
     // ----------------- VALIDACIÓN DE FORMULARIOS:INICIO DE SESIÓN---------------------
 
-    loginForm.addEventListener('submit', function (event) {
+    loginForm.addEventListener('submit', async function (event) { // función asíncrona
         event.preventDefault();
 
+        const button = event.target.querySelector('button[type="submit"]');
+        button.disabled = true;
+        button.textContent = "Ingresando..";
+
         const enteredEmail = loginEmailInput.value.trim().toLowerCase();
-        const enteredPassword = loginPassword.value.trim();
+        const enteredPassword = loginPassword.value;
 
         clearError(loginEmailInput);
         clearError(loginPassword);
 
-        // Validar campos vacíos
         if (enteredEmail === '' || enteredPassword === '') {
             showError(loginEmailInput, 'Por favor, completa todos los campos.');
-            showError(loginPassword, ' '); 
-            return; // Detener ejecución si hay campos vacíos
+            showError(loginPassword, ' ');
+            button.disabled = false; 
+            button.textContent = "Iniciar sesión";
+            return;
         }
 
-        // Obtener la lista de usuarios para buscar email y contraseña 
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-
-        //Validar que existan y conincidan email y contraseña
-
-        const foundUser = users.find(user =>
-            user.email === enteredEmail &&
-            user.password === enteredPassword
-        );
-
-        if (foundUser) {
-            // Inicio de sesión exitoso
-            Swal.fire({
-                title: `¡Bienvenido, ${foundUser.nombreCompleto}!`,
-                text: "Inicio de sesión exitoso.",
-                icon: "success"
-            }).then(() => {
-                window.location.href = 'index.html'; // Redirección a la página principal
+        try {
+            // Se crea la petición POST con fetch
+            const response = await fetch(`${API_BASE_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'x-api-key': 'reqres-free-v1',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: enteredEmail,
+                    password: enteredPassword
+                })
             });
-        } else {
-            // No se encontró a nadie que coincida
-            showError(loginEmailInput, 'Correo o contraseña inválidos.');
-            showError(loginPassword, 'Correo o contraseña inválidos.');
+
+            const data = await response.json();
+
+            // Verificación respuesta
+            if (response.ok) {
+                console.log('Inicio de sesión exitoso. Token:', data.token);
+                                
+                Swal.fire({
+                    title: `¡Bienvenido de nuevo!`, 
+                    text: "Inicio de sesión exitoso.",
+                    icon: "success"
+                }).then(() => {
+                    loginForm.reset();
+                    window.location.href = 'index.html'; // Redirección a la página principal
+                });
+
+            } else {
+                // Si el servidor responde con un error (credenciales inválidas)
+                showError(loginEmailInput, data.error || 'Correo o contraseña inválidos.');
+                showError(loginPassword, ' ');
+            }
+        //Respuesta con error de conexión al servidor
+        } catch (error) {
+            Swal.fire({
+                title: "Error de conexión",
+                text: "Intenta más tarde",
+                icon: "error"
+            });
+        } finally {
+            button.disabled = false;
+            button.textContent = "Iniciar sesión";
         }
     });
-})
+});
