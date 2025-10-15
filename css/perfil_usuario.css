@@ -49,7 +49,6 @@
     text-decoration: none;
     color: #666;
     transition: color 0.2s ease;
-    font-family: Arial, sans-serif; 
 }
 
 .sidebar-menu a:hover {
@@ -63,9 +62,9 @@
 
 /* --- Columna Derecha (Contenido) --- */
 .account-content {
-    flex-grow: 1; 
+    flex-grow: 1;
     padding-left: 4rem;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -75,7 +74,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%; 
+    width: 100%;
     margin-bottom: 3rem;
 }
 
@@ -114,25 +113,49 @@
     position: relative;
 }
 
-.data-label { font-weight: 600; color: #8d8d8d; margin-right: 0.5rem; }
-.button-container { display: flex; justify-content: center; margin-top: 3rem; }
-.btn-primary { background-color: #b58a6a; color: #fff; border: none; padding: 0.8rem 2.5rem; font-size: 1rem; font-weight: 600; border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease; }
-.btn-primary:hover { background-color: #a0795c; }
-
-.edit-input { 
-    display: none; 
-    width: 100%; 
-    padding: 8px 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 1rem; 
-    font-family: 'Questrial', sans-serif; 
+.data-label {
+    font-weight: 600;
+    color: #8d8d8d;
+    margin-right: 0.5rem;
 }
 
-.personal-data-grid.editing .data-value { 
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.btn-primary {
+    background-color: #b58a6a;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #a0795c;
+}
+
+.edit-input {
+    display: none;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Questrial', sans-serif;
+}
+
+.personal-data-grid.editing .data-value {
     display: none;
 }
-.personal-data-grid.editing .edit-input { 
+
+.personal-data-grid.editing .edit-input {
     display: block;
 }
 
@@ -200,7 +223,7 @@
     border: 1px solid #e5e5e5;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -209,7 +232,7 @@
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Contenedor de la imagen */
@@ -322,7 +345,7 @@
     border-radius: 8px;
     margin-bottom: 2rem;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     text-align: left;
 }
 
@@ -344,7 +367,8 @@
     margin: 0 0 0.5rem 0;
 }
 
-.card-cotizacion p, .card-cotizacion address {
+.card-cotizacion p,
+.card-cotizacion address {
     margin: 0;
     color: #666;
     line-height: 1.6;
@@ -427,7 +451,7 @@
     background-color: #fff;
     padding: 2.5rem;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
     max-width: 400px;
     width: 90%;
@@ -462,6 +486,8 @@
 
 .auth-modal-buttons .btn-secondary {
     background-color: #fff;
+    display: inline-flex;
+    align-items: center;
     color: #b58a6a;
     border: 1px solid #b58a6a;
     padding: 0.8rem 2.5rem;
@@ -494,19 +520,40 @@
   DISEÑO RESPONSIVO
 =================================================================*/
 @media (max-width: 992px) {
-    .account-container { flex-direction: column; padding: 5rem 1rem; }
-    .account-sidebar { flex-basis: auto; width: 100%; border-right: none; padding-right: 0; margin-bottom: 3rem; text-align: center; }
-    .sidebar-nav { margin-top: 1rem; }
-    .sidebar-menu { 
-        display: flex; 
-        flex-direction: row;
-        justify-content: center; 
-        gap: 1.5rem;
-        flex-wrap: wrap; 
+    .account-container {
+        flex-direction: column;
+        padding: 5rem 1rem;
     }
-    .account-content { padding-left: 0; }
-    .content-title { font-size: 2.2rem; }
-    
+
+    .account-sidebar {
+        flex-basis: auto;
+        width: 100%;
+        border-right: none;
+        padding-right: 0;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .sidebar-nav {
+        margin-top: 1rem;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .account-content {
+        padding-left: 0;
+    }
+
+    .content-title {
+        font-size: 2.2rem;
+    }
+
     #favoritos-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
@@ -526,6 +573,7 @@
     .card-cotizacion .card-footer {
         padding: 1rem;
     }
+
     .card-cotizacion h3 {
         font-size: 1.5rem;
     }
