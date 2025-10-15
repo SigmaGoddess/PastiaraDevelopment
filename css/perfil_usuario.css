@@ -1,78 +1,557 @@
-/* ... (Tus importaciones y estilos base permanecen igual) ... */
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
-@import url("./global_variables.css");
-@import url("./normalize.css");
+/** --- Variables Globales (Raíz) y Fuentes --- */
+@import 'https://fonts.googleapis.com/css2?family=Questrial&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap';
+@import './global_variables.css';
+@import './normalize.css';
 
-/* ================================================================= */
-/* ESTILOS DE LA BARRA DE PESTAÑAS (NUEVO)                           */
-/* ================================================================= */
-.tabs-container {
-    background-color: #fdf8f4;
-    /* Un color crema muy claro */
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.tab-link {
-    padding: 1rem 1.5rem;
-    text-decoration: none;
-    font-size: 1.125rem;
-    /* 18px */
-    font-weight: 600;
-    color: #8c8c8c;
-    /* Un gris suave */
-    border-bottom: 3px solid transparent;
-    /* Borde inferior para el estado activo */
-    transition: all 0.3s ease;
-}
-
-.tab-link:hover {
-    color: #333;
-}
-
-.tab-link.active {
-    color: #916e55;
-    /* Color principal de la marca */
-    border-bottom-color: #916e55;
-    /* Borde visible solo en la pestaña activa */
-}
-
-
-/* ================================================================= */
-/* ESTILOS DE PANELES DE CONTENIDO (AJUSTADO)                        */
-/* ================================================================= */
-main section.user-section {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    padding: 2.5rem;
-    /* Padding general */
+/* Contenedor principal */
+.account-container {
+    display: flex;
+    max-width: 1100px;
     margin: 0 auto;
-    /* Centrado */
+    padding: 15rem 2rem;
+    font-family: 'Questrial', sans-serif;
 }
 
-/* ================================================================= */
-/* AJUSTE PARA REDUCIR ESPACIO EN FAVORITOS                          */
-/* ================================================================= */
-#favoritos-section {
-    padding-top: 2rem;
-    /* Menos espacio arriba */
+/* --- Columna Izquierda (Menú) --- */
+.account-sidebar {
+    flex: 0 0 220px;
+    padding-right: 2rem;
+    border-right: 1px solid #e5e5e5;
 }
 
-#favoritos-section h2 {
-    margin-bottom: 1.5rem;
-    /* Menos espacio debajo del título "Favoritos" */
+.sidebar-title {
+    font-size: 1.5rem;
+    color: #b5b5b5;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.sidebar-nav {
+    margin-top: 7.5rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #666;
+    transition: color 0.2s ease;
+    font-family: Arial, sans-serif; 
+}
+
+.sidebar-menu a:hover {
+    color: #000;
+}
+
+.sidebar-menu a.active {
+    color: #000;
 }
 
 
-/* ================================================================= */
-/* LÓGICA PARA MOSTRAR/OCULTAR SECCIONES (CLAVE)                     */
-/* ================================================================= */
-main>section.user-section {
+/* --- Columna Derecha (Contenido) --- */
+.account-content {
+    flex-grow: 1; 
+    padding-left: 4rem;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Estructura de Título General --- */
+.title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    margin-bottom: 3rem;
+}
+
+.content-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    font-family: 'Abril Fatface', serif;
+    color: #b58a6a;
+    font-size: 2.8rem;
+    margin: 0;
+    padding-bottom: 0.5rem;
+}
+
+.title-underline {
+    width: 60px;
+    height: 5px;
+    border-top: 2px solid #8c8c8c;
+    border-bottom: 2px solid #8c8c8c;
+    margin: 0;
+}
+
+/* --- Sección: Datos Personales --- */
+.personal-data-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    color: #888;
+    font-size: 1rem;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.data-item {
+    position: relative;
+}
+
+.data-label { font-weight: 600; color: #8d8d8d; margin-right: 0.5rem; }
+.button-container { display: flex; justify-content: center; margin-top: 3rem; }
+.btn-primary { background-color: #b58a6a; color: #fff; border: none; padding: 0.8rem 2.5rem; font-size: 1rem; font-weight: 600; border-radius: 4px; cursor: pointer; transition: background-color 0.2s ease; }
+.btn-primary:hover { background-color: #a0795c; }
+
+.edit-input { 
+    display: none; 
+    width: 100%; 
+    padding: 8px 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 1rem; 
+    font-family: 'Questrial', sans-serif; 
+}
+
+.personal-data-grid.editing .data-value { 
     display: none;
 }
-
-main>section.user-section.active {
+.personal-data-grid.editing .edit-input { 
     display: block;
 }
 
-/* ... (Tus otros estilos para botones, etc., pueden permanecer igual) ... */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.edit-input.is-invalid {
+    border-color: #e74c3c;
+}
+
+
+/*=================================================================
+  LÓGICA DE PESTAÑAS (TABS)
+=================================================================*/
+.tab-content {
+    display: none;
+    width: 100%;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#favoritos.tab-content.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Sección: Favoritos (Grid de productos) --- */
+
+/* Contenedor principal del grid de favoritos */
+#favoritos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+
+/* Eliminar estilos de Bootstrap row */
+#favoritos-grid.row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Item individual de favorito */
+.favorite-product-item {
+    width: 100%;
+    display: flex;
+}
+
+/* Tarjeta del producto */
+.product-card {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Contenedor de la imagen */
+.product-image-container {
+    position: relative;
+    max-width: 351px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 351 / 450;
+    background-color: #000;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    max-width: 100% !important;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.02);
+}
+
+/* Botón de corazón para favoritos - ESTILO ORIGINAL */
+.heart-favorite {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 41px;
+    z-index: 10;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.heart-favorite i {
+    font-size: 24px;
+    color: white;
+    -webkit-text-stroke: 2px white;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.heart-favorite:hover {
+    transform: scale(1.1);
+}
+
+.heart-favorite.active i {
+    color: #b58a6a;
+    -webkit-text-stroke: 2px #b58a6a;
+}
+
+/* Información del producto */
+.product-info {
+    padding: 20px;
+    font-family: 'Questrial', sans-serif;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.product-info h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin: 0 0 0.5rem 0;
+    color: #888;
+    font-weight: 500;
+}
+
+.product-info .price {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: #888;
+}
+
+.product-info .description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #999;
+    flex-grow: 1;
+}
+
+/* Mensaje cuando no hay favoritos */
+.empty-favorites-message {
+    text-align: center;
+    color: #888;
+    padding: 40px 0;
+    font-size: 1rem;
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+/* --- Sección: Mis Cotizaciones --- */
+#contenedor-cotizaciones {
+    width: 100%;
+    max-width: 700px;
+}
+
+.card-cotizacion {
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.card-cotizacion .card-header,
+.card-cotizacion .card-body,
+.card-cotizacion .card-footer {
+    padding: 1.5rem;
+}
+
+.card-cotizacion .card-header {
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.card-cotizacion h3 {
+    font-family: 'Abril Fatface', serif;
+    color: #b58a6a;
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.card-cotizacion p, .card-cotizacion address {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+.card-cotizacion .card-body h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.card-cotizacion .card-body address {
+    font-style: normal;
+}
+
+.lista-productos-cotizacion {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-productos-cotizacion .producto-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    color: #555;
+}
+
+.lista-productos-cotizacion .producto-item:not(:last-child) {
+    border-bottom: 1px dashed #ddd;
+}
+
+.card-cotizacion .card-footer {
+    background-color: #fcfcfc;
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Mensajes de estado para cotizaciones */
+#contenedor-cotizaciones .loading-message,
+#contenedor-cotizaciones .empty-message,
+#contenedor-cotizaciones .error-message {
+    text-align: center;
+    color: #888;
+    padding: 40px 0;
+    font-size: 1rem;
+    width: 100%;
+}
+
+/* --- Modal de Autenticación --- */
+.auth-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.auth-modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.auth-modal-content {
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    font-family: 'Questrial', sans-serif;
+}
+
+.auth-modal-content h3 {
+    font-family: 'Abril Fatface', serif;
+    color: #b58a6a;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.auth-modal-content p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.auth-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.auth-modal-buttons .btn-primary {
+    text-decoration: none;
+}
+
+.auth-modal-buttons .btn-secondary {
+    background-color: #fff;
+    color: #b58a6a;
+    border: 1px solid #b58a6a;
+    padding: 0.8rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.auth-modal-buttons .btn-secondary:hover {
+    background-color: #f8f8f8;
+    color: #a0795c;
+}
+
+.auth-modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/*=================================================================
+  DISEÑO RESPONSIVO
+=================================================================*/
+@media (max-width: 992px) {
+    .account-container { flex-direction: column; padding: 5rem 1rem; }
+    .account-sidebar { flex-basis: auto; width: 100%; border-right: none; padding-right: 0; margin-bottom: 3rem; text-align: center; }
+    .sidebar-nav { margin-top: 1rem; }
+    .sidebar-menu { 
+        display: flex; 
+        flex-direction: row;
+        justify-content: center; 
+        gap: 1.5rem;
+        flex-wrap: wrap; 
+    }
+    .account-content { padding-left: 0; }
+    .content-title { font-size: 2.2rem; }
+    
+    #favoritos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 15px 0;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-cotizacion .card-header,
+    .card-cotizacion .card-body,
+    .card-cotizacion .card-footer {
+        padding: 1rem;
+    }
+    .card-cotizacion h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #favoritos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .heart-favorite {
+        width: 35px;
+        height: 35px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .heart-favorite i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    #favoritos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
