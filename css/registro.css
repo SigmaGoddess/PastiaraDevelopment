@@ -122,11 +122,12 @@ p {
 
 /*-----------------------Pantalla para dispositivos móviles--------------------------*/
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
 
     .container-background {
         background-image: none;
     }
+
 
     h1 {
         font-size: 1.5rem;
@@ -197,14 +198,15 @@ p {
         height: 60px;
         background-color: #B58A6A;
         left: 0;
-        top: 72%;
-    }
+        top: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        }
 
-    .row.min-vh-100::after {
+    .cinta-decorativa::after {
         /* Estilo imagen derecha*/
         content: '';
-        position: absolute;
-        z-index: -1;
         width: 3.5rem;
         height: 3.3rem;
 
@@ -213,17 +215,13 @@ p {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-
-        /* Posición a la derecha */
-        right: .02rem;
-        top: 35.8rem;
+        margin-right: 3rem;
     }
+ 
 
-    .row.min-vh-100::before {
+    .cinta-decorativa::before {
         /*Estilo imagen izquierda*/
         content: '';
-        position: absolute;
-        z-index: 0;
         width: 3.5rem;
         height: 3.3rem;
 
@@ -232,13 +230,30 @@ p {
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-
-        /*Posición a la izquierda*/
-        left: .2rem;
-        top: 35.8rem;
-    }
-
+        margin-left: -.5rem;
+ 
+    } 
 
 }
 
-/*Fin de media query*/
+/*Fin de media query (768) */
+
+
+
+/* Inicio media query (450px) */
+
+@media (max-width: 450px) {
+
+    .cinta-decorativa::after {
+        /* Estilo imagen derecha*/
+        margin-right: -.5rem;
+    }
+
+    .cinta-decorativa::before {
+        /* Estilo imagen izquierdaa*/
+        margin-left: -.5rem;
+    }
+
+/* Fin media query (450px) */
+
+}
