@@ -44,14 +44,8 @@
                     </div>
                 </div>
                 <!--Contenido formulario-->
-                <div class="col-12 col-md-10 px-5 py-3" id="colum">
+                <div class="col-12 col-md-10 px-3 px-md-5 py-3" id="colum">
                     <div>
-                        <div class="row">
-                            <div class="alert alert-danger d-none" role="alert" id="alerta">
-                                <strong>Error:</strong> Por favor, ingresa tu evento, una dirección y selecciona al
-                                menos un producto.
-                            </div>
-                        </div>
                         <div class="row mb-3">
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Tipo de evento</p>
@@ -946,6 +940,12 @@
                                     cols="65"></textarea>
                             </div>
                         </div>
+                        <div class="row mt-4">
+                            <div class="alert alert-danger d-none" role="alert" id="alerta">
+                                <strong>Error:</strong> Por favor, ingresa tu evento, una dirección y selecciona al
+                                menos un producto.
+                            </div>
+                        </div>
                         <!--Boton de enviar cotización-->
                         <div class="row d-flex justify-content-center align-items-center ">
                             <button class="btn cotizador" type="button" id="btnMostrarResumen">Enviar
@@ -1040,7 +1040,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/js/components.js" type="module"></script>
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/cotizador.js"></script>
+    <script src="/js/cotizador.js" type="module"></script>
 </body>
 
 </html>

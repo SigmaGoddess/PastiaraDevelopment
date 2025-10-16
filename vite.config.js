@@ -16,7 +16,7 @@ export default defineConfig({
                 registro: resolve(__dirname, 'pages/pag-registro/registro.html'),
                 cotizador: resolve(__dirname, 'pages/pag-cotizador/cotizador.html'),
                 administrador: resolve(__dirname, 'pages/pag-administrador/administrador.html'),
-                loader: resolve(__dirname, 'pages/pag-loader/loader.html'),
+                loader: resolve(__dirname, 'pages/pag-loader/loader.html')
             },
         },
     },
