@@ -48,12 +48,13 @@ video {
 
 #carouselExampleCaptions {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
   z-index: 10;
   pointer-events: auto;
+  margin-top: 80px;
 }
 
 .carousel-item {
@@ -678,16 +679,22 @@ hr {
     padding: 0.5rem 0.75rem;
   }
 
+  #carouselExampleCaptions {
+    margin-top: 90px;
+  }
+
   .carousel-caption {
-    bottom: 100px;
+    bottom: block !important;
   }
 
   .carousel-caption h5 {
-    font-size: 45px
+    font-size: 45px;
+    margin-bottom: 30px;
+    margin-top: 18px;
   }
 
   .carousel-caption p {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .carousel-caption a {
