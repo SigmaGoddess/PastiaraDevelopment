@@ -37,7 +37,8 @@
 }
 
 #colum {
-  border: solid, 2px, var(--color-text3);;
+  border: solid, 2px, var(--color-text3);
+  border-radius: 5px;
 }
 
 #colum-form {
