@@ -1,10 +1,10 @@
 @import url('/css/global_variables.css');
 @import url('/css/normalize.css');
 
-.main-cotizador{
-    margin-top: 210px;
-    margin-bottom: 150px;
-    background-color: var( --background-color);
+.main-cotizador {
+  margin-top: 210px;
+  margin-bottom: 150px;
+  background-color: var(--background-color);
 }
 
 
@@ -37,7 +37,8 @@
 }
 
 #colum {
-  border: solid, 2px, var(--color-text3);;
+  border: solid, 2px, var(--color-text3);
+  border-radius: 5px;
 }
 
 #colum-form {
@@ -89,6 +90,11 @@
   background-color: var(--color-title);
   ;
 
+}
+
+#entradaFechaDeEvento {
+  font-family: var(--title-body);
+  color: var(--color-text3);
 }
 
 /* Estilos personalizados para la tarjeta */
@@ -159,40 +165,40 @@
   /* Espacio entre los botones y el número */
 }
 
-.contenedor-carrusel{
+.contenedor-carrusel {
   position: relative;
   width: 100%;
-  
+
   overflow: hidden;
 
 }
 
-.contenedor-carrusel .swiper-container-pastes{
+.contenedor-carrusel .swiper-container-pastes {
   width: 100%;
   height: 100%;
 }
 
 
 
-.swiper-slide img{
-   display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 
 }
 
-.imagen-cards{
-   display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    object-position: center;
-    
+.imagen-cards {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+
 
 }
 
-#mg-product-card{
+#mg-product-card {
   margin-right: 33px;
 }
 
@@ -203,7 +209,8 @@
   padding-left: 38px;
   padding-right: 38px;
 }
-#contenedor-collapse-productos-volovanes{
+
+#contenedor-collapse-productos-volovanes {
   position: relative;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -211,7 +218,7 @@
   padding-right: 38px;
 }
 
-#contenedor-collapse-productos-panaderia{
+#contenedor-collapse-productos-panaderia {
   position: relative;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -219,7 +226,7 @@
   padding-right: 38px;
 }
 
-#contenedor-collapse-productos-regalar{
+#contenedor-collapse-productos-regalar {
   position: relative;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -227,9 +234,10 @@
   padding-right: 38px;
 }
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
 
-  color: var(--color-title) ;
+  color: var(--color-title);
 }
 
 .cotizador {
@@ -254,7 +262,7 @@
   width: 240px;
 }
 
-#comentarios{
+#comentarios {
 
   padding: 5px;
   font-family: var(--title-body);
@@ -263,7 +271,7 @@
   color: var(--color-text3);
 }
 
-#comentarios:focus{
+#comentarios:focus {
 
   outline: none;
   border-color: var(--color-title);
@@ -274,26 +282,32 @@
 
 /* El contenedor del modal (fondo oscuro) */
 .modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Se queda fijo en la pantalla */
-    z-index: 1; /* Se pone por encima de todo */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Permite scroll si el contenido es largo */
-    background-color: rgba(0,0,0,0.5); /* Fondo negro semitransparente */
+  display: none;
+  /* Oculto por defecto */
+  position: fixed;
+  /* Se queda fijo en la pantalla */
+  z-index: 1;
+  /* Se pone por encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* Permite scroll si el contenido es largo */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fondo negro semitransparente */
 }
 
 /* La caja del contenido del modal */
 .modal-contenido {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% desde arriba y centrado horizontalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 8px;
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% desde arriba y centrado horizontalmente */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
 }
 
 #title-set-modal {
@@ -315,7 +329,7 @@
   width: 240px;
 }
 
-.cotizador-modal:hover{
+.cotizador-modal:hover {
 
   background-color: white;
   color: #000;
@@ -323,23 +337,23 @@
 
 /* El botón para cerrar (la "X") */
 .cerrar {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .cerrar:hover,
 .cerrar:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.img-modal-productos{
-width: 28px;
+.img-modal-productos {
+  width: 28px;
 }
 
-#list-modal-productos{
+#list-modal-productos {
   border-bottom: 1px solid #888;
 }

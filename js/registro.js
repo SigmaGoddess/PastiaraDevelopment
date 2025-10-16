@@ -1,5 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // --- CÓDIGO AÑADIDO PARA MOSTRAR EL FORMULARIO CORRECTO DESDE UN ENLACE ---
+    // Revisa si la URL contiene el ancla '#register-form' al cargar la página
+    if (window.location.hash === '#register-form') {
+        // Busca los dos formularios por su ID
+        const loginFormOnLoad = document.getElementById('login-form');
+        const registerFormOnLoad = document.getElementById('register-form');
+
+        // Oculta el formulario de login y muestra el de registro si existen
+        if (loginFormOnLoad && registerFormOnLoad) {
+            loginFormOnLoad.classList.add('d-none');
+            registerFormOnLoad.classList.remove('d-none');
+        }
+    }
+    // --- FIN DEL CÓDIGO AÑADIDO ---
+
+
     // ------------------- SELECTORES DE ELEMENTOS ------------------------------
 
     // Campos de formularios y enlaces 
@@ -62,8 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // Asignación de la función a cada campo de contraseña
-    setupPasswordToggle(loginPassword, toggleLoginPassword);     //Login
-    setupPasswordToggle(signUpPassword, toggleSignUpPassword);   //Registro 
+    setupPasswordToggle(loginPassword, toggleLoginPassword);      //Login
+    setupPasswordToggle(signUpPassword, toggleSignUpPassword);    //Registro 
     setupPasswordToggle(confirmPassword, toggleConfirmPassword); //Confirmación de registro
 
     // ----------------- FUNCIONALIDAD OLVIDÉ MI CONTRASEÑA --------------------

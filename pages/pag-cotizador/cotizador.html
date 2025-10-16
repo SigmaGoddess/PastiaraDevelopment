@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cotizador|Pastiara</title>
-     
+
     <!-- Favicon-->
-  <link rel="icon" type="image/png" href="/favicon-pastiara.png">
+    <link rel="icon" type="image/png" href="/favicon-pastiara.png">
 
     <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -44,14 +44,8 @@
                     </div>
                 </div>
                 <!--Contenido formulario-->
-                <div class="col-12 col-md-10 px-5 py-3" id="colum">
+                <div class="col-12 col-md-10 px-3 px-md-5 py-3" id="colum">
                     <div>
-                        <div class="row">
-                            <div class="alert alert-danger d-none" role="alert" id="alerta">
-                                <strong>Error:</strong> Por favor, ingresa tu evento, una dirección y selecciona al
-                                menos un producto.
-                            </div>
-                        </div>
                         <div class="row mb-3">
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Tipo de evento</p>
@@ -829,7 +823,8 @@
                                                                     <div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-start mb-0">
-                                                                            <h5 class="card-title mb-0">Barquillos de budín
+                                                                            <h5 class="card-title mb-0">Barquillos de
+                                                                                budín
                                                                             </h5>
                                                                             <span class="fs-5 fw-bold">$230</span>
                                                                         </div>
@@ -865,7 +860,8 @@
                                                                     <div>
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-start mb-0">
-                                                                            <h5 class="card-title mb-0">Volovanes brigadeiro</h5>
+                                                                            <h5 class="card-title mb-0">Volovanes
+                                                                                brigadeiro</h5>
                                                                             <span class="fs-5 fw-bold">$300</span>
                                                                         </div>
                                                                         <div>
@@ -900,7 +896,8 @@
                                                                     <div class="h-100">
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-start mb-0">
-                                                                            <h5 class="card-title mb-0">Roles de guayaba</h5>
+                                                                            <h5 class="card-title mb-0">Roles de guayaba
+                                                                            </h5>
                                                                             <span class="fs-5 fw-bold">$230</span>
                                                                         </div>
                                                                         <div>
@@ -941,6 +938,12 @@
                             <div class="input-group input-group-md">
                                 <textarea class="input-shadow-color" name="comentarios" id="comentarios" rows="5"
                                     cols="65"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="alert alert-danger d-none" role="alert" id="alerta">
+                                <strong>Error:</strong> Por favor, ingresa tu evento, una dirección y selecciona al
+                                menos un producto.
                             </div>
                         </div>
                         <!--Boton de enviar cotización-->
@@ -1021,7 +1024,7 @@
                 </div>
                 <div class="row">
                     <div class="d-flex justify-content-center align-items-center">
-                        <button class="cotizador-modal" id="btnConfirmarCotizacion">Confirmar y Enviar</button>
+                        <button class="cotizador-modal" id="btnConfirmarEnviar">Confirmar y Enviar</button>
                     </div>
                 </div>
 
@@ -1037,7 +1040,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/js/components.js" type="module"></script>
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/cotizador.js"></script>
+    <script src="/js/cotizador.js" type="module"></script>
 </body>
 
 </html>
