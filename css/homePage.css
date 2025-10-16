@@ -661,6 +661,10 @@ hr {
     font-size: 36px;
   }
 
+  #group-btn-home .btn {
+    font-size: 15px;
+  }
+
   #faq {
     padding: 24px 0;
   }
@@ -733,4 +737,35 @@ hr {
   .panaderia .swiper-wrapper {
     transform: translate3d(-190px, 0px, 0px) !important;
   }
+}
+
+@media (max-width: 375px) {
+  #carouselExampleCaptions {
+    margin-top: 110px;
+  }
+
+  .carousel-caption {
+    bottom: block !important;
+  }
+
+  .carousel-caption h5 {
+    font-size: 40px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+  }
+
+  .carousel-caption p {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .carousel-caption a {
+    font-size: 16px;
+    padding: 5px 28px;
+    background-size: 30px;
+    background-position: right 8px center;
+    /* Posiciona la imagen a 10px del borde derecho y centrada verticalmente */
+    padding-right: 48px;
+  }
+
 }
