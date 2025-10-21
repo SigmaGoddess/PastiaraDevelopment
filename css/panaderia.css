@@ -209,7 +209,7 @@ html {
 .btn-flotante-ordenar {
     /* Posicionamiento: Fijo y centrado en el borde derecho */
     position: fixed;
-    z-index: 1000;
+    z-index: 999;
     top: 50%;
     right: 30px;
     transform: translateY(-50%);
