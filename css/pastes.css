@@ -229,7 +229,7 @@ html {
 .btn-flotante-ordenar {
     /* Posicionamiento: Fijo y centrado en el borde derecho */
     position: fixed;
-    z-index: 1000;
+    z-index: 999;
     top: 50%;
     right: 30px;
     transform: translateY(-50%);
@@ -317,18 +317,19 @@ html {
         bottom: 20px !important;
         right: 20px !important;
         transform: none !important;
-        
+
         /* Forma circular */
         width: 60px !important;
         height: 60px !important;
         padding: 0 !important;
         border-radius: 50% !important;
-        
+
         /* Centra el contenido perfectamente */
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 0 !important; /* ← Elimina el espacio entre elementos */
+        gap: 0 !important;
+        /* ← Elimina el espacio entre elementos */
     }
 
     .btn-flotante-ordenar .btn-text {
@@ -338,7 +339,8 @@ html {
     .btn-flotante-ordenar .icono-boton {
         width: 28px !important;
         height: 28px !important;
-        margin: 0 !important; /* ← Elimina cualquier margen */
+        margin: 0 !important;
+        /* ← Elimina cualquier margen */
     }
 
 

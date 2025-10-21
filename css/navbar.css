@@ -63,8 +63,6 @@ img {
     background-color: #ffffff;
     border: none;
     border-radius: 0px;
-    padding: auto;
-    /*CHECAR ESTO*/
 }
 
 .navbar-icon {
@@ -89,7 +87,7 @@ img {
 }
 
 #vr-inicio {
-    min-height: 5em;
+    min-height: 4.1em;
 }
 
 .navbar-brand__logo {
@@ -132,6 +130,7 @@ img {
 }
 
 
+
 /* Ajustes responsive */
 @media (max-width: 992px) {
     .navbar-brand__logo {
@@ -146,6 +145,30 @@ img {
         gap: 0.6rem !important;
         padding: 0px !important;
         margin-left: 40px !important;
+        z-index: 1000;
+    }
+
+    .dropdown-menu[aria-labelledby="personDropdownMobile"] {
+        padding: 0px !important;
+        min-width: 120px !important;
+        width: auto !important;
+        font-size: 0.85rem !important;
+        transform: translateY(6px) !important;
+        /* pequeño offset para separarlo del botón */
+        right: auto !important;
+        left: 0 !important;
+        /* ajusta a left: auto; right: 0; si prefieres alinearlo a la derecha */
+        position: absolute !important;
+    }
+
+    .dropdown-menu[aria-labelledby="personDropdownMobile"] .dropdown-item {
+        padding: 6px 10px !important;
+        line-height: 1.15 !important;
+    }
+
+    .bi {
+        color: #B58A6A;
+        font-size: 1.3rem;
     }
 }
 

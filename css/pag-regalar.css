@@ -32,10 +32,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1) rotate(0deg);
     opacity: 0.5;
   }
+
   50% {
     transform: scale(1.1) rotate(180deg);
     opacity: 0.3;
@@ -55,8 +58,15 @@
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Subtítulo */
@@ -73,8 +83,15 @@
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Sección de título */
@@ -119,8 +136,15 @@
 }
 
 @keyframes slideIn {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 0.85; }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 0.85;
+  }
 }
 
 /* Productos */
@@ -140,21 +164,55 @@
   margin-bottom: 0;
 }
 
-.pastiara-product-left { justify-content: flex-start; animation: slideInLeft 0.8s ease-out; }
-.pastiara-product-right { justify-content: flex-end; animation: slideInRight 0.8s ease-out; }
-.pastiara-product-center { justify-content: center; animation: zoomIn 0.8s ease-out; }
+.pastiara-product-left {
+  justify-content: flex-start;
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.pastiara-product-right {
+  justify-content: flex-end;
+  animation: slideInRight 0.8s ease-out;
+}
+
+.pastiara-product-center {
+  justify-content: center;
+  animation: zoomIn 0.8s ease-out;
+}
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-70px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(70px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
 @keyframes zoomIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .pastiara-product-wrapper {
@@ -169,7 +227,7 @@
   color: var(--color-title);
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ========== NUEVO EFECTO HOVER ========== */
@@ -185,8 +243,8 @@ article.product-3d {
 
 article.product-3d img {
   width: 100%;
-  max-width: 650px;  
-  height: 650px;  
+  max-width: 650px;
+  height: 650px;
   object-fit: cover;
   border-radius: 25px;
   display: block;
@@ -248,10 +306,10 @@ article.product-3d:hover::before {
 
 /* Info del producto */
 .pastiara-product-info {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
@@ -259,7 +317,7 @@ article.product-3d:hover::before {
 
 .pastiara-product-info:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .pastiara-description-text {
@@ -275,39 +333,45 @@ article.product-3d:hover::before {
   color: var(--color-title);
   font-size: 1.8rem;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== BOTÓN FLOTANTE BLANCO ===== */
 .btn-flotante-ordenar {
+  /* Posicionamiento: Fijo y centrado en el borde derecho */
   position: fixed;
-  z-index: 1000;
+  z-index: 999;
   top: 50%;
   right: 30px;
   transform: translateY(-50%);
+
+  /* Apariencia: Tomamos lo mejor de tus otros botones */
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #FFFFFF;
+  background-color: #EFE6DC;
   color: #B58A6A;
   padding: 12px 24px;
-  border: 2px solid #B58A6A;
+  border: none;
   border-radius: 50px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+
+  /* Tipografía */
   font-family: 'Questrial', sans-serif;
   font-weight: bold;
   font-size: 1em;
   white-space: nowrap;
+
+  /* Interacción */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease-in-out;
 }
 
 .btn-flotante-ordenar:hover {
   transform: translateY(-50%) scale(1.05);
-  background-color: #F5F0EB;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
+/* Estilos para el ícono de la canasta dentro del botón */
 .btn-flotante-ordenar .icono-boton {
   width: 20px;
   height: 20px;
@@ -317,25 +381,115 @@ article.product-3d:hover::before {
    RESPONSIVE
    ============================ */
 @media (max-width: 768px) {
-  .body-regalar { margin-top: 120px; }
-  .pastiara-main-title { font-size: 2.2rem; }
-  .pastiara-section-title { font-size: 1.8rem; }
-  .pastiara-product-name { font-size: 1.5rem; }
-  .pastiara-banner-background { height: 120px; background-size: 100% 100%; }
-  article.product-3d img { height: 450px; max-height: 450px; }
-  article.product-3d:hover { transform: translateY(-5px); }
-  .pastiara-description-text { font-size: 0.95rem; }
-  .pastiara-product-left, .pastiara-product-right { justify-content: center; }
-  .pastiara-full-banner-section { padding: 2.5rem 0; }
+  .body-regalar {
+    margin-top: 120px;
+  }
+
+  .pastiara-main-title {
+    font-size: 2.2rem;
+  }
+
+  .pastiara-section-title {
+    font-size: 1.8rem;
+  }
+
+  .pastiara-product-name {
+    font-size: 1.5rem;
+  }
+
+  .pastiara-banner-background {
+    height: 120px;
+    background-size: 100% 100%;
+  }
+
+  article.product-3d img {
+    height: 450px;
+    max-height: 450px;
+  }
+
+  article.product-3d:hover {
+    transform: translateY(-5px);
+  }
+
+  .pastiara-description-text {
+    font-size: 0.95rem;
+  }
+
+  .pastiara-product-left,
+  .pastiara-product-right {
+    justify-content: center;
+  }
+
+  .pastiara-full-banner-section {
+    padding: 2.5rem 0;
+  }
+
+  .btn-flotante-ordenar {
+    /* Posición: Esquina inferior derecha */
+    top: auto !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    transform: none !important;
+
+    /* Forma circular */
+    width: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+
+    /* Centra el contenido perfectamente */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+    /* ← Elimina el espacio entre elementos */
+  }
+
+  .btn-flotante-ordenar .btn-text {
+    display: none !important;
+  }
+
+  .btn-flotante-ordenar .icono-boton {
+    width: 28px !important;
+    height: 28px !important;
+    margin: 0 !important;
+    /* ← Elimina cualquier margen */
+  }
 }
 
 @media (max-width: 576px) {
-  .pastiara-main-title { font-size: 1.8rem; }
-  .pastiara-banner-background { height: 100px; background-size: 100% 100%; }
-  article.product-3d img { height: 350px; max-height: 350px; }
-  article.product-3d:hover { transform: translateY(-3px); }
-  article.product-3d:hover img:first-child { filter: blur(2px); }
-  .pastiara-product-info { padding: 1.25rem; }
-  .pastiara-price { font-size: 1.2rem; }
-  .pastiara-full-banner-section { padding: 2rem 0; margin-bottom: 1.5rem; }
+  .pastiara-main-title {
+    font-size: 1.8rem;
+  }
+
+  .pastiara-banner-background {
+    height: 100px;
+    background-size: 100% 100%;
+  }
+
+  article.product-3d img {
+    height: 350px;
+    max-height: 350px;
+  }
+
+  article.product-3d:hover {
+    transform: translateY(-3px);
+  }
+
+  article.product-3d:hover img:first-child {
+    filter: blur(2px);
+  }
+
+  .pastiara-product-info {
+    padding: 1.25rem;
+  }
+
+  .pastiara-price {
+    font-size: 1.2rem;
+  }
+
+  .pastiara-full-banner-section {
+    padding: 2rem 0;
+    margin-bottom: 1.5rem;
+  }
 }
