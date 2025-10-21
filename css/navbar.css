@@ -87,7 +87,7 @@ img {
 }
 
 #vr-inicio {
-    min-height: 5em;
+    min-height: 4.1em;
 }
 
 .navbar-brand__logo {
@@ -145,6 +145,7 @@ img {
         gap: 0.6rem !important;
         padding: 0px !important;
         margin-left: 40px !important;
+        z-index: 1000;
     }
 
     .dropdown-menu[aria-labelledby="personDropdownMobile"] {
