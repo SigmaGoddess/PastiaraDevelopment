@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
             showCancelButton: true,
             confirmButtonText: 'Enviar enlace',
             cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#B58A6A',
             inputValidator: (value) => {
                 if (!value) {
                     return '¡Necesitas escribir tu correo electrónico!';

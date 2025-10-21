@@ -109,6 +109,21 @@ let swiper4 = new Swiper('#contenedor-collapse-productos-regalar .swiper-contain
   } 
 });
 
+// Espera a que el contenido de la página esté cargado
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // 1. Obtiene la fecha y hora actual
+  const hoy = new Date();
+  //console.log(hoy);
+  hoy.setDate(hoy.getDate() + 3);
+  const fechaDeHoy = hoy.toISOString().split('T')[0];
+
+  console.log(fechaDeHoy);  
+  // 3. Selecciona el input por su id y establece el atributo 'min'
+  document.querySelector("#entradaFechaDeEvento").min = fechaDeHoy;
+  
+});
+
 //----------------------- interacción para sumar o restar cantidad en en productos-------------------------
 const productos = document.querySelectorAll('#producto');
 //console.log(productos);
