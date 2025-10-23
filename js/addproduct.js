@@ -4,16 +4,87 @@ class ItemsController {
         this.items = [];
     }
 
-    // Agrega un producto al array
+    
+/**
+ * // Agrega un producto al array
     addItem(title, description, price, image) {
         const item = { title, description, price, image };
         this.items.push(item);
     }
+ */
+// ===NUEVO===: Carga los productos por categoría usando fetch e inyecta en el contenedor.
+    async loadItemsAndInject(category, containerId) {
+        //Construye la URL para el endpoint específico de categoría
+        const API_URL = `${API_BASE_URL}/${category}`; 
+        
+        try {
+            //Realiza la solicitud HTTP
+            const response = await fetch(API_URL);
+            
+            if (!response.ok) {
+                //Maneja errores de respuesta HTTP (ej. 404 si la categoría no existe)
+                throw new Error(`Error al cargar productos de ${category}: ${response.status}`);
+            }
 
-    // Inserta los productos en el DOM
-    insertItem() {
-        const containerListProducts = document.getElementById("container-products");
+            //Convierte la respuesta a un array de JavaScript (DTOs)
+            this.items = await response.json(); 
+            
+            //Llama a la inyección para pintar los productos en el contenedor
+            this.insertItem(containerId); 
+
+        } catch (error) {
+            console.error(`Fallo al obtener productos de ${category}:`, error);
+            // Si falla, puedes inyectar un mensaje de error o vacío en el contenedor
+            document.getElementById(containerId).innerHTML = '<p class="text-danger">Error al cargar productos.</p>';
+        }
+    }
+
+//====NUEVO====== insertItem ahora recibe el ID del contenedor
+insertItem(containerId) {
+        const containerListProducts = document.getElementById(containerId);
+        if (!containerListProducts) return; // Sale si el contenedor no existe
+        
         containerListProducts.innerHTML = ''; // Limpiamos el contenedor
+
+        for (const itemOfList of this.items) {
+            // NOTA IMPORTANTE: Los nombres de las propiedades deben coincidir con los campos de tu ProductDto (productName, productPrice, etc.)
+            
+            // Usamos productName para generar un ID único
+            const productId = itemOfList.productName.toLowerCase().replace(/\s+/g, '-');
+
+            // Creamos el contenedor de la card
+            const card = document.createElement('div');
+            card.classList.add('col-lg-4', 'col-md-6', 'mb-5');
+
+            card.innerHTML = `
+                <div class="product-card">
+                    <div class="image-container">
+                        <img src="${itemOfList.imageUrl || '/images/default.jpg'}" alt="${itemOfList.productName}" class="product-image">
+                        <div class="heart-favorite" data-product="${productId}">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>${itemOfList.productName}</h3>
+                        <p class="price">$${itemOfList.productPrice}</p>
+                        <p class="description">${itemOfList.productDescription}</p>
+                    </div>
+                </div>
+            `;
+
+            containerListProducts.appendChild(card);
+            // Asignamos evento
+            //===este es un elemento de CSS que va a encontrar el elemento en el HTML
+            const heart = card.querySelector('.heart-favorite');
+            heart.addEventListener('click', () => toggleFavorite(productId));
+        }
+    }
+    }
+    // Inserta los productos en el DOM
+    /**
+     * insertItem() {
+        const containerListProducts = document.getElementById("container-products");
+        containerListProducts.innerHTML = ''; // Para limpiar el contenedor
 
         for (const itemOfList of this.items) {
             // Creamos un ID dinámico a partir del título
@@ -45,12 +116,9 @@ class ItemsController {
             const heart = card.querySelector('.heart-favorite');
             heart.addEventListener('click', () => toggleFavorite(productId));
         }
-    }
-}
+    }*/
 
-// Creamos el controlador de productos
-const pastes = new ItemsController();
-
+/** 
 // Agregamos los 10 productos
 pastes.addItem("Frijol", "(Frijol y chipotle)", 25, "/images/PASTES/IMG_3151_frijol_abierto.jpeg");
 pastes.addItem("Carne con papa", "(Papa, carne de res, cebolla, perejil y chile)", 25, "/images/PASTES/IMG_3166_papa_abierto.jpeg");
@@ -62,6 +130,19 @@ pastes.addItem("Rajas con pollo", "(Rajas poblanas, elote, pollo y crema)", 27, 
 pastes.addItem("Piña", "(Mermelada de piña natural)", 27, "/images/PASTES/IMG_3202_piña_abierto.jpeg");
 pastes.addItem("Budín Pastiara", "(Budín de naranja)", 29, "/images/PASTES/Paste_budin.JPG");
 
+*/
+// ==============Controlador INDEPENDIENTE para cada categoría.===============
 
-// Insertamos los productos en el DOM
-pastes.insertItem();
+// Controlador para la categoría de Pastes
+const pastesController = new ItemsController();
+pastesController.loadItemsAndInject('pastes', 'container-pastes'); 
+
+// Controlador para la categoría de Panadería
+const panaderiaController = new ItemsController();
+panaderiaController.loadItemsAndInject('panaderia', 'container-panaderia'); 
+
+// Controlador para la categoría de Volovanes
+const volovanesController = new ItemsController();
+volovanesController.loadItemsAndInject('volovanes', 'container-volovanes');
+
+
