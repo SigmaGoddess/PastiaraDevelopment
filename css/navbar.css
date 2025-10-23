@@ -129,7 +129,42 @@ img {
 
 }
 
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 0.5rem;
+    font-size: clamp(.5rem, 1rem + 1vw, 1.1rem);
+}
 
+#box-search {
+    position: fixed;
+    top: 165px;
+    width: auto;
+    background-color: #ffffff;
+    list-style: none;
+    overflow: hidden;
+    padding-inline-start: 5px;
+    right: 227px;
+    display: none;
+    /* Esto es manejado por JS */
+}
+
+#box-search li a {
+    display: block;
+    width: auto;
+    color: black;
+    padding: 10px 15px;
+    list-style: none;
+    text-decoration: none;
+}
+
+#box-search li a:hover {
+    background: var(--color-text3, #8c8c8c);
+}
+
+#box-search li a i {
+    margin-right: 10px;
+}
 
 /* Ajustes responsive */
 @media (max-width: 992px) {
