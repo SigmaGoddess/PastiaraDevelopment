@@ -340,7 +340,7 @@ article.product-3d:hover::before {
 .btn-flotante-ordenar {
   /* Posicionamiento: Fijo y centrado en el borde derecho */
   position: fixed;
-  z-index: 999;
+  z-index: 998;
   top: 50%;
   right: 30px;
   transform: translateY(-50%);

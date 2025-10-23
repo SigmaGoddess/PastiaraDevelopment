@@ -1,40 +1,3 @@
-// Mostrar/ocultar buscador
-// Logic for the mobile search button
-/*const searchBtnMobile = document.getElementById("search-btn-mobile");
-const searchFormMobile = document.getElementById("search-form-mobile");
-
-if (searchBtnMobile && searchFormMobile) {
-    searchBtnMobile.addEventListener("click", () => {
-        console.log("Mobile search button clicked");
-        searchFormMobile.classList.toggle("d-none");
-    });
-}*/
-
-/*const searchBtnDesktop = document.querySelector("#search-btn");
-const searchFormDesktop = document.getElementById("search-form");
-
-if (searchBtnDesktop && searchFormDesktop) {
-    searchBtnDesktop.addEventListener("click", () => {
-        console.log("Desktop search button clicked");
-        searchFormDesktop.classList.toggle("d-none");
-    });
-    searchFormMobile.classList.toggle("d-none");
-}*/
-
-// Logic for the desktop search button
-/*const searchBtnDesktop = document.getElementById("search-btn");
-const searchFormDesktop = document.getElementById("search-form");
-
-if (searchBtnDesktop && searchFormDesktop) {
-    searchBtnDesktop.addEventListener('click', (e) => {
-        const btn = e.target.closest('#search-btn');
-        if (!btn) return;
-        e.preventDefault();
-        // lógica de búsqueda / toggle input
-        const input = document.querySelector('#searchInput');
-        input?.classList.toggle('visible');
-    });
-}*/
 
 // Delegación global que funciona incluso si el botón está dentro de un Shadow DOM
 document.addEventListener('click', (e) => {
@@ -57,5 +20,14 @@ document.addEventListener('click', (e) => {
             }
             return;
         }
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+
+    if (e.target.matches('#search-form input, #search-form-mobile input')) {
+        document.querySelectorAll('.search-suggestion').forEach(suggestion => {
+            suggestion.style.display = 'none';
+        });
     }
 });
