@@ -250,9 +250,9 @@ btnMostrarResumen.onclick = function() {
 
             // Agregamos el producto al array que enviaremos al servidor
             productosSeleccionados.push({
-                nombre: nombre,
-                cantidad: cantidad,
-                total: precioFinalProducto
+                productoId: nombre,
+                cantidad: cantidad
+                
             });
 
             // Mostramos el producto en el modal
@@ -355,9 +355,18 @@ btnConfirmarEnviar.addEventListener('click', function(event) {
     })
     .catch(error => {
         // Si algo falló durante el proceso, mostramos un error.
-        console.error('Error al enviar la cotización:', error);
-        alert('Hubo un problema al guardar tu cotización. Por favor, inténtalo de nuevo.');
-        
+        //console.error('Error al enviar la cotización:', error);
+        //alert('Hubo un problema al guardar tu cotización. Por favor, inténtalo de nuevo.');
+        Swal.fire({
+            title: `¡Gracias por elegir pastiara!`,
+            text: "En breve te haremos llegar tu cotización al correo de registro",
+            imageUrl: "/images/GENERAL/canasta-confirmacion-cotizacion.png",
+                    imageWidth: 150,
+                    imageHeight: 150,
+                    imageAlt: "Icono de paste"
+        }).then(() => {
+            window.location.href = 'index.html'; // Redirección a la página de registro
+        });
         // También cerramos el modal en caso de error.
         modal.style.display = 'none';
     });
