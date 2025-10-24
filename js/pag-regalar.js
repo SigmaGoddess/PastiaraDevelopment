@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 🔍 VERIFICACIÓN Y CORRECCIÓN DEL EFECTO 3D
   // ============================================
   const products3D = document.querySelectorAll('.product-3d');
-
+  
   console.log('\n🎯 === INICIALIZANDO EFECTO 3D ===');
   console.log(`📦 Productos 3D encontrados: ${products3D.length}`);
-
+  
   if (products3D.length === 0) {
     console.warn('⚠️ No se encontraron productos con clase .product-3d');
   }
@@ -17,38 +17,38 @@ document.addEventListener('DOMContentLoaded', () => {
   products3D.forEach((product, index) => {
     const images = product.querySelectorAll('img');
     console.log(`\n🎁 Producto ${index + 1}:`);
-    console.log(`   📸 Total imágenes: ${images.length}`);
-
+    console.log( ` 📸 Total imágenes: ${images.length}`);
+    
     if (images.length < 2) {
-      console.error(`   ❌ ERROR: Se necesitan 2 imágenes, solo hay ${images.length}`);
+      console.error(  ` ❌ ERROR: Se necesitan 2 imágenes, solo hay ${images.length}`);
       return;
     }
 
     // Verificar y reportar estado de las imágenes
     images.forEach((img, imgIndex) => {
       const imgType = imgIndex === 0 ? 'Base' : '3D Flotante';
-      console.log(`   - Imagen ${imgIndex + 1} (${imgType}):`, img.src);
-
+      console.log( `  - Imagen ${imgIndex + 1} (${imgType}):`, img.src);
+      
       if (img.complete && img.naturalWidth > 0) {
-        console.log(`     ✅ Cargada: ${img.naturalWidth}x${img.naturalHeight}px`);
-
+        console.log( `    ✅ Cargada: ${img.naturalWidth}x${img.naturalHeight}px`);
+        
         // Verificar transparencia (aproximado)
         if (imgIndex === 1 && !img.src.toLowerCase().includes('.png')) {
           console.warn('     ⚠️ La imagen flotante debería ser PNG con transparencia');
         }
       } else if (img.complete && img.naturalWidth === 0) {
-        console.error(`     ❌ Error: Imagen no encontrada o ruta incorrecta`);
+        console.error(  `   ❌ Error: Imagen no encontrada o ruta incorrecta`);
       } else {
-        console.log(`     ⏳ Cargando...`);
-
+        console.log(  `   ⏳ Cargando...`);
+        
         img.addEventListener('load', () => {
-          console.log(`     ✅ Imagen ${imgIndex + 1} cargada: ${img.naturalWidth}x${img.naturalHeight}px`);
+          console.log( `    ✅ Imagen ${imgIndex + 1} cargada: ${img.naturalWidth}x${img.naturalHeight}px`);
         });
-
+        
         img.addEventListener('error', () => {
-          console.error(`     ❌ ERROR al cargar imagen ${imgIndex + 1}`);
-          console.error(`     📍 Ruta: ${img.src}`);
-          console.error(`     💡 Verifica que la ruta sea correcta`);
+          console.error(   `  ❌ ERROR al cargar imagen ${imgIndex + 1}`);
+          console.error(  `   📍 Ruta: ${img.src}`);
+          console.error(    ` 💡 Verifica que la ruta sea correcta`);
         });
       }
     });
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Forzar estilos correctos
     product.style.transformStyle = 'preserve-3d';
     product.style.perspective = '1500px';
-
+    
     // Asegurar que la imagen flotante esté correctamente posicionada
     const floatingImg = images[1];
     if (floatingImg) {
@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Logging detallado del hover
-    product.addEventListener('mouseenter', function () {
+    product.addEventListener('mouseenter', function() {
       console.log(`\n🎯 HOVER activado en producto ${index + 1}`);
-
+      
       setTimeout(() => {
         const lastImg = this.querySelector('img:last-child');
         const computedStyle = window.getComputedStyle(lastImg);
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('      - Transform:', computedStyle.transform);
         console.log('      - Z-index:', computedStyle.zIndex);
         console.log('      - Position:', computedStyle.position);
-
+        
         // Verificar si el efecto se está aplicando
         if (computedStyle.opacity === '0' || computedStyle.opacity < 0.5) {
           console.warn('   ⚠️ La imagen flotante podría no ser visible (opacity muy baja)');
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
     });
 
-    product.addEventListener('mouseleave', function () {
+    product.addEventListener('mouseleave', function() {
       console.log(`👋 Hover desactivado en producto ${index + 1}`);
     });
   });
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('   - transform-style:', styles.transformStyle);
     console.log('   - position:', styles.position);
     console.log('   - cursor:', styles.cursor);
-
+    
     if (styles.perspective === 'none') {
       console.error('   ❌ ERROR: perspective no está aplicándose');
     }
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   // ANIMACIONES DE ENTRADA
   // ============================================
-
+  
   // Animar información de productos
   const productInfos = document.querySelectorAll('.pastiara-product-info');
   if (productInfos.length > 0) {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
       product.style.opacity = '0';
       product.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
       observer.observe(product);
-
+      
       setTimeout(() => {
         product.style.transitionDelay = `${index * 0.2}s`;
       }, 50);
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   let ticking = false;
   const banners = document.querySelectorAll('.pastiara-banner-background');
-
+  
   if (banners.length > 0) {
     window.addEventListener('scroll', () => {
       if (!ticking) {
@@ -190,14 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     console.log('\n🧪 === TEST DE DIAGNÓSTICO 3D ===');
     const firstProduct = document.querySelector('.product-3d');
-
+    
     if (!firstProduct) {
       console.error('❌ No se encontró ningún producto para testear');
       return;
     }
 
     console.log('🔬 Ejecutando test en el primer producto...');
-
+    
     const images = firstProduct.querySelectorAll('img');
     if (images.length < 2) {
       console.error('❌ TEST FALLIDO: Faltan imágenes');
@@ -207,9 +207,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verificar rutas
     console.log('\n📍 Verificación de rutas:');
     images.forEach((img, i) => {
-      console.log(`   ${i + 1}. ${img.src}`);
-      console.log(`      Existe: ${img.complete && img.naturalWidth > 0 ? '✅' : '❌'}`);
+      console.log(   `${i + 1}. ${img.src}`);
+      console.log(      `Existe: ${img.complete && img.naturalWidth > 0 ? '✅' : '❌'}`);
     });
+
+    // Test visual temporal
+    console.log('\n🎨 Aplicando test visual (5 segundos)...');
+    firstProduct.classList.add('debug-test-3d');
+    
+    const testStyle = document.createElement('style');
+    testStyle.id = 'debug-3d-style';
+    testStyle.textContent = `
+      .product-3d.debug-test-3d {
+        outline: 2px dashed blue !important;
+        background: rgba(0, 100, 255, 0.05) !important;
+      }
+      .product-3d.debug-test-3d img:first-child {
+        outline: 2px solid green !important;
+      }
+      .product-3d.debug-test-3d img:last-child {
+        outline: 3px solid orange !important;
+        opacity: 1 !important;
+      }
+    `;
+    document.head.appendChild(testStyle);
+
+    console.log('🔍 Deberías ver:');
+    console.log('   - Borde azul punteado alrededor del producto');
+    console.log('   - Borde verde en la imagen base');
+    console.log('   - Borde naranja en la imagen flotante (¡debe ser visible!)');
 
     // Limpiar después de 5 segundos
     setTimeout(() => {
@@ -217,15 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const style = document.getElementById('debug-3d-style');
       if (style) style.remove();
       console.log('✅ Test completado y limpiado');
-
+      
       // Diagnóstico final
       const floatingImg = images[1];
       const finalStyle = window.getComputedStyle(floatingImg);
       console.log('\n📋 Diagnóstico final de imagen flotante:');
-      console.log(`   Visible: ${finalStyle.opacity > 0.5 ? '✅ SÍ' : '❌ NO'}`);
-      console.log(`   Opacity: ${finalStyle.opacity}`);
-      console.log(`   Display: ${finalStyle.display}`);
-      console.log(`   Visibility: ${finalStyle.visibility}`);
+      console.log(   `Visible: ${finalStyle.opacity > 0.5 ? '✅ SÍ' : '❌ NO'}`);
+      console.log(   `Opacity: ${finalStyle.opacity}`);
+      console.log(   `Display: ${finalStyle.display}`);
+      console.log(   `Visibility: ${finalStyle.visibility}`);
     }, 5000);
 
   }, 2000);
