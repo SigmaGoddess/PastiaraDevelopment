@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //  Función principal para traer los productos del backend y renderizarlos
     async function cargarProductos() {
-        try {
+        try { 
             // ID del producto
             const categoriaId = 1; 
             const response = await fetch(`/api/productos/categoria/${categoriaId}`);

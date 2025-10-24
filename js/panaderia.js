@@ -106,5 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    cargarProductos();
+    cargarProductos(); 
 });
