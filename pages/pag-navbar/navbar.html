@@ -117,14 +117,13 @@
                                 <i class="bi bi-heart navbar-icon"></i>
                             </a>
                         </li>
-                        <li class="nav-item position-relative search-container">
+                        <li class="nav-item search-container position-relative d-flex align-items-center">
+
                             <button class="btn p-0" id="search-btn">
                                 <i class="bi bi-search navbar-icon"></i>
                             </button>
-                        </li>
-                        <li class="nav-item position-relative">
 
-                            <form class="d-none ms-2" id="search-form">
+                            <form class="d-none ms-2 position-relative" id="search-form">
 
                                 <input id="searchInput" type="text" class="form-control form-control-sm"
                                     placeholder="Buscar..." autocomplete="off">
@@ -145,10 +144,16 @@
                                     <li class="search-item"><a class="search-link"
                                             href="/pages/pag-cotizador/cotizador.html"><i
                                                 class="bi bi-search navbar-icon"></i>Comprar</a></li>
+                                    <li class="search-item"><a class="search-link" href="#site-footer"><i
+                                                class="bi bi-search navbar-icon"></i>Ubicación</a></li>
+                                    <li class="search-item"><a class="search-link" href="#site-footer"><i
+                                                class="bi bi-search navbar-icon"></i>Horario</a></li>
+
                                 </ul>
 
                             </form>
                         </li>
+
 
                     </ul>
 
@@ -156,13 +161,14 @@
 
                 <!-- Search (solo mobile): botón y form dentro del offcanvas -->
                 <div class="offcanvas-search d-block d-lg-none">
-                    <div class="d-flex align-items-center">
-                        <button class="btn p-0" id="search-btn-mobile" type="button" aria-label="Buscar mobile">
+                    <div class="d-flex align-items-center position-relative">
+
+                        <button class="btn p-0" id="search-btn-mobile">
                             <i class="bi bi-search navbar-icon"></i>
                         </button>
+
                         <form class="d-none flex-grow-1 ms-2" id="search-form-mobile">
-                            <input id="searchInputMobile" type="text" class="form-control form-control-sm"
-                                placeholder="Buscar...">
+
                         </form>
                     </div>
                 </div>
