@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchEInyectarParaRegalar() {
     try {
       const categoriaId = 4;
-      const res = await fetch(`http://localhost:8080/api/productos/categoria/${categoriaId}`);
+      const res = await fetch(`http://localhost:8080/api/productos/categoria/4`);
       if (!res.ok) {
         console.warn('Fetch para "Para Regalar" devolvió status', res.status);
         return;

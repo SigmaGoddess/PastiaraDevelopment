@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function cargarProductos() {
         try {
             const categoriaId = 3; // Cambia este ID al que corresponda a panadería en tu base
-            const response = await fetch(`/api/productos/categoria/${categoriaId}`);
+            const response = await fetch(`http://localhost:8080/api/productos/categoria/3`);
             if (!response.ok) throw new Error('Error al cargar productos');
 
             const productos = await response.json();
