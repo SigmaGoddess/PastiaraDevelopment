@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Questrial&display=swap");
 @import url("./global_variables.css");
 @import url("./normalize.css");
@@ -75,12 +74,22 @@
   color: var(--color-text1);
   text-align: center;
   margin-top: -40px;
-  margin-left: 280px;
+  margin-left: 310px;
 }
 
-.horario-footer strong {
-  color: var(--color-title1);
+
+/*  Ubicación */
+
+.ubicacion-footer {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text1);
+  text-align: center;
+  margin-top: 0px;
+  margin-left: 255px;
 }
+
+
 
 /*Botones Personalizados */
 .btn-registro-footer {
@@ -156,48 +165,59 @@
 /* Responsividad */
 @media (width: 1024px) {
   .footer-frase {
-  margin-left: -1rem;
+    margin-left: -1rem;
   }
-  .logo-pastiara-footer{
+
+  .logo-pastiara-footer {
     margin-top: 1rem;
   }
-  .social-icons-footer{
+
+  .social-icons-footer {
     gap: 4px;
     margin-bottom: 0;
   }
-  .horario-footer {
-  font-size: 16px;
-  margin-top: -38px;
-  margin-left: 660px;
-  text-align: center;
-}
- 
-.btn-registro-footer {
-  background-color: var(--color-boton1);
-  color: var(--color-text2);
-  border: none;
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  width: 100%;
-  cursor: pointer;
-}
 
-.btn-login-footer {
-  background-color: transparent;
-  color: var(--color-boton1);
-  border: 2px solid var(--color-boton1);
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-  width: 100%;
-  cursor: pointer;
-}
-.footer-bottom{
-  margin-top: 20px;
-}
+  .horario-footer {
+    font-size: 16px;
+    margin-top: -38px;
+    margin-left: 660px;
+    text-align: center;
+  }
+
+  .ubicacion-footer {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-left: 710px;
+    text-align: center;
+  }
+
+  .btn-registro-footer {
+    background-color: var(--color-boton1);
+    color: var(--color-text2);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .btn-login-footer {
+    background-color: transparent;
+    color: var(--color-boton1);
+    border: 2px solid var(--color-boton1);
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .footer-bottom {
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -207,40 +227,49 @@
   }
 
   .logo-pastiara-footer {
-  margin-left: 0px;
-}
+    margin-left: 0px;
+  }
+
   .col-frase-footer {
     margin-left: -1rem;
     padding-top: 50px;
   }
-  
+
   .footer-frase {
     text-align: left;
     margin-top: -15px !important;
     padding-left: 50px;
   }
-  .social-icons-footer{
+
+  .social-icons-footer {
     justify-content: center;
   }
-  .seccion-inicio { 
-    margin-top: 1rem; 
-  }
-  .seccion-inicio .titulo-seccion-footer { 
-    margin-top: -0.1rem; 
-  }
-  .seccion-productos { 
-    margin-top: 1rem; 
-  }
-  .seccion-productos .titulo-seccion-footer { 
-    margin-top: -0.1rem; 
-  }
-  .seccion-legal { 
+
+  .seccion-inicio {
     margin-top: 1rem;
   }
-  .seccion-legal .titulo-seccion-footer { 
-    margin-top: -0.1rem; 
+
+  .seccion-inicio .titulo-seccion-footer {
+    margin-top: -0.1rem;
   }
-  .horario-footer{
+
+  .seccion-productos {
+    margin-top: 1rem;
+  }
+
+  .seccion-productos .titulo-seccion-footer {
+    margin-top: -0.1rem;
+  }
+
+  .seccion-legal {
+    margin-top: 1rem;
+  }
+
+  .seccion-legal .titulo-seccion-footer {
+    margin-top: -0.1rem;
+  }
+
+  .horario-footer {
     margin-top: 0;
     text-align: center;
     padding-top: 15px;
@@ -251,7 +280,19 @@
     margin-right: 0;
 
   }
+
+  .ubicacion-footer {
+    margin-top: 0;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
+
 @media (max-width: 768px) {
   .footer {
     padding: 2rem 0 1rem;
@@ -262,7 +303,7 @@
     padding-top: 50px;
     margin-left: -1rem;
   }
-  
+
   .footer-frase {
     text-align: left;
     width: auto;
@@ -295,21 +336,23 @@
   .enlace-footer {
     font-size: 1rem;
   }
-    .seccion-inicio { 
-    margin-top: 1rem; 
-    padding-left: 1.5rem;
-  }
-  
-  .seccion-productos { 
-    margin-top: 1rem; 
-    padding-left: 2.5rem;
-  }
-  
-  .seccion-legal { 
+
+  .seccion-inicio {
     margin-top: 1rem;
     padding-left: 1.5rem;
   }
-  .horario-footer{
+
+  .seccion-productos {
+    margin-top: 1rem;
+    padding-left: 2.5rem;
+  }
+
+  .seccion-legal {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .horario-footer {
     margin-top: 0;
     text-align: center;
     padding-top: 15px;
@@ -320,12 +363,24 @@
     margin-right: 0;
 
   }
+
+  .ubicacion-footer {
+    margin-top: 0;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 @media (max-width: 576px) {
   .titulo-seccion-footer {
-  font-size: 1rem;
-} 
+    font-size: 1rem;
+  }
+
   .acciones-col-footer {
     align-items: stretch !important;
   }
@@ -335,6 +390,7 @@
     padding: 0.5rem 2rem;
     font-size: 1rem;
   }
+
   .col-frase-footer {
     align-items: center;
     justify-content: center;
@@ -342,35 +398,42 @@
     padding-bottom: 0;
     margin-left: 0;
   }
-  
+
   .footer-frase {
     width: auto;
     text-align: center;
     padding-right: 0;
     padding-left: 85px;
   }
-  .seccion-inicio { 
-    margin-top: 1rem; 
+
+  .seccion-inicio {
+    margin-top: 1rem;
     padding-left: 1.5rem;
   }
-  .seccion-inicio .titulo-seccion-footer { 
-    margin-top: 1rem; 
+
+  .seccion-inicio .titulo-seccion-footer {
+    margin-top: 1rem;
   }
-  .seccion-productos { 
-    margin-top: 1rem; 
+
+  .seccion-productos {
+    margin-top: 1rem;
     padding-left: 3rem;
   }
-  .seccion-productos .titulo-seccion-footer { 
-    margin-top: 1rem; 
-  }
-  .seccion-legal { 
+
+  .seccion-productos .titulo-seccion-footer {
     margin-top: 1rem;
-    padding-left: 1.5rem; 
   }
-  .seccion-legal .titulo-seccion-footer { 
-    margin-top: 0; 
+
+  .seccion-legal {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
   }
-  .horario-footer{
+
+  .seccion-legal .titulo-seccion-footer {
+    margin-top: 0;
+  }
+
+  .horario-footer {
     margin-top: 0;
     text-align: center;
     padding-top: 15px;
@@ -380,5 +443,16 @@
     margin-left: 0;
     margin-right: 0;
   }
-  
+
+  .ubicacion-footer {
+    margin-top: 0;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
 }
