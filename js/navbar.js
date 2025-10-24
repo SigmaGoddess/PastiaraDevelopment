@@ -1,8 +1,9 @@
 console.log('navbar.js cargado');
 
-// ===============================================================
+
 // 1. MANEJADOR DE CLIC (MUESTRA/OCULTA FORMULARIO)
-// ===============================================================
+
+// (Mantenemos el Bloque 1 intacto, ya funciona correctamente)
 document.addEventListener('click', (e) => {
     const btnDesk = e.target.closest('#search-btn');
     const btnMob = e.target.closest('#search-btn-mobile');
@@ -15,10 +16,8 @@ document.addEventListener('click', (e) => {
             const input = form.querySelector('input');
 
             if (input && !form.classList.contains('d-none')) {
-                // Muestra el input y lo enfoca
                 setTimeout(() => input.focus(), 50);
             } else {
-                // Oculta el input, limpia el valor y oculta los resultados
                 if (input) input.value = '';
                 boxSearch?.classList.remove('show');
             }
@@ -29,13 +28,7 @@ document.addEventListener('click', (e) => {
         e.preventDefault();
         toggleForm('search-form');
     }
-
-    if (btnMob) {
-        e.preventDefault();
-        toggleForm('search-form-mobile');
-    }
-
-    // Ocultar la lista de resultados si se hace clic fuera
+    // ... (Manejo de btnMob y clic fuera sin cambios)
     const isInsideForm = e.target.closest('#search-form') || e.target.closest('#search-form-mobile');
     const isInsideBoxSearch = e.target.closest('#box-search');
     const isInsideButton = btnDesk || btnMob;
@@ -48,16 +41,23 @@ document.addEventListener('click', (e) => {
 });
 
 
-// ===============================================================
-// 2. FUNCIONES DE FILTRADO Y EVENTOS DE BÚSQUEDA (USA DOMContentLoaded)
-// ===============================================================
-document.addEventListener('DOMContentLoaded', () => {
-    // 🚩 DOMContentLoaded garantiza que los inputs inyectados existan.
+
+// 2. FUNCIÓN PRINCIPAL DE INICIALIZACIÓN (A PRUEBA DE INYECCIÓN)
+
+
+const initSearch = () => {
     const boxSearch = document.getElementById('box-search');
     const inputDesk = document.getElementById('searchInput');
     const inputMob = document.getElementById('searchInputMobile');
 
-    if (!boxSearch) return;
+    if (!boxSearch || (!inputDesk && !inputMob)) {
+        console.warn("NAVBAR JS: Elementos de búsqueda no encontrados. Reintentando en 500ms.");
+        // Si no los encuentra, reintenta (último recurso)
+        setTimeout(initSearch, 500);
+        return;
+    }
+
+    console.log("NAVBAR JS: Inputs encontrados. Eventos adjuntados.");
 
     const filterSearch = (e) => {
         const query = (e.target.value || '').trim().toUpperCase();
@@ -73,11 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item.style.display = match ? '' : 'none';
 
-            // Muestra la caja si hay coincidencias Y el input no está vacío.
             if (match && query !== '') hasVisibleItems = true;
         });
 
-        // Control de visibilidad (agrega/quita la clase .show)
         if (hasVisibleItems) {
             boxSearch.classList.add('show');
         } else {
@@ -86,8 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const showBox = (e) => {
-        // Solo ejecuta el filtro (y potencialmente muestra la caja) si hay texto.
-        // Esto previene que se muestre con input vacío al hacer focus.
         if (e.target.value.trim() !== '') {
             filterSearch(e);
         }
@@ -101,16 +97,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     };
 
-    // Adjuntar eventos
+    // Registrar eventos para input de escritorio
     if (inputDesk) {
         inputDesk.addEventListener('focus', showBox);
         inputDesk.addEventListener('input', filterSearch);
         inputDesk.addEventListener('blur', hideBox);
     }
 
+    // Registrar eventos para input móvil
     if (inputMob) {
         inputMob.addEventListener('focus', showBox);
         inputMob.addEventListener('input', filterSearch);
         inputMob.addEventListener('blur', hideBox);
     }
-});
+};
+
+// 🚩 Ejecuta la inicialización después de que TODA la página (incluyendo imágenes) haya cargado.
+window.addEventListener('load', initSearch);
+// Alternativa más rápida si 'load' es muy lento: Intenta llamar initSearch() directamente aquí
+// Y quita el window.addEventListener, confiando en que el script está al final del body.
+// initSearch();

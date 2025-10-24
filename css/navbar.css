@@ -129,6 +129,12 @@ img {
 
 }
 
+.search-container,
+.nav-item.position-relative {
+    position: relative;
+    /* Dejamos que Bootstrap o el CSS global manejen esto */
+}
+
 /* Estilo del input (Mantenido) */
 .form-control {
     border: 1px solid #ddd;
@@ -139,31 +145,35 @@ img {
 
 /* El formulario debe ser el contexto relativo */
 #search-form {
-    position: relative !important;
+    width: 200px
 }
 
 /* ===============================================================
    CAJA DE RESULTADOS (#box-search)
    =============================================================== */
 #box-search {
-    /* Posicionamiento absoluto */
     position: absolute !important;
-    top: calc(100% + 8px) !important;
+    top: 100% !important;
+    /* Aparece justo debajo del input (que ahora es el 100% de la altura del form) */
     left: 0 !important;
+    /* Alineado a la izquierda del input */
 
     /* Estilos de la caja */
-    width: 280px;
+    max-height: 300px;
     background-color: #ffffff;
     list-style: none;
     padding: 0;
     margin: 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
+    width: 100%;
+    /* Ocupa el 100% del ancho del #search-form */
     z-index: 1100 !important;
     max-height: 300px;
     overflow-y: auto;
 
     /* 🚩 CLAVE para ocultar input vacío: Oculto, pero mantiene su lugar. */
+    display: block !important;
     visibility: hidden !important;
 }
 
