@@ -1,79 +1,116 @@
-// Obtiene el contenedor principal de la lista de resultados
-const boxSearch = document.querySelector('#box-search');
-// Obtiene el campo de entrada de texto
-const searchInput = document.querySelector('#searchInput');
+console.log('navbar.js cargado');
 
-// ***************************************************************
-// 1. MANEJADOR DE CLIC (MUESTRA/OCULTA EL FORMULARIO)
-// ***************************************************************
-
+// ===============================================================
+// 1. MANEJADOR DE CLIC (MUESTRA/OCULTA FORMULARIO)
+// ===============================================================
 document.addEventListener('click', (e) => {
-    // Usamos el path del evento para compatibilidad con Shadow DOM
-    const path = e.composedPath ? e.composedPath() : (e.path || []);
+    const btnDesk = e.target.closest('#search-btn');
+    const btnMob = e.target.closest('#search-btn-mobile');
+    const boxSearch = document.getElementById('box-search');
 
-    for (const node of path) {
-        if (!node || node === window || node === document) continue;
+    const toggleForm = (formId) => {
+        const form = document.getElementById(formId);
+        if (form) {
+            form.classList.toggle('d-none');
+            const input = form.querySelector('input');
 
-        // Verifica si se hizo clic en los botones de búsqueda
-        if (node.id === 'search-btn-mobile' || node.id === 'search-btn') {
-            e.preventDefault();
-            console.log('Search button clicked:', node.id);
-
-            const formDesktop = document.getElementById('search-form');
-            const formMobile = document.getElementById('search-form-mobile');
-
-            // Muestra u oculta los formularios (si existen)
-            formDesktop?.classList.toggle('d-none');
-            formMobile?.classList.toggle('d-none');
-
-            // Enfoca el input después de mostrarlo
-            searchInput.focus();
-
-            return; // Detiene la propagación y la ejecución del bucle
+            if (input && !form.classList.contains('d-none')) {
+                // Muestra el input y lo enfoca
+                setTimeout(() => input.focus(), 50);
+            } else {
+                // Oculta el input, limpia el valor y oculta los resultados
+                if (input) input.value = '';
+                boxSearch?.classList.remove('show');
+            }
         }
+    };
+
+    if (btnDesk) {
+        e.preventDefault();
+        toggleForm('search-form');
+    }
+
+    if (btnMob) {
+        e.preventDefault();
+        toggleForm('search-form-mobile');
+    }
+
+    // Ocultar la lista de resultados si se hace clic fuera
+    const isInsideForm = e.target.closest('#search-form') || e.target.closest('#search-form-mobile');
+    const isInsideBoxSearch = e.target.closest('#box-search');
+    const isInsideButton = btnDesk || btnMob;
+
+    if (!isInsideForm && !isInsideButton && !isInsideBoxSearch) {
+        document.getElementById('search-form')?.classList.add('d-none');
+        document.getElementById('search-form-mobile')?.classList.add('d-none');
+        boxSearch?.classList.remove('show');
     }
 });
 
-// ***************************************************************
-// 2. FUNCIÓN DE FILTRADO (filterSearch)
-// ***************************************************************
 
-searchInput.addEventListener('keyup', filterSearch);
+// ===============================================================
+// 2. FUNCIONES DE FILTRADO Y EVENTOS DE BÚSQUEDA (USA DOMContentLoaded)
+// ===============================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 🚩 DOMContentLoaded garantiza que los inputs inyectados existan.
+    const boxSearch = document.getElementById('box-search');
+    const inputDesk = document.getElementById('searchInput');
+    const inputMob = document.getElementById('searchInputMobile');
 
-function filterSearch() {
-    // 1. Prepara el valor del input para la comparación (mayúsculas)
-    const filter = searchInput.value.toUpperCase();
+    if (!boxSearch) return;
 
-    // 2. Obtiene todos los <li> dentro de la caja de resultados.
-    const listItems = boxSearch.querySelectorAll('li');
+    const filterSearch = (e) => {
+        const query = (e.target.value || '').trim().toUpperCase();
+        const items = boxSearch.querySelectorAll('.search-item');
+        let hasVisibleItems = false;
 
-    // 3. Itera sobre los elementos a filtrar
-    for (let i = 0; i < listItems.length; i++) {
+        items.forEach((item) => {
+            const link = item.querySelector('.search-link');
+            if (!link) return;
 
-        const listItem = listItems[i];
-        const link = listItem.querySelector('a');
+            const textContent = link.textContent.trim().toUpperCase();
+            const match = textContent.includes(query);
 
-        if (link) {
-            // CORRECCIÓN CLAVE: Obtiene el texto del enlace (<a>) e ignora el <i>
-            // Usa textContent y lo normaliza (trim) para limpiar espacios.
-            const textValue = link.textContent.trim();
+            item.style.display = match ? '' : 'none';
 
-            // Comprueba si el texto del enlace incluye el filtro
-            if (textValue.toUpperCase().indexOf(filter) > -1) {
-                listItem.style.display = ''; // Muestra el <li>. Es mejor que 'block' si no sabes el display original.
-            } else {
-                listItem.style.display = 'none'; // Oculta el <li>
-            }
+            // Muestra la caja si hay coincidencias Y el input no está vacío.
+            if (match && query !== '') hasVisibleItems = true;
+        });
+
+        // Control de visibilidad (agrega/quita la clase .show)
+        if (hasVisibleItems) {
+            boxSearch.classList.add('show');
+        } else {
+            boxSearch.classList.remove('show');
         }
+    };
+
+    const showBox = (e) => {
+        // Solo ejecuta el filtro (y potencialmente muestra la caja) si hay texto.
+        // Esto previene que se muestre con input vacío al hacer focus.
+        if (e.target.value.trim() !== '') {
+            filterSearch(e);
+        }
+    };
+
+    const hideBox = (e) => {
+        setTimeout(() => {
+            if (!e.relatedTarget || !e.relatedTarget.closest('#box-search')) {
+                boxSearch.classList.remove('show');
+            }
+        }, 200);
+    };
+
+    // Adjuntar eventos
+    if (inputDesk) {
+        inputDesk.addEventListener('focus', showBox);
+        inputDesk.addEventListener('input', filterSearch);
+        inputDesk.addEventListener('blur', hideBox);
     }
 
-    // 4. Lógica para mostrar/ocultar la caja de resultados completa
-    // Si el input está vacío o solo tiene espacios, oculta la caja.
-    if (searchInput.value.trim() === '') {
-        boxSearch.style.display = 'none';
-    } else {
-        // Muestra la caja, si no encuentra elementos, la caja se verá vacía,
-        // pero es el comportamiento esperado para una búsqueda activa.
-        boxSearch.style.display = 'block';
+    if (inputMob) {
+        inputMob.addEventListener('focus', showBox);
+        inputMob.addEventListener('input', filterSearch);
+        inputMob.addEventListener('blur', hideBox);
     }
-}
+});

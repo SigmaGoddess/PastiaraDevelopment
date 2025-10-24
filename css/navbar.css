@@ -129,6 +129,7 @@ img {
 
 }
 
+/* Estilo del input (Mantenido) */
 .form-control {
     border: 1px solid #ddd;
     border-radius: 15px;
@@ -136,19 +137,43 @@ img {
     font-size: clamp(.5rem, 1rem + 1vw, 1.1rem);
 }
 
-#box-search {
-    position: fixed;
-    top: 165px;
-    width: auto;
-    background-color: #ffffff;
-    list-style: none;
-    overflow: hidden;
-    padding-inline-start: 5px;
-    right: 227px;
-    display: none;
-    /* Esto es manejado por JS */
+/* El formulario debe ser el contexto relativo */
+#search-form {
+    position: relative !important;
 }
 
+/* ===============================================================
+   CAJA DE RESULTADOS (#box-search)
+   =============================================================== */
+#box-search {
+    /* Posicionamiento absoluto */
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+
+    /* Estilos de la caja */
+    width: 280px;
+    background-color: #ffffff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 1100 !important;
+    max-height: 300px;
+    overflow-y: auto;
+
+    /* 🚩 CLAVE para ocultar input vacío: Oculto, pero mantiene su lugar. */
+    visibility: hidden !important;
+}
+
+/* CLASE CLAVE: Muestra la caja de búsqueda cuando el JS la añade */
+#box-search.show {
+    /* Muestra cuando tiene coincidencias y el input no está vacío */
+    visibility: visible !important;
+}
+
+/* Estilos de los elementos de la lista (Mantenido) */
 #box-search li a {
     display: block;
     width: auto;
@@ -158,13 +183,14 @@ img {
     text-decoration: none;
 }
 
-#box-search li a:hover {
-    background: var(--color-text3, #8c8c8c);
+/* ... otros estilos de lista ... */
+
+/* Regla de soporte para contenedores de navbar (Mantenido) */
+.search-container,
+.nav-item.position-relative {
+    position: relative !important;
 }
 
-#box-search li a i {
-    margin-right: 10px;
-}
 
 /* Ajustes responsive */
 @media (max-width: 992px) {
