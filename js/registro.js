@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const phoneInput = document.getElementById('phone-number');
 
     // ---------------------- CONFIGURACIÓN API --------------------------------------
-    const API_BASE_URL = 'https://reqres.in/api';
+    const API_BASE_URL = 'http://localhost:8080/api/auth';
 
     // ------------------ FUNCIÓN PARA CAMBIO ENTRE FORMULARIOS ---------------------
 
@@ -227,6 +227,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         //Si todos los campos son aceptados:
 
+        const newUserName = `${nameInput.value} ${lastNameInput.value}`;
+        const newUserPhone = phoneInput.value.trim();
         const newUserEmail = signUpEmailInput.value.trim().toLowerCase();
         const newUserPassword = signUpPassword.value;
 
@@ -237,13 +239,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch(`${API_BASE_URL}/register`, {
                 method: 'POST',
                 headers: {
-                    'x-api-key': 'reqres-free-v1',
+                    //'x-api-key': 'reqres-free-v1',
                     'Content-Type': 'application/json'
                 },
 
                 body: JSON.stringify({
+                    nombre: newUserName,
                     email: newUserEmail,
-                    password: newUserPassword
+                    password: newUserPassword,
+                    numeroTelefono: newUserPhone
                     // Nota: en reqres.in solo se esta utiizando email y password para el registro. Pendiente aregar los demás datos.
 
                 })
@@ -254,6 +258,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Verificación respuesta del servidor (exitosa = código 2xx)
             if (response.ok) {
                 console.log('Registro exitoso en el servidor:', data);
+
+                localStorage.setItem("authToken", data.accessToken)
+                localStorage.setItem("usuarioLog", newUserEmail)
 
                 Swal.fire({
                     title: "¡Tasty!",
@@ -267,6 +274,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 registerForm.reset();
                 registerForm.classList.add('d-none');
                 loginForm.classList.remove('d-none');
+
+                window.location.href = "/index.html";
 
             } else {
                 // Si el servidor responde con un error (email duplicado)
@@ -315,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
                 headers: {
-                    'x-api-key': 'reqres-free-v1',
+                    //'x-api-key': 'reqres-free-v1',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -328,7 +337,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Verificación respuesta
             if (response.ok) {
-                console.log('Inicio de sesión exitoso. Token:', data.token);
+                console.log('Inicio de sesión exitoso. Token:', data.accessToken);
+
+                localStorage.setItem("authToken", data.accessToken)
+                localStorage.setItem("usuarioLog", enteredEmail)
                                 
                 Swal.fire({
                     title: `¡Bienvenido de nuevo!`, 
