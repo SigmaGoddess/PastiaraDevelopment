@@ -326,7 +326,7 @@ btnConfirmarEnviar.addEventListener('click', function(event) {
 
     // 3. Usamos la API fetch para enviar los datos al backend.
     //    La URL '/api/cotizaciones/guardar' es un ejemplo, deberás crear este endpoint en tu servidor.
-    fetch('/api/cotizaciones/guardar', {
+    fetch('http://localhost:8080/api/tickets', {
         method: 'POST', // Usamos POST para crear una nueva cotización.
         headers: {
             'Content-Type': 'application/json' // Indicamos que el contenido es JSON.

@@ -286,7 +286,7 @@
   /* Oculto por defecto */
   position: fixed;
   /* Se queda fijo en la pantalla */
-  z-index: 1;
+  z-index: 9999;
   /* Se pone por encima de todo */
   left: 0;
   top: 0;
