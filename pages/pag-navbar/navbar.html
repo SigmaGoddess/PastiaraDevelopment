@@ -117,18 +117,41 @@
                                 <i class="bi bi-heart navbar-icon"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item position-relative search-container">
                             <button class="btn p-0" id="search-btn">
                                 <i class="bi bi-search navbar-icon"></i>
                             </button>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item position-relative">
+
                             <form class="d-none ms-2" id="search-form">
+
                                 <input id="searchInput" type="text" class="form-control form-control-sm"
-                                    placeholder="Buscar...">
+                                    placeholder="Buscar..." autocomplete="off">
+
+                                <ul id="box-search">
+                                    <li class="search-item"><a class="search-link"
+                                            href="/pages/pag-productosPastes/pastes.html"><i
+                                                class="bi bi-search navbar-icon"></i>Pastes</a></li>
+                                    <li class="search-item"><a class="search-link"
+                                            href="/pages/pag-productosPastes/volovanes.html"><i
+                                                class="bi bi-search navbar-icon"></i>Volovanes</a></li>
+                                    <li class="search-item"><a class="search-link"
+                                            href="/pages/pag-productosPanaderiaArtesanal/productosPanaderiaArtesanal.html"><i
+                                                class="bi bi-search navbar-icon"></i>Pan</a></li>
+                                    <li class="search-item"><a class="search-link"
+                                            href="/pages/pag-cotizador/cotizador.html"><i
+                                                class="bi bi-search navbar-icon"></i>Precios</a></li>
+                                    <li class="search-item"><a class="search-link"
+                                            href="/pages/pag-cotizador/cotizador.html"><i
+                                                class="bi bi-search navbar-icon"></i>Comprar</a></li>
+                                </ul>
+
                             </form>
                         </li>
+
                     </ul>
+
                 </div>
 
                 <!-- Search (solo mobile): botón y form dentro del offcanvas -->
