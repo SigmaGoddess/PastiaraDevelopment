@@ -57,6 +57,7 @@
   font-family: var(--title-body);
   margin-bottom: 2px;
   color: var(--color-text3);
+  text-align: center;
 
 }
 
@@ -358,6 +359,6 @@
   border-bottom: 1px solid #888;
 }
 
-.text-card{
+.text-card {
   font-family: var(--title-body);
 }

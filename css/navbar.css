@@ -143,6 +143,11 @@ img {
     font-size: clamp(.5rem, 1rem + 1vw, 1.1rem);
 }
 
+.form-control:focus {
+    border-color: #B58A6A;
+    box-shadow: 0 0 0 0.25rem rgba(161, 130, 118, 0.25);
+}
+
 /* El formulario debe ser el contexto relativo */
 #search-form {
     width: 200px
