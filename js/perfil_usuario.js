@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // --- SECCIÓN DE FUNCIONES AUXILIARES (DEFINIDAS PRIMERO PARA EVITAR ERRORES) ---
 
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.sidebar-nav a');
     const tabContents = document.querySelectorAll('.tab-content');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.dataset.tab;
             navLinks.forEach(navLink => navLink.classList.remove('active'));
@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // --- CÓDIGO MODIFICADO ---
-        editBtn.addEventListener('click', function() {
+        editBtn.addEventListener('click', function () {
             // Verificamos si existe una "llave" en localStorage que indique que el usuario inició sesión.
             // **Importante:** Deberás asegurarte de crear esta llave al momento del login.
-            if (!localStorage.getItem('pastiaraUserToken')) { 
+            if (!localStorage.getItem('pastiaraUserToken')) {
                 // Si la llave NO existe, el usuario no ha iniciado sesión.
                 const authModal = document.getElementById('auth-modal');
                 authModal.style.display = 'flex'; // Mostramos el modal
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => authModal.classList.add('visible'), 10);
                 return; // Detenemos la ejecución para que no se active el modo de edición.
             }
-    
+
             // El resto de tu código original continúa aquí si el usuario SÍ ha iniciado sesión
             const isEditing = dataContainer.classList.contains('editing');
             if (isEditing) {
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
         closeModalBtn.addEventListener('click', closeModal);
 
         // Cierra el modal si se hace clic en el fondo oscuro
-        authModal.addEventListener('click', function(event) {
+        authModal.addEventListener('click', function (event) {
             // Se cierra solo si el clic es en el overlay y no en el contenido
             if (event.target === authModal) {
                 closeModal();
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- FIN DEL CÓDIGO NUEVO AÑADIDO ---
 
     //* Código para la sección según el hash en la url
-     window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
         const hash = window.location.hash;
         if (hash) {
             const tabName = hash.substring(1);
@@ -338,5 +338,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
+
 });
+
+// --------------- FUNCIÓN PARA TRAER DATOS DEL USUARIO DESDE BASE DE DATOS UNA VEZ LOGGEADO ----------------------
+
+const API_PROFILE_URL = 'http://localhost:8080/api/auth/profile';
+async function fetchUserData(userId) {
+    try {
+        const response = await fetch(`${API_PROFILE_URL}/usuarios/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener los datos del usuario');
+        }
+        const userData = await response.json();
+        return userData;
+    } catch (error) {
+        console.error('Error al obtener los datos del usuario:', error);
+        return null;
+    }
+}
+// Ejemplo de uso:
+const userId = localStorage.getItem('pastiaraUserId');
+if (userId) {
+    fetchUserData(userId)
+        .then(userData => {
+            if (userData) {
+                console.log('Datos del usuario:', userData);
+            } else {
+                console.log('No se pudieron obtener los datos del usuario.');
+            }
+        });
+}
