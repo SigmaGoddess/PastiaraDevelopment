@@ -28,7 +28,13 @@ document.addEventListener('click', (e) => {
         e.preventDefault();
         toggleForm('search-form');
     }
-    // ... (Manejo de btnMob y clic fuera sin cambios)
+
+    // manejar botón móvil
+    if (btnMob) {
+        e.preventDefault();
+        toggleForm('search-form-mobile');
+    }
+
     const isInsideForm = e.target.closest('#search-form') || e.target.closest('#search-form-mobile');
     const isInsideBoxSearch = e.target.closest('#box-search');
     const isInsideButton = btnDesk || btnMob;
@@ -46,73 +52,63 @@ document.addEventListener('click', (e) => {
 
 
 const initSearch = () => {
-    const boxSearch = document.getElementById('box-search');
+    const boxSearch = document.getElementById('box-search'); // desktop
+    const boxSearchMobile = document.getElementById('box-search-mobile'); // mobile
     const inputDesk = document.getElementById('searchInput');
     const inputMob = document.getElementById('searchInputMobile');
 
-    if (!boxSearch || (!inputDesk && !inputMob)) {
-        console.warn("NAVBAR JS: Elementos de búsqueda no encontrados. Reintentando en 500ms.");
-        // Si no los encuentra, reintenta (último recurso)
-        setTimeout(initSearch, 500);
-        return;
-    }
-
-    console.log("NAVBAR JS: Inputs encontrados. Eventos adjuntados.");
-
-    const filterSearch = (e) => {
-        const query = (e.target.value || '').trim().toUpperCase();
-        const items = boxSearch.querySelectorAll('.search-item');
-        let hasVisibleItems = false;
-
-        items.forEach((item) => {
+    const filterForBox = (box, q) => {
+        if (!box) return false;
+        const items = box.querySelectorAll('.search-item');
+        let any = false;
+        items.forEach(item => {
             const link = item.querySelector('.search-link');
-            if (!link) return;
-
-            const textContent = link.textContent.trim().toUpperCase();
-            const match = textContent.includes(query);
-
+            const txt = (link?.textContent || '').trim().toUpperCase();
+            const match = q.length > 0 && txt.includes(q);
             item.style.display = match ? '' : 'none';
-
-            if (match && query !== '') hasVisibleItems = true;
+            any = any || match;
         });
+        box.classList.toggle('show', any);
+        return any;
+    };
 
-        if (hasVisibleItems) {
-            boxSearch.classList.add('show');
+    const onInput = (e) => {
+        const q = (e.target.value || '').trim().toUpperCase();
+        const box = e.target.id === 'searchInputMobile'
+            ? document.getElementById('box-search-mobile')
+            : document.getElementById('box-search');
+        filterForBox(box, q);
+    };
+
+    const onFocus = (e) => {
+        if ((e.target.value || '').trim() === '') {
+            const box = e.target.id === 'searchInputMobile'
+                ? document.getElementById('box-search-mobile')
+                : document.getElementById('box-search');
+            box?.classList.remove('show');
         } else {
-            boxSearch.classList.remove('show');
+            onInput(e);
         }
     };
 
-    const showBox = (e) => {
-        if (e.target.value.trim() !== '') {
-            filterSearch(e);
-        }
+    const onBlur = (e) => {
+        const box = e.target.id === 'searchInputMobile' ? boxSearchMobile : boxSearch;
+        setTimeout(() => box?.classList.remove('show'), 200);
     };
 
-    const hideBox = (e) => {
-        setTimeout(() => {
-            if (!e.relatedTarget || !e.relatedTarget.closest('#box-search')) {
-                boxSearch.classList.remove('show');
-            }
-        }, 200);
-    };
-
-    // Registrar eventos para input de escritorio
     if (inputDesk) {
-        inputDesk.addEventListener('focus', showBox);
-        inputDesk.addEventListener('input', filterSearch);
-        inputDesk.addEventListener('blur', hideBox);
+        inputDesk.addEventListener('focus', onFocus);
+        inputDesk.addEventListener('input', onInput);
+        inputDesk.addEventListener('blur', onBlur);
     }
-
-    // Registrar eventos para input móvil
     if (inputMob) {
-        inputMob.addEventListener('focus', showBox);
-        inputMob.addEventListener('input', filterSearch);
-        inputMob.addEventListener('blur', hideBox);
+        inputMob.addEventListener('focus', onFocus);
+        inputMob.addEventListener('input', onInput);
+        inputMob.addEventListener('blur', onBlur);
     }
 };
 
-// 🚩 Ejecuta la inicialización después de que TODA la página (incluyendo imágenes) haya cargado.
+// ejecutar initSearch como ya haces (load)
 window.addEventListener('load', initSearch);
 // Alternativa más rápida si 'load' es muy lento: Intenta llamar initSearch() directamente aquí
 // Y quita el window.addEventListener, confiando en que el script está al final del body.

@@ -315,4 +315,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     // --- FIN DEL CÓDIGO NUEVO AÑADIDO ---
+
+    //* Código para la sección según el hash en la url
+     window.addEventListener('load', () => {
+        const hash = window.location.hash;
+        if (hash) {
+            const tabName = hash.substring(1);
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Quitar clases activas actuales
+            navLinks.forEach(link => link.classList.remove('active'));
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Activar la pestaña y link que correspondan
+            const targetTab = document.getElementById(tabName);
+            const targetLink = document.querySelector(`.sidebar-nav a[data-tab="${tabName}"]`);
+
+            if (targetTab && targetLink) {
+                targetTab.classList.add('active');
+                targetLink.classList.add('active');
+            }
+        }
+    });
+    
 });
