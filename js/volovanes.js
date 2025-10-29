@@ -34,30 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //  Función para gestionar favoritos (con verificación de login mediante JWT)
-function gestionarFavorito(producto, boton) {
-    const token = localStorage.getItem('authToken'); // Revisar si hay token
-    if (!token) {
-        // Si no hay token, redirige a registro/login
-        window.location.href = '/pages/pag-registro/registro.html#register-form';
-        return;
+    function gestionarFavorito(producto, boton) {
+        const token = localStorage.getItem('authToken'); // Revisar si hay token
+        if (!token) {
+            // Si no hay token, redirige a registro/login
+            window.location.href = '/pages/pag-registro/registro.html#register-form';
+            return;
+        }
+
+        // Si hay token, procede a agregar a favoritos
+        let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+        const index = favoritos.findIndex(item => item.id == producto.id);
+
+        if (index > -1) {
+            favoritos.splice(index, 1);
+            boton.classList.remove('active');
+            mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
+        } else {
+            favoritos.push(producto);
+            boton.classList.add('active');
+            mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+        }
+
+        localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
     }
-
-    // Si hay token, procede a agregar a favoritos
-    let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-    const index = favoritos.findIndex(item => item.id == producto.id);
-
-    if (index > -1) {
-        favoritos.splice(index, 1);
-        boton.classList.remove('active');
-        mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
-    } else {
-        favoritos.push(producto);
-        boton.classList.add('active');
-        mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
-    }
-
-    localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
-}
 
     function mostrarNotificacion(mensaje) {
         Toastify({
@@ -72,7 +72,7 @@ function gestionarFavorito(producto, boton) {
     async function cargarProductos() {
         try {
             const categoriaId = 2; // ID de volovanes en la base de datos
-            const response = await fetch(`http://localhost:8080/api/productos/categoria/2`);
+            const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/2`);
             if (!response.ok) throw new Error('Error al cargar productos');
             const productos = await response.json();
 
@@ -101,5 +101,5 @@ function gestionarFavorito(producto, boton) {
         }
     }
 
-    cargarProductos(); 
+    cargarProductos();
 });
