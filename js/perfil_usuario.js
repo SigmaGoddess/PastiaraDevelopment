@@ -343,13 +343,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // --------------- FUNCIÓN PARA TRAER DATOS DEL USUARIO DESDE BASE DE DATOS UNA VEZ LOGGEADO ----------------------
 
-const API_PROFILE_URL = 'http://localhost:8080/api/auth/profile';
-async function fetchUserData(userId) {
+
+const token = localStorage.getItem('authToken'); // Suponiendo que el token JWT se guarda en localStorage bajo la llave 'authToken'
+const API_PROFILE_URL = 'https://pastiara.duckdns.org/api/auth/profile';
+
+async function fetchUserData(token) {
     try {
-        const response = await fetch(`${API_PROFILE_URL}/usuarios/${userId}`, {
+        const response = await fetch(`${API_PROFILE_URL}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -363,10 +366,12 @@ async function fetchUserData(userId) {
         return null;
     }
 }
+
+
 // Ejemplo de uso:
-const userId = localStorage.getItem('pastiaraUserId');
-if (userId) {
-    fetchUserData(userId)
+
+if (token) {
+    fetchUserData(token)
         .then(userData => {
             if (userData) {
                 console.log('Datos del usuario:', userData);
