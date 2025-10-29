@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const phoneInput = document.getElementById('phone-number');
 
     // ---------------------- CONFIGURACIÓN API --------------------------------------
-    const API_BASE_URL = 'http://localhost:8080/api/auth';
+    const API_BASE_URL = 'https://pastiara.duckdns.org/api/auth';
 
     // ------------------ FUNCIÓN PARA CAMBIO ENTRE FORMULARIOS ---------------------
 
