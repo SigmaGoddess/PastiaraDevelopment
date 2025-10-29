@@ -603,3 +603,41 @@
         gap: 20px;
     }
 }
+
+/* reutiliza estilos del auth-modal, pero asegúrate de que exista */
+#edit-profile-modal.auth-modal-overlay,
+#auth-modal.auth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+}
+#edit-profile-modal .auth-modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 92%;
+  max-width: 520px;
+  border-radius: 10px;
+  position: relative;
+}
+#edit-profile-modal .edit-fields label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+#edit-profile-modal .edit-fields input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+#edit-profile-modal .auth-modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
