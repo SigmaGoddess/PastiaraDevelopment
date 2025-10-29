@@ -1,30 +1,10 @@
-// pag-regalar.js - Versión optimizada y corregida
+/*pag-regalar.js - Versión optimizada y corregida
 document.addEventListener('DOMContentLoaded', () => {
   console.log("✅ Pastiara - Página Para Regalar cargada correctamente");
 
-  // ============================================
-  // 🔍 VERIFICACIÓN Y CORRECCIÓN DEL EFECTO 3D
-  // ============================================
-  const products3D = document.querySelectorAll('.product-3d');
+ 
 
-  console.log('\n🎯 === INICIALIZANDO EFECTO 3D ===');
-  console.log(`📦 Productos 3D encontrados: ${products3D.length}`);
-
-  if (products3D.length === 0) {
-    console.warn('⚠️ No se encontraron productos con clase .product-3d');
-  }
-
-  products3D.forEach((product, index) => {
-    const images = product.querySelectorAll('img');
-    console.log(`\n🎁 Producto ${index + 1}:`);
-    console.log(` 📸 Total imágenes: ${images.length}`);
-
-    if (images.length < 2) {
-      console.error(` ❌ ERROR: Se necesitan 2 imágenes, solo hay ${images.length}`);
-      return;
-    }
-
-    // Verificar y reportar estado de las imágenes
+    /* Verificar y reportar estado de las imágenes
     images.forEach((img, imgIndex) => {
       const imgType = imgIndex === 0 ? 'Base' : '3D Flotante';
       console.log(`  - Imagen ${imgIndex + 1} (${imgType}):`, img.src);
@@ -78,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('      - Z-index:', computedStyle.zIndex);
         console.log('      - Position:', computedStyle.position);
 
-        // Verificar si el efecto se está aplicando
+        /* Verificar si el efecto se está aplicando
         if (computedStyle.opacity === '0' || computedStyle.opacity < 0.5) {
           console.warn('   ⚠️ La imagen flotante podría no ser visible (opacity muy baja)');
         }
@@ -90,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Verificar estilos aplicados al primer producto
+  /* Verificar estilos aplicados al primer producto
   if (products3D.length > 0) {
     const testProduct = products3D[0];
     const styles = window.getComputedStyle(testProduct);
@@ -110,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log('\n=========================\n');
 
-  // ============================================
+  /**  ============================================
   // CONFIGURACIÓN DEL OBSERVADOR DE INTERSECCIÓN
   // ============================================
   const observerOptions = {
@@ -126,13 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.classList.add('animated');
       }
     });
-  }, observerOptions);
+  }, observerOptions);*/
 
   // ============================================
   // ANIMACIONES DE ENTRADA
   // ============================================
 
-  // Animar información de productos
+  /*// Animar información de productos
   const productInfos = document.querySelectorAll('.pastiara-product-info');
   if (productInfos.length > 0) {
     productInfos.forEach((info, index) => {
@@ -157,12 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 50);
     });
     console.log(`✅ ${products.length} productos animados`);
-  }
+  }*/
 
   // ============================================
   // EFECTO PARALLAX EN BANNERS
   // ============================================
-  let ticking = false;
+ /* let ticking = false;
   const banners = document.querySelectorAll('.pastiara-banner-background');
 
   if (banners.length > 0) {
@@ -184,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(`✅ Efecto parallax aplicado a ${banners.length} banners`);
   }
 
-  // ============================================
+  /*============================================
   // 🧪 TEST AUTOMÁTICO DE DIAGNÓSTICO
   // ============================================
   setTimeout(() => {
@@ -231,4 +211,292 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 2000);
 
   console.log("\n✅ Inicialización completada\n");
+});*/
+
+
+
+
+/* Esperamos a que todo el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+
+    const containerProductos = document.getElementById('product-3d').querySelector('pastiara-product-container'); // Contenedor de productos
+    const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || []; // Favoritos del localStorage
+
+    // Función para crear el HTML de cada producto
+    function crearCardProducto(producto) {
+        const col = document.createElement('div');
+        col.className = 'pastiara-product-container';
+
+        col.innerHTML = `
+            <div class="pastiara-product-name">
+                <div class="product-3d">
+                    <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img">
+                    <button class="heart-favorite" data-product="${producto.id}" aria-label="Marcar como favorito">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+                <div class="pastiara-product-info">
+                    <h3>${producto.nombre}</h3>
+                    <p class="pastiara-price">$${producto.precio}</p>
+                    <p class="pastiara-description-text">${producto.descripcion}</p>
+                </div>
+            </div>
+        `;
+        return col;
+    }
+
+    // Función para actualizar los corazones según favoritos guardados
+    function actualizarBotones() {
+        const botonesFavorito = containerProductos.querySelectorAll('.heart-favorite');
+        botonesFavorito.forEach(boton => {
+            const productId = boton.dataset.product;
+            if (favoritosGuardados.some(fav => fav.id == productId)) {
+                boton.classList.add('active');
+            }
+        });
+    }
+
+    //  Función para gestionar favoritos (con verificación de login mediante JWT)
+function gestionarFavorito(producto, boton) {
+    const token = localStorage.getItem('authToken'); // Revisar si hay token
+    if (!token) {
+        // Si no hay token, redirige a registro/login
+        window.location.href = '/pages/pag-registro/registro.html#register-form';
+        return;
+    }
+
+    // Si hay token, procede a agregar a favoritos
+    let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+    const index = favoritos.findIndex(item => item.id == producto.id);
+
+    if (index > -1) {
+        favoritos.splice(index, 1);
+        boton.classList.remove('active');
+        mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
+    } else {
+        favoritos.push(producto);
+        boton.classList.add('active');
+        mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+    }
+
+    localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
+}
+
+    // Función para mostrar notificaciones
+    function mostrarNotificacion(mensaje) {
+        Toastify({
+            text: mensaje,
+            duration: 3000,
+            gravity: "bottom",
+            position: "right",
+            style: {
+                background: "linear-gradient(to right, #B58A6A, #a07551)",
+            },
+        }).showToast();
+    }
+
+    // Función principal para cargar productos desde la API
+    async function cargarProductos() {
+        try {
+            const categoriaId = 3; // Cambia este ID al que corresponda a panadería en tu base
+            const response = await fetch(`http://localhost:8080/api/productos/categoria/3`);
+            if (!response.ok) throw new Error('Error al cargar productos');
+
+            const productos = await response.json();
+            containerProductos.innerHTML = ''; // Limpiar contenedor
+
+            productos.forEach(producto => {
+                const card = crearCardProducto(producto);
+                containerProductos.appendChild(card);
+            });
+
+            // Agregamos listeners a los botones recién creados
+            const botonesFavorito = containerProductos.querySelectorAll('.heart-favorite');
+            botonesFavorito.forEach(boton => {
+                const productCard = boton.closest('.product-3d');
+                const producto = {
+                    id: boton.dataset.product,
+                    nombre: productCard.querySelector('h3').textContent,
+                    precio: productCard.querySelector('.price').textContent,
+                    descripcion: productCard.querySelector('.description').textContent,
+                    imagen: productCard.querySelector('.product-image').src
+                };
+                boton.addEventListener('click', () => gestionarFavorito(producto, boton));
+            });
+
+            actualizarBotones(); // Marcar favoritos al cargar
+
+        } catch (error) {
+            console.error(error);
+            containerProductos.innerHTML = `<p>Error al cargar los productos. Intenta más tarde.</p>`;
+        }
+    }
+
+    cargarProductos(); 
+});*/
+
+
+
+// Variable para almacenar los productos cargados desde la API
+// DEBE ser accesible por las funciones de gestión y carga.
+let productosGlobal = [];
+const containerProductos = document.getElementById('pastiara-product-container'); // Definido globalmente para la delegación
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ----------------------------------------------------
+    //  3. DELEGACIÓN DE EVENTOS (El corazón de la solución)
+    // ----------------------------------------------------
+    // Adjuntamos un ÚNICO listener al contenedor padre.
+    containerProductos.addEventListener('click', (event) => {
+        // Usamos .closest() para encontrar el botón de favorito, 
+        // incluso si el usuario hace clic en el <i> (el corazón).
+        const boton = event.target.closest('.heart-favorite');
+
+        if (boton) {
+            // Extraemos el ID del producto que guardamos en el HTML (línea 43)
+            const productId = boton.dataset.productId;
+            
+            // Buscamos el objeto de producto COMPLETO en nuestra lista global
+            const producto = productosGlobal.find(p => p.id == productId);
+
+            // Verificación esencial antes de llamar a la función de gestión
+            if (producto) {
+                gestionarFavorito(producto, boton);
+            }
+        }
+    });
+
+    // Carga los productos al iniciar
+    cargarProductos();
 });
+
+// ----------------------------------------------------
+//  1. FUNCIÓN PRINCIPAL PARA CARGAR PRODUCTOS DESDE LA API
+// ----------------------------------------------------
+
+async function cargarProductos() {
+    try {
+        const categoriaId = 3;
+        const response = await fetch(`http://localhost:8080/api/productos/categoria/${categoriaId}`);
+        if (!response.ok) throw new Error('Error al cargar productos');
+
+        // Almacenamos los productos en la variable global
+        productosGlobal = await response.json(); 
+        containerProductos.innerHTML = ''; // Limpiar contenedor
+
+        productosGlobal.forEach((producto) => {
+            const card = crearCardProducto(producto);
+            containerProductos.appendChild(card);
+        });
+
+        // Llamamos a actualizar botones una sola vez después de cargar todo
+        actualizarBotones(); 
+
+    } catch (error) {
+        console.error("Error al cargar los productos:", error);
+        containerProductos.innerHTML = `<p>Error al cargar los productos. Intenta más tarde.</p>`;
+    }
+}
+
+// ----------------------------------------------------
+//  2. FUNCIÓN PARA CREAR LA CARD DEL PRODUCTO (Revisada)
+// ----------------------------------------------------
+
+function crearCardProducto(producto) {
+    const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+
+    const col = document.createElement('div');
+    col.className = 'pastiara-product-container';
+
+    // Nota: Es mejor usar la clase .product-3d para la tarjeta principal.
+    // Usaremos un atributo data-product-id en el botón (ver abajo)
+    col.innerHTML = `
+        <div class="pastlara-product-name">
+            <div class="product-3d">
+                <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img">
+                
+                <button class="heart-favorite" data-product-id="${producto.id}" aria-label="Marcar como favorito">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+            <div class="pastiara-product-info">
+                <h3>${producto.nombre}</h3>
+                <p class="pastiara-price">$${producto.precio}</p>
+                <p class="pastiara-description-text">${producto.descripcion}</p>
+            </div>
+        </div>
+    `;
+
+    return col;
+}
+
+// ----------------------------------------------------
+//  4. FUNCIÓN PARA ACTUALIZAR LOS CORAZONES (Se mantiene, pero revisa la selección)
+// ----------------------------------------------------
+
+function actualizarBotones() {
+    // Seleccionamos todos los botones que se cargaron
+    const botonesFavorito = containerProductos.querySelectorAll('.heart-favorite');
+
+    botonesFavorito.forEach(boton => {
+        const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+        // Usamos data-product-id para coincidir con la nueva estructura
+        const productId = boton.dataset.productId; 
+        
+        // El operador == (doble igual) está bien si 'productId' es string y 'fav.id' es número
+        // o viceversa, ya que permite la coerción de tipo. Si ambos son números, usa ===
+        if (favoritosGuardados.some(fav => fav.id == productId)) {
+            boton.classList.add('active');
+        } else {
+            // Asegura que se quite la clase si ya no está en favoritos (útil si clearStorage se usó)
+            boton.classList.remove('active'); 
+        }
+    });
+}
+
+// ----------------------------------------------------
+//  5. FUNCIÓN PARA GESTIONAR FAVORITOS (Se mantiene)
+// ----------------------------------------------------
+
+function gestionarFavorito(producto, boton) {
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+        window.location.href = '/pages/pag-registro/registro.html#register-form';
+        return;
+    }
+
+    let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+    const index = favoritos.findIndex(item => item.id == producto.id);
+
+    if (index > -1) {
+        favoritos.splice(index, 1);
+        boton.classList.remove('active');
+        mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
+    } else {
+        favoritos.push(producto);
+        boton.classList.add('active');
+        mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+    }
+
+    localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
+}
+
+
+// ----------------------------------------------------
+//  6. FUNCIÓN PARA MOSTRAR NOTIFICACIONES (Se mantiene)
+// ----------------------------------------------------
+// Asumo que Toasty está correctamente importado en el HTML.
+function mostrarNotificacion(mensaje) {
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        position: "right",
+        style: {
+            background: "linear-gradient(to right, #858A6A, #a07551)",
+        },
+    }).showToast();
+}
+
+
