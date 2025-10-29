@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
         editBtn.addEventListener('click', function () {
             // Verificamos si existe una "llave" en localStorage que indique que el usuario inició sesión.
             // **Importante:** Deberás asegurarte de crear esta llave al momento del login.
-            if (!localStorage.getItem('pastiaraUserToken')) {
+            if (!localStorage.getItem('authToken')) { // ** <---- Aquí se cambió pastiaraUserToken por authToken
                 // Si la llave NO existe, el usuario no ha iniciado sesión.
                 const authModal = document.getElementById('auth-modal');
                 authModal.style.display = 'flex'; // Mostramos el modal
@@ -380,3 +380,63 @@ if (token) {
             }
         });
 }
+// Mostrar la pestaña correspondiente según el hash (personales | favoritos)
+(function handleInitialHashAndChanges() {
+    function activateTabByName(tabName) {
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        tabContents.forEach(tab => tab.classList.remove('active'));
+
+        const targetLink = document.querySelector(`.sidebar-nav a[data-tab="${tabName}"]`);
+        const targetTab = document.getElementById(tabName);
+
+        if (targetLink && targetTab) {
+            targetLink.classList.add('active');
+            targetTab.classList.add('active');
+        }
+    }
+
+    function handleHash() {
+        const hash = (window.location.hash || '').replace('#', '');
+        if (hash === 'favoritos' || hash === 'cotizaciones' || hash === 'personales') {
+            activateTabByName(hash);
+        } else {
+            // si no hay hash válido, mostrar personales por defecto
+            activateTabByName('personales');
+        }
+    }
+
+    // al cargar la página
+    document.addEventListener('DOMContentLoaded', handleHash);
+    // cuando cambia el hash (cuando el navbar redirige con #favoritos)
+    window.addEventListener('hashchange', handleHash);
+})();
+
+// Listener para el botón de cerrar sesión dentro del perfil
+document.addEventListener('click', (e) => {
+    const logoutBtn = e.target.closest('#btn-logout');
+    if (!logoutBtn) return;
+
+    e.preventDefault();
+
+    // 1. Limpiar sesión
+    localStorage.removeItem('authToken'); // <--- Cambiar por token de la base de datos
+    localStorage.removeItem('pastiaraUserData');
+    localStorage.removeItem('pastiaraFavorites');
+
+    // 2. Redirigir a login
+    window.location.href = '/pages/pag-registro/registro.html';
+
+    // 3. Mensaje opcional
+    Toastify({
+        text: "Has cerrado sesión",
+        duration: 2500,
+        gravity: "top",
+        position: "right",
+        style: { background: "linear-gradient(to right, #B58A6A, #B58A6A)" }
+    }).showToast();
+});
+
+
