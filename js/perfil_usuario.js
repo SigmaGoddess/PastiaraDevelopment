@@ -9,55 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return temp.innerHTML;
     }
 
-    // Funciones de validación
-    function validateNombre(input) {
-        let name = sanitizeHTML(input.value).trim().replace(/\s+/g, ' ');
-        input.value = name;
-        if (name.length < 2) { showError(input, 'El nombre es demasiado corto.'); return false; }
-        if (/\d/.test(name)) { showError(input, 'El nombre no puede contener números.'); return false; }
-        return true;
-    }
-
-    function validateTelefono(input) {
-        const phone = input.value.replace(/\D/g, '');
-        if (phone.length !== 10) { showError(input, 'El teléfono debe tener 10 dígitos.'); return false; }
-        return true;
-    }
-
-    function validateCorreo(input) {
-        const email = input.value.trim();
-        input.value = email;
-        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        if (!regex.test(email)) { showError(input, 'El formato del correo no es válido.'); return false; }
-        return true;
-    }
-
-    // Funciones para mostrar y limpiar errores
-    function showError(inputElement, message) {
-        const parent = inputElement.parentElement;
-        clearError(inputElement);
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.textContent = message;
-        inputElement.classList.add('is-invalid');
-        parent.appendChild(errorDiv);
-    }
-
-    function clearError(inputElement) {
-        const parent = inputElement.parentElement;
-        const error = parent.querySelector('.error-message');
-        if (error) error.remove();
-        inputElement.classList.remove('is-invalid');
-    }
-
-    function clearAllErrors() {
-        const dataContainer = document.getElementById('datos-personales-container');
-        if (dataContainer) {
-            dataContainer.querySelectorAll('.error-message').forEach(e => e.remove());
-            dataContainer.querySelectorAll('.is-invalid').forEach(i => i.classList.remove('is-invalid'));
-        }
-    }
-
     // --- LÓGICA PRINCIPAL DE LA PÁGINA ---
 
     // Navegación por Pestañas (Tabs)
@@ -239,14 +190,6 @@ function populateUserProfile(user) {
     if (inputNombre) inputNombre.value = nombre;
     if (inputTelefono) inputTelefono.value = telefono;
     if (inputCorreo) inputCorreo.value = correo;
-
-    // Opcional: guardar copia en localStorage para fallback offline ELIMINAR DESPUÉS
-    try {
-        const saveObj = { nombre, telefono, correo };
-        localStorage.setItem('pastiaraUserData', JSON.stringify(saveObj));
-    } catch (e) {
-        // ignore
-    }
 }
 
 // Ejecutar fetch y poblar UI después de cargar el DOM
@@ -370,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // --------------- GESTIÓN DE PESTAÑAS SEGÚN EL HASH EN LA URL ----------------------
-// Mostrar la pestaña correspondiente según el hash (personales | favoritos)
+// Mostrar la pestaña correspondiente según el hash (personales | favoritos | cotizaciones)
 (function handleInitialHashAndChanges() {
     function activateTabByName(tabName) {
         const navLinks = document.querySelectorAll('.sidebar-nav a');
