@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // --- SECCIÓN DE FUNCIONES AUXILIARES (DEFINIDAS PRIMERO PARA EVITAR ERRORES) ---
 
@@ -15,26 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
         input.value = name;
         if (name.length < 2) { showError(input, 'El nombre es demasiado corto.'); return false; }
         if (/\d/.test(name)) { showError(input, 'El nombre no puede contener números.'); return false; }
-        return true;
-    }
-
-    function validateFecha(input) {
-        const dateString = input.value;
-        const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d{2}$/;
-        if (!regex.test(dateString)) { showError(input, 'Usa el formato dd/mm/aaaa.'); return false; }
-        const parts = dateString.split("/");
-        const day = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10);
-        const year = parseInt(parts[2], 10);
-        const date = new Date(year, month - 1, day);
-        if (date.getFullYear() !== year || date.getMonth() + 1 !== month || date.getDate() !== day) {
-            showError(input, 'La fecha no es válida (ej. 31/02/2000 no existe).');
-            return false;
-        }
-        if (date > new Date()) {
-            showError(input, 'La fecha de nacimiento no puede ser futura.');
-            return false;
-        }
         return true;
     }
 
@@ -80,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- LÓGICA PRINCIPAL DE LA PÁGINA ---
 
-    // 1. Navegación por Pestañas (Tabs)
+    // Navegación por Pestañas (Tabs)
     const navLinks = document.querySelectorAll('.sidebar-nav a');
     const tabContents = document.querySelectorAll('.tab-content');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.dataset.tab;
             navLinks.forEach(navLink => navLink.classList.remove('active'));
@@ -94,96 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 2. Funcionalidad de "Datos Personales"
-    const editBtn = document.getElementById('btn-editar');
-    const dataContainer = document.getElementById('datos-personales-container');
-
-    if (editBtn && dataContainer) {
-        const fields = {
-            nombre: { input: document.getElementById('input-nombre'), display: dataContainer.querySelector('[data-key="nombre"]') },
-            fecha: { input: document.getElementById('input-fecha'), display: dataContainer.querySelector('[data-key="fecha"]') },
-            telefono: { input: document.getElementById('input-telefono'), display: dataContainer.querySelector('[data-key="telefono"]') },
-            correo: { input: document.getElementById('input-correo'), display: dataContainer.querySelector('[data-key="correo"]') }
-        };
-
-        function loadUserData() {
-            const userDataJSON = localStorage.getItem('pastiaraUserData');
-            if (userDataJSON) {
-                const userData = JSON.parse(userDataJSON);
-                if (userData.nombre) fields.nombre.display.textContent = userData.nombre;
-                if (userData.fecha) fields.fecha.display.textContent = userData.fecha;
-                if (userData.telefono) fields.telefono.display.textContent = userData.telefono;
-                if (userData.correo) fields.correo.display.textContent = userData.correo;
-            }
-        }
-
-        // --- CÓDIGO MODIFICADO ---
-        editBtn.addEventListener('click', function() {
-            // Verificamos si existe una "llave" en localStorage que indique que el usuario inició sesión.
-            // **Importante:** Deberás asegurarte de crear esta llave al momento del login.
-            if (!localStorage.getItem('pastiaraUserToken')) { 
-                // Si la llave NO existe, el usuario no ha iniciado sesión.
-                const authModal = document.getElementById('auth-modal');
-                authModal.style.display = 'flex'; // Mostramos el modal
-                // Agregamos la clase 'visible' para la transición de opacidad
-                setTimeout(() => authModal.classList.add('visible'), 10);
-                return; // Detenemos la ejecución para que no se active el modo de edición.
-            }
-    
-            // El resto de tu código original continúa aquí si el usuario SÍ ha iniciado sesión
-            const isEditing = dataContainer.classList.contains('editing');
-            if (isEditing) {
-                clearAllErrors();
-                if (validateNombre(fields.nombre.input) && validateFecha(fields.fecha.input) && validateTelefono(fields.telefono.input) && validateCorreo(fields.correo.input)) {
-                    const userDataToSave = {
-                        nombre: fields.nombre.input.value,
-                        fecha: fields.fecha.input.value,
-                        telefono: fields.telefono.input.value,
-                        correo: fields.correo.input.value
-                    };
-                    localStorage.setItem('pastiaraUserData', JSON.stringify(userDataToSave));
-                    loadUserData();
-                    dataContainer.classList.remove('editing');
-                    editBtn.textContent = 'Editar';
-                    Toastify({ text: "¡Datos guardados con éxito!", duration: 3000, gravity: "top", position: 'right', style: { background: "linear-gradient(to right, #B58A6A, #B58A6A)" } }).showToast();
-                }
-            } else {
-                for (const key in fields) {
-                    fields[key].input.value = fields[key].display.textContent;
-                }
-                dataContainer.classList.add('editing');
-                editBtn.textContent = 'Guardar';
-                fields.nombre.input.focus();
-            }
-        });
-        // --- FIN DEL CÓDIGO MODIFICADO ---
-
-        fields.nombre.input.addEventListener('input', (e) => {
-            const filteredValue = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-            e.target.value = filteredValue.slice(0, 20);
-        });
-        fields.fecha.input.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 2) value = value.slice(0, 2) + '/' + value.slice(2);
-            if (value.length > 5) value = value.slice(0, 5) + '/' + value.slice(5, 9);
-            e.target.value = value;
-        });
-        fields.telefono.input.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '').slice(0, 10);
-            let formattedValue = '';
-            if (value.length > 0) formattedValue = value.slice(0, 2);
-            if (value.length > 2) formattedValue += ' ' + value.slice(2, 6);
-            if (value.length > 6) formattedValue += ' ' + value.slice(6, 10);
-            e.target.value = formattedValue;
-        });
-        fields.correo.input.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/\s/g, '');
-        });
-
-        loadUserData();
-    }
-
-    // 3. Funcionalidad de "Favoritos"
+    // Funcionalidad de "Favoritos"
     // ... (Tu código de favoritos permanece igual)
     const contenedorFavoritos = document.getElementById('favoritos-grid');
     if (contenedorFavoritos) {
@@ -231,8 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 4. Funcionalidad de "Mis Cotizaciones"
-    // ... (Tu código de cotizaciones permanece igual)
+    // Funcionalidad de "Mis Cotizaciones"
     const contenedorCotizaciones = document.getElementById('contenedor-cotizaciones');
     if (contenedorCotizaciones) {
         function cargarCotizaciones() {
@@ -291,33 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cargarCotizaciones();
     }
 
-    // --- CÓDIGO NUEVO AÑADIDO PARA GESTIONAR EL MODAL ---
-    const authModal = document.getElementById('auth-modal');
-    if (authModal) {
-        const closeModalBtn = document.getElementById('auth-modal-close');
-
-        function closeModal() {
-            authModal.classList.remove('visible');
-            // Esperamos a que la transición termine para ocultar el elemento
-            setTimeout(() => {
-                authModal.style.display = 'none';
-            }, 300); // Este tiempo debe coincidir con la duración de la transición en el CSS
-        }
-
-        closeModalBtn.addEventListener('click', closeModal);
-
-        // Cierra el modal si se hace clic en el fondo oscuro
-        authModal.addEventListener('click', function(event) {
-            // Se cierra solo si el clic es en el overlay y no en el contenido
-            if (event.target === authModal) {
-                closeModal();
-            }
-        });
-    }
-    // --- FIN DEL CÓDIGO NUEVO AÑADIDO ---
-
     //* Código para la sección según el hash en la url
-     window.addEventListener('load', () => {
+    window.addEventListener('load', () => {
         const hash = window.location.hash;
         if (hash) {
             const tabName = hash.substring(1);
@@ -338,5 +203,230 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
+
 });
+
+// --------------- FUNCIÓN PARA TRAER DATOS DEL USUARIO DESDE BASE DE DATOS UNA VEZ LOGGEADO ----------------------
+
+
+const token = localStorage.getItem('authToken'); // Suponiendo que el token JWT se guarda en localStorage bajo la llave 'authToken'
+const API_PROFILE_URL = 'https://pastiara.duckdns.org/api/auth/profile';
+
+/**
+ * Mapear respuesta del API a los campos de la UI y inputs editables.
+ */
+
+
+function populateUserProfile(user) {
+    if (!user) return;
+
+    const nombre = user.nombre || user.name || user.fullName || '';
+    const correo = user.email || user.correo || user.mail || '';
+    const telefono = user.numeroTelefono || user.phone || user.telefonoMovil || '';
+
+    const elNombreDisplay = document.querySelector('[data-key="nombre"]');
+    const elTelefonoDisplay = document.querySelector('[data-key="telefono"]');
+    const elCorreoDisplay = document.querySelector('[data-key="correo"]');
+
+    const inputNombre = document.getElementById('input-nombre');
+    const inputTelefono = document.getElementById('input-telefono');
+    const inputCorreo = document.getElementById('input-correo');
+
+    if (elNombreDisplay) elNombreDisplay.textContent = nombre;
+    if (elTelefonoDisplay) elTelefonoDisplay.textContent = telefono;
+    if (elCorreoDisplay) elCorreoDisplay.textContent = correo;
+
+    if (inputNombre) inputNombre.value = nombre;
+    if (inputTelefono) inputTelefono.value = telefono;
+    if (inputCorreo) inputCorreo.value = correo;
+
+    // Opcional: guardar copia en localStorage para fallback offline ELIMINAR DESPUÉS
+    try {
+        const saveObj = { nombre, telefono, correo };
+        localStorage.setItem('pastiaraUserData', JSON.stringify(saveObj));
+    } catch (e) {
+        // ignore
+    }
+}
+
+// Ejecutar fetch y poblar UI después de cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        // Si no hay token usar datos locales si existen
+        const local = localStorage.getItem('pastiaraUserData');
+        if (local) {
+            populateUserProfile(JSON.parse(local));
+        }
+        return;
+    }
+
+    (async () => {
+        try {
+            const API_PROFILE_URL = 'https://pastiara.duckdns.org/api/auth/profile';
+            const resp = await fetch(API_PROFILE_URL, {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!resp.ok) {
+                console.warn('No se pudo obtener perfil. Status:', resp.status);
+                const local = localStorage.getItem('pastiaraUserData');
+                if (local) populateUserProfile(JSON.parse(local));
+                return;
+            }
+            const userData = await resp.json();
+            populateUserProfile(userData);
+            console.log('Perfil cargado:', userData);
+        } catch (err) {
+            console.error('Error fetch perfil:', err);
+            const local = localStorage.getItem('pastiaraUserData');
+            if (local) populateUserProfile(JSON.parse(local));
+        }
+    })();
+});
+
+// --- EDIT PROFILE MODAL HANDLERS ---
+(function () {
+    const modal = document.getElementById('edit-profile-modal');
+    const btnEditar = document.getElementById('btn-editar');
+    const closeBtns = [
+        document.getElementById('edit-modal-close'),
+        document.getElementById('edit-cancel')
+    ].filter(Boolean);
+    const inputNombre = document.getElementById('edit-nombre');
+    const inputTelefono = document.getElementById('edit-telefono');
+    const inputCorreo = document.getElementById('edit-correo');
+    const saveBtn = document.getElementById('edit-save');
+    const API = 'https://pastiara.duckdns.org/api/auth/profile';
+
+    function openModal() {
+        // rellenar con valores visibles / inputs actuales
+        const current = {
+            nombre: document.querySelector('[data-key="nombre"]')?.textContent?.trim() || '',
+            telefono: document.querySelector('[data-key="telefono"]')?.textContent?.trim() || '',
+            correo: document.querySelector('[data-key="correo"]')?.textContent?.trim() || ''
+        };
+        if (inputNombre) inputNombre.value = current.nombre === 'Sin especificar' ? '' : current.nombre;
+        if (inputTelefono) inputTelefono.value = current.telefono === 'Sin especificar' ? '' : current.telefono;
+        if (inputCorreo) inputCorreo.value = current.correo === 'Sin especificar' ? '' : current.correo;
+
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('visible'), 10);
+        inputNombre?.focus();
+    }
+
+    function closeModal() {
+        modal.classList.remove('visible');
+        setTimeout(() => modal.style.display = 'none', 200);
+    }
+
+    async function saveChanges() {
+        // validaciones sencillas
+        const nombre = (inputNombre?.value || '').trim();
+        const telefono = (inputTelefono?.value || '').trim();
+        const correo = (inputCorreo?.value || '').trim();
+        if (nombre.length < 2) { alert('Nombre inválido'); return; }
+        if (telefono && !/^\d{7,15}$/.test(telefono)) { alert('Teléfono inválido'); return; }
+        if (correo && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { alert('Correo inválido'); return; }
+
+        const payload = { nombre, numeroTelefono: telefono, email: correo };
+
+        // actualiza UI optimista
+        populateUserProfile({ nombre, telefono, correo });
+
+        // envia al backend si token existe
+        const token = localStorage.getItem('authToken');
+        if (!token) { closeModal(); return; }
+
+        try {
+            const res = await fetch(API, {
+                method: 'PATCH', // o 'PUT' según tu API
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+            if (!res.ok) {
+                throw new Error('Error al guardar');
+            }
+            const updated = await res.json();
+            populateUserProfile(updated);
+            Toastify({ text: "Datos actualizados", duration: 2000, gravity: "bottom", position: "right" }).showToast();
+            closeModal();
+        } catch (err) {
+            console.error(err);
+            alert('No se pudo guardar. Intenta más tarde.');
+            // revertir si quieres: recargar desde localStorage o re-fetch
+        }
+    }
+
+    if (btnEditar) btnEditar.addEventListener('click', openModal);
+    closeBtns.forEach(b => b.addEventListener('click', closeModal));
+    if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    if (saveBtn) saveBtn.addEventListener('click', saveChanges);
+})();
+
+
+
+// --------------- GESTIÓN DE PESTAÑAS SEGÚN EL HASH EN LA URL ----------------------
+// Mostrar la pestaña correspondiente según el hash (personales | favoritos)
+(function handleInitialHashAndChanges() {
+    function activateTabByName(tabName) {
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        tabContents.forEach(tab => tab.classList.remove('active'));
+
+        const targetLink = document.querySelector(`.sidebar-nav a[data-tab="${tabName}"]`);
+        const targetTab = document.getElementById(tabName);
+
+        if (targetLink && targetTab) {
+            targetLink.classList.add('active');
+            targetTab.classList.add('active');
+        }
+    }
+
+    function handleHash() {
+        const hash = (window.location.hash || '').replace('#', '');
+        if (hash === 'favoritos' || hash === 'cotizaciones' || hash === 'personales') {
+            activateTabByName(hash);
+        } else {
+            // si no hay hash válido, mostrar personales por defecto
+            activateTabByName('personales');
+        }
+    }
+
+    // al cargar la página
+    document.addEventListener('DOMContentLoaded', handleHash);
+    // cuando cambia el hash (cuando el navbar redirige con #favoritos)
+    window.addEventListener('hashchange', handleHash);
+})();
+
+// Listener para el botón de cerrar sesión dentro del perfil
+document.addEventListener('click', (e) => {
+    const logoutBtn = e.target.closest('#btn-logout');
+    if (!logoutBtn) return;
+
+    e.preventDefault();
+
+    // 1. Limpiar sesión
+    localStorage.removeItem('authToken'); // <--- Cambiar por token de la base de datos
+    localStorage.removeItem('pastiaraUserData');
+    localStorage.removeItem('pastiaraFavorites');
+
+    // 2. Redirigir a login
+    window.location.href = '/pages/pag-registro/registro.html';
+
+    // 3. Mensaje opcional
+    Toastify({
+        text: "Has cerrado sesión",
+        duration: 2500,
+        gravity: "top",
+        position: "right",
+        style: { background: "linear-gradient(to right, #B58A6A, #B58A6A)" }
+    }).showToast();
+});
+
+

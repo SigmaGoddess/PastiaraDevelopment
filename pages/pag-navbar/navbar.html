@@ -4,7 +4,9 @@
 
             <!-- LOGO -->
             <a class="navbar-brand" href="/index.html">
-                <img src="/public/images/GENERAL/LOGO NAVBAR.png" alt="Logo" class="navbar-brand__logo">
+                <!--<img src="/public/images/GENERAL/LOGO NAVBAR.png" alt="Logo" class="navbar-brand__logo">-->
+                <img src="https://i.ibb.co/ZpmvRQRR/LOGO-NAVBAR.jpg" alt="LOGO-NAVBAR" class="navbar-brand__logo">
+                
                 <!-- class="d-inline-block align-text-top"-->
             </a>
             <!-- Íconos SOLO en móvil, entre logo y toggler -->
@@ -16,14 +18,14 @@
                             <i class="bi bi-person navbar-icon" style="color: #B58A6A;"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="personDropdownMobile">
-                            <li><a class="dropdown-item second-color" type="button"
-                                    href="/pages/pag-registro/registro.html">MI PERFIL</a></li>
-                            <li><a class="dropdown-item" type="button" href="#">CERRAR SESIÓN</a></li>
+                            <li><a class="dropdown-item second-color btn-perfil" type="button"
+                                    href="#" id="btn-perfil">MI PERFIL</a></li>
+                            <li><a id="btn-logout" class="dropdown-item" type="button" href="#">CERRAR SESIÓN</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="btn p-0" href="/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos">
+                    <a id="btn-favoritos" class="btn p-0" href="/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos">
                         <i class="bi bi-heart navbar-icon"></i>
                     </a>
                 </li>
@@ -41,7 +43,7 @@
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#top-navbar" aria-controls="top-navbar">
                     <div class="d-flex justify-content-between p-3">
-                        <img src="/public/images/GENERAL/LOGO NAVBAR.png" alt="Logo">
+                        <img src="https://i.ibb.co/ZpmvRQRR/LOGO-NAVBAR.jpg" alt="LOGO-NAVBAR">
                         <i class="bi bi-x-circle"></i>
                     </div>
                 </button>
@@ -105,15 +107,15 @@
                                     <i class="bi bi-person navbar-icon"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="personDropdown">
-                                    <li><a class="dropdown-item second-color" type="button"
-                                            href="/pages/pag-registro/registro.html">MI PERFIL</a>
+                                    <li><a class="dropdown-item second-color btn-perfil" type="button"
+                                            href="#" id="btn-perfil">MI PERFIL</a>
                                     </li>
-                                    <li><a class="dropdown-item" type="button" href="#">CERRAR SESIÓN</a></li>
+                                    <li><a id="btn-logout" class="dropdown-item" type="button" href="#">CERRAR SESIÓN</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="btn p-0" href="/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos">
+                            <a id="btn-favoritos" class="btn p-0" href="/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos">
                                 <i class="bi bi-heart navbar-icon"></i>
                             </a>
                         </li>

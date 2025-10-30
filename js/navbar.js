@@ -108,6 +108,128 @@ const initSearch = () => {
     }
 };
 
+
+document.removeEventListener('click', handleNavbarClick);
+function handleNavbarClick(e) {
+    const perfilBtn = e.target.closest('.btn-perfil');
+    const favBtn = e.target.closest('#btn-favoritos');
+
+    if (perfilBtn) {
+        e.preventDefault();
+        const token = localStorage.getItem('authToken');
+        console.log('Token detectado:', token);
+
+        if (token) {
+            window.location.href = '/pages/pag-perfilDeUsuario/perfil_usuario.html';
+        } else {
+            window.location.href = '/pages/pag-registro/registro.html';
+        }
+    }
+
+    if (favBtn) {
+        e.preventDefault();
+        const token = localStorage.getItem('authToken');
+        console.log('Token detectado (favoritos):', token);
+
+        if (token) {
+            window.location.href = '/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos';
+        } else {
+            window.location.href = '/pages/pag-registro/registro.html';
+        }
+    }
+}
+
+document.addEventListener('click', handleNavbarClick);
+
+document.addEventListener('click', (e) => {
+    const perfilBtn = e.target.closest('#btn-perfil');
+    if (perfilBtn) {
+        e.preventDefault();
+        const token = localStorage.getItem('authToken');
+        console.log('Token detectado:', token);
+        
+        if (token) {
+            // Sesión iniciada → ir al perfil
+            window.location.href = '/pages/pag-perfilDeUsuario/perfil_usuario.html';
+        } else {
+            // Sin sesión → ir a login
+            window.location.href = '/pages/pag-registro/registro.html';
+        }
+    }
+});
+
+
+document.addEventListener('click', (e) => {
+    const heartBtn = e.target.closest('#btn-favoritos');
+    if (heartBtn) {
+        e.preventDefault();
+        if (localStorage.getItem('authToken')) {
+            // Usuario logueado → ir a favoritos
+            window.location.href = '/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos';
+        } else {
+            // Usuario no logueado → ir a login
+            window.location.href = '/pages/pag-registro/registro.html';
+        }
+    }
+});
+
+// --- REDIRECCIONES (solo una vez) ---
+document.addEventListener('click', (e) => {
+  const perfilBtn = e.target.closest('.btn-perfil');
+  const favBtn = e.target.closest('#btn-favoritos');
+  const token = localStorage.getItem('authToken'); // usa la clave que tienes en tu app
+
+  if (perfilBtn) {
+    e.preventDefault();
+    if (token) {
+      window.location.href = '/pages/pag-perfilDeUsuario/perfil_usuario.html';
+    } else {
+      window.location.href = '/pages/pag-registro/registro.html';
+    }
+    return;
+  }
+
+  if (favBtn) {
+    e.preventDefault();
+    if (token) {
+      // redirige con hash para que la página de perfil sepa mostrar favoritos
+      window.location.href = '/pages/pag-perfilDeUsuario/perfil_usuario.html#favoritos';
+    } else {
+      window.location.href = '/pages/pag-registro/registro.html';
+    }
+    return;
+  }
+});
+
+// Funcionalidad para cerrar sesión
+document.addEventListener('click', (e) => {
+    const logoutBtn = e.target.closest('#btn-logout');
+    if (!logoutBtn) return;
+
+    e.preventDefault();
+
+    // Limpiar sesión
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('pastiaraUserData');
+    localStorage.removeItem('pastiaraFavorites');
+
+    // Redirigir a login
+    window.location.href = '/pages/pag-registro/registro.html';
+
+    // Toast opcional
+    Toastify({
+        text: "Has cerrado sesión",
+        duration: 2500,
+        gravity: "top",
+        position: "right",
+        style: { background: "linear-gradient(to right, #B58A6A, #B58A6A)" }
+    }).showToast();
+});
+
+
+
+
+
 // ejecutar initSearch como ya haces (load)
 window.addEventListener('load', initSearch);
 // Alternativa más rápida si 'load' es muy lento: Intenta llamar initSearch() directamente aquí

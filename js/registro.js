@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
     // --------------- FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ----------------------
 
     const setupPasswordToggle = (passwordInput, toggleIcon) => {
@@ -101,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!value) {
                     return '¡Necesitas escribir tu correo electrónico!';
                 }
-                
+
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(value)) {
                     return '¡Por favor, ingresa un correo válido!';
@@ -131,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 // Simulación de respuesta exitosa
-                if (response.ok) { 
+                if (response.ok) {
                     Swal.fire({
                         title: '¡Revisa tu correo!',
                         text: `Se ha enviado un enlace para restablecer tu contraseña a ${email}.`,
@@ -174,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (feedback) feedback.textContent = message;
     };
-    
+
     // Función para limpiar errores
     const clearError = (input) => {
         input.classList.remove('is-invalid');
@@ -341,9 +340,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 localStorage.setItem("authToken", data.accessToken)
                 localStorage.setItem("usuarioLog", enteredEmail)
-                                
+
                 Swal.fire({
-                    title: `¡Bienvenido de nuevo!`, 
+                    title: `¡Bienvenido de nuevo!`,
                     text: "Inicio de sesión exitoso.",
                     icon: "success"
                 }).then(() => {
@@ -356,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 showError(loginEmailInput, data.error || 'Correo o contraseña inválidos.');
                 showError(loginPassword, ' ');
             }
-        //Respuesta con error de conexión al servidor
+            //Respuesta con error de conexión al servidor
         } catch (error) {
             Swal.fire({
                 title: "Error de conexión",

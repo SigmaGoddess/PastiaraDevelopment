@@ -40,31 +40,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-     //  Función para gestionar favoritos (con verificación de login mediante JWT)
-function gestionarFavorito(producto, boton) {
-    const token = localStorage.getItem('authToken'); // Revisar si hay token
-    if (!token) {
-        // Si no hay token, redirige a registro/login
-        window.location.href = '/pages/pag-registro/registro.html#register-form';
-        return;
+    //  Función para gestionar favoritos (con verificación de login mediante JWT)
+    function gestionarFavorito(producto, boton) {
+        const token = localStorage.getItem('authToken'); // Revisar si hay token
+        if (!token) {
+            // Si no hay token, redirige a registro/login
+            window.location.href = '/pages/pag-registro/registro.html#register-form';
+            return;
+        }
+
+        // Si hay token, procede a agregar a favoritos
+        let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+        const index = favoritos.findIndex(item => item.id == producto.id);
+
+        if (index > -1) {
+            favoritos.splice(index, 1);
+            boton.classList.remove('active');
+            mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
+        } else {
+            favoritos.push(producto);
+            boton.classList.add('active');
+            mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+        }
+
+        localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
     }
-
-    // Si hay token, procede a agregar a favoritos
-    let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-    const index = favoritos.findIndex(item => item.id == producto.id);
-
-    if (index > -1) {
-        favoritos.splice(index, 1);
-        boton.classList.remove('active');
-        mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
-    } else {
-        favoritos.push(producto);
-        boton.classList.add('active');
-        mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
-    }
-
-    localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
-}
 
     //  Función para mostrar notificaciones (Toastify)
     function mostrarNotificacion(mensaje) {
@@ -81,10 +81,10 @@ function gestionarFavorito(producto, boton) {
 
     //  Función principal para traer los productos del backend y renderizarlos
     async function cargarProductos() {
-        try { 
+        try {
             // ID del producto
-            const categoriaId = 1; 
-            const response = await fetch(`http://localhost:8080/api/productos/categoria/1`);
+            const categoriaId = 1;
+            const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/1`);
             if (!response.ok) throw new Error('Error al cargar productos');
 
             const productos = await response.json();
