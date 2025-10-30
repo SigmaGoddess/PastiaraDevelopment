@@ -166,7 +166,6 @@
 .contenedor-carrusel {
   position: relative;
   width: 100%;
-
   overflow: hidden;
 
 }
@@ -200,14 +199,14 @@
   margin-right: 33px;
 }
 
-#contenedor-collapse-productos-pastes {
+#contenedor-collapse-productos {
   position: relative;
   padding-top: 10px;
   padding-bottom: 20px;
   padding-left: 38px;
   padding-right: 38px;
 }
-
+/*
 #contenedor-collapse-productos-volovanes {
   position: relative;
   padding-top: 10px;
@@ -230,7 +229,7 @@
   padding-bottom: 20px;
   padding-left: 38px;
   padding-right: 38px;
-}
+}*/
 
 .swiper-button-next,
 .swiper-button-prev {
@@ -361,12 +360,14 @@
 }
 
 select{
+  
   border-radius: 15px;
   padding: 0.5rem;
   width: 100%;
   min-width: 0px;
   height: 44px;
   border: 1px solid #ddd;
+  outline: none;
   font-family: var(--title-body);
   color: var(--color-text3);
 }
