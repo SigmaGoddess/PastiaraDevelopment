@@ -355,11 +355,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 showError(loginEmailInput, data.error || 'Correo o contraseña inválidos.');
                 showError(loginPassword, ' ');
             }
-            //Respuesta con error de conexión al servidor
+            //Respuesta de correo o contraseña inválidos
         } catch (error) {
             Swal.fire({
-                title: "Error de conexión",
-                text: "Intenta más tarde",
+                title: "Contraseña o correo inválidos",
+                text: "Por favor, verifica tus datos e intenta de nuevo.",
                 icon: "error"
             });
         } finally {

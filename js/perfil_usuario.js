@@ -372,4 +372,3 @@ document.addEventListener('click', (e) => {
     }).showToast();
 });
 
-
