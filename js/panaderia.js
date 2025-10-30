@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const token = localStorage.getItem('authToken'); // Revisar si hay token
         if (!token) {
             // Si no hay token, redirige a registro/login
-            window.location.href = '/pages/pag-registro/registro.html#register-form';
+            window.location.href = '/pages/pag-registro/registro.html#login-form';
             return;
         }
 
