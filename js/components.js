@@ -114,5 +114,5 @@ class SpecialLoader extends HTMLElement {
         }
     }
 }
-customElements.define('special-loader', SpecialLoader);
+customElements.define('special-loader', SpecialLoader); // Definición del componente personalizado 'special-loader'
 
