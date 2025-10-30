@@ -51,17 +51,13 @@
                         <div class="row mb-3">
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Tipo de evento</p>
-                                <div class="input-group input-group-sm">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="floatingSelect"
-                                            aria-label="Floating label select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <select name="" id="entradaTipoDeEvento">
+                                    <option value="" disabled selected>Selecione el tipo de evento</option>
+                                    <option value="Cumpleaños">Cumpleaños</option>
+                                    <option value="Boda">Boda</option>
+                                    <option value="Fiesta familiar">Fiesta familiar</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
                             </div>
                             <div class="col-12 col-md-6">
                                 <p id="text-form">Fecha de evento</p>
@@ -155,7 +151,7 @@
                                     <div id="collapse_accordion_pastes" class="accordion-collapse collapse"
                                         aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionPastes">
                                         <div class="accordion-body">
-                                            <div class="row" id="contenedor-collapse-productos-pastes">
+                                            <div class="row" id="contenedor-collapse-productos">
                                                 <div class="swiper-button-next"></div>
                                                 <div class="swiper-button-prev"></div>
                                                 <div class="contenedor-carrusel">
@@ -486,7 +482,7 @@
                                     <div id="collapse_accordion_volovanes" class="accordion-collapse collapse"
                                         aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionVolovanes">
                                         <div class="accordion-body text-card">
-                                            <div class="row" id="contenedor-collapse-productos-volovanes">
+                                            <div class="row" id="contenedor-collapse-productos">
                                                 <div class="swiper-button-next"></div>
                                                 <div class="swiper-button-prev"></div>
                                                 <div class="contenedor-carrusel">
@@ -738,7 +734,7 @@
                                     <div id="collapse_accordion_panaderia" class="accordion-collapse collapse"
                                         aria-labelledby="heading_nombre_categoria" data-bs-parent="#accordionPanaderia">
                                         <div class="accordion-body text-card">
-                                            <div class="row" id="contenedor-collapse-productos-panaderia">
+                                            <div class="row" id="contenedor-collapse-productos">
                                                 <div class="swiper-button-next"></div>
                                                 <div class="swiper-button-prev"></div>
                                                 <div class="contenedor-carrusel">
@@ -834,7 +830,7 @@
                                         aria-labelledby="heading_nombre_categoria"
                                         data-bs-parent="#accordionParaRegalar">
                                         <div class="accordion-body text-card">
-                                            <div class="row" id="contenedor-collapse-productos-regalar">
+                                            <div class="row" id="contenedor-collapse-productos">
                                                 <div class="swiper-button-next"></div>
                                                 <div class="swiper-button-prev"></div>
                                                 <div class="contenedor-carrusel">
@@ -1066,7 +1062,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.23.0/dist/sweetalert2.all.min.js"></script>
     <script src="/js/components.js" type="module"></script>
     <script src="/js/main.js" type="module"></script>
-    <script src="/js/cotizador.js" type="module"></script>
+    <script src="/js/cotizadorAPI.js" type="module"></script>
     <script src="/js/navbar.js" type="module"></script>
 </body>
 

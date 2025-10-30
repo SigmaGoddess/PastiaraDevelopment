@@ -183,7 +183,6 @@ const entradaCodigoPostal = document.getElementById('entradaCodigoPostal');
 const entradaEstado = document.getElementById('entradaEstado');
 const entradaProductos = document.querySelectorAll('#cantidad')
 const alerta = document.getElementById('alerta');
-
 // --- CÓDIGO MODIFICADO ---
 // Variable para guardar los datos de la cotización que se mostrará en el modal.
 // La declaramos aquí para que sea accesible desde la función de confirmar y enviar.
