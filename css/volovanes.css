@@ -16,7 +16,7 @@ body {
     z-index: 1;
     /* Asegura que el banner esté por debajo de la navbar */
 
-    background-image: url('/images/VOLOVANES/fondo_volovanes.png');
+    background-image: url('https://i.ibb.co/Xkp0f3Qz/fondo-volovanes.webp');
     /* Imagen para Escritorio */
     background-size: cover;
     background-position: center;
@@ -254,7 +254,7 @@ html {
 
     .hero-section {
         height: 40vh;
-        background-image: url('/public/images/GENERAL/banner_ancho.jpg');
+        background-image: url('https://i.ibb.co/9m79NTWH/banner-ancho.webp');
     }
 
     .hero-title {
