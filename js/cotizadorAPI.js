@@ -19,18 +19,24 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Usamos 'await' para asegurarnos de que el HTML se genere
     // ANTES de que el resto del código intente usarlo.
     await cargarContenidoDeAPI(token);
+
     // ------------------------------------------
 
     // 3. ¡MUEVE LA INICIALIZACIÓN DE SWIPER AQUÍ!
     // Ahora que el HTML está listo, puedes inicializar Swiper.
     // Necesitas hacerlo de forma dinámica también.
-    document.querySelectorAll(".swiper-category").forEach(container => {
+    const sswiper = document.querySelectorAll(".swiper-category");
+    const sswiperbtn = document.querySelectorAll("#contenedor-collapse-productos")
+    console.log(sswiperbtn[0]);
+    let contador = 0
+    sswiper.forEach(container => {
+        //console.log(container);
         new Swiper(container, {
             slidesPerView: 'auto', // O tus breakpoints
             spaceBetween: 10,
             navigation: {
-                nextEl: container.querySelector('.swiper-button-next'),
-                prevEl: container.querySelector('.swiper-button-prev'),
+                nextEl: sswiperbtn[contador].querySelector('.swiper-button-next'),
+                prevEl: sswiperbtn[contador].querySelector('.swiper-button-prev'),
             },
             breakpoints: { // Si usas breakpoints
                 20: { slidesPerView: 1, spaceBetween: 20 },
@@ -38,48 +44,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 1010: { slidesPerView: 4, spaceBetween: 10 },
             }
         });
+        contador++;
     });
 
     // Espera a que el contenido de la página esté cargado
     //----------------------- interacción para sumar o restar cantidad en en productos-------------------------
-const productos = document.querySelectorAll('#producto');
-//console.log(productos);
-
-productos.forEach(producto => {
-  // Obtenemos los elementos específicos DE CADA producto
-  const btnRestar = producto.querySelector('#btn-restar');
-  const btnSumar = producto.querySelector('#btn-sumar');
-  const cantidadElemento = producto.querySelector('#cantidad'); //Mostramos la cantidad del producto que se ha agegado
-  const totalElemento = producto.querySelector('#total-producto'); // Suma del total de la cantidad de productos
-
-//Tomamos el precio del producto convertido a float
-  const precioBase = parseFloat(totalElemento.dataset.precio);
-
-  //Asignamos en 0 la cantidad para cada uno de los productos
-  let cantidad = 0;
-
-  // Función para actualizar la UI de este producto específico
-  function actualizarProducto() {
-    const total = cantidad * precioBase;
-    cantidadElemento.textContent = cantidad;
-    totalElemento.textContent = `Total: $${total}`;
-  }
-
-  // Asignamos el evento al botón de sumar
-  btnSumar.addEventListener('click', () => {
-    cantidad++;
-    actualizarProducto();
-  });
-
-  // Asignamos el evento al botón de restar
-  btnRestar.addEventListener('click', () => {
-    // Solo restamos si la cantidad es mayor a 0
-    if (cantidad > 0) {
-      cantidad--;
-      actualizarProducto();
-    }
-  });
-});
 
 
 });
@@ -92,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
   hoy.setDate(hoy.getDate() + 3);
   const fechaDeHoy = hoy.toISOString().split('T')[0];
 
-  console.log(fechaDeHoy);  
+  //console.log(fechaDeHoy);  
   // 3. Selecciona el input por su id y establece el atributo 'min'
   document.querySelector("#entradaFechaDeEvento").min = fechaDeHoy;
   
@@ -258,7 +227,7 @@ async function inicializarCarrusel(container, categoryId, token) {
     }
 
     wrapper.innerHTML = "<p>Cargando...</p>"; // Mensaje mientras carga
-    const apiUrl = `http://localhost:8080/api/productos/categoria/${categoryId}`;
+    const apiUrl = `https://pastiara.duckdns.org/api/productos/categoria/${categoryId}`;
 
     try {
         // --- 1. OBTENCIÓN (FETCH) ---
@@ -274,7 +243,7 @@ async function inicializarCarrusel(container, categoryId, token) {
         productos.forEach(producto => {
             // ¡IMPORTANTE! Usa CLASES, no IDs repetidos
             const tarjetaHtml = `
-                <div class="swiper-slide data-id="${producto.id}" 
+                <div class="swiper-slide data-id="${producto.id}"
                      data-precio-base="${producto.precio}"
                      data-nombre="${producto.nombre}">
                                                                 <div class="card product-card" id="producto">
@@ -292,14 +261,14 @@ async function inicializarCarrusel(container, categoryId, token) {
                                                                         <div
                                                                             class="d-flex justify-content-between align-items-center">
                                                                             <span class="fs-6" id="total-producto"
-                                                                                data-precio="230">Total: $0</span>
+                                                                                data-precio=${producto.precio.toFixed(2)}>Total: $0</span>
                                                                             <div class="quantity-selector">
                                                                                 <button class="btn btn-sm" type="button"
                                                                                     id="btn-restar">-</button>
                                                                                 <span class="quantity-display"
                                                                                     id="cantidad"
-                                                                                    data-nombre="Barquillos de budín"
-                                                                                    data-precio="230">0</span>
+                                                                                    data-nombre=${producto.nombre}
+                                                                                    data-precio=${producto.precio.toFixed(2)}>0</span>
                                                                                 <button class="btn btn-sm" type="button"
                                                                                     id="btn-sumar">+</button>
                                                                             </div>
@@ -310,6 +279,7 @@ async function inicializarCarrusel(container, categoryId, token) {
             `;
             // Añade la tarjeta al HTML del wrapper
             wrapper.innerHTML += tarjetaHtml;
+            botonSumarRestar();
         });
 
     } catch (error) {
@@ -318,3 +288,44 @@ async function inicializarCarrusel(container, categoryId, token) {
     }
 }
 
+function botonSumarRestar(){
+const productos = document.querySelectorAll('#producto');
+productos.forEach(producto => {
+  // Obtenemos los elementos específicos DE CADA producto
+  const btnRestar = producto.querySelector('#btn-restar');
+  const btnSumar = producto.querySelector('#btn-sumar');
+  const cantidadElemento = producto.querySelector('#cantidad'); //Mostramos la cantidad del producto que se ha agegado
+  const totalElemento = producto.querySelector('#total-producto'); // Suma del total de la cantidad de productos
+
+//Tomamos el precio del producto convertido a float
+  const precioBase = parseFloat(totalElemento.dataset.precio);
+
+  //Asignamos en 0 la cantidad para cada uno de los productos
+  let cantidad = 0;
+
+  // Función para actualizar la UI de este producto específico
+  function actualizarProducto() {
+    console.log("Actualizar producto");
+    const total = cantidad * precioBase;
+    cantidadElemento.textContent = cantidad;
+    totalElemento.textContent = `Total: $${total}`;
+  }
+
+  // Asignamos el evento al botón de sumar
+  btnSumar.addEventListener('click', () => {
+    console.log("funcion suma")
+    cantidad++;
+    actualizarProducto();
+  });
+
+  // Asignamos el evento al botón de restar
+  btnRestar.addEventListener('click', () => {
+    console.log("Restar producto");
+    // Solo restamos si la cantidad es mayor a 0
+    if (cantidad > 0) {
+      cantidad--;
+      actualizarProducto();
+    }
+  });
+});
+}

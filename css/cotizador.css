@@ -57,7 +57,7 @@
   font-family: var(--title-body);
   margin-bottom: 2px;
   color: var(--color-text3);
-  text-align: center;
+  /*text-align: center;*/
 
 }
 
@@ -70,9 +70,6 @@
   border-color: var(--color-title);
   box-shadow: 0 0 0 0.25rem rgba(161, 130, 118, 0.25);
   /* Un color naranja, por ejemplo */
-
-  /* Opcional: si quieres un contorno sólido, puedes usar outline */
-  /*outline: 1px solid var(--color-title);*/
 }
 
 /* Cambia el color del contorno cuando el botón está enfocado */
@@ -361,4 +358,20 @@
 
 .text-card {
   font-family: var(--title-body);
+}
+
+select{
+  border-radius: 15px;
+  padding: 0.5rem;
+  width: 100%;
+  min-width: 0px;
+  height: 44px;
+  border: 1px solid #ddd;
+  font-family: var(--title-body);
+  color: var(--color-text3);
+}
+
+select:focus{
+  border-color: var(--color-title);
+  box-shadow: 0 0 0 0.25rem rgba(161, 130, 118, 0.25);
 }

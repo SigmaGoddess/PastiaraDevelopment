@@ -183,7 +183,6 @@ const entradaCodigoPostal = document.getElementById('entradaCodigoPostal');
 const entradaEstado = document.getElementById('entradaEstado');
 const entradaProductos = document.querySelectorAll('#cantidad')
 const alerta = document.getElementById('alerta');
-
 // --- CÓDIGO MODIFICADO ---
 // Variable para guardar los datos de la cotización que se mostrará en el modal.
 // La declaramos aquí para que sea accesible desde la función de confirmar y enviar.
@@ -365,40 +364,9 @@ btnConfirmarEnviar.addEventListener('click', function(event) {
                     imageHeight: 150,
                     imageAlt: "Icono de paste"
         }).then(() => {
-            window.location.href = 'index.html'; // Redirección a la página de registro
+            window.location.href = '/index.html'; // Redirección a la página de registro
         });
         // También cerramos el modal en caso de error.
         modal.style.display = 'none';
     });
 });
-
-// --- FIN DEL NUEVO CÓDIGO ---
-    /*
-
-    // 4. ACCIÓN AL CONFIRMAR LA COTIZACIÓN
-
-    btnConfirmar.onclick = function() {
-
-        // Aquí es donde pondrías la lógica para enviar el formulario REALMENTE
-
-        // Por ejemplo, usando fetch() para enviar los datos a un servidor,
-
-        // o simplemente llamando al envío del formulario.
-
-       
-
-        alert('¡Cotización confirmada y enviada!');
-
-       
-
-        // Opcional: para enviar el formulario de verdad
-
-        // document.getElementById('cotizacionForm').submit();
-
-
-
-        // Cerramos el modal
-
-        modal.style.display = 'none';
-
-    }*/
