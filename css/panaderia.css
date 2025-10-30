@@ -17,7 +17,7 @@ body {
     /* Asegura que el banner esté por debajo de la navbar */
 
     /* CONSERVADO: Tu imagen de fondo original de panadería */
-    background-image: url('/images/PANADERÍA-ARTESANAL/panes_panaderia.jpg');
+    background-image: url('https://i.ibb.co/4ZV8tGqK/panes-panaderia.webp');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -254,7 +254,7 @@ html {
 
     .hero-section {
         height: 40vh;
-        background-image: url('/public/images/GENERAL/banner_ancho.jpg');
+        background-image: url('https://i.ibb.co/9m79NTWH/banner-ancho.webp');
     }
 
     .hero-title {

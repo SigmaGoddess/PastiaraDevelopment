@@ -43,7 +43,7 @@
     background-color: var(--color-banner); 
     padding: 3rem 0;
     position: relative;
-    background-image: url('/images/GENERAL/Banner-largo.png');
+    background-image: url('https://i.ibb.co/rRSPxPrd/Banner-largo.webp');
     
     /* Con "cover" la imagen se ajusta y llena el contenedor */
     background-size: cover;
@@ -97,7 +97,7 @@
   padding-bottom: 10px;
 }
 .mision-vision-banner { 
-    background: url('/images/CONÓCENOS/Panadero.jpg') no-repeat center center;
+    background: url('https://i.ibb.co/20Nf1vwq/Panadero.webp') no-repeat center center;
     background-size: cover; 
     position: relative;
     padding: 2rem 0;
@@ -259,7 +259,7 @@
 /* Estilos para el contenedor del carrusel */
 .equipo-conocenos .carousel {
   position: relative;
-  background-image: url('/images/GENERAL/masa-boleando.webp');
+  background-image: url('https://i.ibb.co/xqNnkntM/masa-boleando.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -13,7 +13,7 @@ body {
 
 /* --- Estilos para el Hero Section --- */
 .hero-section {
-    background-image: url('/public/images/INICIO/harina.jpeg');
+    background-image: url('https://i.ibb.co/qM1hsCPh/harina.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -276,7 +276,7 @@ html {
     .hero-section {
         height: 40vh;
         /* Altura del banner en móvil  */
-        background-image: url('/public/images/GENERAL/banner_ancho.jpg');
+        background-image: url('https://i.ibb.co/9m79NTWH/banner-ancho.webp');
     }
 
 
