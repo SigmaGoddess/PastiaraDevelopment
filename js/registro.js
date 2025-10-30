@@ -348,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     icon: "success"
                 }).then(() => {
                     loginForm.reset();
-                    window.location.href = 'index.html'; // Redirección a la página principal
+                    window.location.href = '/index.html'; // Redirección a la página principal
                 });
 
             } else {
