@@ -8,7 +8,7 @@
 
 body {
   height: 400px;
-  background-image: url("/public/images/GENERAL/PASTE-FONDO.png");
+  background-image: url("https://i.ibb.co/v6Cf18XP/PASTE-FONDO.jpg");
   background-size: cover;
   background-size: 26rem;
   background-repeat: no-repeat;
@@ -120,7 +120,7 @@ video {
   display: inline-block;
   font-size: 22px;
   border-radius: 10px;
-  background-image: url('/public/images/GENERAL/CanastaConPastes.png');
+  background-image: url('https://i.ibb.co/LdLQM3rP/Canasta-Con-Pastes.webp');
   /* Ruta de tu imagen */
   background-repeat: no-repeat;
   /* Para que la imagen no se repita */
@@ -209,7 +209,7 @@ hr {
 }
 
 .contenedor-fondo-productos {
-  background-image: url('/public/images/GENERAL/Banner-largo.png');
+  background-image: url('https://i.ibb.co/rRSPxPrd/Banner-largo.webp');
   background-size: 100% 30%;
   background-repeat: no-repeat;
   background-position: center 38%;
@@ -427,7 +427,7 @@ hr {
 /*Aquí comienza el estilo de la imagen grande central de FAQ*/
 /* Responsividad y estilo de FAQ */
 #faq {
-  background-image: url('/public/images/PASTES/IMG_3196piña_.jpeg');
+  background-image: url('https://i.ibb.co/G4z6NGS9/IMG-3196pi-a.webp');
   /* Cambia la ruta según la ubicación de tu imagen */
   background-size: cover;
   /* Ajusta el tamaño de la imagen */
