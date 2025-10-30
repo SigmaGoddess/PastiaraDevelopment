@@ -219,70 +219,45 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Esperamos a que todo el DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
 
-    const containerProductos = document.getElementById('product-3d').querySelector('pastiara-product-container'); // Contenedor de productos
-    const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || []; // Favoritos del localStorage
-
-    // Función para crear el HTML de cada producto
-    function crearCardProducto(producto) {
-        const col = document.createElement('div');
-        col.className = 'pastiara-product-container';
-
-        col.innerHTML = `
-            <div class="pastiara-product-name">
-                <div class="product-3d">
-                    <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img">
-                    <button class="heart-favorite" data-product="${producto.id}" aria-label="Marcar como favorito">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                </div>
-                <div class="pastiara-product-info">
-                    <h3>${producto.nombre}</h3>
-                    <p class="pastiara-price">$${producto.precio}</p>
-                    <p class="pastiara-description-text">${producto.descripcion}</p>
-                </div>
-            </div>
-        `;
-        return col;
-    }
-
-    // Función para actualizar los corazones según favoritos guardados
-    function actualizarBotones() {
-        const botonesFavorito = containerProductos.querySelectorAll('.heart-favorite');
-        botonesFavorito.forEach(boton => {
-            const productId = boton.dataset.product;
-            if (favoritosGuardados.some(fav => fav.id == productId)) {
-                boton.classList.add('active');
-            }
-        });
-    }
-
-    //  Función para gestionar favoritos (con verificación de login mediante JWT)
-function gestionarFavorito(producto, boton) {
-    const token = localStorage.getItem('authToken'); // Revisar si hay token
-    if (!token) {
-        // Si no hay token, redirige a registro/login
-        window.location.href = '/pages/pag-registro/registro.html#register-form';
+    const containerProductos = document.querySelector('.pastiara-full-banner-section'); // Contenedor de productos
+    
+  // Asegúrate de que exista el contenedor antes de continuar
+    if (!containerProductos) {
+        console.error("No se encontró el contenedor de productos. Verifica el selector.");
         return;
+
     }
 
-    // Si hay token, procede a agregar a favoritos
-    let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-    const index = favoritos.findIndex(item => item.id == producto.id);
+    // 2. FUNCIÓN PARA GESTIONAR FAVORITOS (con verificación de login mediante JWT)
+    function gestionarFavorito(producto, boton) {
+        const token = localStorage.getItem('authToken'); // Revisar si hay token
+        if (!token) {
+            // Si no hay token, redirige a registro/login
+            window.location.href = '/pages/pag-registro/registro.html#register-form';
+            return;
+        }
 
-    if (index > -1) {
-        favoritos.splice(index, 1);
-        boton.classList.remove('active');
-        mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
-    } else {
-        favoritos.push(producto);
-        boton.classList.add('active');
-        mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+        let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+        // Usamos el ID del producto para buscarlo
+        const index = favoritos.findIndex(item => item.id == producto.id);
+
+        if (index > -1) {
+            // Eliminar de favoritos
+            favoritos.splice(index, 1);
+            boton.classList.remove('active');
+            mostrarNotificacion(`${producto.nombre} eliminado de favoritos 💔`);
+        } else {
+            // Agregar a favoritos
+            // Guardamos el objeto completo del producto para futura visualización
+            favoritos.push(producto);
+            boton.classList.add('active');
+            mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+        }
+
+        localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
     }
 
-    localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
-}
-
-    // Función para mostrar notificaciones
+// Función para mostrar notificaciones (asumiendo que Toastify está cargado)
     function mostrarNotificacion(mensaje) {
         Toastify({
             text: mensaje,
@@ -295,39 +270,78 @@ function gestionarFavorito(producto, boton) {
         }).showToast();
     }
 
-    // Función principal para cargar productos desde la API
+
+
+// 3. FUNCIÓN PARA CREAR EL HTML DE CADA PRODUCTO (Ajustado a tu estructura)
+    function crearCardProducto(producto, favoritosGuardados) {
+        // Usamos la clase del contenedor de tu HTML original: pastiara-product-container
+        const wrapper = document.createElement('div');
+        wrapper.className = 'pastiara-product-container';
+
+        // Determina si el producto está en favoritos para añadir la clase 'active'
+        const isFavorite = favoritosGuardados.some(fav => fav.id == producto.id);
+        const activeClass = isFavorite ? 'active' : '';
+
+        wrapper.innerHTML = `
+            <div class="pastiara-product-left">
+                <div class="pastiara-product-wrapper">
+                    <h3 class="pastiara-product-name">${producto.nombre}</h3>
+                </div>
+                <article class="product-3d">
+                    <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img product-image">
+                    <button class="heart-favorite ${activeClass}" data-product="${producto.id}" data-name="${producto.nombre}" data-price="${producto.precio}" data-description="${producto.descripcion}" data-image="${producto.imagenUrl}" aria-label="Marcar como favorito">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </article>
+            </div>
+            <div class="pastiara-product-info">
+                <p class="pastiara-description-text description">${producto.descripcion}</p>
+                <p class="pastiara-price price">$${producto.precio}</p>
+            </div>
+        `;
+        return wrapper;
+    }
+
+    // 4. FUNCIÓN PRINCIPAL PARA CARGAR PRODUCTOS DESDE LA API
     async function cargarProductos() {
         try {
-            const categoriaId = 3; // Cambia este ID al que corresponda a panadería en tu base
-            const response = await fetch(`http://localhost:8080/api/productos/categoria/3`);
+            const categoriaId = 3; 
+            const response = await fetch(`http://localhost:8080/api/productos/categoria/1`);
             if (!response.ok) throw new Error('Error al cargar productos');
 
             const productos = await response.json();
-            containerProductos.innerHTML = ''; // Limpiar contenedor
+            const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+            
+            // Limpiar contenedor antes de añadir nuevos productos
+            // (Asegúrate de no borrar otros elementos necesarios, sino solo el área de productos)
+            containerProductos.innerHTML = ''; 
 
             productos.forEach(producto => {
-                const card = crearCardProducto(producto);
+                // El HTML de la API asume que tienes propiedades como id, nombre, precio, descripcion, imagenUrl.
+                const card = crearCardProducto(producto, favoritosGuardados);
                 containerProductos.appendChild(card);
-            });
 
-            // Agregamos listeners a los botones recién creados
-            const botonesFavorito = containerProductos.querySelectorAll('.heart-favorite');
-            botonesFavorito.forEach(boton => {
-                const productCard = boton.closest('.product-3d');
-                const producto = {
+                // 5. ASIGNACIÓN DE EVENT LISTENER Y EXTRACCIÓN DE DATOS SIMPLIFICADA
+                // Obtenemos el botón recién creado.
+                const boton = card.querySelector('.heart-favorite');
+
+                // Creamos un objeto 'producto' completo a partir de los datos de la API (es más fácil)
+                // Opcional: Si la API te da un objeto muy grande, puedes construir uno más ligero 
+                // usando los atributos 'data-' del botón para consistencia.
+                const productoData = {
                     id: boton.dataset.product,
-                    nombre: productCard.querySelector('h3').textContent,
-                    precio: productCard.querySelector('.price').textContent,
-                    descripcion: productCard.querySelector('.description').textContent,
-                    imagen: productCard.querySelector('.product-image').src
+                    nombre: boton.dataset.name,
+                    precio: boton.dataset.price,
+                    descripcion: boton.dataset.description,
+                    imagenUrl: boton.dataset.image
                 };
-                boton.addEventListener('click', () => gestionarFavorito(producto, boton));
+                
+                // Añadimos el listener
+                boton.addEventListener('click', () => gestionarFavorito(productoData, boton));
             });
-
-            actualizarBotones(); // Marcar favoritos al cargar
 
         } catch (error) {
-            console.error(error);
+            console.error('Error en cargarProductos:', error);
             containerProductos.innerHTML = `<p>Error al cargar los productos. Intenta más tarde.</p>`;
         }
     }
@@ -336,167 +350,109 @@ function gestionarFavorito(producto, boton) {
 });*/
 
 
+/*document.addEventListener('DOMContentLoaded', () => {
+  const botones = document.querySelectorAll('.heart-favorite');
 
-// Variable para almacenar los productos cargados desde la API
-// DEBE ser accesible por las funciones de gestión y carga.
-let productosGlobal = [];
-const containerProductos = document.getElementById('pastiara-product-container'); // Definido globalmente para la delegación
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      boton.classList.toggle('active');
+      boton.classList.add('animate');
+
+      setTimeout(() => boton.classList.remove('animate'), 600);
+
+      const nombre = boton.closest('.pastiara-product-wrapper')
+                         .querySelector('.pastiara-product-name').textContent;
+
+      Toastify({
+        text: boton.classList.contains('active') 
+          ? `${nombre} añadido a favoritos ❤️` 
+          : `${nombre} eliminado de favoritos 💔`,
+        duration: 2000,
+        gravity: "bottom",
+        position: "right",
+        style: { background: "linear-gradient(to right, #B58A6A, #a07551)" },
+      }).showToast();
+    });
+  });
+});*/
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    const botones = document.querySelectorAll('.heart-favorite');
 
-    // ----------------------------------------------------
-    //  3. DELEGACIÓN DE EVENTOS (El corazón de la solución)
-    // ----------------------------------------------------
-    // Adjuntamos un ÚNICO listener al contenedor padre.
-    containerProductos.addEventListener('click', (event) => {
-        // Usamos .closest() para encontrar el botón de favorito, 
-        // incluso si el usuario hace clic en el <i> (el corazón).
-        const boton = event.target.closest('.heart-favorite');
+    botones.forEach(boton => {
+        boton.addEventListener('click', async (event) => { // Agregamos 'async' para usar await
+            event.preventDefault(); // Opcional: Previene cualquier acción por defecto del botón
 
-        if (boton) {
-            // Extraemos el ID del producto que guardamos en el HTML (línea 43)
-            const productId = boton.dataset.productId;
+            const productId = boton.getAttribute('data-product-id');
+            const isAdding = !boton.classList.contains('active'); // Determina si se va a añadir o eliminar
             
-            // Buscamos el objeto de producto COMPLETO en nuestra lista global
-            const producto = productosGlobal.find(p => p.id == productId);
+            // 1. Efecto visual (opcional, para feedback rápido)
+            boton.classList.toggle('active');
+            boton.classList.add('animate');
+            setTimeout(() => boton.classList.remove('animate'), 600);
 
-            // Verificación esencial antes de llamar a la función de gestión
-            if (producto) {
-                gestionarFavorito(producto, boton);
-            }
-        }
-    });
+            // 2. Información para el Toast
+            const wrapper = boton.closest('.pastiara-product-wrapper');
+            const nombre = wrapper ? wrapper.querySelector('.pastiara-product-name').textContent : 'Producto';
+            let toastText = `${nombre} ${isAdding ? 'añadido a favoritos ❤️' : 'eliminado de favoritos 💔'}`;
+            let toastBackground = isAdding ? "linear-gradient(to right, #B58A6A, #a07551)" : "linear-gradient(to right, #7a7a7a, #5c5c5c)";
 
-    // Carga los productos al iniciar
-    cargarProductos();
-});
+            // 3. Comunicación con el Backend
+             
+            try {
+                // Configura la URL y el método de la solicitud.
+                // Reemplaza esta URL con la ruta real de tu backend.
+                const categoriaId = 4; // ID de volovanes en la base de datos
+                const response = await fetch(`http://localhost:8080/api/productos/categoria/4`, {
+                    method: 'POST', // Usamos POST para crear/modificar el estado
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Si usas tokens de autenticación (JWT), agrégalo aquí:
+                        // 'Authorization': `Bearer ${token_del_usuario}`
+                    },
+                    body: JSON.stringify({
+                        productId: productId,
+                        action: isAdding ? 'add' : 'remove'
+                        // Puedes enviar el ID del usuario aquí, o dejar que el backend lo obtenga
+                        // desde la sesión o el token de autenticación.
+                    })
+                });
 
-// ----------------------------------------------------
-//  1. FUNCIÓN PRINCIPAL PARA CARGAR PRODUCTOS DESDE LA API
-// ----------------------------------------------------
+                if (!response.ok) {
+                    // Si el servidor responde con un error (4xx o 5xx)
+                    throw new Error(`Error del servidor: ${response.statusText}`);
+                }
 
-async function cargarProductos() {
-    try {
-        const categoriaId = 3;
-        const response = await fetch(`http://localhost:8080/api/productos/categoria/${categoriaId}`);
-        if (!response.ok) throw new Error('Error al cargar productos');
-
-        // Almacenamos los productos en la variable global
-        productosGlobal = await response.json(); 
-        containerProductos.innerHTML = ''; // Limpiar contenedor
-
-        productosGlobal.forEach((producto) => {
-            const card = crearCardProducto(producto);
-            containerProductos.appendChild(card);
-        });
-
-        // Llamamos a actualizar botones una sola vez después de cargar todo
-        actualizarBotones(); 
-
-    } catch (error) {
-        console.error("Error al cargar los productos:", error);
-        containerProductos.innerHTML = `<p>Error al cargar los productos. Intenta más tarde.</p>`;
-    }
-}
-
-// ----------------------------------------------------
-//  2. FUNCIÓN PARA CREAR LA CARD DEL PRODUCTO (Revisada)
-// ----------------------------------------------------
-
-function crearCardProducto(producto) {
-    const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-
-    const col = document.createElement('div');
-    col.className = 'pastiara-product-container';
-
-    // Nota: Es mejor usar la clase .product-3d para la tarjeta principal.
-    // Usaremos un atributo data-product-id en el botón (ver abajo)
-    col.innerHTML = `
-        <div class="pastlara-product-name">
-            <div class="product-3d">
-                <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img">
+                // Opcional: Puedes procesar la respuesta del servidor si retorna datos
+                // const data = await response.json(); 
                 
-                <button class="heart-favorite" data-product-id="${producto.id}" aria-label="Marcar como favorito">
-                    <i class="fas fa-heart"></i>
-                </button>
-            </div>
-            <div class="pastiara-product-info">
-                <h3>${producto.nombre}</h3>
-                <p class="pastiara-price">$${producto.precio}</p>
-                <p class="pastiara-description-text">${producto.descripcion}</p>
-            </div>
-        </div>
-    `;
+                // Muestra el Toast de éxito
+                Toastify({
+                    text: toastText,
+                    duration: 2000,
+                    gravity: "bottom",
+                    position: "right",
+                    style: { background: toastBackground },
+                }).showToast();
 
-    return col;
-}
+            } catch (error) {
+                console.error('Error al actualizar favoritos:', error);
+                
+                // ⚠️ IMPORTANTE: Si falla el backend, debemos revertir el cambio visual
+                boton.classList.toggle('active', !isAdding); // Vuelve al estado anterior
 
-// ----------------------------------------------------
-//  4. FUNCIÓN PARA ACTUALIZAR LOS CORAZONES (Se mantiene, pero revisa la selección)
-// ----------------------------------------------------
-
-function actualizarBotones() {
-    // Seleccionamos todos los botones que se cargaron
-    const botonesFavorito = containerProductos.querySelectorAll('.heart-favorite');
-
-    botonesFavorito.forEach(boton => {
-        const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-        // Usamos data-product-id para coincidir con la nueva estructura
-        const productId = boton.dataset.productId; 
-        
-        // El operador == (doble igual) está bien si 'productId' es string y 'fav.id' es número
-        // o viceversa, ya que permite la coerción de tipo. Si ambos son números, usa ===
-        if (favoritosGuardados.some(fav => fav.id == productId)) {
-            boton.classList.add('active');
-        } else {
-            // Asegura que se quite la clase si ya no está en favoritos (útil si clearStorage se usó)
-            boton.classList.remove('active'); 
-        }
+                // Muestra un Toast de error
+                Toastify({
+                    text: `Error al actualizar: ${error.message || 'Inténtalo de nuevo.'}`,
+                    duration: 3000,
+                    gravity: "bottom",
+                    position: "right",
+                    style: { background: "linear-gradient(to right, #ff5f6d, #ffc371)" },
+                }).showToast();
+            }
+        });
     });
-}
-
-// ----------------------------------------------------
-//  5. FUNCIÓN PARA GESTIONAR FAVORITOS (Se mantiene)
-// ----------------------------------------------------
-
-function gestionarFavorito(producto, boton) {
-    const token = localStorage.getItem('authToken');
-
-    if (!token) {
-        window.location.href = '/pages/pag-registro/registro.html#register-form';
-        return;
-    }
-
-    let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-    const index = favoritos.findIndex(item => item.id == producto.id);
-
-    if (index > -1) {
-        favoritos.splice(index, 1);
-        boton.classList.remove('active');
-        mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
-    } else {
-        favoritos.push(producto);
-        boton.classList.add('active');
-        mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
-    }
-
-    localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
-}
-
-
-// ----------------------------------------------------
-//  6. FUNCIÓN PARA MOSTRAR NOTIFICACIONES (Se mantiene)
-// ----------------------------------------------------
-// Asumo que Toasty está correctamente importado en el HTML.
-function mostrarNotificacion(mensaje) {
-    Toastify({
-        text: mensaje,
-        duration: 3000,
-        position: "right",
-        style: {
-            background: "linear-gradient(to right, #858A6A, #a07551)",
-        },
-    }).showToast();
-}
-
+});
 
