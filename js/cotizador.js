@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('authToken');
   if (!token) {
     // Opción A: redirigir inmediatamente
-    window.location.href = '/pages/pag-registro/registro.html#register-form';
+    window.location.href = '/pages/pag-registro/registro.html#login-form';
 
   }
 })
