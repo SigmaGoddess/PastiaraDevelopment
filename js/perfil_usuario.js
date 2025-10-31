@@ -379,7 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 /**
  * ========================================
  * FUNCIÓN PRINCIPAL DE CARGA
