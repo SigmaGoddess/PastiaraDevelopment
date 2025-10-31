@@ -2,15 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const token = localStorage.getItem("authToken");
     if (!token) {
-
-        Swal.fire({
-            title: `¡Para acceder al cotizador es necesario iniciar sesión`,
-            text: "Te redireccionaremos al registro.",
-            icon: 'warning'
-        }).then(() => {
-            window.location.href = '/pages/pag-registro/registro.html#login-form'; // Redirección a la página de registro
-        });
-
+        window.location.href = '/pages/pag-registro/registro.html#login-form'; // Redirección a la página de registro
         return;
     }
     // Usamos 'await' para asegurarnos de que el HTML se genere
@@ -57,8 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Variable para guardar los datos de la cotización que se mostrará en el modal.
-    // La declaramos aquí para que sea accesible desde la función de confirmar y enviar.
-    var datosCotizacionParaEnviar = {};
+// La declaramos aquí para que sea accesible desde la función de confirmar y enviar.
+var datosCotizacionParaEnviar = {};
 
 function resumenCotización() {
     // ------------------Sección de resumen de cotización --------------------------------
@@ -81,7 +73,7 @@ function resumenCotización() {
     const entradaProductos = document.querySelectorAll('#cantidad')
     const alerta = document.getElementById('alerta');
     const entradaComentarios = document.getElementById('comentarios');
-    
+
 
 
     //ABRIR EL MODAL AL HACER CLIC EN "ENVIAR COTIZACIÓN"
@@ -180,19 +172,19 @@ function resumenCotización() {
         // --- CÓDIGO AÑADIDO ---
         // Guardamos todos los datos recolectados en la variable global para poder enviarlos después
 
-        datosCotizacionParaEnviar={
-  direccion: {
-    calle: `${calle} ${numeracion}`,
-    colonia: colonia,
-    municipio: municipio,
-    estado: estado,
-    codigoPostal: codigoPostal
-  },
-  tipoDeEvento: evento,
-  comentarios: comentarios,
-  
-  detalles: productosSeleccionados
-};
+        datosCotizacionParaEnviar = {
+            direccion: {
+                calle: `${calle} ${numeracion}`,
+                colonia: colonia,
+                municipio: municipio,
+                estado: estado,
+                codigoPostal: codigoPostal
+            },
+            tipoDeEvento: evento,
+            comentarios: comentarios,
+
+            detalles: productosSeleccionados
+        };
 
         // Mostramos el modal
         modal.style.display = 'block';
@@ -245,7 +237,7 @@ async function inicializarCarrusel(container, categoryId, token) {
         if (!response.ok) throw new Error(`Error ${response.status}`);
 
         const productos = await response.json();
-       
+
         wrapper.innerHTML = ''; // Limpia "Cargando..."
 
         // --- 2. INYECCIÓN DE HTML ---
@@ -346,58 +338,58 @@ const token = localStorage.getItem("authToken");
 // 2. Agregamos el evento 'click' al botón.
 btnConfirmarEnviar.addEventListener('click', function (event) {
     const modal = document.getElementById('resumenModal');
-  // Prevenimos cualquier comportamiento por defecto del botón.
-  event.preventDefault();
+    // Prevenimos cualquier comportamiento por defecto del botón.
+    event.preventDefault();
 
-  // 3. Usamos la API fetch para enviar los datos al backend.
-  //    La URL '/api/cotizaciones/guardar' es un ejemplo, deberás crear este endpoint en tu servidor.
-  fetch('https://pastiara.duckdns.org/api/cotizaciones', {
-    method: 'POST', // Usamos POST para crear una nueva cotización.
-    headers: {
-      'Content-Type': 'application/json', // Indicamos que el contenido es JSON.
-      "Authorization": `Bearer ${token}`
-    },
-    // Convertimos el objeto que guardamos previamente a un string JSON.
-    body: JSON.stringify(datosCotizacionParaEnviar)
-  })
-    .then(response => {
-      // Verificamos si la respuesta del servidor fue exitosa.
-      if (!response.ok) {
-        // Si no fue exitosa, lanzamos un error para que lo capture el .catch()
-        throw new Error('Hubo un problema con la respuesta del servidor.');
-      }
-      return response.json(); // Convertimos la respuesta del servidor a JSON.
+    // 3. Usamos la API fetch para enviar los datos al backend.
+    //    La URL '/api/cotizaciones/guardar' es un ejemplo, deberás crear este endpoint en tu servidor.
+    fetch('https://pastiara.duckdns.org/api/cotizaciones', {
+        method: 'POST', // Usamos POST para crear una nueva cotización.
+        headers: {
+            'Content-Type': 'application/json', // Indicamos que el contenido es JSON.
+            "Authorization": `Bearer ${token}`
+        },
+        // Convertimos el objeto que guardamos previamente a un string JSON.
+        body: JSON.stringify(datosCotizacionParaEnviar)
     })
-    .then(data => {
-      // Si todo salió bien, el servidor nos devuelve una confirmación.
-      //console.log('Respuesta del servidor:', data);
-      //alert('¡Tu cotización ha sido enviada y guardada con éxito!');
+        .then(response => {
+            // Verificamos si la respuesta del servidor fue exitosa.
+            if (!response.ok) {
+                // Si no fue exitosa, lanzamos un error para que lo capture el .catch()
+                throw new Error('Hubo un problema con la respuesta del servidor.');
+            }
+            return response.json(); // Convertimos la respuesta del servidor a JSON.
+        })
+        .then(data => {
+            // Si todo salió bien, el servidor nos devuelve una confirmación.
+            //console.log('Respuesta del servidor:', data);
+            //alert('¡Tu cotización ha sido enviada y guardada con éxito!');
 
-      // Cerramos el modal.
-      modal.style.display = 'none';
+            // Cerramos el modal.
+            modal.style.display = 'none';
 
-      Swal.fire({
-        title: `¡Gracias por elegir pastiara!`,
-        text: "En breve te haremos llegar tu cotización al correo de registro",
-        imageUrl: "/images/GENERAL/canasta-confirmacion-cotizacion.png",
-        imageWidth: 150,
-        imageHeight: 150,
-        imageAlt: "Icono de paste"
-      }).then(() => {
-        window.location.href = '/index.html'; // Redirección a la página de registro
-      });
-    })
-    .catch(error => {
-      // Si algo falló durante el proceso, mostramos un error.
-      //console.error('Error al enviar la cotización:', error);
-      //alert('Hubo un problema al guardar tu cotización. Por favor, inténtalo de nuevo.');
-      Swal.fire({
-        title: `¡Error!`,
-        text: "Estamos teniendo inconvenientes para enviar tu cotización, vuelve a intentarlo más tarde",
-        imageUrl: "/images/GENERAL/canasta-confirmacion-cotizacion.png",
-        icon: "error"
-      })
-      // También cerramos el modal en caso de error.
-      modal.style.display = 'none';
-    });
+            Swal.fire({
+                title: `¡Gracias por elegir pastiara!`,
+                text: "En breve te haremos llegar tu cotización al correo de registro",
+                imageUrl: "/images/GENERAL/canasta-confirmacion-cotizacion.png",
+                imageWidth: 150,
+                imageHeight: 150,
+                imageAlt: "Icono de paste"
+            }).then(() => {
+                window.location.href = '/index.html'; // Redirección a la página de registro
+            });
+        })
+        .catch(error => {
+            // Si algo falló durante el proceso, mostramos un error.
+            //console.error('Error al enviar la cotización:', error);
+            //alert('Hubo un problema al guardar tu cotización. Por favor, inténtalo de nuevo.');
+            Swal.fire({
+                title: `¡Error!`,
+                text: "Estamos teniendo inconvenientes para enviar tu cotización, vuelve a intentarlo más tarde",
+                imageUrl: "/images/GENERAL/canasta-confirmacion-cotizacion.png",
+                icon: "error"
+            })
+            // También cerramos el modal en caso de error.
+            modal.style.display = 'none';
+        });
 });
