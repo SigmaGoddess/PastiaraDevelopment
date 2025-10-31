@@ -458,3 +458,238 @@ document.addEventListener('click', (e) => {
     }).showToast();
 });
 
+const resumenes = document.querySelectorAll('.cotizacion-resumen');
+
+// 2. Recorre cada uno y les añade un "escuchador" de clics
+resumenes.forEach(resumen => {
+
+    resumen.addEventListener('click', () => {
+
+        // 3. Busca el contenedor padre (el .cotizacion-item)
+        const item = resumen.closest('.cotizacion-item');
+
+        // 4. "Conmuta" (toggle) la clase 'active'
+        //    Si la tiene, se la quita. Si no la tiene, se la pone.
+        item.classList.toggle('active');
+
+    });
+});
+
+
+
+// Codigo para cargar el resumen de cotizaziones
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 1. Elemento contenedor
+    const historialContainer = document.getElementById("contenedor-cotizaciones");
+    if (!historialContainer) {
+        console.error("No se encontró el contenedor #contenedor-cotizaciones");
+        return;
+    }
+
+    // 2. Llama a la función principal para cargar los datos
+    cargarHistorial(historialContainer);
+
+    // 3. --- ¡LÓGICA DEL ACORDEÓN RESTAURADA! ---
+    // Añadimos un listener al contenedor (delegación de eventos)
+    historialContainer.addEventListener("click", (event) => {
+
+        // Buscamos si el clic fue en el resumen
+        const resumenClickeado = event.target.closest(".cotizacion-resumen");
+
+        // Si no se hizo clic en un resumen, no hacemos nada
+        if (!resumenClickeado) return;
+
+        // Si se hizo clic, encontramos el 'item' padre
+        const cotizacionItem = resumenClickeado.closest(".cotizacion-item");
+        if (!cotizacionItem) return;
+
+        // --- ¡LA MAGIA! ---
+        // Alternamos (toggle) la clase 'active' en el item padre.
+        // Tu CSS se encargará de la animación.
+        cotizacionItem.classList.toggle("active");
+
+        // (Bonus) Cambiamos el icono de '+' a '−'
+        const icono = cotizacionItem.querySelector(".icono");
+        if (icono) {
+            if (cotizacionItem.classList.contains("active")) {
+                icono.textContent = "−"; // Signo de menos
+            } else {
+                icono.textContent = "+";
+            }
+        }
+    });
+});
+
+/**
+ * ========================================
+ * FUNCIÓN PRINCIPAL DE CARGA
+ * ========================================
+ */
+async function cargarHistorial(container) {
+    const apiUrl = "https://pastiara.duckdns.org/api/cotizaciones"; // O /api/cotizaciones/mis-cotizaciones
+    container.innerHTML = "<p>Cargando historial...</p>";
+
+    // Usamos el token de localStorage (como lo pediste)
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
+        container.innerHTML = "<p>Debes <a href='/login.html'>iniciar sesión</a> para ver tu historial.</p>";
+        return;
+    }
+
+    try {
+        // Llama a la API con el token
+        const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                container.innerHTML = "<p>Tu sesión ha expirado. Por favor, <a href='/login.html'>inicia sesión</a>.</p>";
+            } else {
+                throw new Error("No se pudo cargar el historial.");
+            }
+            return;
+        }
+
+        const cotizaciones = await response.json();
+
+        if (cotizaciones.length === 0) {
+            container.innerHTML = '<p style="color: #999;">Aún no tienes cotizaciones en tu historial.</p>';
+            return;
+        }
+
+        // Limpia el contenedor y construye el HTML
+        container.innerHTML = "";
+        cotizaciones.forEach(cotizacion => {
+            container.innerHTML += buildCotizacionHtml(cotizacion);
+        });
+
+    } catch (error) {
+        console.error("Error al cargar historial:", error);
+        container.innerHTML = `<p style="color: red;">${error.message}</p>`;
+    }
+}
+
+
+/**
+ * ========================================
+ * FUNCIONES AUXILIARES (BUILDERS)
+ * ========================================
+ * (Estas funciones son idénticas a las que te di antes,
+ * construyen el HTML basado en tu plantilla)
+ */
+
+function buildProductosHtml(detalles) {
+    if (!detalles || detalles.length === 0) {
+        return "<p>Esta cotización no tiene productos.</p>";
+    }
+
+    const productosPorCategoria = detalles.reduce((acc, detalle) => {
+        const categoria = detalle.categoriaNombre || "Otros";
+        if (!acc[categoria]) acc[categoria] = [];
+        acc[categoria].push(detalle);
+        return acc;
+    }, {});
+
+    let html = "";
+    for (const categoriaNombre in productosPorCategoria) {
+        html += `
+            <div class="producto-categoria">
+                <h4 class="categoria-titulo">${categoriaNombre}</h4>
+                <ul class="lista-productos">
+        `;
+        productosPorCategoria[categoriaNombre].forEach(detalle => {
+            html += `
+                <li class="producto-item">
+                    <span class="producto-nombre">${detalle.nombreProducto}</span>
+                    <span class="producto-cantidad">x ${detalle.cantidad}</span>
+                </li>
+            `;
+        });
+        html += `</ul></div>`;
+    }
+    return html;
+}
+
+function buildDireccionHtml(direccion) {
+    if (!direccion) return "<p>Sin dirección registrada.</p>";
+    return `
+        <p>
+            ${direccion.calle || ''}<br>
+            ${direccion.colonia || ''}, ${direccion.municipio || ''}, C.P. ${direccion.codigoPostal || ''}<br>
+            ${direccion.estado || ''}
+        </p>
+    `;
+}
+
+function buildCotizacionHtml(cotizacion) {
+
+    const fechaEnvio = new Date(cotizacion.fechaCreacion).toLocaleDateString("es-MX");
+    const fechaEvento = new Date(cotizacion.fechaEvento).toLocaleDateString("es-MX");
+    const total = cotizacion.totalCotizado.toFixed(2);
+    const productosHtml = buildProductosHtml(cotizacion.detalles);
+    const direccionHtml = buildDireccionHtml(cotizacion.direccionEnvio);
+
+    // Plantilla final (los detalles están ocultos por defecto por tu CSS)
+    return `
+        <div class="cotizacion-item">
+            <div class="cotizacion-resumen">
+                <div class="resumen-info">
+                    <div class="resumen-fila">
+                        <div class="info-item">
+                            <small>Id cotización:</small>
+                            <strong>#${String(cotizacion.id).padStart(3, '0')}</strong>
+                        </div>
+                        <div class="info-item">
+                            <small>Tipo de evento:</small>
+                            <strong>${cotizacion.tipoDeEvento || 'N/A'}</strong>
+                        </div>
+                    </div>
+                    <div class="resumen-fila">
+                        <div class="info-item">
+                            <small>Fecha de envío:</small>
+                            <strong>${fechaEnvio}</strong>
+                        </div>
+                        <div class="info-item">
+                            <small>Total:</small>
+                            <strong>$${total}</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="resumen-accion">
+                    <span class="icono">+</span> 
+                </div>
+            </div>
+            <div class="cotizacion-detalles"> 
+                <div class="detalles-body">
+                    <div class="detalles-columna">
+                        <div class="detalle-bloque">
+                            <strong>Dirección de Envío:</strong>
+                            ${direccionHtml}
+                        </div>
+                        <div class="detalle-bloque">
+                            <strong>Fecha de evento:</strong>
+                            <p>${fechaEvento}</p>
+                        </div>
+                        <div class="detalle-bloque">
+                            <strong>Comentarios Adicionales:</strong>
+                            <p>"${cotizacion.comentarios || 'Sin comentarios'}"</p>
+                        </div>
+                    </div>
+                    <div class="detalles-columna">
+                        <div class="detalle-bloque">
+                            <strong>Productos Cotizados:</strong>
+                            ${productosHtml}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
