@@ -1,17 +1,13 @@
 // Esperamos a que todo el DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
 
-    const containerProductos = document.getElementById('productos-container'); // Contenedor de productos dinámicos
+    const containerProductos = document.getElementById('productos-container'); // Contenedor de productos
     const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
 
     // Función para crear el HTML de un producto con el diseño específico de "Para regalar"
     function crearCardProducto(producto, position) {
-        // position puede ser: 'left', 'right', 'center'
         const section = document.createElement('div');
         section.className = 'pastiara-full-banner-section';
-
-        const isFavorite = favoritosGuardados.some(fav => fav.id == producto.id);
-        const activeClass = isFavorite ? 'active' : '';
 
         section.innerHTML = `
             <div class="pastiara-banner-background"></div>
@@ -23,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         <article class="product-3d">
                             <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img">
-                            <button class="heart-favorite ${activeClass}" data-product="${producto.id}" aria-label="Marcar como favorito">
+                            <button class="heart-favorite" data-product="${producto.id}" aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
                             </button>
                         </article>
@@ -90,22 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función principal para traer los productos del backend y renderizarlos
     async function cargarProductos() {
         try {
-            // ID de la categoría "Para regalar" 
-            const categoriaId = 4; // Categoría correcta en la BD
-           const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`);
-            
-            
+            const categoriaId = 4; // ID de la categoría "Para regalar"
+            const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`);
             if (!response.ok) throw new Error('Error al cargar productos');
 
             const productos = await response.json();
 
-            // Limpiar el contenedor antes de agregar productos
+            // Limpiamos el contenedor antes de agregar
             containerProductos.innerHTML = '';
-
-            // Validar que haya exactamente 3 productos
-            if (productos.length !== 3) {
-                console.warn(`Se esperaban 3 productos, pero se recibieron ${productos.length}`);
-            }
 
             // Posiciones específicas para cada producto
             const posiciones = ['left', 'right', 'center'];
@@ -116,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 containerProductos.appendChild(card);
             });
 
-            // Después de renderizar, agregamos los listeners de favoritos
+            // Después de renderizar los cards, agregamos los listeners de favoritos
             const botonesFavorito = document.querySelectorAll('.heart-favorite');
             botonesFavorito.forEach(boton => {
                 const productWrapper = boton.closest('.pastiara-product-wrapper');
@@ -127,29 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     descripcion: productWrapper.querySelector('.pastiara-description-text').textContent,
                     imagenUrl: productWrapper.querySelector('.pastiara-product-img').src
                 };
-                
                 boton.addEventListener('click', () => gestionarFavorito(producto, boton));
             });
 
             // Activamos los corazones según favoritos guardados
             actualizarBotones();
 
-            console.log(`✅ ${productos.length} productos cargados correctamente`);
-
         } catch (error) {
-            console.error('Error al cargar productos:', error);
-            
-            // Mostrar mensaje de error al usuario
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'container text-center my-5';
-            errorDiv.innerHTML = `
-                <p class="text-danger">Error al cargar los productos. Por favor, intenta más tarde.</p>
-            `;
-            containerProductos.appendChild(errorDiv);
+            console.error(error);
+            containerProductos.innerHTML = `<p>Error al cargar los productos. Intenta más tarde.</p>`;
         }
     }
 
-    // Llamar a la función principal
+    // Se llama a la función principal
     cargarProductos();
 
 });
