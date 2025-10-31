@@ -418,7 +418,7 @@ async function cargarHistorial(container) {
         const cotizaciones = await response.json();
 
         if (cotizaciones.length === 0) {
-            container.innerHTML = "<p>Aún no tienes cotizaciones en tu historial.</p>";
+            container.innerHTML = '<p style="color: #999;">Aún no tienes cotizaciones en tu historial.</p>';
             return;
         }
 
