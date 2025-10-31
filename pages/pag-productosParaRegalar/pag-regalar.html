@@ -1,27 +1,155 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Regalar | Pastiara</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ/M+n0QeSYYkF/Yf/0t/BGYT93/Jv3rC7M8P0e95N9V/Y/I8x5zM0u7q6z+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pastiara - Para regalar</title>
+
+  <!-- Favicon-->
+  <link rel="icon" type="image/webp" href="https://i.ibb.co/fYNTDwJd/favicon-pastiara.webp">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-    <link rel="stylesheet" href="/css/style.css"> 
-    <link rel="stylesheet" href="/css/pag-regalar.css"> 
-
+  <!--Icons de footer-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="/css/global_variables.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/loader.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/Footer.css">
+  <link rel="stylesheet" href="/css/pag-regalar.css">
 </head>
+
 <body>
+  <special-loader></special-loader>
+  <special-header></special-header>
 
-    <main class="body-regalar" **id="productos-container"**>
-        
-        <header class="pastiara-header">
-            <h1 class="pastiara-main-title">Con amor y sabor...</h1>
-            <p class="pastiara-subtitle">La forma más elegante de compartir sabor y calidez en un solo bocado.</p>
-        </header>
+  <main class="body-regalar">
+    <!-- Header principal -->
+    <header class="pastiara-header">
+      <h1 class="pastiara-main-title">Con amor y sabor...</h1>
+      <p class="pastiara-subtitle">La forma más elegante de compartir sabor y calidez en un solo bocado.</p>
+    </header>
 
-        <section class="container">
-            <h2 class="pastiara-section-title">Para regalar</h2>
-        </section>
+    <!-- Sección: Para regalar -->
+    <section class="container">
+      <h2 class="pastiara-section-title">Para regalar</h2>
+    </section>
+
+    <!-- Producto 1: Izquierda -->
+   <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-left">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Capricho Pastiara</h3>
+
+            <article class="product-3d">
+              <img src="https://i.ibb.co/gbGC7q7v/Para-Regalar-Budin.webp" alt="Barquillos de budín Pastiara"
+                class="pastiara-product-img">
+                 <button class="heart-favorite" data-product="capricho-pastiara" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
+            </article>
+
+
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 6 Barquillos rellenos de Budín Pastiara (cítricos)
+              </p>
+              <p class="pastiara-price">$235</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+
+    <!-- Producto 2: Derecha -->
+    <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-right">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Viaje de sabores</h3>
+
+            <article class="product-3d">
+              <img src="https://i.ibb.co/JWS9SFH0/Para-Regalar-Frutos.webp" alt="Volovanes de brigadeiro Pastiara"
+                class="pastiara-product-img">
+                 <button class="heart-favorite" data-product="viaje-sabores" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
+              
+            </article>
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 2 Volovanes de brigadeiro con frutos rojos, 2 Barquillos rellenos de Budín Pastiara (cítricos) y
+                2 Roles de guayaba
+              </p>
+              <p class="pastiara-price">$235</p>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+
+    <!-- Producto 3: Centro -->
+   <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-center">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Dulce magia</h3>
+
+            <article class="product-3d">
+              <img src="https://i.ibb.co/qF90zrG7/Para-Regalar-Barquillo.webp" alt="Roles de guayaba Pastiara"
+                class="pastiara-product-img">
+                 <button class="heart-favorite" data-product="dulce-magia" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
+           
+            </article>
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 6 Barquillos rellenos de Budín Pastiara (cítricos) y 3 Roles de guayaba
+              </p>
+              <p class="pastiara-price">$355</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+
+
+  </main>
+
+  <button class="btn-flotante-ordenar" type="button" onclick="location.href='/pages/pag-cotizador/cotizador.html'">
+    <span class="btn-text">¡ORDENA AQUÍ!</span>
+    <img src="/public/images/GENERAL/CanastaConPastesCafe.png" alt="Ícono de Carrito" class="icono-boton">
+    <span class="btn-icon" aria-hidden="true"></span>
+  </button>
+
+  <special-footer></special-footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/components.js" type="module"></script>
+  <script src="/js/main.js" type="module"></script>
+  <script src="/js/pag-regalar.js" type="module"></script>
+  <script src="/js/navbar.js" type="module"></script>
+</body>
+
+</html>
