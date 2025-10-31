@@ -27,53 +27,139 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Funcionalidad de "Favoritos"
     // ... (Tu código de favoritos permanece igual)
+    // Funcionalidad de "Favoritos"
     const contenedorFavoritos = document.getElementById('favoritos-grid');
+
     if (contenedorFavoritos) {
-        function cargarFavoritos() {
-            const favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-            contenedorFavoritos.innerHTML = '';
-            if (favoritos.length === 0) {
-                contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Todavía no has agregado productos a tus favoritos.</p>';
+
+        // Obtenemos el token para las peticiones
+        const token = localStorage.getItem('authToken');
+
+        /**
+         * Carga los favoritos desde la API del backend.
+         * Ya no usa localStorage.
+         */
+        async function cargarFavoritos() {
+            // Si no hay token, el usuario no ha iniciado sesión.
+            if (!token) {
+                contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Debes iniciar sesión para ver tus favoritos.</p>';
                 return;
             }
-            favoritos.forEach(producto => {
-                const columna = document.createElement('div');
-                columna.className = 'favorite-product-item';
-                columna.innerHTML = `
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
-                            <button class="heart-favorite active" data-product-id="${producto.id}" aria-label="Eliminar ${producto.nombre} de favoritos">
-                                <i class="fas fa-heart"></i>
-                            </button>
-                        </div>
-                        <div class="product-info">
-                            <h3>${producto.nombre}</h3>
-                            <p class="price">${producto.precio}</p>
-                            <p class="description">${producto.descripcion}</p>
-                        </div>
-                    </div>`;
-                contenedorFavoritos.appendChild(columna);
-            });
+
+            contenedorFavoritos.innerHTML = '<p class="loading-message">Cargando tus favoritos...</p>';
+
+            try {
+                // NUEVO: Llamada a tu API de backend
+                const response = await fetch('/api/favoritos', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    // Maneja errores (ej. token expirado 401, o error 500)
+                    throw new Error('No se pudo cargar favoritos. Status: ' + response.status);
+                }
+
+                // La respuesta de tu controller es Set<ProductoResponseDTO>
+                const favoritos = await response.json();
+
+                contenedorFavoritos.innerHTML = ''; // Limpiar "Cargando..."
+
+                if (!favoritos || favoritos.length === 0) {
+                    contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Todavía no has agregado productos a tus favoritos.</p>';
+                    return;
+                }
+
+                // Renderizamos los productos que vinieron de la base de datos
+                // Asumimos que tu ProductoResponseDTO tiene: id, imagen, nombre, precio, descripcion
+                favoritos.forEach(producto => {
+                    const columna = document.createElement('div');
+                    columna.className = 'favorite-product-item';
+
+                    // Usamos tu función de sanitizar por seguridad
+                    const nombreSeguro = sanitizeHTML(producto.nombre);
+                    const descSegura = sanitizeHTML(producto.descripcion || 'Sin descripción'); // Fallback si no viene
+                    const precioFormateado = producto.precio ? `$${Number(producto.precio).toFixed(2)}` : 'Precio no disponible';
+
+                    columna.innerHTML = `
+                        <div class="product-card">
+                            <div class="product-image-container">
+                                <img src="${producto.imagen}" alt="${nombreSeguro}" class="product-image">
+                                <button class="heart-favorite active" data-product-id="${producto.id}" aria-label="Eliminar ${nombreSeguro} de favoritos">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="product-info">
+                                <h3>${nombreSeguro}</h3>
+                                <p class="price">${precioFormateado}</p>
+                                <p class="description">${descSegura}</p>
+                            </div>
+                        </div>`;
+                    contenedorFavoritos.appendChild(columna);
+                });
+
+            } catch (error) {
+                console.error('Error al cargar favoritos:', error);
+                contenedorFavoritos.innerHTML = '<p class="error-message">Hubo un problema al cargar tus favoritos. Por favor, intenta de nuevo más tarde.</p>';
+            }
         }
-        cargarFavoritos();
+
+        /**
+         * Elimina un favorito llamando a la API del backend.
+         * Ya no usa localStorage.
+         */
+        async function eliminarFavorito(id) {
+            if (!token) {
+                Toastify({ text: "Debes iniciar sesión para hacer esto", duration: 2000 }).showToast();
+                return;
+            }
+
+            try {
+                // NUEVO: Llamada DELETE a tu API de backend
+                const response = await fetch(`/api/favoritos/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    // Tu controller devuelve 204 (noContent) si tiene éxito.
+                    // !response.ok se activará para 404, 500, 401, etc.
+                    throw new Error('No se pudo eliminar el favorito.');
+                }
+
+                // Éxito
+                Toastify({ text: "Eliminado de favoritos", duration: 2000, gravity: "bottom", position: "right" }).showToast();
+
+                // Recargamos la lista desde el servidor para que se refleje el cambio
+                cargarFavoritos();
+
+            } catch (error) {
+                console.error('Error al eliminar favorito:', error);
+                Toastify({ text: "Error al eliminar. Intenta más tarde.", duration: 2000, gravity: "bottom" }).showToast();
+            }
+        }
+
+        // --- Event Listener (Sin cambios) ---
+        // Este listener ya está bien, porque llama a las funciones por su nombre.
+        // Ahora simplemente llamará a las nuevas versiones "async" que usan fetch.
         contenedorFavoritos.addEventListener('click', (e) => {
             const heartButton = e.target.closest('.heart-favorite');
             if (heartButton) {
                 const productoId = heartButton.dataset.productId;
-                eliminarFavorito(productoId);
+                eliminarFavorito(productoId); // Llama a la nueva función
             }
         });
-        function eliminarFavorito(id) {
-            let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-            const nuevosFavoritos = favoritos.filter(producto => producto.id !== id);
-            localStorage.setItem('pastiaraFavorites', JSON.stringify(nuevosFavoritos));
-            cargarFavoritos();
-            Toastify({ text: "Eliminado de favoritos", duration: 2000, gravity: "bottom", position: "right" }).showToast();
-        }
+
+        // Carga inicial al entrar a la pestaña
+        cargarFavoritos();
     }
 
-    // Funcionalidad de "Mis Cotizaciones"
+    /*// Funcionalidad de "Mis Cotizaciones"
     const contenedorCotizaciones = document.getElementById('contenedor-cotizaciones');
     if (contenedorCotizaciones) {
         function cargarCotizaciones() {
@@ -130,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
         }
         cargarCotizaciones();
-    }
+    }*/
 
     //* Código para la sección según el hash en la url
     window.addEventListener('load', () => {
