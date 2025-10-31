@@ -1,133 +1,133 @@
+// pag-regalar.js
+
 // Esperamos a que todo el DOM esté cargado
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const containerProductos = document.getElementById("container-products"); // Donde se van a renderizar los productos
+  // Traemos favoritos desde localStorage al inicio
+  const favoritosGuardados =
+    JSON.parse(localStorage.getItem("pastiaraFavorites")) || [];
 
-    const containerProductos = document.getElementById('productos-container'); // Contenedor de productos
-    const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
+  // Función para generar el HTML de un producto
+  function crearCardProducto(producto) {
+    // Creamos un div para la columna del grid de Bootstrap
+    const col = document.createElement("div");
+    col.className = "col-lg-4 col-md-6 mb-5";
 
-    // Función para crear el HTML de un producto con el diseño específico de "Para regalar"
-    function crearCardProducto(producto, position) {
-        const section = document.createElement('div');
-        section.className = 'pastiara-full-banner-section';
+    // HTML del card, usando los datos del backend
+    col.innerHTML = `
+ <div class="product-card">
+<div class="product-image-container">
+ <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="product-image">
+<button class="heart-favorite" data-product="${producto.id}" aria-label="Marcar como favorito">
+ <i class="fas fa-heart"></i>
+ </button>
+</div>
+ <div class="product-info">
+ <h3>${producto.nombre}</h3>
+ <p class="price">$${producto.precio}</p>
+ <p class="description">${producto.descripcion}</p>
+</div>
+</div>
+ `;
+    return col;
+  }
 
-        section.innerHTML = `
-            <div class="pastiara-banner-background"></div>
-            
-            <div class="pastiara-product-container">
-                <div class="pastiara-product-${position}">
-                    <div class="pastiara-product-wrapper">
-                        <h3 class="pastiara-product-name">${producto.nombre}</h3>
+  // Función para actualizar los botones de favoritos según localStorage
+  function actualizarBotones() {
+    const botonesFavorito = document.querySelectorAll(".heart-favorite");
+    botonesFavorito.forEach((boton) => {
+      const productId = boton.dataset.product;
+      if (favoritosGuardados.some((fav) => fav.id == productId)) {
+        boton.classList.add("active");
+      }
+    });
+  }
 
-                        <article class="product-3d">
-                            <img src="${producto.imagenUrl}" alt="${producto.nombre}" class="pastiara-product-img">
-                            <button class="heart-favorite" data-product="${producto.id}" aria-label="Marcar como favorito">
-                                <i class="fas fa-heart"></i>
-                            </button>
-                        </article>
-
-                        <div class="pastiara-product-info">
-                            <p class="pastiara-description-text">${producto.descripcion}</p>
-                            <p class="pastiara-price">$${producto.precio}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        return section;
+  // Función para gestionar favoritos (con verificación de login mediante JWT)
+  function gestionarFavorito(producto, boton) {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      window.location.href = "/pages/pag-registro/registro.html#login-form";
+      return;
     }
 
-    // Función para actualizar los botones de favoritos según localStorage
-    function actualizarBotones() {
-        const botonesFavorito = document.querySelectorAll('.heart-favorite');
-        botonesFavorito.forEach(boton => {
-            const productId = boton.dataset.product;
-            if (favoritosGuardados.some(fav => fav.id == productId)) {
-                boton.classList.add('active');
-            }
-        });
+    let favoritos = JSON.parse(localStorage.getItem("pastiaraFavorites")) || [];
+    const index = favoritos.findIndex((item) => item.id == producto.id);
+
+    if (index > -1) {
+      favoritos.splice(index, 1);
+      boton.classList.remove("active");
+      mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
+    } else {
+      favoritos.push(producto);
+      boton.classList.add("active");
+      mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
     }
 
-    // Función para gestionar favoritos (con verificación de login mediante JWT)
-    function gestionarFavorito(producto, boton) {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            window.location.href = '/pages/pag-registro/registro.html#login-form';
-            return;
-        }
+    localStorage.setItem("pastiaraFavorites", JSON.stringify(favoritos));
+  }
 
-        let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-        const index = favoritos.findIndex(item => item.id == producto.id);
+  // Función para mostrar notificaciones (Toastify)
+  function mostrarNotificacion(mensaje) {
+    Toastify({
+      text: mensaje,
+      duration: 3000,
+      gravity: "bottom",
+      position: "right",
+      style: {
+        background: "linear-gradient(to right, #B58A6A, #a07551)",
+      },
+    }).showToast();
+  }
 
-        if (index > -1) {
-            favoritos.splice(index, 1);
-            boton.classList.remove('active');
-            mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
-        } else {
-            favoritos.push(producto);
-            boton.classList.add('active');
-            mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
-        }
+  // Función principal para traer los productos del backend y renderizarlos
+  async function cargarProductos() {
+    try {
+      // ✨ CATEGORIA ID CORREGIDA A 4 ✨
+      const categoriaId = 4;
+      const response = await fetch(
+        `https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`
+      );
 
-        localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
+      if (!response.ok)
+        throw new Error("Error al cargar productos de la categoría Regalar");
+
+      const productos = await response.json();
+
+      // Limpiamos el contenedor antes de agregar
+      containerProductos.innerHTML = "";
+
+      productos.forEach((producto) => {
+        const card = crearCardProducto(producto);
+        containerProductos.appendChild(card);
+      });
+
+      // Después de renderizar los cards, agregamos los listeners de favoritos
+      const botonesFavorito = document.querySelectorAll(".heart-favorite");
+      botonesFavorito.forEach((boton) => {
+        const productCard = boton.closest(".product-card");
+
+        // Creamos el objeto producto para guardarlo en favoritos
+        const producto = {
+          id: boton.dataset.product,
+          nombre: productCard.querySelector("h3").textContent,
+          precio: productCard.querySelector(".price").textContent,
+          descripcion: productCard.querySelector(".description").textContent,
+          imagen: productCard.querySelector(".product-image").src,
+        };
+        boton.addEventListener("click", () =>
+          gestionarFavorito(producto, boton)
+        );
+      });
+
+      // Activamos los corazones según favoritos guardados
+      actualizarBotones();
+    } catch (error) {
+      console.error("Error al cargar productos para regalar:", error);
+      containerProductos.innerHTML = `<p class="alert alert-danger">Error al cargar los productos. Por favor, verifica la conexión o intenta más tarde.</p>`;
     }
+  }
 
-    // Función para mostrar notificaciones (Toastify)
-    function mostrarNotificacion(mensaje) {
-        Toastify({
-            text: mensaje,
-            duration: 3000,
-            gravity: "bottom",
-            position: "right",
-            style: {
-                background: "linear-gradient(to right, #B58A6A, #a07551)",
-            },
-        }).showToast();
-    }
-
-    // Función principal para traer los productos del backend y renderizarlos
-    async function cargarProductos() {
-        try {
-            const categoriaId = 4; // ID de la categoría "Para regalar"
-            const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`);
-            if (!response.ok) throw new Error('Error al cargar productos');
-
-            const productos = await response.json();
-
-            // Limpiamos el contenedor antes de agregar
-            containerProductos.innerHTML = '';
-
-            // Posiciones específicas para cada producto
-            const posiciones = ['left', 'right', 'center'];
-
-            productos.forEach((producto, index) => {
-                const position = posiciones[index];
-                const card = crearCardProducto(producto, position);
-                containerProductos.appendChild(card);
-            });
-
-            // Después de renderizar los cards, agregamos los listeners de favoritos
-            const botonesFavorito = document.querySelectorAll('.heart-favorite');
-            botonesFavorito.forEach(boton => {
-                const productWrapper = boton.closest('.pastiara-product-wrapper');
-                const producto = {
-                    id: boton.dataset.product,
-                    nombre: productWrapper.querySelector('.pastiara-product-name').textContent,
-                    precio: productWrapper.querySelector('.pastiara-price').textContent.replace('$', ''),
-                    descripcion: productWrapper.querySelector('.pastiara-description-text').textContent,
-                    imagenUrl: productWrapper.querySelector('.pastiara-product-img').src
-                };
-                boton.addEventListener('click', () => gestionarFavorito(producto, boton));
-            });
-
-            // Activamos los corazones según favoritos guardados
-            actualizarBotones();
-
-        } catch (error) {
-            console.error(error);
-            containerProductos.innerHTML = `<p>Error al cargar los productos. Intenta más tarde.</p>`;
-        }
-    }
-
-    // Se llama a la función principal
-    cargarProductos();
-
+  // Se llama a la función principal
+  cargarProductos();
 });
