@@ -1,95 +1,155 @@
-<!--Para regalar-->
-
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pastiara - Para regalar</title>
 
-    <link
-      rel="icon"
-      type="image/webp"
-      href="https://i.ibb.co/fYNTDwJd/favicon-pastiara.webp"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pastiara - Para regalar</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="/css/global_variables.css" />
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="/css/loader.css" />
-    <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/Footer.css" />
-    <link rel="stylesheet" href="/css/pag-regalar.css" />
-  </head>
+  <!-- Favicon-->
+  <link rel="icon" type="image/webp" href="https://i.ibb.co/fYNTDwJd/favicon-pastiara.webp">
 
-  <body class="container-regalar">
-    <special-loader></special-loader>
-    <special-header></special-header>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!--Icons de footer-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="/css/global_variables.css">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/loader.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/Footer.css">
+  <link rel="stylesheet" href="/css/pag-regalar.css">
+</head>
 
-    <main>
-      <section id="inicio" class="hero-section">
-        <div class="container">
-          <h1 class="hero-title">Con amor y sabor...</h1>
-          <p class="hero-subtitle">
-            La forma más elegante de compartir sabor y calidez en un solo
-            bocado.
-          </p>
+<body>
+  <special-loader></special-loader>
+  <special-header></special-header>
+
+  <main class="body-regalar">
+    <!-- Header principal -->
+    <header class="pastiara-header">
+      <h1 class="pastiara-main-title">Con amor y sabor...</h1>
+      <p class="pastiara-subtitle">La forma más elegante de compartir sabor y calidez en un solo bocado.</p>
+    </header>
+
+    <!-- Sección: Para regalar -->
+    <section class="container">
+      <h2 class="pastiara-section-title">Para regalar</h2>
+    </section>
+
+    <!-- Producto 1: Izquierda -->
+   <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-left">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Capricho Pastiara</h3>
+
+            <article class="product-3d">
+              <img src="https://i.ibb.co/gbGC7q7v/Para-Regalar-Budin.webp" alt="Barquillos de budín Pastiara"
+                class="pastiara-product-img">
+                 <button class="heart-favorite" data-product="capricho-pastiara" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
+            </article>
+
+
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 6 Barquillos rellenos de Budín Pastiara (cítricos)
+              </p>
+              <p class="pastiara-price">$235</p>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+   </div>
 
-      <section id="productos" class="products-section">
-        <div class="container-fluid">
-          <div class="row" **id="container-products" **></div>
+    <!-- Producto 2: Derecha -->
+    <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
+
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-right">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Viaje de sabores</h3>
+
+            <article class="product-3d">
+              <img src="https://i.ibb.co/JWS9SFH0/Para-Regalar-Frutos.webp" alt="Volovanes de brigadeiro Pastiara"
+                class="pastiara-product-img">
+                 <button class="heart-favorite" data-product="viaje-sabores" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
+              
+            </article>
+
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 2 Volovanes de brigadeiro con frutos rojos, 2 Barquillos rellenos de Budín Pastiara (cítricos) y
+                2 Roles de guayaba
+              </p>
+              <p class="pastiara-price">$235</p>
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+     </div>
 
-    <button
-      class="btn-flotante-ordenar"
-      type="button"
-      onclick="location.href='/pages/pag-cotizador/cotizador.html'"
-    >
-      <span class="btn-text">¡ORDENA AQUÍ!</span>
-      <img
-        src="https://i.ibb.co/FkqMmnZb/Canasta-Con-Pastes-Cafe.webp"
-        alt="Ícono de Carrito"
-        class="icono-boton"
-      />
-      <span class="btn-icon" aria-hidden="true"></span>
-    </button>
+    <!-- Producto 3: Centro -->
+   <div class="pastiara-full-banner-section">
+      <div class="pastiara-banner-background"></div>
 
-    <special-footer></special-footer>
+      <div class="pastiara-product-container">
+        <div class="pastiara-product-center">
+          <div class="pastiara-product-wrapper">
+            <h3 class="pastiara-product-name">Dulce magia</h3>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
-    ></script>
+            <article class="product-3d">
+              <img src="https://i.ibb.co/qF90zrG7/Para-Regalar-Barquillo.webp" alt="Roles de guayaba Pastiara"
+                class="pastiara-product-img">
+                 <button class="heart-favorite" data-product="dulce-magia" aria-label="Marcar como favorito">
+                                <i class="fas fa-heart"></i>
+                            </button>
+           
+            </article>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/components.js" type="module"></script>
-    <script src="/js/main.js" type="module"></script>
-    <script src="/js/pag-regalar.js" type="module"></script>
-    <script src="/js/navbar.js" type="module"></script>
-  </body>
+            <div class="pastiara-product-info">
+              <p class="pastiara-description-text">
+                Caja de 6 Barquillos rellenos de Budín Pastiara (cítricos) y 3 Roles de guayaba
+              </p>
+              <p class="pastiara-price">$355</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+
+
+  </main>
+
+  <button class="btn-flotante-ordenar" type="button" onclick="location.href='/pages/pag-cotizador/cotizador.html'">
+    <span class="btn-text">¡ORDENA AQUÍ!</span>
+    <img src="/public/images/GENERAL/CanastaConPastesCafe.png" alt="Ícono de Carrito" class="icono-boton">
+    <span class="btn-icon" aria-hidden="true"></span>
+  </button>
+
+  <special-footer></special-footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/components.js" type="module"></script>
+  <script src="/js/main.js" type="module"></script>
+  <script src="/js/pag-regalar.js" type="module"></script>
+  <script src="/js/navbar.js" type="module"></script>
+</body>
+
 </html>
