@@ -1,73 +1,95 @@
+<!--Para regalar-->
+
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pastiara - Para regalar</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pastiara - Para regalar</title>
+    <link
+      rel="icon"
+      type="image/webp"
+      href="https://i.ibb.co/fYNTDwJd/favicon-pastiara.webp"
+    />
 
-  <!-- Favicon-->
-  <link rel="icon" type="image/webp" href="https://i.ibb.co/fYNTDwJd/favicon-pastiara.webp">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/css/global_variables.css" />
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/loader.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/Footer.css" />
+    <link rel="stylesheet" href="/css/pag-regalar.css" />
+  </head>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  
-  <!--Icons de footer-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  
-  <!-- Estilos propios -->
-  <link rel="stylesheet" href="/css/global_variables.css">
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/loader.css">
-  <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/Footer.css">
-  <link rel="stylesheet" href="/css/pag-regalar.css">
-</head>
+  <body class="container-regalar">
+    <special-loader></special-loader>
+    <special-header></special-header>
 
-<body>
-  <special-loader></special-loader>
-  <special-header></special-header>
+    <main>
+      <section id="inicio" class="hero-section">
+        <div class="container">
+          <h1 class="hero-title">Con amor y sabor...</h1>
+          <p class="hero-subtitle">
+            La forma más elegante de compartir sabor y calidez en un solo
+            bocado.
+          </p>
+        </div>
+      </section>
 
-  <main class="body-regalar">
-    <!-- Header principal -->
-    <header class="pastiara-header">
-      <h1 class="pastiara-main-title">Con amor y sabor...</h1>
-      <p class="pastiara-subtitle">La forma más elegante de compartir sabor y calidez en un solo bocado.</p>
-    </header>
+      <section id="productos" class="products-section">
+        <div class="container-fluid">
+          <div class="row" **id="container-products" **></div>
+        </div>
+      </section>
+    </main>
 
-    <!-- Sección: Para regalar -->
-    <section class="container">
-      <h2 class="pastiara-section-title">Para regalar</h2>
-    </section>
+    <button
+      class="btn-flotante-ordenar"
+      type="button"
+      onclick="location.href='/pages/pag-cotizador/cotizador.html'"
+    >
+      <span class="btn-text">¡ORDENA AQUÍ!</span>
+      <img
+        src="https://i.ibb.co/FkqMmnZb/Canasta-Con-Pastes-Cafe.webp"
+        alt="Ícono de Carrito"
+        class="icono-boton"
+      />
+      <span class="btn-icon" aria-hidden="true"></span>
+    </button>
 
-    <!-- Contenedor donde JavaScript cargará los 3 productos dinámicamente -->
-    <div id="productos-container">
-      <!-- Los 3 productos (Capricho pastiara, Viaje de sabores, Dulce magia) 
-           se cargarán aquí desde la API de categoría 4 -->
-    </div>
+    <special-footer></special-footer>
 
-  </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
 
-  <button class="btn-flotante-ordenar" type="button" onclick="location.href='/pages/pag-cotizador/cotizador.html'">
-    <span class="btn-text">¡ORDENA AQUÍ!</span>
-    <img src="/public/images/GENERAL/CanastaConPastesCafe.png" alt="Ícono de Carrito" class="icono-boton">
-    <span class="btn-icon" aria-hidden="true"></span>
-  </button>
-
-  <special-footer></special-footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/components.js" type="module"></script>
-  <script src="/js/main.js" type="module"></script>
-  <script src="/js/pag-regalar.js" type="module"></script>
-  <script src="/js/navbar.js" type="module"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/components.js" type="module"></script>
+    <script src="/js/main.js" type="module"></script>
+    <script src="/js/pag-regalar.js" type="module"></script>
+    <script src="/js/navbar.js" type="module"></script>
+  </body>
 </html>
