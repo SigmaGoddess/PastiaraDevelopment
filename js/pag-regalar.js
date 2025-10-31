@@ -1,5 +1,3 @@
-// pag-regalar.js
-
 // Esperamos a que todo el DOM esté cargado
 document.addEventListener("DOMContentLoaded", () => {
   const containerProductos = document.getElementById("container-products"); // Donde se van a renderizar los productos
