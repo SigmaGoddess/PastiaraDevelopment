@@ -159,65 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
         cargarFavoritos();
     }
 
-    /*// Funcionalidad de "Mis Cotizaciones"
-    const contenedorCotizaciones = document.getElementById('contenedor-cotizaciones');
-    if (contenedorCotizaciones) {
-        function cargarCotizaciones() {
-            contenedorCotizaciones.innerHTML = '<p class="loading-message">Cargando tus cotizaciones...</p>';
-            fetch('/api/cotizaciones/mis-cotizaciones')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('No se pudo obtener la información del servidor. Código: ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(cotizaciones => {
-                    contenedorCotizaciones.innerHTML = '';
-                    if (cotizaciones && cotizaciones.length > 0) {
-                        cotizaciones.forEach(cotizacion => {
-                            const productosHTML = cotizacion.productos.map(p => `
-                                <li class="producto-item">
-                                    <span>${p.cantidad} x ${sanitizeHTML(p.nombre)}</span>
-                                    <span>$${p.total.toFixed(2)}</span>
-                                </li>
-                            `).join('');
-                            const cotizacionCardHTML = `
-                                <div class="card-cotizacion">
-                                    <div class="card-header">
-                                        <h3>Evento: ${sanitizeHTML(cotizacion.tipoEvento)}</h3>
-                                        <p><strong>Fecha:</strong> ${new Date(cotizacion.fechaEvento).toLocaleDateString()}</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <p><strong>Dirección de Envío:</strong></p>
-                                        <address>
-                                            ${sanitizeHTML(cotizacion.calle)} ${sanitizeHTML(cotizacion.numeroExterior)}
-                                            <br>${sanitizeHTML(cotizacion.colonia)}, C.P. ${sanitizeHTML(cotizacion.codigoPostal)}
-                                            <br>${sanitizeHTML(cotizacion.municipio)}, ${sanitizeHTML(cotizacion.estado)}
-                                        </address>
-                                        <h4>Productos:</h4>
-                                        <ul class="lista-productos-cotizacion">
-                                            ${productosHTML}
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer">
-                                        <p><strong>Suma Total: $${cotizacion.sumaTotal.toFixed(2)}</strong></p>
-                                    </div>
-                                </div>
-                            `;
-                            contenedorCotizaciones.innerHTML += cotizacionCardHTML;
-                        });
-                    } else {
-                        contenedorCotizaciones.innerHTML = '<p class="empty-message">Aún no tienes cotizaciones.</p>';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al cargar las cotizaciones:', error);
-                    contenedorCotizaciones.innerHTML = '<p class="error-message">Hubo un problema al cargar tus cotizaciones. Por favor, intenta de nuevo más tarde.</p>';
-                });
-        }
-        cargarCotizaciones();
-    }*/
-
     //* Código para la sección según el hash en la url
     window.addEventListener('load', () => {
         const hash = window.location.hash;
