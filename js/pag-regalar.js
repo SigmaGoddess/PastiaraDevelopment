@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function cargarProductos() {
         try {
             // ID de la categoría "Para Regalar" (ajusta según tu base de datos)
-            const categoriaId = 4; // Cambiar según el ID real de tu categoría
+            const categoriaId = 3; // Cambiar según el ID real de tu categoría
             const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`);
             
             if (!response.ok) throw new Error('Error al cargar productos');
@@ -116,16 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const productosExistentes = document.querySelectorAll('.pastiara-full-banner-section');
             productosExistentes.forEach(prod => prod.remove());
 
-            // Renderizamos cada producto
+            // Renderizamos cada producto en orden correcto
             productos.forEach((producto, index) => {
                 const productoElement = crearProductoRegalar(producto, index);
-                
-                // Insertamos después del título de sección
-                if (insertPoint.nextSibling) {
-                    containerProductos.insertBefore(productoElement, insertPoint.nextSibling);
-                } else {
-                    containerProductos.appendChild(productoElement);
-                }
+                // Simplemente agregamos al final del contenedor
+                containerProductos.appendChild(productoElement);
             });
 
             // Después de renderizar, agregamos los listeners de favoritos
@@ -170,4 +165,3 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
 
 });
-
