@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function cargarProductos() {
         try {
             // ID de la categoría "Para Regalar" (ajusta según tu base de datos)
-            const categoriaId = 3; // Cambiar según el ID real de tu categoría
+            const categoriaId = 4; // Cambiar según el ID real de tu categoría
             const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`);
             
             if (!response.ok) throw new Error('Error al cargar productos');
