@@ -25,55 +25,128 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Funcionalidad de "Favoritos"
-    // ... (Tu código de favoritos permanece igual)
+    // FUNCIONALIDAD DE FAVORITOS
     const contenedorFavoritos = document.getElementById('favoritos-grid');
+
     if (contenedorFavoritos) {
-        function cargarFavoritos() {
-            const favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-            contenedorFavoritos.innerHTML = '';
-            if (favoritos.length === 0) {
-                contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Todavía no has agregado productos a tus favoritos.</p>';
+
+        // Obtenemos el token para las peticiones
+        const token = localStorage.getItem('authToken');
+
+        /**
+         * Carga los favoritos desde la API del backend.
+         */
+        async function cargarFavoritos() {
+            const contenedorFavoritos = document.getElementById('favoritos-grid');
+            if (!contenedorFavoritos) return;
+
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Debes iniciar sesión para ver tus favoritos.</p>';
                 return;
             }
-            favoritos.forEach(producto => {
-                const columna = document.createElement('div');
-                columna.className = 'favorite-product-item';
-                columna.innerHTML = `
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="${producto.imagen}" alt="${producto.nombre}" class="product-image">
-                            <button class="heart-favorite active" data-product-id="${producto.id}" aria-label="Eliminar ${producto.nombre} de favoritos">
-                                <i class="fas fa-heart"></i>
-                            </button>
+
+            try {
+                const response = await fetch('https://pastiara.duckdns.org/api/favoritos', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status}`);
+                }
+
+                const favoritos = await response.json();
+
+                if (!favoritos || favoritos.length === 0) {
+                    contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Aún no tienes productos favoritos.</p>';
+                    return;
+                }
+
+                contenedorFavoritos.innerHTML = '';
+                favoritos.forEach(producto => {
+                    // 1. Creamos la tarjeta como el elemento principal
+                    const cardElement = document.createElement('div');
+                    cardElement.className = 'product-card'; // La tarjeta ES el item del grid
+
+                    // 2. Llenamos su HTML (sin el div "product-card" extra)
+                    cardElement.innerHTML = `
+                         <div class="product-image-container">
+                            <img src="${producto.imagenUrl || '/images/placeholder.webp'}" alt="${sanitizeHTML(producto.nombre)}" class="product-image">
+                            <button class="heart-favorite" data-product-id="${producto.id}" aria-label="Marcar como favorito"><i class="fas fa-heart"></i></button>
+                         </div>
+                         <div class="product-info">
+                            <h3>${sanitizeHTML(producto.nombre)}</h3>
+                            ${producto.precio ? `<p class="price">$${producto.precio}</p>` : ''}
+                            ${producto.descripcion ? `<p class="description">${sanitizeHTML(producto.descripcion)}</p>` : ''}
                         </div>
-                        <div class="product-info">
-                            <h3>${producto.nombre}</h3>
-                            <p class="price">${producto.precio}</p>
-                            <p class="description">${producto.descripcion}</p>
-                        </div>
-                    </div>`;
-                contenedorFavoritos.appendChild(columna);
-            });
-        }
-        cargarFavoritos();
-        contenedorFavoritos.addEventListener('click', (e) => {
-            const heartButton = e.target.closest('.heart-favorite');
-            if (heartButton) {
-                const productoId = heartButton.dataset.productId;
-                eliminarFavorito(productoId);
+`;
+                    6
+                    // 3. Añadimos la tarjeta directamente al grid
+                    contenedorFavoritos.appendChild(cardElement);
+                });
+                // Agregar manejador de eventos para quitar favoritos
+                contenedorFavoritos.addEventListener('click', async (e) => {
+                    const heartBtn = e.target.closest('.heart-favorite');
+                    if (!heartBtn) return;
+
+                    const productId = heartBtn.dataset.productId;
+                    if (!productId) return;
+
+                    try {
+                        const response = await fetch(`https://pastiara.duckdns.org/api/favoritos/${productId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Error al quitar de favoritos');
+                        }
+
+                        // UI: quitar el producto inmediatamente
+                        heartBtn.closest('.product-card').remove();
+
+                        // Si no quedan favoritos, mostrar mensaje
+                        if (contenedorFavoritos.children.length === 0) {
+                            contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Aún no tienes productos favoritos.</p>';
+                        }
+
+                        Toastify({
+                            text: "Quitado de favoritos",
+                            duration: 2000,
+                            gravity: "bottom",
+                            position: "right",
+                            style: { background: "#B58A6A" }
+                        }).showToast();
+
+                    } catch (error) {
+                        console.error('Error:', error);
+                        Toastify({
+                            text: "No se pudo quitar el producto de favoritos",
+                            duration: 2000,
+                            gravity: "bottom",
+                            position: "right",
+                            style: { background: "#ff4444" }
+                        }).showToast();
+                    }
+                });
+
+            } catch (error) {
+                console.error('Error al cargar favoritos:', error);
+                contenedorFavoritos.innerHTML = '<p class="error-message">Error al cargar tus favoritos. Intenta más tarde.</p>';
             }
-        });
-        function eliminarFavorito(id) {
-            let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-            const nuevosFavoritos = favoritos.filter(producto => producto.id !== id);
-            localStorage.setItem('pastiaraFavorites', JSON.stringify(nuevosFavoritos));
-            cargarFavoritos();
-            Toastify({ text: "Eliminado de favoritos", duration: 2000, gravity: "bottom", position: "right" }).showToast();
         }
+
+        // Carga inicial al entrar a la pestaña
+        cargarFavoritos();
     }
 
-    
+    // ===============================================================================================
 
     //* Código para la sección según el hash en la url
     window.addEventListener('load', () => {
@@ -319,17 +392,17 @@ const resumenes = document.querySelectorAll('.cotizacion-resumen');
 
 // 2. Recorre cada uno y les añade un "escuchador" de clics
 resumenes.forEach(resumen => {
-  
-  resumen.addEventListener('click', () => {
-    
-    // 3. Busca el contenedor padre (el .cotizacion-item)
-    const item = resumen.closest('.cotizacion-item');
-    
-    // 4. "Conmuta" (toggle) la clase 'active'
-    //    Si la tiene, se la quita. Si no la tiene, se la pone.
-    item.classList.toggle('active');
-    
-  });
+
+    resumen.addEventListener('click', () => {
+
+        // 3. Busca el contenedor padre (el .cotizacion-item)
+        const item = resumen.closest('.cotizacion-item');
+
+        // 4. "Conmuta" (toggle) la clase 'active'
+        //    Si la tiene, se la quita. Si no la tiene, se la pone.
+        item.classList.toggle('active');
+
+    });
 });
 
 
@@ -337,7 +410,7 @@ resumenes.forEach(resumen => {
 // Codigo para cargar el resumen de cotizaziones
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     // 1. Elemento contenedor
     const historialContainer = document.getElementById("contenedor-cotizaciones");
     if (!historialContainer) {
@@ -351,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. --- ¡LÓGICA DEL ACORDEÓN RESTAURADA! ---
     // Añadimos un listener al contenedor (delegación de eventos)
     historialContainer.addEventListener("click", (event) => {
-        
+
         // Buscamos si el clic fue en el resumen
         const resumenClickeado = event.target.closest(".cotizacion-resumen");
 
@@ -448,7 +521,7 @@ function buildProductosHtml(detalles) {
     }
 
     const productosPorCategoria = detalles.reduce((acc, detalle) => {
-        const categoria = detalle.categoriaNombre || "Otros"; 
+        const categoria = detalle.categoriaNombre || "Otros";
         if (!acc[categoria]) acc[categoria] = [];
         acc[categoria].push(detalle);
         return acc;
@@ -486,7 +559,7 @@ function buildDireccionHtml(direccion) {
 }
 
 function buildCotizacionHtml(cotizacion) {
-    
+
     const fechaEnvio = new Date(cotizacion.fechaCreacion).toLocaleDateString("es-MX");
     const fechaEvento = new Date(cotizacion.fechaEvento).toLocaleDateString("es-MX");
     const total = cotizacion.totalCotizado.toFixed(2);
@@ -550,3 +623,5 @@ function buildCotizacionHtml(cotizacion) {
         </div>
     `;
 }
+
+

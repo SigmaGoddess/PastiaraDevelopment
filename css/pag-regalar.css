@@ -126,7 +126,7 @@
   transform: translateY(-70%);
   width: 100%;
   height: 200px;
-  background-image: url( 'https://i.ibb.co/XrV88Zrx/banner-para-regalar.jpg');
+  background-image: url('https://i.ibb.co/XrV88Zrx/banner-para-regalar.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 150% 150%;
@@ -154,7 +154,7 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 2rem;
- 
+
 }
 
 .pastiara-product-left,
@@ -164,15 +164,13 @@
   align-items: center;
   margin-bottom: 0;
   width: 100%;
-  
+
 }
 
 .pastiara-product-left {
   justify-content: flex-start;
   animation: slideInLeft 0.8s ease-out;
   width: 100%
-  
-
 }
 
 .pastiara-product-right {
@@ -237,7 +235,7 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-========== NUEVO EFECTO HOVER ========== 
+/* ========== NUEVO EFECTO HOVER ========== */
 article.product-3d {
   position: relative;
   width: 100%;
@@ -345,64 +343,65 @@ article.product-3d:hover::before {
 
 
 .product-image:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 
 
 .product-3d {
-    position: relative;
-    max-width: 600px;
-     width: 100%;
-    margin: 0 auto;
-    /*border-radius: 8px;*/
-    overflow: hidden;
-    /*aspect-ratio: 351 / 450;*/
-    /*aspect-ratio: 16 / 9;*/
-    height: auto;
-    /*background-color: #000;*/
-    /*height: 100%;*/
-    object-fit: cover;
-   
-  
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  /*border-radius: 8px;*/
+  overflow: hidden;
+  /*aspect-ratio: 351 / 450;*/
+  /*aspect-ratio: 16 / 9;*/
+  height: auto;
+  /*background-color: #000;*/
+  /*height: 100%;*/
+  object-fit: cover;
+
+
 }
 
 
 .product-3d img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 8px; 
-    /* Si la imagen aparece sobre otros elementos, podrías necesitar */
-    /* position: absolute; top: 0; left: 0; */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  /* Si la imagen aparece sobre otros elementos, podrías necesitar */
+  /* position: absolute; top: 0; left: 0; */
 }
+
 .heart-favorite {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 38px;
-    height: 41px;
-    z-index: 10;
-    cursor: pointer;
-    background: none;
-    border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 38px;
+  height: 41px;
+  z-index: 10;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .heart-favorite:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .heart-favorite i {
-    font-size: 24px;
-    color: white;
-    -webkit-text-stroke: 2px white;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+  color: white;
+  -webkit-text-stroke: 2px white;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .heart-favorite.active i {
-    color: var(--color-title);
-    -webkit-text-stroke: 2px var(--color-title);
+  color: var(--color-title);
+  -webkit-text-stroke: 2px var(--color-title);
 }
 
 
@@ -450,63 +449,63 @@ article.product-3d:hover::before {
 
 /** --- Utilidades y Animaciones --- */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 @keyframes heartBeat {
-    0% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
 
-    50% {
-        transform: scale(1.3);
-    }
+  50% {
+    transform: scale(1.3);
+  }
 
-    100% {
-        transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .heart-favorite.animate {
-    animation: heartBeat 0.6s ease-in-out;
+  animation: heartBeat 0.6s ease-in-out;
 }
 
 .toastify {
-    font-family: 'Questrial', sans-serif;
+  font-family: 'Questrial', sans-serif;
 }
 
 .cotizador {
-    position: fixed;
-    z-index: 1000;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 32px;
-    background-color: #B58A6A;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    font-family: 'Questrial', sans-serif;
-    font-size: 1.1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: fixed;
+  z-index: 1000;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background-color: #B58A6A;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .cotizador .icono-boton {
-    width: 28px;
-    height: 28px;
+  width: 28px;
+  height: 28px;
 }
 
 .cotizador:hover {
-    transform: translateY(-50%) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================

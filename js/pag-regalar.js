@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const containerProductos = document.querySelector('.body-regalar'); // Contenedor principal
-    const favoritosGuardados = JSON.parse(localStorage.getItem('pastiaraFavorites')) || []; // Traemos favoritos desde localStorage
+
 
     // Función para crear el HTML de un producto para regalar (cada producto con su propio banner)
     function crearProductoRegalar(producto, index) {
@@ -26,8 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="${producto.imagenUrl}" 
                                  alt="${producto.nombre}" 
                                  class="pastiara-product-img">
+                            
                             <button class="heart-favorite" 
-                                    data-product="${producto.id}" 
+                                    data-product-id="${producto.id}" 
                                     aria-label="Marcar como favorito">
                                 <i class="fas fa-heart"></i>
                             </button>
@@ -47,52 +48,101 @@ document.addEventListener('DOMContentLoaded', () => {
         return section;
     }
 
-    // Función para actualizar los botones de favoritos según localStorage
-    function actualizarBotones() {
-        const botonesFavorito = document.querySelectorAll('.heart-favorite');
-        botonesFavorito.forEach(boton => {
-            const productId = boton.dataset.product;
-            if (favoritosGuardados.some(fav => fav.id == productId)) {
-                boton.classList.add('active');
-            }
-        });
+    /**
+     * Ahora consulta la API para saber qué botones marcar.
+     */
+    async function actualizarBotones() {
+        const token = localStorage.getItem('authToken');
+        if (!token) return; // Si no hay login, no hay nada que marcar.
+
+        try {
+            // 1. Obtenemos los IDs favoritos REALES desde la API
+            const response = await fetch('https://pastiara.duckdns.org/api/favoritos', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!response.ok) return;
+
+            const favoritos = await response.json(); // Array de objetos [{id: 1}, {id: 5}]
+            const idsFavoritos = new Set(favoritos.map(fav => fav.id)); // new Set([1, 5])
+
+            // 2. Recorremos los botones y marcamos los que coincidan
+            const botonesFavorito = document.querySelectorAll('.heart-favorite');
+            botonesFavorito.forEach(boton => {
+                const productId = boton.dataset.productId; // Usamos productId
+
+                if (idsFavoritos.has(Number(productId))) { // Convertimos a Número por si acaso
+                    boton.classList.add('active');
+                    boton.querySelector('i').classList.replace('bi-heart', 'bi-heart-fill');
+                    boton.setAttribute('aria-label', 'Quitar de favoritos');
+                }
+            });
+        } catch (error) {
+            console.error("Error al actualizar botones de favoritos:", error);
+        }
     }
 
-    // Función para gestionar favoritos (con verificación de login mediante JWT)
-    function gestionarFavorito(producto, boton) {
+    /**
+     * Función para gestionar favoritos llamando a la API (POST/DELETE).
+     */
+    async function gestionarFavorito(productId, boton) {
         const token = localStorage.getItem('authToken'); // Revisar si hay token
+
+        // 1. Validar que el usuario esté logueado
         if (!token) {
-            // Si no hay token, redirige a registro/login
-            window.location.href = '/pages/pag-registro/registro.html#login-form';
+            window.location.href = '/pages/pag-registro/registro.html#login-form'; // Redirección a la página de registro
             return;
         }
 
-        // Si hay token, procede a agregar a favoritos
-        let favoritos = JSON.parse(localStorage.getItem('pastiaraFavorites')) || [];
-        const index = favoritos.findIndex(item => item.id == producto.id);
+        // 2. Si hay token, procede a llamar a la API
+        const estaActivo = boton.classList.contains('active');
+        const icon = boton.querySelector('i');
+        const url = `https://pastiara.duckdns.org/api/favoritos/${productId}`;
 
-        if (index > -1) {
-            favoritos.splice(index, 1);
-            boton.classList.remove('active');
-            mostrarNotificacion(`${producto.nombre} eliminado de favoritos`);
-        } else {
-            favoritos.push(producto);
-            boton.classList.add('active');
-            mostrarNotificacion(`${producto.nombre} añadido a favoritos ❤️`);
+        try {
+            if (estaActivo) {
+                // --- QUITAR DE FAVORITOS (DELETE) ---
+                const response = await fetch(url, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!response.ok) throw new Error('Error al quitar');
+
+                // Éxito: Actualizar UI
+                boton.classList.remove('active');
+                icon.classList.replace('bi-heart-fill', 'bi-heart');
+                boton.setAttribute('aria-label', 'Agregar a favoritos');
+                mostrarNotificacion("Quitado de favoritos");
+
+            } else {
+                // --- AGREGAR A FAVORITOS (POST) ---
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!response.ok) throw new Error('Error al agregar');
+
+                // Éxito: Actualizar UI
+                boton.classList.add('active');
+                icon.classList.replace('bi-heart', 'bi-heart-fill');
+                boton.setAttribute('aria-label', 'Quitar de favoritos');
+                mostrarNotificacion("¡Agregado a favoritos! ❤️");
+            }
+        } catch (error) {
+            console.error('Error al actualizar favorito:', error);
+            mostrarNotificacion("Error al actualizar. Intenta más tarde.", true);
         }
 
-        localStorage.setItem('pastiaraFavorites', JSON.stringify(favoritos));
     }
 
     // Función para mostrar notificaciones (Toastify)
-    function mostrarNotificacion(mensaje) {
+    function mostrarNotificacion(mensaje, esError = false) {
         Toastify({
             text: mensaje,
             duration: 3000,
             gravity: "bottom",
             position: "right",
             style: {
-                background: "linear-gradient(to right, #B58A6A, #a07551)",
+                background: esError ? "#f44336" : "linear-gradient(to right, #B58A6A, #a07551)",
             },
         }).showToast();
     }
@@ -103,12 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // ID de la categoría "Para Regalar" (ajusta según tu base de datos)
             const categoriaId = 4; // Cambiar según el ID real de tu categoría
             const response = await fetch(`https://pastiara.duckdns.org/api/productos/categoria/${categoriaId}`);
-            
+
             if (!response.ok) throw new Error('Error al cargar productos');
 
             const productos = await response.json();
 
-            // Buscamos dónde insertar los productos (después del header de "Para regalar")
             const sectionTitle = document.querySelector('.pastiara-section-title');
             const insertPoint = sectionTitle ? sectionTitle.closest('.container') : containerProductos;
 
@@ -126,25 +175,20 @@ document.addEventListener('DOMContentLoaded', () => {
             // Después de renderizar, agregamos los listeners de favoritos
             const botonesFavorito = document.querySelectorAll('.heart-favorite');
             botonesFavorito.forEach(boton => {
-                const productWrapper = boton.closest('.pastiara-product-wrapper');
-                const producto = {
-                    id: boton.dataset.product,
-                    nombre: productWrapper.querySelector('.pastiara-product-name').textContent,
-                    precio: productWrapper.querySelector('.pastiara-price').textContent,
-                    descripcion: productWrapper.querySelector('.pastiara-description-text').textContent,
-                    imagen: productWrapper.querySelector('.pastiara-product-img').src
-                };
-                
-                boton.addEventListener('click', () => gestionarFavorito(producto, boton));
+
+                // Solo necesitamos el ID del producto
+                const productId = boton.dataset.productId;
+
+                // Llamamos a gestionarFavorito solo con el ID y el botón
+                boton.addEventListener('click', () => gestionarFavorito(productId, boton));
             });
 
-            // Activamos los corazones según favoritos guardados
-            actualizarBotones();
+            // Activamos los corazones (ahora es una función async)
+            await actualizarBotones();
 
         } catch (error) {
             console.error('Error al cargar productos:', error);
-            
-            // Mensaje de error amigable
+
             const errorDiv = document.createElement('div');
             errorDiv.className = 'container text-center my-5';
             errorDiv.innerHTML = `
@@ -153,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     No pudimos cargar los productos. Por favor, intenta más tarde.
                 </div>
             `;
-            
             const sectionTitle = document.querySelector('.pastiara-section-title');
             if (sectionTitle) {
                 sectionTitle.closest('.container').after(errorDiv);
