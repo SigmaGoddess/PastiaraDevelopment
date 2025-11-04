@@ -116,16 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const productosExistentes = document.querySelectorAll('.pastiara-full-banner-section');
             productosExistentes.forEach(prod => prod.remove());
 
-            // Renderizamos cada producto
+            // Renderizamos cada producto en orden correcto
             productos.forEach((producto, index) => {
                 const productoElement = crearProductoRegalar(producto, index);
-                
-                // Insertamos después del título de sección
-                if (insertPoint.nextSibling) {
-                    containerProductos.insertBefore(productoElement, insertPoint.nextSibling);
-                } else {
-                    containerProductos.appendChild(productoElement);
-                }
+                // Simplemente agregamos al final del contenedor
+                containerProductos.appendChild(productoElement);
             });
 
             // Después de renderizar, agregamos los listeners de favoritos
@@ -170,4 +165,3 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
 
 });
-
