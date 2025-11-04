@@ -270,24 +270,28 @@
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0;
-}
-
-.heart-favorite i {
-    font-size: 24px;
-    color: white;
-    -webkit-text-stroke: 2px white;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    color: #B58A6A;
 }
 
 .heart-favorite:hover {
     transform: scale(1.1);
 }
 
+.heart-favorite i {
+    font-size: 24px;
+    color: #B58A6A;
+    -webkit-text-stroke: 2px #B58A6A;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
 .heart-favorite.active i {
-    color: #b58a6a;
-    -webkit-text-stroke: 2px #b58a6a;
+    color: var(--color-title);
+    -webkit-text-stroke: 2px var(--color-title);
+}
+
+.toastify {
+    font-family: 'Questrial', sans-serif;
 }
 
 /* Información del producto */
@@ -651,197 +655,221 @@
 /*Estilos para sección de cotizaciones*/
 /* --- 1. El Contenedor Principal (La Tarjeta) --- */
 .cotizacion-item {
-  background-color: #f8f9fa; /* Color UNIFICADO para toda la tarjeta */
-  border: 1px solid #eee;    /* Borde solo alrededor de todo el conjunto */
-  margin-bottom: 15px;       /* Separación entre tarjetas */
-  overflow: hidden;          /* Asegura que nada se salga de las esquinas redondeadas */
-  transition: all 0.3s ease; /* Suaviza cualquier cambio en la tarjeta misma */
+    background-color: #f8f9fa;
+    /* Color UNIFICADO para toda la tarjeta */
+    border: 1px solid #eee;
+    /* Borde solo alrededor de todo el conjunto */
+    margin-bottom: 15px;
+    /* Separación entre tarjetas */
+    overflow: hidden;
+    /* Asegura que nada se salga de las esquinas redondeadas */
+    transition: all 0.3s ease;
+    /* Suaviza cualquier cambio en la tarjeta misma */
 }
 
 /* Sombra sutil al pasar el mouse por toda la tarjeta */
 .cotizacion-item:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* --- 2. El Resumen (Parte Superior) --- */
 .cotizacion-resumen {
-  /* ... (tus estilos flex anteriores: display: flex, justify-content, etc.) ... */
-  padding: 15px;
-  cursor: pointer;
-  background-color: transparent; /* Importante: deja ver el fondo del padre */
-  
-  /* Quitamos el borde inferior por defecto para que se vea unido */
-  border-bottom: 1px solid transparent; 
-  transition: border-bottom-color 0.3s ease;
+    /* ... (tus estilos flex anteriores: display: flex, justify-content, etc.) ... */
+    padding: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    /* Importante: deja ver el fondo del padre */
+
+    /* Quitamos el borde inferior por defecto para que se vea unido */
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s ease;
 }
 
 /* Cuando la tarjeta está ACTIVA, añadimos una línea sutil separadora */
 .cotizacion-item.active .cotizacion-resumen {
-  border-bottom-color: #eee; /* Ahora sí mostramos la separación */
+    border-bottom-color: #eee;
+    /* Ahora sí mostramos la separación */
 }
 
 /* --- 3. Los Detalles (Parte Inferior) --- */
 .cotizacion-detalles {
-  background-color: transparent; /* Deja ver el mismo fondo #f8f9fa del padre */
-  
-  /* ... (tus estilos de transición anteriores: max-height, padding, etc.) ... */
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 15px; /* Padding lateral siempre presente, pero invisible si height es 0 */
-  opacity: 0; /* Truco extra: ayuda a que el texto no se vea "aplastado" al aparecer */
-  transition: all 0.4s ease-out;
+    background-color: transparent;
+    /* Deja ver el mismo fondo #f8f9fa del padre */
+
+    /* ... (tus estilos de transición anteriores: max-height, padding, etc.) ... */
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    /* Padding lateral siempre presente, pero invisible si height es 0 */
+    opacity: 0;
+    /* Truco extra: ayuda a que el texto no se vea "aplastado" al aparecer */
+    transition: all 0.4s ease-out;
 }
 
 /* Estado ACTIVO de los detalles */
 .cotizacion-item.active .cotizacion-detalles {
-  max-height: 3000px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  opacity: 1; /* Aparece suavemente */
+    max-height: 3000px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    opacity: 1;
+    /* Aparece suavemente */
 }
 
 /* --- 2. El Resumen (Parte Superior) --- */
 .cotizacion-resumen {
-  /* --- Acomodo Flexbox (Lo que ya teníamos) --- */
-  display: flex;
-  justify-content: space-between; /* Info a la izq., botón a la der. */
-  align-items: center;            /* Centra todo verticalmente */
-  
-  /* --- Estilo Visual (Lo nuevo) --- */
-  padding: 15px;
-  cursor: pointer;
-  background-color: transparent; /* Importante: usa el fondo del padre */
-  
-  /* Borde sutil que solo aparece cuando está activo */
-  border-bottom: 1px solid transparent; 
-  transition: border-bottom-color 0.3s ease;
+    /* --- Acomodo Flexbox (Lo que ya teníamos) --- */
+    display: flex;
+    justify-content: space-between;
+    /* Info a la izq., botón a la der. */
+    align-items: center;
+    /* Centra todo verticalmente */
+
+    /* --- Estilo Visual (Lo nuevo) --- */
+    padding: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    /* Importante: usa el fondo del padre */
+
+    /* Borde sutil que solo aparece cuando está activo */
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s ease;
 }
 
 /* --- (Acomodo Flexbox - Hijos) --- */
 /* No olvides incluir también los estilos para los hijos del resumen */
 
 .resumen-info {
-  flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .resumen-fila {
-  display: flex;
+    display: flex;
 }
 
 .info-item {
-  flex: 1; 
-  padding: 5px;
-  display: flex;
-  flex-direction: column; 
+    flex: 1;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .info-item small {
-  font-size: 0.75rem;
-  color: #6c757d; 
-  margin-bottom: 2px;
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-bottom: 2px;
 }
 
 .info-item strong {
-  font-size: 0.9rem;
-  color: #212529; 
+    font-size: 0.9rem;
+    color: #212529;
 }
 
 .resumen-accion {
-  padding-left: 20px; 
+    padding-left: 20px;
 }
 
 .icono {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color:var(--color-boton1); 
-  transition: transform 0.3s ease-out; /* Mantenemos la transición del icono */
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-boton1);
+    transition: transform 0.3s ease-out;
+    /* Mantenemos la transición del icono */
 }
 
 /* --- 3. Los Detalles (Estilos Internos) --- */
 
 /* El contenedor flex para las 2 columnas */
 .detalles-body {
-  display: flex;
-  flex-wrap: wrap; /* Para que en móvil se ponga una columna sobre otra */
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* Para que en móvil se ponga una columna sobre otra */
+    width: 100%;
 }
 
 /* Cada columna (Izquierda y Derecha) */
 .detalles-columna {
-  flex: 1; /* Hace que ambas columnas ocupen 50% */
-  min-width: 280px; /* Evita que se aplasten demasiado */
-  padding: 15px;
+    flex: 1;
+    /* Hace que ambas columnas ocupen 50% */
+    min-width: 280px;
+    /* Evita que se aplasten demasiado */
+    padding: 15px;
 }
 
 /* Cada bloque de contenido (Dirección, Comentarios, Productos) */
 .detalle-bloque {
-  margin-bottom: 20px; /* Espacio entre bloques (ej. entre Dirección y Comentarios) */
+    margin-bottom: 20px;
+    /* Espacio entre bloques (ej. entre Dirección y Comentarios) */
 }
 
 /* Títulos de cada bloque */
 .detalle-bloque strong {
-  font-size: 0.9rem;
-  color: #333;
-  display: block; /* Para que ocupe su propia línea */
-  margin-bottom: 8px;
-  border-bottom: 2px solid var(--color-boton1); /* Subrayado para el título */
-  padding-bottom: 4px;
+    font-size: 0.9rem;
+    color: #333;
+    display: block;
+    /* Para que ocupe su propia línea */
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--color-boton1);
+    /* Subrayado para el título */
+    padding-bottom: 4px;
 }
 
 /* Texto de párrafo (para dirección y comentarios) */
 .detalle-bloque p {
-  font-size: 0.9rem;
-  color: #555;
-  margin: 0;
-  line-height: 1.5;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
 }
 
 /* --- Estilos de la Lista de Productos --- */
 
 /* Contenedor para un grupo de categoría (ej. "Pasteles") */
 .producto-categoria {
-  margin-bottom: 15px; /* Espacio entre categorías */
+    margin-bottom: 15px;
+    /* Espacio entre categorías */
 }
 
 /* Título de la categoría (h4) */
 .categoria-titulo {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #333;
-  margin: 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #ddd; /* Línea sólida debajo del título */
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    /* Línea sólida debajo del título */
 }
 
 /* La lista de productos (la misma que antes) */
 .lista-productos {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  /* (Añadimos un espacio superior) */
-  margin-top: 8px; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* (Añadimos un espacio superior) */
+    margin-top: 8px;
 }
 
 /* Cada item de producto (<li>) (el mismo que antes) */
 .producto-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0; /* Un poco menos de padding */
-  border-bottom: 1px dashed #eee; /* Guiones más sutiles */
-  font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    /* Un poco menos de padding */
+    border-bottom: 1px dashed #eee;
+    /* Guiones más sutiles */
+    font-size: 0.9rem;
 }
 
 .producto-item:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .producto-nombre {
-  color: #333;
+    color: #333;
 }
 
 .producto-cantidad {
-  color: var(--color-boton1);
-  font-weight: bold;
-  padding-left: 15px;
+    color: var(--color-boton1);
+    font-weight: bold;
+    padding-left: 15px;
 }
-

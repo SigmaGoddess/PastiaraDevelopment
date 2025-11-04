@@ -25,9 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Funcionalidad de "Favoritos"
-    // ... (Tu código de favoritos permanece igual)
-    // Funcionalidad de "Favoritos"
+    // FUNCIONALIDAD DE FAVORITOS
     const contenedorFavoritos = document.getElementById('favoritos-grid');
 
     if (contenedorFavoritos) {
@@ -37,20 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /**
          * Carga los favoritos desde la API del backend.
-         * Ya no usa localStorage.
          */
         async function cargarFavoritos() {
-            // Si no hay token, el usuario no ha iniciado sesión.
+            const contenedorFavoritos = document.getElementById('favoritos-grid');
+            if (!contenedorFavoritos) return;
+
+            const token = localStorage.getItem('authToken');
             if (!token) {
                 contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Debes iniciar sesión para ver tus favoritos.</p>';
                 return;
             }
 
-            contenedorFavoritos.innerHTML = '<p class="loading-message">Cargando tus favoritos...</p>';
-
             try {
-                // NUEVO: Llamada a tu API de backend
-                const response = await fetch('/api/favoritos', {
+                const response = await fetch('https://pastiara.duckdns.org/api/favoritos', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -59,105 +56,97 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 if (!response.ok) {
-                    // Maneja errores (ej. token expirado 401, o error 500)
-                    throw new Error('No se pudo cargar favoritos. Status: ' + response.status);
+                    throw new Error(`Error: ${response.status}`);
                 }
 
-                // La respuesta de tu controller es Set<ProductoResponseDTO>
                 const favoritos = await response.json();
 
-                contenedorFavoritos.innerHTML = ''; // Limpiar "Cargando..."
-
                 if (!favoritos || favoritos.length === 0) {
-                    contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Todavía no has agregado productos a tus favoritos.</p>';
+                    contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Aún no tienes productos favoritos.</p>';
                     return;
                 }
 
-                // Renderizamos los productos que vinieron de la base de datos
-                // Asumimos que tu ProductoResponseDTO tiene: id, imagen, nombre, precio, descripcion
+                contenedorFavoritos.innerHTML = '';
                 favoritos.forEach(producto => {
-                    const columna = document.createElement('div');
-                    columna.className = 'favorite-product-item';
+                    // 1. Creamos la tarjeta como el elemento principal
+                    const cardElement = document.createElement('div');
+                    cardElement.className = 'product-card'; // La tarjeta ES el item del grid
 
-                    // Usamos tu función de sanitizar por seguridad
-                    const nombreSeguro = sanitizeHTML(producto.nombre);
-                    const descSegura = sanitizeHTML(producto.descripcion || 'Sin descripción'); // Fallback si no viene
-                    const precioFormateado = producto.precio ? `$${Number(producto.precio).toFixed(2)}` : 'Precio no disponible';
+                    // 2. Llenamos su HTML (sin el div "product-card" extra)
+                    cardElement.innerHTML = `
+                         <div class="product-image-container">
+                            <img src="${producto.imagenUrl || '/images/placeholder.webp'}" alt="${sanitizeHTML(producto.nombre)}" class="product-image">
+                            <button class="heart-favorite" data-product-id="${producto.id}" aria-label="Marcar como favorito"><i class="fas fa-heart"></i></button>
+                         </div>
+                         <div class="product-info">
+                            <h3>${sanitizeHTML(producto.nombre)}</h3>
+                            ${producto.precio ? `<p class="price">$${producto.precio}</p>` : ''}
+                            ${producto.descripcion ? `<p class="description">${sanitizeHTML(producto.descripcion)}</p>` : ''}
+                        </div>
+`;
+                    6
+                    // 3. Añadimos la tarjeta directamente al grid
+                    contenedorFavoritos.appendChild(cardElement);
+                });
+                // Agregar manejador de eventos para quitar favoritos
+                contenedorFavoritos.addEventListener('click', async (e) => {
+                    const heartBtn = e.target.closest('.heart-favorite');
+                    if (!heartBtn) return;
 
-                    columna.innerHTML = `
-                        <div class="product-card">
-                            <div class="product-image-container">
-                                <img src="${producto.imagen}" alt="${nombreSeguro}" class="product-image">
-                                <button class="heart-favorite active" data-product-id="${producto.id}" aria-label="Eliminar ${nombreSeguro} de favoritos">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                            <div class="product-info">
-                                <h3>${nombreSeguro}</h3>
-                                <p class="price">${precioFormateado}</p>
-                                <p class="description">${descSegura}</p>
-                            </div>
-                        </div>`;
-                    contenedorFavoritos.appendChild(columna);
+                    const productId = heartBtn.dataset.productId;
+                    if (!productId) return;
+
+                    try {
+                        const response = await fetch(`https://pastiara.duckdns.org/api/favoritos/${productId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Error al quitar de favoritos');
+                        }
+
+                        // UI: quitar el producto inmediatamente
+                        heartBtn.closest('.product-card').remove();
+
+                        // Si no quedan favoritos, mostrar mensaje
+                        if (contenedorFavoritos.children.length === 0) {
+                            contenedorFavoritos.innerHTML = '<p class="empty-favorites-message">Aún no tienes productos favoritos.</p>';
+                        }
+
+                        Toastify({
+                            text: "Quitado de favoritos",
+                            duration: 2000,
+                            gravity: "bottom",
+                            position: "right",
+                            style: { background: "#B58A6A" }
+                        }).showToast();
+
+                    } catch (error) {
+                        console.error('Error:', error);
+                        Toastify({
+                            text: "No se pudo quitar el producto de favoritos",
+                            duration: 2000,
+                            gravity: "bottom",
+                            position: "right",
+                            style: { background: "#ff4444" }
+                        }).showToast();
+                    }
                 });
 
             } catch (error) {
                 console.error('Error al cargar favoritos:', error);
-                contenedorFavoritos.innerHTML = '<p class="error-message">Hubo un problema al cargar tus favoritos. Por favor, intenta de nuevo más tarde.</p>';
+                contenedorFavoritos.innerHTML = '<p class="error-message">Error al cargar tus favoritos. Intenta más tarde.</p>';
             }
         }
-
-        /**
-         * Elimina un favorito llamando a la API del backend.
-         * Ya no usa localStorage.
-         */
-        async function eliminarFavorito(id) {
-            if (!token) {
-                Toastify({ text: "Debes iniciar sesión para hacer esto", duration: 2000 }).showToast();
-                return;
-            }
-
-            try {
-                // NUEVO: Llamada DELETE a tu API de backend
-                const response = await fetch(`/api/favoritos/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-
-                if (!response.ok) {
-                    // Tu controller devuelve 204 (noContent) si tiene éxito.
-                    // !response.ok se activará para 404, 500, 401, etc.
-                    throw new Error('No se pudo eliminar el favorito.');
-                }
-
-                // Éxito
-                Toastify({ text: "Eliminado de favoritos", duration: 2000, gravity: "bottom", position: "right" }).showToast();
-
-                // Recargamos la lista desde el servidor para que se refleje el cambio
-                cargarFavoritos();
-
-            } catch (error) {
-                console.error('Error al eliminar favorito:', error);
-                Toastify({ text: "Error al eliminar. Intenta más tarde.", duration: 2000, gravity: "bottom" }).showToast();
-            }
-        }
-
-        // --- Event Listener (Sin cambios) ---
-        // Este listener ya está bien, porque llama a las funciones por su nombre.
-        // Ahora simplemente llamará a las nuevas versiones "async" que usan fetch.
-        contenedorFavoritos.addEventListener('click', (e) => {
-            const heartButton = e.target.closest('.heart-favorite');
-            if (heartButton) {
-                const productoId = heartButton.dataset.productId;
-                eliminarFavorito(productoId); // Llama a la nueva función
-            }
-        });
 
         // Carga inicial al entrar a la pestaña
         cargarFavoritos();
     }
+
+    // ===============================================================================================
 
     //* Código para la sección según el hash en la url
     window.addEventListener('load', () => {
@@ -634,3 +623,5 @@ function buildCotizacionHtml(cotizacion) {
         </div>
     `;
 }
+
+
