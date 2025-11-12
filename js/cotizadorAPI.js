@@ -386,7 +386,7 @@ btnConfirmarEnviar.addEventListener('click', function (event) {
             Swal.fire({
                 title: `¡Error!`,
                 text: "Estamos teniendo inconvenientes para enviar tu cotización, vuelve a intentarlo más tarde",
-                imageUrl: "/images/GENERAL/canasta-confirmacion-cotizacion.png",
+                imageUrl: "https://i.ibb.co/4nycGPL4/canasta-confirmacion-cotizacion.webp",
                 icon: "error"
             })
             // También cerramos el modal en caso de error.

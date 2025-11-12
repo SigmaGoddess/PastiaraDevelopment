@@ -15,7 +15,7 @@
     /* Imagen de fondo */
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-        url(/images/REGISTRO/Fondo\ de\ registro\ con\ edición.png);
+        url('https://i.ibb.co/4nsPqD99/Fondo-de-registro-con-edici-n.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -214,7 +214,7 @@ p {
         width: 3.5rem;
         height: 3.3rem;
 
-        background-image: url('/images/REGISTRO/IconosCintaRegistro.png');
+        background-image: url('https://i.ibb.co/S7w5r9Vs/Iconos-Cinta-Registro.webp');
         opacity: 0.6;
         background-size: contain;
         background-repeat: no-repeat;
@@ -229,7 +229,7 @@ p {
         width: 3.5rem;
         height: 3.3rem;
 
-        background-image: url('/images/REGISTRO/IconosCintaRegistroIzq.png');
+        background-image: url('https://i.ibb.co/xqSjGKBq/Iconos-Cinta-Registro-Izq.webp');
         opacity: .6;
         background-size: contain;
         background-repeat: no-repeat;
