@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("authToken");
 
-    // selectores corregidos y fiables para detectar botones/enlaces de login/registro
     const possibleSelectors = [
         '.acciones-col-footer',
         '.btn-registro-footer',
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const hideLoginElements = () => {
         const els = findLoginElements();
         els.forEach(el => {
-            // si el elemento está dentro de un <a>, ocultar el <a> para eliminar enlace
             const anchor = el.closest && el.closest('a');
             if (anchor) anchor.style.display = 'none';
             else el.style.display = 'none';
@@ -39,16 +37,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const ensureLogoutButton = () => {
         if (document.getElementById("btn-logout")) return;
+        
         const logoutBtn = document.createElement("button");
         logoutBtn.id = "btn-logout";
-        logoutBtn.className = "btn btn-logout mt-3";
+        // AQUÍ: Aplica las mismas clases que tus botones de login/registro
+        logoutBtn.className = "btn btn-logout btn-login-footer"; // Ajusta según tus clases reales
         logoutBtn.textContent = "Cerrar sesión";
         logoutBtn.addEventListener("click", () => {
             localStorage.removeItem("authToken");
             location.reload();
         });
 
-        // intentar insertar en el contenedor de acciones o en el footer
         const insertTarget = document.querySelector('.acciones-col-footer')?.parentElement
             || document.querySelector('.container-footer')
             || document.querySelector('footer');
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const processAuthUI = () => {
-        if (localStorage.getItem("authToken")) {
+        if (token) {
             hideLoginElements();
             ensureLogoutButton();
         } else {
