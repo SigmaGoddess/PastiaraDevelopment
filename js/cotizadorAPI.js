@@ -182,6 +182,7 @@ function resumenCotización() {
             },
             tipoDeEvento: evento,
             comentarios: comentarios,
+            fechaEvento: fechaEvento,
 
             detalles: productosSeleccionados
         };
