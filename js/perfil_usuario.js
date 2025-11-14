@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- EDIT PROFILE MODAL HANDLERS ---
-(function () {
+/*(function () {
     const modal = document.getElementById('edit-profile-modal');
     const btnEditar = document.getElementById('btn-editar');
     const closeBtns = [
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeBtns.forEach(b => b.addEventListener('click', closeModal));
     if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     if (saveBtn) saveBtn.addEventListener('click', saveChanges);
-})();
+})();*/
 
 
 
